@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-
 <html>
-
 	<head>
-		<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
-		
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+    	<title>FCC Challenge: Build a nightlife coordination app</title>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="/public/css/style.css"> 
 	</head>
-
-	<header>
-		<p>Welcome, <span id="display-name"></span>!</p>
-		<a class="menu" href="/profile">Profile</a>
-		<p>|</p>
-		<a class="menu" href="/logout">Logout</a>
-	</header>
-
 	<body>
+	<!--	<header class="row">
+			<h1 class="col-lg-12">Night Owls</h1>
+			<h3 class="col-lg-12">The only app that lets you know where the party's at!</h3>
+			<h3 class="col-lg-12">search bar goes here</h3>
+			<p>Welcome, <span id="display-name"></span>!</p>
+			<a class="menu" href="/profile">Profile</a>
+			<p>|</p>
+			<a class="menu" href="/logout">Logout</a>
+		</header>-->
+		
 		<div class="container">
+  			<h1>Night Owls</h1>
+  			<p>The only app that lets you know where the party's at!</p>
+  			<form id="location">
+    			<div class="input-group">
+      				<input type="text" class="form-control" placeholder="Search" value="">
+      				<div class="input-group-btn">
+        				<button id="search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      				</div>
+    			</div>
+  			</form>
+		</div>
+		<br>
+		<p id="data">Location=</p>
+		
+		<!--<div class="container">
 			<img src="/public/img/clementine_150.png" />
 			<br />
 			<p class="clementine-text">Clementine.js</p>
@@ -29,10 +47,15 @@
 				<button type="submit" class="btn btn-add">CLICK ME!</button>
 				<button class="btn btn-delete">RESET</button>
 			</div>
-		</div>
+		</div>-->
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<script type="text/javascript" src="controllers/clickController.client.js"></script>
+		<!--<script type="text/javascript" src="controllers/clickController.client.js"></script>-->
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
 	</body>
 
