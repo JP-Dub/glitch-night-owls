@@ -2,7 +2,7 @@
 
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
-//var auth =require('../config/auth');
+var Client = require('../controllers/serverSide');
 
 module.exports = function (app, passport) {
 	
@@ -13,7 +13,7 @@ module.exports = function (app, passport) {
 			res.redirect('/login');
 		}
 	}
-
+	
 	var clickHandler = new ClickHandler();
 
 	app.route('/')
@@ -37,11 +37,14 @@ module.exports = function (app, passport) {
 			res.sendFile(path + '/public/profile.html');
 		});
 		
-	app.route('/client')	
-		.post( function (req, res) {
-			console.log("called")
-			res.send()
-		})
+	app.route('/businesses/:search')
+		.post(function (req, res) { 
+			var locale = req.query.location,
+				apiKey = process.env.API_KEY;
+			Client(locale, apiKey, function(data){
+				res.json(data);
+			});
+		});
 		
 	app.route('/auth/twitter')	
 	    .get(passport.authenticate('twitter'));

@@ -3,60 +3,76 @@
 	<head>
     	<title>FCC Challenge: Build a nightlife coordination app</title>
     	<meta charset="utf-8">
+    	<meta http-equiv="Cache-control" content="private">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     	<link rel="stylesheet" href="/public/css/style.css"> 
 	</head>
 	<body>
-	<!--	<header class="row">
-			<h1 class="col-lg-12">Night Owls</h1>
-			<h3 class="col-lg-12">The only app that lets you know where the party's at!</h3>
-			<h3 class="col-lg-12">search bar goes here</h3>
-			<p>Welcome, <span id="display-name"></span>!</p>
-			<a class="menu" href="/profile">Profile</a>
-			<p>|</p>
-			<a class="menu" href="/logout">Logout</a>
-		</header>-->
-		
-		<div class="container">
+		<div id ="heading" class="container">
   			<h1>Night Owls</h1>
   			<p>The only app that lets you know where the party's at!</p>
-  			<form id="location">
+  			<form action="#" id="location">
     			<div class="input-group">
-      				<input type="text" class="form-control" placeholder="Search" value="">
+      				<input id="plapal" type="text" class="form-control" placeholder="Search location" value="">
       				<div class="input-group-btn">
         				<button id="search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
       				</div>
     			</div>
   			</form>
 		</div>
-		<br>
-		<p id="data">Location=</p>
-		
-		<!--<div class="container">
-			<img src="/public/img/clementine_150.png" />
-			<br />
-			<p class="clementine-text">Clementine.js</p>
-		</div>
-	
-		<div class="container">
-			<p>You have clicked the button <span id="click-nbr"></span> times.</p>
-			<br />
-			<div class="btn-container">
-				<button type="submit" class="btn btn-add">CLICK ME!</button>
-				<button class="btn btn-delete">RESET</button>
-			</div>
-		</div>-->
 		
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
-		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<!--<script type="text/javascript" src="controllers/clickController.client.js"></script>-->
+		<!--User script-->
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
 	</body>
 
 </html>
+
+
+		<!--<script type="text/javascript" src="common/ajax-functions.js"></script>
+		<script type="text/javascript" src="controllers/clickController.client.js"></script>-->
+
+  	<!--	<div id="businesscard_1" class="container">
+  	    <div class="img-holder">
+          <img src="http://s3-media2.fl.yelpcdn.com/bphoto/MmgtASP3l_t4tPCL1iAsCg/o.jpg" class="img-thumbnail" alt="image_url"><br>
+           <a href="#"><button class="twitter-btn">Going <span class="badge">4</span</button></a>
+        </div>  
+
+        <div class="business">
+          <h2 title="Visit Website"><a href="https://www.yelp.com/biz/four-barrel-coffee-san-francisco">Four Barrel Coffee</a></h2><br>
+          <p class="address" ><a href="https://www.yelp.com/map/four-barrel-coffee-san-francisco" title="Get Directions">375 Valencia St,<br>San Francisco, CA 94103</a><br><span class="phone">Telephone: <em>(555) 734-555</em></span><br>
+            <span class="rate">Price: $$<em> Moderate</em></span><br>
+            <span>Rating: 4</span></p>
+        </div>  
+  		</div>
+          
+  		<div id="businesscard_2" class="container">
+  	    <div class="img-holder">
+          <img src="http://s3-media2.fl.yelpcdn.com/bphoto/MmgtASP3l_t4tPCL1iAsCg/o.jpg" class="img-thumbnail" alt="image_url"><br>
+           <a href="#"><button class="twitter-btn">Going <span class="badge">4</span</button></a>
+        </div>  
+        <div class="business">
+          <h2 title="Visit Website"><a href="https://www.yelp.com/biz/four-barrel-coffee-san-francisco">Four Barrel Coffee</a></h2><br>
+          <p class="address" ><a href="https://www.yelp.com/map/four-barrel-coffee-san-francisco" title="Get Directions">375 Valencia St,<br>San Francisco, CA 94103</a><br><span class="phone">Telephone: <em>(555) 734-555</em></span><br>
+            <span class="rate">Price: $$<em> Moderate</em></span><br>
+            <span>Rating: 4</span></p>
+        </div>  
+  		</div>
+  		
+  		  		<div id="businesscard_3" class="container">
+  	    <div class="img-holder">
+          <img src="http://s3-media2.fl.yelpcdn.com/bphoto/MmgtASP3l_t4tPCL1iAsCg/o.jpg" class="img-thumbnail" alt="image_url"><br>
+           <a href="#"><button class="twitter-btn">Going <span class="badge">4</span</button></a>
+        </div>  
+        <div class="business">
+          <h2 title="Visit Website"><a href="https://www.yelp.com/biz/four-barrel-coffee-san-francisco">Four Barrel Coffee</a></h2><br>
+          <p class="address" ><a href="https://www.yelp.com/map/four-barrel-coffee-san-francisco" title="Get Directions">375 Valencia St,<br>San Francisco, CA 94103</a><br><span class="phone">Telephone: <em>(555) 734-555</em></span><br>
+            <span class="rate">Price: $$<em> Moderate</em></span><br>
+            <span>Rating: 4</span></p>
+        </div>  
+  		</div>-->

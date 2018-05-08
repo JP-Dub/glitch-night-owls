@@ -5,69 +5,53 @@
    
    var search = document.getElementById('search');
    var message = document.querySelector('#data');
-   
+
    search.addEventListener("click", function(event) {
-      var location = document.getElementById("location").elements[0].value;
-
-      //var url = 'https://api.yelp.com/v3/businesses/search?term=bars&location=' + location;// + process.env.API_KEY;
-
-      var url = '/client';
-      ajax.Ready(ajax.Request('POST', url, function (data) {
-         var userObject = JSON.parse(data);
-         alert(data)
-         $("#data").append(userObject)
-      }));
-      
-      /*
-      $.ajax({ url: url,
-               headers: {'Authorization': 'Bearer ' + process.env.API_KEY,
-                         'Cache-Control' : 'no-cache',
-                         'Content-Type': 'application/json'
-                        },
-               method: 'GET',
-               dataType: 'json',
-               data: null,
-               success: function(data) {
-                  $("#data").html(data);
-               }*/
-   },{"passive": true});
-
+      event.preventDefault();
+      var location = document.getElementById("location").elements[0].value,
+          path = '/businesses/search?term=bars&location=' + location;
+         
+         $.post(path, function(data) {
+            var obj = JSON.parse(data),
+                costDescription,
+                len = data.length,
+                i = 0;
+            
+            for(i; i < len; i++) {
+               var div = document.createElement("DIV");
+               document.body.appendChild(div);
+               div.id = "businesscard_" + i;
+               div.className = "container";       
+               
+               if(!obj[i].image_url) {
+                  obj[i].image_url = '../public/img/NoProductImage_300.jpg';
+               }
+               
+               switch(obj[i].price) {
+                  case "$":
+                     costDescription = "Inexpensive";
+                     break;
+                  case "$$":
+                     costDescription = "Moderate";
+                     break;
+                  case "$$$":
+                     costDescription = "Pricey";
+                     break;
+                  case "$$$$":
+                     costDescription = "Ultra High End";
+                     break;
+               }
+               
+               $("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br><a href='#'><button class='twitter-btn' title='Let people know that you are going by pushing the button'>Going <span class='badge'>0</span</button></a></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' title='Get Directions' target='_blank'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
+               
+               $("#businesscard_" + i).css({
+                  marginTop : ".625em",
+                  border : "1px solid grey",
+                  borderRadius : ".3em",
+                  backgroundColor : "lightgrey"
+               });
+            }
+         });  
+   });
+   
 })();
-
-
-
-
-/*
-   var profileId = document.querySelector('#profile-id') || null;
-   var profileUsername = document.querySelector('#profile-username') || null;
-   var profileRepos = document.querySelector('#profile-repos') || null;
-   var displayName = document.querySelector('#display-name');
-   var apiUrl = appUrl + '/api/:id';
-
-   function updateHtmlElement (data, element, userProperty) {
-      element.innerHTML = data[userProperty];
-   }
-
-   ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, function (data) {
-      var userObject = JSON.parse(data);
-
-      if (userObject.displayName !== null) {
-         updateHtmlElement(userObject, displayName, 'displayName');
-      } else {
-         updateHtmlElement(userObject, displayName, 'username');
-      }
-
-      if (profileId !== null) {
-         updateHtmlElement(userObject, profileId, 'id');   
-      }
-
-      if (profileUsername !== null) {
-         updateHtmlElement(userObject, profileUsername, 'username');   
-      }
-
-      if (profileRepos !== null) {
-         updateHtmlElement(userObject, profileRepos, 'publicRepos');   
-      }
-
-   }));
-   */

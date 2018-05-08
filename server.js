@@ -1,12 +1,13 @@
 'use strict';
 
-var express = require('express');
-var routes = require('./app/routes/index.js');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var session = require('express-session');
-
-var app = express();
+var express = require('express'),
+    routes = require('./app/routes/index.js'),
+	mongoose = require('mongoose'),
+    passport = require('passport'),
+    session = require('express-session'),
+    app = express();
+    //var cors = require('cors');
+    
 require('dotenv').load();
 require('./app/config/passport')(passport);
 
@@ -17,10 +18,14 @@ app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 
+app.set('trust proxy', 1);
 app.use(session({
 	secret: 'secretClementine',
 	resave: false,
-	saveUninitialized: true
+	saveUninitialized: true,
+	cookie : {
+	    secure: true
+		}
 }));
 
 app.use(passport.initialize());

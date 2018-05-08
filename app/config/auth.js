@@ -7,6 +7,7 @@ module.exports = {
 		'callbackURL': process.env.APP_URL + 'auth/github/callback'
 	},
 	'yelpAuth' : {
+		'client': process.env.YELP_CLIENT,
 		'clientKey' : process.env.API_KEY
 	},
 	'twitter' : {
