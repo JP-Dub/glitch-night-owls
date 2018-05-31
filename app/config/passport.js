@@ -1,6 +1,6 @@
 'use strict';
 
-var GitHubStrategy = require('passport-github').Strategy;
+//var GitHubStrategy = require('passport-github').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var User = require('../models/users');
 var configAuth = require('./auth');
@@ -15,69 +15,41 @@ module.exports = function (passport) {
 			done(err, user);
 		});
 	});
-
-	passport.use(new GitHubStrategy({
-		clientID: configAuth.githubAuth.clientID,
-		clientSecret: configAuth.githubAuth.clientSecret,
-		callbackURL: configAuth.githubAuth.callbackURL
-	},
-	function (token, refreshToken, profile, done) {
-		process.nextTick(function () {
-			User.findOne({ 'github.id': profile.id }, function (err, user) {
-				if (err) return done(err);
-
-				if (user) {
-					return done(null, user);
-				} else {
-					var newUser = new User();
-
-					newUser.github.id = profile.id;
-					newUser.github.username = profile.username;
-					newUser.github.displayName = profile.displayName;
-					newUser.github.publicRepos = profile._json.public_repos;
-					newUser.nbrClicks.clicks = 0;
-
-					newUser.save(function (err) {
-						if (err) {
-							throw err;
-						}
-
-						return done(null, newUser);
-					});
-				}
-			});
-		});
-	}));
 	
 	passport.use(new TwitterStrategy({
     	consumerKey: configAuth.twitter.consumerKey,
     	consumerSecret: configAuth.twitter.consumerSecret,
-    	callbackURL: configAuth.twitter.callbackURL
+    	callbackURL: configAuth.twitter.callbackURL//"https://night-owls-jpiazza.c9users.io/auth/twitter/callback"
 	},
 	function(token, tokenSecret, profile, cb) {
-    	User.findOrCreate({ 'twitterId': profile.id }, function (err, user) {
-    		if (err) return cb(err);
+    	User.findOne({ 'twitter.id': profile.id }, function (err, user) {
+    		
+    		if (err) {
+    			console.log("error")
+    			return cb(err);
+    		}
     		
     		if (user) {
+					console.log("RETURNED user")
 					return cb(null, user);
 				} else {
+					
 					var newUser = new User();
 					
 					newUser.twitter.id = profile.id;
 					newUser.twitter.username = profile.username;
 					newUser.twitter.displayName = profile.displayName;
-					newUser.nbrClicks.clicks = 0;
+					newUser.twitter.location = profile._json.location;
+					//newUser.nbrClicks.clicks = 0;
 
 					newUser.save(function (err) {
-						if (err) {
-							throw err;
-						}
-
+						if (err) return console.error(err);
+						console.log("CREATED user")
 						return cb(null, newUser);
 					});
 				}
-    });
-  }
-));
+    	});
+	}
+	));
 	
 };

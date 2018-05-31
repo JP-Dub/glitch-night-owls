@@ -5,9 +5,11 @@ var express = require('express'),
 	mongoose = require('mongoose'),
     passport = require('passport'),
     session = require('express-session'),
+    cors = require('cors'),
     app = express();
-    //var cors = require('cors');
-    
+
+//app.options('*', cors());    
+ 
 require('dotenv').load();
 require('./app/config/passport')(passport);
 
@@ -31,7 +33,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-routes(app, passport);
+routes(app, passport, cors);
 
 var port = process.env.PORT || 8080;
 app.listen(port,  function () {
