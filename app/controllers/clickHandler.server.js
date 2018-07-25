@@ -4,7 +4,9 @@ var Users = require('../models/users.js');
 var yelp = require('yelp-fusion');
 
 function ClickHandler () {
-
+	
+	
+	
 	this.getClicks = function (req, res) {
 		console.log(req.query)
 		Users
@@ -17,16 +19,18 @@ function ClickHandler () {
 	};
 
 	this.addClick = function (req, res) {
+		//console.log(req.body.logBars)
 		Users
-			.findOneAndUpdate({ 'twitter.id': req.user.twitter.id }, { $inc: { 'nbrClicks.clicks': 1 } })
+			.find({})//.select({'_id' : '5b0ffcbb2f55ef0bf9c5398a'})
 			.exec(function (err, result) {
-					if (err) { throw err; }
-
-					res.json(result.nbrClicks);
+					if (err) throw err; 
+				//'twitter.id': req.user.twitter.id	
+				console.log(result)
+				//	res.json(result.nbrClicks);
 				}
 			);
 	};
-
+	/*
 	this.resetClicks = function (req, res) {
 		Users
 			.findOneAndUpdate({ 'twitter.id': req.user.twitter.id }, { 'nbrClicks.clicks': 0 })
@@ -36,7 +40,7 @@ function ClickHandler () {
 					res.json(result.nbrClicks);
 				}
 			);
-	};
+	};*/
 	
 	this.whosGoing = function(req, res) {
 		
@@ -56,7 +60,7 @@ function ClickHandler () {
 			})
 	};
 	
-	// post.getNightlife
+	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
 			
 		var Client = yelp.client(process.env.API_KEY);
@@ -66,12 +70,16 @@ function ClickHandler () {
             	sort_by: 'rating',
             	limit: 20,
         	};
+        	
+        //Users.find({}).select({'nightlife': 1})	
+        	
      	// saves and updates <req.query.location> to db
         Users.findOneAndUpdate({ '_id' : '5b0ffcbb2f55ef0bf9c5398a' }, { 'twitter.location': req.query.location })
         	.exec(function(err){
             	if(err) return console.error(err);
         	}) //, {'returnOriginal': false}) // code only works for user.save()
-        	
+        
+        // Yelp api	
     	Client.search(searchRequest).then(response => {
         	var results = response.jsonBody.businesses,
             	json = JSON.stringify(results, null, 4);
@@ -87,7 +95,7 @@ function ClickHandler () {
     	}); 
 	};
 	
-	// returns the user location and cached search results after twitter log in
+	// returns the user location and cached search results after twitter log ingit
 	this.userLocation = function(req, res) {
 		Users.find({ '_id' : { $in: [
 						'5b0ffba56dd7f80bbd6a953b',

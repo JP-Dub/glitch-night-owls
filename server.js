@@ -8,7 +8,7 @@ var express = require('express'),
     cors = require('cors'),
     app = express();
 
-//app.options('*', cors());    
+app.options('/', cors());    
  
 require('dotenv').load();
 require('./app/config/passport')(passport);

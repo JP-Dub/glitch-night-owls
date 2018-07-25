@@ -30,7 +30,7 @@ module.exports = function (passport) {
     		}
     		
     		if (user) {
-					console.log("RETURNED user")
+					
 					return cb(null, user);
 				} else {
 					
@@ -40,11 +40,10 @@ module.exports = function (passport) {
 					newUser.twitter.username = profile.username;
 					newUser.twitter.displayName = profile.displayName;
 					newUser.twitter.location = profile._json.location;
-					//newUser.nbrClicks.clicks = 0;
 
 					newUser.save(function (err) {
 						if (err) return console.error(err);
-						console.log("CREATED user")
+						
 						return cb(null, newUser);
 					});
 				}

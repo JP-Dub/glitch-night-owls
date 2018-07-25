@@ -8,18 +8,19 @@ module.exports = function (app, passport, cors) {
 	
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {
-			console.log('served!')
 			return next()
 		} else {
-			res.redirect('/')
+			//alert("You're not logged in! The page will refresh and you can try again");
+			res.redirect('/auth/twitter')
 		}
 	}
 	
 	var clickHandler = new ClickHandler();
-	
-	var options = { 
-			origin: true,
-	};
+	var options = ({
+		origin : 'https://www.night-owls-jpiazza.c9users.io:8080',
+		preflightContinue: true,
+		optionsSuccessStatus: 200
+	})
 	
 	app.route('/')
 		.get( function (req, res) {
@@ -38,16 +39,17 @@ module.exports = function (app, passport, cors) {
 		.get(clickHandler.getNightlife)
 		.post(clickHandler.getNightlife);
 
-	/*
+	
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick)
+		.post(clickHandler.addClick);
 		//.delete(isLoggedIn, clickHandler.resetClicks);			
-	*/
-	app.get('/auth/twitter', passport.authenticate('twitter'));
+		
+	app.get('/auth/twitter', cors(options), passport.authenticate('twitter'));
+
 
 	app.route('/auth/twitter/callback')
-		.get(passport.authenticate('twitter', { 
+		.get(cors(options), passport.authenticate('twitter', { 
 			failureRedirect: '/' }),
 			function(req, res) {
     			res.redirect('/loggedIn');

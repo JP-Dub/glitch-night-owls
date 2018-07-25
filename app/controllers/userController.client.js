@@ -13,28 +13,25 @@
    function loadBtnEvents() { 
       var twitterBtn = document.getElementsByClassName('twitter-btn'),
           btnLength = twitterBtn.length;
-      
+          
       $('.twitter-btn').click(function(){
          window.location.href = '/auth/twitter';
       })
         
       for(var i = 0; i < btnLength; i++) {
-      
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
-            
             var name = (this.parentNode.parentNode.id).slice(13);
             console.log(this.parentNode.parentNode.parentNode)
             var logBars = {
-               "id" : bars[name].name,
+              // "id" : bars[name].name,
                "name" : bars[name].id
             };
-            /*
-            console.log(bars[name].name, bars[name].id)
-            $.get('/api/:id/clicks', logBars, function(data) {
-               
-            })*/
             
+            console.log(bars[name].name, bars[name].id)
+            $.post('api/:id/clicks', logBars, function(data) {
+               
+            })
          }); 
       } // for(loop) 
    } // loadBtnEvents()   
@@ -84,25 +81,21 @@
             }
            
             $("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='submit' value='submit'>Going <span id='going' class='badge'>0</span</button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
-            //$(".img-holder").html("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br><a href='/auth/twitter'><button class='twitter-btn' title='Let people know that you are going by pushing the button'>Going <span class='badge'>0</span</button></a>");
-            //$(".business").html("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/'" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p>")
             $("#businesscard_" + i).css({
                marginTop : ".625em",
                border : "1px solid grey",
                borderRadius : ".3em",
                backgroundColor : "#daf1e0"
             });
-            
          } // for(loop)
-         
+      
          loadBtnEvents();
-      }   
-
+      };   
+      
+      // userData comes from screen refresh after twitter log in
       if(userData) {
          printScreen(userData);
-         
       } else {
-      
          if(typeof locale === "object") {
             var path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
          } else {
@@ -111,12 +104,12 @@
       
          $.post(path, function(data) {
             var obj = JSON.parse(data);
-            
             printScreen(obj)
          });
       }
-   } // postResults(); 
+   } // postResults();
 
+   // currently not in use
    function getLocation(done) {
       if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(function(position) {
