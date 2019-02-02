@@ -28,17 +28,6 @@ function ClickHandler () {
 				}
 			);
 	};
-	/*
-	this.resetClicks = function (req, res) {
-		Users
-			.findOneAndUpdate({ 'twitter.id': req.user.twitter.id }, { 'nbrClicks.clicks': 0 })
-			.exec(function (err, result) {
-					if (err) { throw err; }
-
-					res.json(result.nbrClicks);
-				}
-			);
-	};*/
 	
 	this.whosGoing = function(req, res) {
 		
@@ -109,26 +98,3 @@ function ClickHandler () {
 }
 
 module.exports = ClickHandler;
-
-	/*	Users.find({}).exec(function(err, user) {
-			if(err) throw err;
-			console.log(user)
-		}) */
-
-            	/*
-            	var newUser = Users();
-            	newUser.twitter.location = req.query.location;
-            	newUser.save(function (err) {
-						if (err) return console.error(err);
-						console.log("CREATED location")
-						
-					});*/
-					
-								/*
-            	var newUser = Users();
-            	newUser.nightlife.cache = results;
-            	newUser.save(function (err) {
-						if (err) return console.error(err);
-						console.log("CREATED cache")
-						
-					});*/

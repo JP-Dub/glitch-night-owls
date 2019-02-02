@@ -1,0 +1,335 @@
+/********* Fonts **********/
+
+@font-face {
+	font-family: 'Roboto';
+  	font-style: normal;
+  	font-weight: 400;
+  	src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  	font-family: 'Roboto';
+  	font-style: normal;
+  	font-weight: 500;
+  	src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'riffic_mediumbold';
+    src: url('../fonts/riffic-bold-webfont.woff2') format('woff2'),
+         url('../fonts/riffic-bold-webfont.woff') format('woff'),
+         url('../fonts/riffic-bold-webfont.ttf') format('truetype'),
+         url('../fonts/riffic-bold-webfont.svg#riffic_mediumbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/****** Media Queries ******/
+
+@media all and (min-width: 1081px) {
+    body{
+        font-size: 1.5em; /*18px;*/
+    }
+    .img-holder {
+  		margin-left: -1.05em !important;
+    }
+}
+ 
+@media all and (max-width: 1080px) and (min-width: 400px) {
+    body{
+        font-size: 1.2em; /*16*/
+    }
+}
+ 
+@media all and (max-width: 399px) and (min-width: 300px) {
+    body{
+        font-size: .8em; /*12px*/
+    }
+    .img-holder {
+  		margin-left: -2em !important;
+    }
+ 
+}
+
+/****** Main Styling ******/
+
+body {
+	font-family: 'Roboto', 'riffic_mediumbold', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#heading {
+ 	text-align: center;
+	padding: 0;
+}
+
+.container  {
+	text-align: left;
+}
+
+h1 {
+	font-family: 'riffic_mediumbold', sans-serif;
+	font-size: 4.236em;
+	color: #e60000;
+	text-shadow: .0525em .0588em #000000/*2px 3px #000000;*/
+}
+ 
+ 
+h2 { 
+	font-family: 'riffic_mediumbold', sans-serif;
+	font-size: 2.168em;
+	color: #e60000;
+	margin: 0;
+	left: .625em;/*10px*/
+}
+ 
+p {
+  	font-size: 1em;
+  	line-height: 1.5em;
+}
+
+
+/****** Business thumbnail and info container ******/
+
+
+/*#businesscard_1, #businesscard_2, #businesscard_3 { 
+  margin-top: .625em; /*10px;/
+  border: 1px solid grey;
+  border-radius: .3em; /*5px;/
+  background-color: #daf1e0/*lightgrey;/
+}*/
+
+.img-holder {
+	margin-left: -1.25em; /*-14px;*/
+  	float: left;
+}
+
+.img-thumbnail {
+  	width: 9.9em; /*150px;*/
+  	height: 9.9em;
+}
+
+.twitter-btn {
+ 	width: 9.9em; /*150px;*/
+ 	text-align: center;
+ 	border-radius: .3125em;
+}
+
+/****** Business name and address details ******/
+.business {
+  	margin-top: .625em; /*10px;*/
+  	margin-left: 9.375em; /*150px;*/
+}
+
+
+.address {
+	margin-top: -1.3em /*-15px;*/
+}
+/*
+button {
+  	border-radius: .3125em;/*5px;
+}*/
+
+a:link {
+    color: #e60000; 
+    background-color: transparent; 
+    text-decoration: none;
+}
+
+a:visited {
+    color: #e60000;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;/*#00BCD4;*/
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:active {
+    color: #00BCD4;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#credit {
+	text-align: center;
+	
+}
+
+#credit a:link {
+	text-decoration: underline;
+}
+
+#credit a:hover {
+	color: blue;
+}
+
+/****** Header Styling ******
+
+header p {
+	margin: 16px 0 5px 0;
+}
+
+.menu {
+	text-decoration: none;
+	padding: 6px;
+	margin: 0;
+	color: #727272;
+}
+
+.menu:visited {
+	color: #727272;
+}
+
+.menu:hover {
+	color: #FFA000;
+}
+
+.menu:active {
+	color: #FF630D;
+}
+
+header a ~ p {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	color: #ECEFF1;
+}
+
+#display-name {
+	font-weight: 400;
+}
+
+/****** Login Styling ******
+
+.login {
+	margin: 86px auto 0 auto;
+	text-align: center;
+}
+
+#login-btn {
+	width: 225px;
+	padding: 7px 5px;
+}
+
+.btn p {
+	margin: 8px 0 0 0;
+	padding: 0;
+}
+
+.btn > img {
+	float: left;
+	margin-left: 10px
+}
+
+/****** Logo Div Styling ******
+
+img {
+	margin: 0 auto;
+	display: block;
+}
+
+.clementine-text { /* Styling for the Clementine.js text //
+	padding: 0;
+	margin: -25px 0 0 0;
+	font-weight: 500;
+	font-size: 60px;
+	color: #FFA000;
+}
+
+/****** Click Styling ******
+
+.btn-container {	/* Styling for the div that contains the buttons //
+	margin: -10px auto 0 auto;
+	text-align: center;
+}
+
+.btn {	/* Styling for buttons //
+	margin: 0 8px;
+	color: white;
+	background-color: #00BCD4;
+	display: inline-block;
+	border: 0;
+	font-size: 14px;
+	border-radius: 3px;
+	padding: 10px 5px;
+	width: 100px;
+	font-weight: 500;
+}
+
+.btn:focus {	/* Remove outline when hovering over button //
+	outline: none;
+}
+
+.btn:active {	/* Scale the button down by 10% when clicking on button //
+	transform: scale(0.9, 0.9);
+	-webkit-transform: scale(0.9, 0.9);
+	-moz-transform: scale(0.9, 0.9);
+}
+
+.btn-delete {	/* Styling for delete button //
+	background-color: #ECEFF1;
+	color: #212121;
+}
+
+#click-nbr {
+	font-weight: 400;
+}
+
+/****** Profile Styling ******
+
+.github-profile {
+	width: 350px;
+	height: 200px;
+	border-radius: 3px;
+	margin: 86px auto 0 auto;
+	background-color: #EEE;
+	text-align: center;
+	color: #000;
+}
+
+.github-profile p:first-child {
+	padding-top: 16px;
+}
+
+.github-profile p:nth-child(5) {
+	margin-bottom: 16px
+}
+
+.github-profile p {
+	margin: 0 0 0 16px;
+	text-align: left;
+}
+
+.profile-value {
+	font-weight: 400;
+}
+
+span {
+	font-weight: 500;
+}
+
+.github-profile > img {
+	padding-top: 16px;
+	margin-bottom: 16px;
+}
+
+.github-profile .menu:hover {
+	color: #FFA000;
+}
+
+.github-profile .menu:active {
+	color: #FF630D;
+}
+
+#menu-divide {
+	color: #FFFFFF;
+	display: inline;
+	margin: 0;
+}
+*/
