@@ -102,12 +102,12 @@ p {
 }*/
 
 .img-holder {
-	margin-left: -1.25em; /*-14px;*/
+	margin-left: -12.25em; /*-1.23em -14px;*/
   	float: left;
 }
 
 .img-thumbnail {
-  	width: 9.9em; /*150px;*/
+  	width: 9.9em; /*9.9em 50px;*/
   	height: 9.9em;
 }
 
