@@ -5,8 +5,6 @@ var yelp = require('yelp-fusion');
 
 function ClickHandler () {
 	
-	
-	
 	this.getClicks = function (req, res) {
 		console.log(req.query)
 		Users
