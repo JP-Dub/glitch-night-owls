@@ -2,7 +2,7 @@
 
 var express = require('express'),
     routes = require('./app/routes/index.js'),
-	mongoose = require('mongoose'),
+	  mongoose = require('mongoose'),
     passport = require('passport'),
     session = require('express-session'),
     cors = require('cors'),

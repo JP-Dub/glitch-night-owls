@@ -45,7 +45,7 @@
     }
 }
  
-@media all and (max-width: 399px) and (min-width: 300px) {
+@media all and (max-width: 480px) and (min-width: 300px) {
     body{
         font-size: .8em; /*12px*/
     }
@@ -66,6 +66,13 @@ body {
 #heading {
  	text-align: center;
 	padding: 0;
+}
+
+[id*='businesscard_'] {
+  margin-top : .625em;
+  border : 1px solid grey;
+  border-radius : .3em;
+  background-color : #daf1e0;  
 }
 
 .container  {
@@ -134,6 +141,7 @@ p {
 .address {
 	margin-top: -1.3em /*-15px;*/
 }
+
 /*
 button {
   	border-radius: .3125em;/*5px;
@@ -176,7 +184,7 @@ a:active {
 	color: blue;
 }
 
-/****** Header Styling ******
+/****** Header Styling ******/
 
 header p {
 	margin: 16px 0 5px 0;
@@ -212,7 +220,7 @@ header a ~ p {
 	font-weight: 400;
 }
 
-/****** Login Styling ******
+/****** Login Styling ******/
 
 .login {
 	margin: 86px auto 0 auto;

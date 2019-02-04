@@ -80,13 +80,13 @@
                   break;
             }
            
-            $("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='submit' value='submit'>Going <span id='going' class='badge'>0</span</button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
-            $("#businesscard_" + i).css({
+            $("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='submit' value='submit'>Going <span id='going' class='badge'>0</span</button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
+            /*$("#businesscard_" + i).css({
                marginTop : ".625em",
                border : "1px solid grey",
                borderRadius : ".3em",
                backgroundColor : "#daf1e0"
-            });
+            });*/
          } // for(loop)
       
          loadBtnEvents();
@@ -144,7 +144,7 @@
       event.preventDefault();
       var location = document.getElementById("location").elements[0].value;
       bars = bars.slice();//removes key/properties
-     console.log(bars, bars.slice())
+      console.log(bars, bars.slice())
       postResults(location);
    }); // search.EventListener()  
    
