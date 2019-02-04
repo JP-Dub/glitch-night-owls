@@ -126,6 +126,7 @@ p {
 }
 
 .twitter-btn {
+  margin-top: 3em;
  	width: 9.9em; /*150px;*/
  	text-align: center;
  	border-radius: .3125em;
@@ -184,7 +185,7 @@ a:active {
 	color: blue;
 }
 
-/****** Header Styling ******/
+/****** Header Styling ******
 
 header p {
 	margin: 16px 0 5px 0;
@@ -220,7 +221,7 @@ header a ~ p {
 	font-weight: 400;
 }
 
-/****** Login Styling ******/
+/****** Login Styling ******
 
 .login {
 	margin: 86px auto 0 auto;
