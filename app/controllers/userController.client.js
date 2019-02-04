@@ -41,7 +41,7 @@
       var printScreen = function(obj) {   
          var length = obj.length,
              i = 0;
-        
+         console.log(obj)
          for(i; i < length; i++) {
             var div = document.createElement("DIV"),
                imgHolder = document.createElement('DIV'),
@@ -163,7 +163,7 @@
       event.preventDefault();
       var location = document.getElementById("location").elements[0].value;
       bars = bars.slice();//removes key/properties
-      console.log(bars, bars.slice())
+      //console.log(bars, bars.slice())
       postResults(location);
    }); // search.EventListener()  
    
