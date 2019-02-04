@@ -22,7 +22,7 @@
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
             var name = (this.parentNode.parentNode.id).slice(13);
-            console.log(this.parentNode.parentNode.parentNode)
+          
             var logBars = {
               // "id" : bars[name].name,
                "name" : bars[name].id
@@ -143,7 +143,8 @@
    search.addEventListener("click", function(event) {
       event.preventDefault();
       var location = document.getElementById("location").elements[0].value;
-      bars = bars.slice(bars.length);//removes key/properties
+      bars = bars.slice();//removes key/properties
+     console.log(bars, bars.slice())
       postResults(location);
    }); // search.EventListener()  
    

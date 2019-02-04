@@ -17,7 +17,7 @@ module.exports = function (app, passport, cors) {
 	
 	var clickHandler = new ClickHandler();
 	var options = ({
-		origin : 'https://www.night-owls-jpiazza.c9users.io:8080',
+		origin : 'https://jp-dub-night-owls.glitch.me',//'https://www.night-owls-jpiazza.c9users.io:8080',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	})
