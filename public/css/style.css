@@ -117,7 +117,7 @@ p {
 
 .img-holder {
 	margin-left: -12.25em; /*-1.23em -14px;*/
-  	float: left;
+  float: left;
 }
 
 .img-thumbnail {
@@ -126,7 +126,7 @@ p {
 }
 
 .twitter-btn {
-  margin-top: 3em;
+  height: 2em;
  	width: 9.9em; /*150px;*/
  	text-align: center;
  	border-radius: .3125em;
