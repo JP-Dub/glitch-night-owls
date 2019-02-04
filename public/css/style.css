@@ -121,13 +121,14 @@ p {
 }
 
 .img-thumbnail {
-  	width: 9.9em; /*9.9em 50px;*/
-  	height: 9.9em;
+  	width: 9.5em; /*9.9em 50px;*/
+  	height: 9.5em;
 }
 
 .twitter-btn {
-  position: absolute;
-  height: 2em;
+  margin-top: 140px;
+  z-index: 4;
+  height: 4em;
  	width: 9.9em; /*150px;*/
  	text-align: center;
  	border-radius: .3125em;
