@@ -126,10 +126,7 @@ p {
 }
 
 .twitter-btn {
-  margin-top: 140px;
-  z-index: 4;
-  height: 4em;
- 	width: 9.9em; /*150px;*/
+ 	width: 9.5em; /*150px;*/
  	text-align: center;
  	border-radius: .3125em;
 }
