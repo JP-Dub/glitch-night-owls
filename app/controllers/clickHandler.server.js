@@ -52,10 +52,10 @@ function ClickHandler () {
 			
 		var Client = yelp.client(process.env.API_KEY);
     	var searchRequest = {
-        		term:'bars',
+        		term    : 'bars',
     	    	location: req.query.location,
-            	sort_by: 'rating',
-            	limit: 20,
+            sort_by : 'rating',
+            limit   : 20,
         	};
         	
         //Users.find({}).select({'nightlife': 1})	
