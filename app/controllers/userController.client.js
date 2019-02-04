@@ -48,9 +48,9 @@
             div.id = "businesscard_" + i;
             div.className = "container"; 
             var identity = {
-               "id" : obj[i].id,
+               "id"  : obj[i].id,
                "name": obj[i].name
-            };
+               };
             
             bars.push(identity);
             
@@ -88,8 +88,8 @@
                backgroundColor : "#daf1e0"
             });*/
          } // for(loop)
-      
-         loadBtnEvents();
+        
+        // loadBtnEvents();
       };   
       
       // userData comes from screen refresh after twitter log in
