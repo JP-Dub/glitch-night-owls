@@ -3,11 +3,11 @@
 
 (function () {
 
-   var search = document.getElementById('search');
-   var main = document.getElementById('main');
-   var message = document.querySelector('#data');
-   var alias, latitude, longitude;
-   var bars = [];
+   var search  = document.getElementById('search'),
+       main    = document.getElementById('main'),
+       message = document.querySelector('#data'),
+       alias, latitude, longitude,
+       bars = [];
    
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBtnEvents() { 
@@ -16,7 +16,7 @@
           
       $('.twitter-btn').click(function(){
          window.location.href = '/auth/twitter';
-      })
+      });
         
       for(var i = 0; i < btnLength; i++) {
          twitterBtn[i].addEventListener('click', function(event) {
@@ -33,19 +33,20 @@
                
             })
          }); 
-      } // for(loop) 
-   } // loadBtnEvents()   
+      }; // for(loop) 
+   }; // loadBtnEvents()   
 
    function postResults(locale, userData) { 
       
       var printScreen = function(obj) {   
          var length = obj.length,
-             i = 0;
-         console.log(obj)
+             i      = 0;
+         
          for(i; i < length; i++) {
             var div = document.createElement("DIV"),
                imgHolder = document.createElement('DIV'),
                business = document.createElement('DIV');
+           
             main.appendChild(div);
             div.id = "businesscard_" + i;
             div.className = "container"; 
@@ -90,33 +91,32 @@
                   obj[i].price = '';
                   costDescription = "Unavailable";
                   break;
-            }
-            // let img = document.querySelector('.img-holder'),
-            //     buss = document.querySelector('.business');
+            };
            
             //$("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
             $("#businesscard_" + i + "> .img-holder").append("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
             $("#businesscard_" + i + "> .business").append("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p>");
-           // $('.img-holder').html("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br>") 
+            // $('.img-holder').html("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br>") 
             // $('.img-holder').append("<button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
             // $('.business').html("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");  
-           /*$("#businesscard_" + i).css({
+            /*$("#businesscard_" + i).css({
                marginTop : ".625em",
                border : "1px solid grey",
                borderRadius : ".3em",
                backgroundColor : "#daf1e0"
             });*/
-         } // for(loop)
+         }; // for(loop)
         
-        // loadBtnEvents();
+         loadBtnEvents();
       };   
       
       // userData comes from screen refresh after twitter log in
       if(userData) {
          printScreen(userData);
       } else {
+         let path;
          if(typeof locale === "object") {
-            var path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
+            path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
          } else {
             path = '/businesses/search?term=bars&location=' + locale;
          }      
@@ -125,8 +125,8 @@
             var obj = JSON.parse(data);
             printScreen(obj)
          });
-      }
-   } // postResults();
+      };
+   }; // postResults();
 
    // currently not in use
    function getLocation(done) {
@@ -139,8 +139,8 @@
          }, showError);
       } else {
          console.log("Geolocation is not supported by this browser.");
-      }
-   }
+      };
+   };
   
    function showError(error) {
       switch(error.code) {
@@ -156,14 +156,13 @@
          case error.UNKNOWN_ERROR:
             console.log("An unknown error occurred.");
             break;
-      }
-   }
+      };
+   };
   
    search.addEventListener("click", function(event) {
       event.preventDefault();
       var location = document.getElementById("location").elements[0].value;
       bars = bars.slice();//removes key/properties
-      //console.log(bars, bars.slice())
       postResults(location);
    }); // search.EventListener()  
    
@@ -172,7 +171,7 @@
          $('#plapal').attr('placeholder', data[1].twitter.location)
          postResults(null, data[0].nightlife.cache);
       });
-   }   
+   };   
    
 })();
 
