@@ -126,6 +126,7 @@ p {
 }
 
 .twitter-btn {
+  position: absolute;
   height: 2em;
  	width: 9.9em; /*150px;*/
  	text-align: center;
