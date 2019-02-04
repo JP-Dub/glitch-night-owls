@@ -43,14 +43,18 @@
              i = 0;
         
          for(i; i < length; i++) {
-            var div = document.createElement("DIV");
+            var div = document.createElement("DIV"),
+                imgHolder = document.createElement('DIV'),
+                business = document.createElement('DIV');
             main.appendChild(div);
             div.id = "businesscard_" + i;
             div.className = "container"; 
-            var imgHolder = document.createElement('DIV');
-            img
+            imgHolder.className = 'img-holder';
+            business.className = 'business';
             var businesscard = document.getElementById('businesscard_' + i);
             businesscard.appendChild(imgHolder);
+            businesscard.appendChild(business);
+           
             
             var identity = {
                "id"  : obj[i].id,
@@ -84,10 +88,13 @@
                   costDescription = "Ultra High End";
                   break;
             }
+            let img = document.querySelector('.img-holder'),
+                bus
            
             //$("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
-            $("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br>") 
-            $('#img-holder').append("<button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
+            $(".img-holder").html("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br>") 
+            $('.img-holder').append("<button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
+            $('.business').html("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");  
            /*$("#businesscard_" + i).css({
                marginTop : ".625em",
                border : "1px solid grey",
