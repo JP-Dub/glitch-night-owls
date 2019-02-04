@@ -176,24 +176,18 @@
 
 //var lat = 26.579147499999998;
 //var long = -80.1595932;
-//var address = 'https://www.yelp.com/map/' + obj[i].alias + '?start='+ latitude + '%20' + longitude;
-/*
+//var address = 'https://www.yelp.com/map/' + obj[i].alias + '?start='+ latitude + '%20' + longitude;<
 <div class='img-holder'>
    <img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br>
    <a href='/auth/twitter'><button class='twitter-btn' title='Let people know that you are going by pushing the button'>Going <span class='badge'>0</span</button></a>
 </div>   
 <div class='business'>
-   <h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br>
-   
+   <h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br>   
    <p class='address'><a id='directions' href='https://www.yelp.com/map/" + obj[i].alias + "' title='Get Directions' target='_blank' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>
-   
    " + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br>
-   
    <span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br>
-   
    <span class='price'>Price: " + obj[i].price + " " + costDescription + "</span><br>
-   
    <span class='rate'>Rating: " + obj[i].rating + "</span></p>
 </div>*/
 
-//"<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br><a href='/auth/twitter'><button class='twitter-btn' title='Let people know that you are going by pushing the button'>Going <span class='badge'>0</span</button></a></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");
+//<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url' height='150' width='150'><br><a href='/auth/twitter'><button class='twitter-btn' title='Let people know that you are going by pushing the button'>Going <span class='badge'>0</span</button></a></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");
