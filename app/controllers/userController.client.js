@@ -26,7 +26,7 @@
           
             var logBars = {
               // "id" : bars[name].name,
-               "name" : bars[name].id
+               "id" : bars[name].id
             };
             
             console.log(bars[name].name, bars[name].id, logBars)

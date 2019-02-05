@@ -6,7 +6,7 @@ var yelp = require('yelp-fusion');
 function ClickHandler () {
 	
 	this.getClicks = function (req, res) {
-		console.log(req.query)
+		//console.log(req.query)
 		Users
 			.findOne({ 'twitter.id': req.user.twitter.id }, { '_id': false })
 			.exec(function (err, result) {
@@ -49,7 +49,8 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
-			console.log(req.params, req.query, req.body)
+      console.log('user', req.user)
+			console.log('this.getnightlife', req.params, req.query, req.body)
 		 var Client = yelp.client(process.env.API_KEY);
      var searchRequest = {
         		term    : 'bars',
