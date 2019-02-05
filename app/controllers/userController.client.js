@@ -42,11 +42,13 @@
 
    function postResults(locale, userData) { 
      
+     // delete previous bar info
      if(main.childNodes.length > 1) {
        while(main.firstChild) {
          main.removeChild(main.firstChild);
-       }
+       };
      }
+     
       var printScreen = function(obj) {   
          var length = obj.length,
              i      = 0;
