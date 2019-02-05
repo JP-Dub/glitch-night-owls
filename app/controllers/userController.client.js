@@ -10,8 +10,9 @@
        alias, latitude, longitude,
        bars = [];
   
-   console.log(window.location, window.location.pathname)
    
+    var isEmpty = main.innerHTML === "";
+  console.log(main, isEmpty)
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBtnEvents() { 
       var twitterBtn = document.getElementsByClassName('bttn'),
@@ -40,7 +41,8 @@
    }; // loadBtnEvents()   
 
    function postResults(locale, userData) { 
-      
+     
+     console.log(isEmpty)
       var printScreen = function(obj) {   
          var length = obj.length,
              i      = 0;
@@ -102,12 +104,7 @@
             // $('.img-holder').html("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br>") 
             // $('.img-holder').append("<button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
             // $('.business').html("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");  
-            /*$("#businesscard_" + i).css({
-               marginTop : ".625em",
-               border : "1px solid grey",
-               borderRadius : ".3em",
-               backgroundColor : "#daf1e0"
-            });*/
+  
          }; // for(loop)
         
          loadBtnEvents();
@@ -176,6 +173,7 @@
       postResults(location);
    }); // search.EventListener()  
    
+   // if user is logged in
    if(window.location.pathname === '/loggedIn') {
       $.get('/user/:location', function(data) {
         var location, userData;
@@ -187,6 +185,7 @@
           location = null;
           userData = data.nightlife.cache;
         }
+        
         $('#plapal').attr('placeholder', data.twitter.location)
           postResults(location, userData);
       });
