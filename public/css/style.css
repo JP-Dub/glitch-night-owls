@@ -83,6 +83,12 @@ body {
   padding: 1px;
 }
 
+.fa  {
+  font-Size: 1.4em;
+  color: blue;
+}
+  
+
 h1 {
 	font-family: 'riffic_mediumbold', sans-serif;
 	font-size: 4.236em;
