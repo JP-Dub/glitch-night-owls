@@ -171,11 +171,11 @@
    search.addEventListener("click", function(event) {
       event.preventDefault();
       location = document.getElementById("location").elements[1].value;
-      var path = "user/location?locale=" + location;
+      //var path = "user/location?locale=" + location;
       bars = [];
-      $.post(path, (data) => {
-        console.log(data);
-      });
+      // $.post(path, (data) => {
+      //   console.log(data);
+      // });
      
       postResults(location);
    }); // search.EventListener()  

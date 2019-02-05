@@ -49,7 +49,7 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
-			console.log('this.getnightlife', req.params, req.query, req.body)
+		console.log('this.getnightlife',req.user, req.params, req.query, req.body)
 		 var Client = yelp.client(process.env.API_KEY);
      var searchRequest = {
         		term    : 'bars',
@@ -58,13 +58,25 @@ function ClickHandler () {
             limit   : 20,
         	};
         	
-        //Users.find({}).select({'nightlife': 1})	
+        Users.findOneAndUpdate({
+          // _id: '5c59ed1e9148306b65d5a1a3'
+          }, {
+           session: req.query.locale
+          }, {
+           upsert: true,
+           new   : true
+          })
+      .exec( (err, logged) => {
+        if(err) throw err; 
+    });
         	
      	// saves and updates <req.query.location> to db
-     Users.findOneAndUpdate({ '_id' : '5b0ffcbb2f55ef0bf9c5398a' }, { 'twitter.location': req.query.location })
-        	.exec(function(err){
-            	if(err) return console.error(err);
-        	}) //, {'returnOriginal': false}) // code only works for user.save()
+     // Users.findOneAndUpdate({ '_id' : req.user._id || null}, {'twitter.cache' : req.query.location})
+     //      .or({ })//_id: '' }, {'session': req.query.location})
+     //    	.exec(function(err, success){
+     //        	if(err) return console.error(err);
+     //         console.log('users or', success)
+     //    	});
         
       // Yelp api	
     	Client.search(searchRequest).then(response => {
