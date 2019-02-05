@@ -29,7 +29,7 @@
                "name" : bars[name].id
             };
             
-            console.log(bars[name].name, bars[name].id)
+            console.log(bars[name].name, bars[name].id, logBars)
             $.post('api/:id/clicks', logBars, function(data) {
                
             })
