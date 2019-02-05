@@ -4,18 +4,18 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var NightOwl = new Schema({
-   current  : {},
+   session  : {},
    nightlife: {
       name : String,
       id   : String,
       count: Number
    },
    twitter: {
-       id         : String,
-       displayName: String,
-       username   : String,
-       location   : String,
-       cache      : Array
+       id             : String,
+       displayName    : String,
+       username       : String,
+       location       : String,
+       previousSession: String
    }
 });
 

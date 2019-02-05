@@ -71,6 +71,7 @@ function ClickHandler () {
         	var results = response.jsonBody.businesses,
             	json = JSON.stringify(results, null, 4);
         	// saves and updates <var results> to db
+        console.log(results)
         	Users.findOneAndUpdate({ '_id':'5b0ffba56dd7f80bbd6a953b' }, { 'twitter.cache' : results })
         		   .exec(function(err) {
         			   if(err) return console.error(err);
@@ -98,7 +99,7 @@ function ClickHandler () {
     Users.findOneAndUpdate({
            _id: '5c59ed1e9148306b65d5a1a3'
           }, {
-           current: req.query.locale
+           session: req.query.locale
           }, {
            upsert: true,
            new   : true
