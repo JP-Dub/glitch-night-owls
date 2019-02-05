@@ -173,7 +173,7 @@
       location = document.getElementById("location").elements[1].value;
       //bars = bars.slice();//removes key/properties
       bars = [];
-      
+      $.post('user/:location', location);
      
       postResults(location);
    }); // search.EventListener()  

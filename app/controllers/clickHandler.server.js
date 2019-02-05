@@ -92,6 +92,14 @@ function ClickHandler () {
 				res.json(user[0]);
 			});
 	};
+  
+  this.userLocation = (req, res) => {
+    Users.findOneAndUpdate({}, {current: req.query.location})
+      .exec( (err, logged) => {
+      if(err) throw err;
+      console.log('success', logged)
+    });
+  };
 
 };
 

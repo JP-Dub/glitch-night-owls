@@ -33,7 +33,8 @@ module.exports = function (app, passport, cors) {
 		});
 		
 	app.route('/user/:location')	
-		.get(clickHandler.userLocation);
+		.get(clickHandler.userLocation)
+    .post(clickHandler.userLocation);
 			
 	app.route('/businesses/:search')
 		.get(clickHandler.getNightlife)
