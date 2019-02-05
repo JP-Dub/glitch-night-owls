@@ -3,7 +3,8 @@
 
 (function () {
 
-   var search  = document.getElementById('search'),
+   var login   = document.getElementById('login'),
+       search  = document.getElementById('search'),
        main    = document.getElementById('main'),
        message = document.querySelector('#data'),
        alias, latitude, longitude,
@@ -14,9 +15,9 @@
       var twitterBtn = document.getElementsByClassName('bttn'),
           btnLength = twitterBtn.length;
           
-      $('.bttn').click(function(){
-         window.location.href = '/auth/twitter';
-      });
+      // $('.bttn').click(function(){
+      //    window.location.href = '/auth/twitter';
+      // });
         
       for(var i = 0; i < btnLength; i++) {
          twitterBtn[i].addEventListener('click', function(event) {
@@ -159,9 +160,15 @@
       };
    };
   
+  login.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = '/auth/twitter';
+  });
+  
    search.addEventListener("click", function(event) {
       event.preventDefault();
-      var location = document.getElementById("location").elements[0].value;
+      var location = document.getElementById("location").elements[1].value;
+     console.log(document.getElementById("location").elements[1])
       bars = bars.slice();//removes key/properties
       postResults(location);
    }); // search.EventListener()  
