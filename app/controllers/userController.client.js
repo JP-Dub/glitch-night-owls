@@ -43,7 +43,9 @@
    function postResults(locale, userData) { 
      
      if(main.childNodes.length > 1) {
-     alert('Damn Boi');
+       while(main.firstChild) {
+         main.removeChild(main.firstChild);
+       }
      }
       var printScreen = function(obj) {   
          var length = obj.length,
@@ -171,7 +173,9 @@
    search.addEventListener("click", function(event) {
       event.preventDefault();
       var location = document.getElementById("location").elements[1].value;
-      bars = bars.slice();//removes key/properties
+      //bars = bars.slice();//removes key/properties
+      bars = [];
+      console.log('bars empty', bars)
       postResults(location);
    }); // search.EventListener()  
    
@@ -189,7 +193,7 @@
         }
         
         $('#plapal').attr('placeholder', data.twitter.location)
-          postResults(location, userData);
+        postResults(location, userData);
       });
    };   
    
