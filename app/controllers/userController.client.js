@@ -9,10 +9,7 @@
        message = document.querySelector('#data'),
        alias, latitude, longitude,
        bars = [];
-  
-   
-    var isEmpty = main.childNodes.length;
-  console.log(main, isEmpty)
+     
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBtnEvents() { 
       var twitterBtn = document.getElementsByClassName('bttn'),
@@ -32,7 +29,7 @@
                "name" : bars[name].id
             };
             
-            //console.log(bars[name].name, bars[name].id)
+            console.log(bars[name].name, bars[name].id)
             $.post('api/:id/clicks', logBars, function(data) {
                
             })
@@ -66,7 +63,8 @@
             var businesscard = document.getElementById('businesscard_' + i);
             businesscard.appendChild(imgHolder);
             businesscard.appendChild(business);
-                     
+               
+            // nightlife cache
             var identity = {
                "id"  : obj[i].id,
                "name": obj[i].name
@@ -171,7 +169,7 @@
      window.location.href = '/auth/twitter';
    });
   
-   // listener for search button
+   // listener for Search button
    search.addEventListener("click", function(event) {
       event.preventDefault();
       var location = document.getElementById("location").elements[1].value;
@@ -181,7 +179,7 @@
       postResults(location);
    }); // search.EventListener()  
    
-   // if user is logged in
+   // checks if user is logged in
    if(window.location.pathname === '/loggedIn') {
       $.get('/user/:location', function(data) {
         var location, userData;
