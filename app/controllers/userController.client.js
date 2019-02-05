@@ -176,20 +176,15 @@
    }); // search.EventListener()  
    
    // checks if user is logged in
-   if(window.location.pathname === '/loggedIn') {
+   if(window.location.pathname === '/loggedUser') {
       $.get('/user/:location', function(user) {
-        var locale, userData;
+        var locale;
         
-        if(!user.previousSession) {
-           locale = user.location;
-           userData = null;
-        } else {
-          locale = location;
-          userData = user.previousSession;
-        }
-        //plapal
+        !user.previousSession ? locale = user.location
+                              : locale = user.previousSession;
+                
         $('#searchBar').attr('placeholder', locale)
-        postResults(locale, userData);
+        postResults(locale, null);
       });
    };   
    

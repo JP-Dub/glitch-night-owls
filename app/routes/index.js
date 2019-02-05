@@ -27,7 +27,7 @@ module.exports = function (app, passport, cors) {
 			res.sendFile(path + '/public/index.html');
 		});
 	
-	app.route('/userId/:')
+	app.route('/loggedUser')
 		.get(isLoggedIn, function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
@@ -52,7 +52,7 @@ module.exports = function (app, passport, cors) {
 			failureRedirect: '/' }),
 			function(req, res) {
     console.log('twitter user', req.user)
-    			res.redirect('/userId/:' + req.user._id);
+    			res.redirect('/loggedUser');
 		});	
 		
 
