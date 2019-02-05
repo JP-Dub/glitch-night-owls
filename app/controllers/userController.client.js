@@ -11,7 +11,7 @@
        bars = [];
   
    
-    var isEmpty = main.innerHTML === "";
+    var isEmpty = main.childNodes.length;
   console.log(main, isEmpty)
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBtnEvents() { 
@@ -42,7 +42,9 @@
 
    function postResults(locale, userData) { 
      
-     console.log(isEmpty)
+     if(main.childNodes.length > 1) {
+     alert('Damn Boi');
+     }
       var printScreen = function(obj) {   
          var length = obj.length,
              i      = 0;
