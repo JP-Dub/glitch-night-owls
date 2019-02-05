@@ -17,7 +17,7 @@ module.exports = function (app, passport, cors) {
 	
 	var clickHandler = new ClickHandler();
 	var options = ({
-		origin : 'https://jp-dub-night-owls.glitch.me',//'https://www.night-owls-jpiazza.c9users.io:8080',
+		origin : 'https://glitch-night-owls.glitch.me',//'https://www.night-owls-jpiazza.c9users.io:8080',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	})
@@ -38,7 +38,6 @@ module.exports = function (app, passport, cors) {
 	app.route('/businesses/:search')
 		.get(clickHandler.getNightlife)
 		.post(clickHandler.getNightlife);
-
 	
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
@@ -47,13 +46,12 @@ module.exports = function (app, passport, cors) {
 		
 	app.get('/auth/twitter', cors(options), passport.authenticate('twitter'));
 
-
 	app.route('/auth/twitter/callback')
 		.get(cors(options), passport.authenticate('twitter', { 
 			failureRedirect: '/' }),
 			function(req, res) {
-    console.log('twitter user', req.user)
-    			res.redirect('/' + req.user.twitter.displayName);
+    //console.log('twitter user', req.user)
+    			res.redirect('/loggedIn');
 		});	
 		
 

@@ -181,12 +181,12 @@
       $.get('/user/:location', function(data) {
         var locale, userData;
 
-        if(data.nightlife.cache.length === 0) {
+        if(data.twitter.cache.length === 0) {
            locale = data.twitter.location;
            userData = null;
         } else {
           locale = location;
-          userData = data.nightlife.cache;
+          userData = data.twitter.cache;
         }
         //plapal
         $('#searchBar').attr('placeholder', locale)
