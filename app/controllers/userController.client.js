@@ -173,6 +173,8 @@
       location = document.getElementById("location").elements[1].value;
       //bars = bars.slice();//removes key/properties
       bars = [];
+      
+     
       postResults(location);
    }); // search.EventListener()  
    
