@@ -82,19 +82,17 @@ function ClickHandler () {
     	}); 
 	};
 	
-	// returns the user location and cached search results after twitter log ingit
+	// returns the user location and cached search results after twitter log in
 	this.userLocation = function(req, res) {
-		Users.find({ '_id' : { $in: [
-						'5b0ffba56dd7f80bbd6a953b',
-						'5b0ffcbb2f55ef0bf9c5398a'
-						]}
-					})
+		Users.find({})
 			.exec(function(err, user){
+      console.log(user)
 				if(err) throw err;
 				res.json(user);
 			});
 	};
-
+//						'5b0ffba56dd7f80bbd6a953b',
+//						'5b0ffcbb2f55ef0bf9c5398a'
 }
 
 module.exports = ClickHandler;

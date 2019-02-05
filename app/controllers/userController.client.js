@@ -9,6 +9,8 @@
        message = document.querySelector('#data'),
        alias, latitude, longitude,
        bars = [];
+  
+   console.log(window.location, window.location.pathname)
    
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBtnEvents() { 
@@ -159,22 +161,24 @@
             break;
       };
    };
+   
+   // listener for Twitter login button
+   login.addEventListener("click", (event) => {
+     event.preventDefault();
+     window.location.href = '/auth/twitter';
+   });
   
-  login.addEventListener("click", (event) => {
-    event.preventDefault();
-    window.location.href = '/auth/twitter';
-  });
-  
+   // listener for search button
    search.addEventListener("click", function(event) {
       event.preventDefault();
       var location = document.getElementById("location").elements[1].value;
-     console.log(document.getElementById("location").elements[1])
       bars = bars.slice();//removes key/properties
       postResults(location);
    }); // search.EventListener()  
    
    if(window.location.pathname === '/loggedIn') {
       $.get('/user/:location', function(data) {
+        console.log(data)
          $('#plapal').attr('placeholder', data[1].twitter.location)
          postResults(null, data[0].nightlife.cache);
       });
