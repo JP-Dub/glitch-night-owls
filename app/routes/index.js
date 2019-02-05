@@ -52,7 +52,8 @@ module.exports = function (app, passport, cors) {
 		.get(cors(options), passport.authenticate('twitter', { 
 			failureRedirect: '/' }),
 			function(req, res) {
-    			res.redirect('/loggedIn');
+    console.log('twitter user', req.user)
+    			res.redirect('/' + req.user.twitter.displayName);
 		});	
 		
 

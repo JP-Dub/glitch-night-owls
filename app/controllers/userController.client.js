@@ -125,7 +125,7 @@
       
          $.post(path, function(data) {
             var obj = JSON.parse(data);
-            printScreen(obj)
+            printScreen(obj);
          });
       };
    }; // postResults();
@@ -185,11 +185,11 @@
            locale = data.twitter.location;
            userData = null;
         } else {
-          locale = null;
+          locale = location;
           userData = data.nightlife.cache;
         }
         //plapal
-        $('#searchBar').attr('placeholder', data.twitter.location)
+        $('#searchBar').attr('placeholder', locale)
         postResults(locale, userData);
       });
    };   
