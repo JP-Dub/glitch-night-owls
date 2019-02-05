@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var User = new Schema({
+var NightOwl = new Schema({
    nightlife: {
       id : String,
       going: Number,
@@ -17,4 +17,4 @@ var User = new Schema({
    }
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('NightOwl', NightOwl);
