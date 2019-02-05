@@ -58,36 +58,36 @@ function ClickHandler () {
             limit   : 20,
         	};
         	
-        Users.findOneAndUpdate({
-          // _id: '5c59ed1e9148306b65d5a1a3'
-          }, {
-           session: req.query.locale
-          }, {
-           upsert: true,
-           new   : true
-          })
-      .exec( (err, logged) => {
-        if(err) throw err; 
-    });
+    //     Users.findOneAndUpdate({
+    //        _id: '5c59ed1e9148306b65d5a1a3'
+    //       }, {
+    //        session: req.query.location
+    //       }, {
+    //        upsert: true,
+    //        new   : true
+    //       })
+    //   .exec( (err, logged) => {
+    //     if(err) throw err; 
+    // });
         	
-     	// saves and updates <req.query.location> to db
-     // Users.findOneAndUpdate({ '_id' : req.user._id || null}, {'twitter.cache' : req.query.location})
-     //      .or({ })//_id: '' }, {'session': req.query.location})
-     //    	.exec(function(err, success){
-     //        	if(err) return console.error(err);
-     //         console.log('users or', success)
-     //    	});
+     	//saves and updates <req.query.location> to db
+     Users.findOneAndUpdate({ '_id' : req.user }, {'twitter.previousSession' : req.query.location}, {new: true})
+          .or({ _id: '5c59ed1e9148306b65d5a1a3' }, {'session': req.query.location})
+        	.exec(function(err, success){
+            	if(err) return console.error(err);
+             console.log('users or', success)
+        	});
         
       // Yelp api	
     	Client.search(searchRequest).then(response => {
         	var results = response.jsonBody.businesses,
             	json = JSON.stringify(results, null, 4);
         	// saves and updates <var results> to db
-        console.log(results)
-        	Users.findOneAndUpdate({ '_id':'5b0ffba56dd7f80bbd6a953b' }, { 'twitter.cache' : results })
-        		   .exec(function(err) {
-        			   if(err) return console.error(err);
-        		   });
+        //console.log(results)
+        	// Users.findOneAndUpdate({ '_id':'5b0ffba56dd7f80bbd6a953b' }, { 'twitter.cache' : results })
+        	// 	   .exec(function(err) {
+        	// 		   if(err) return console.error(err);
+        	// 	   });
 
             res.json(json);
     	}).catch(error => {
@@ -97,10 +97,11 @@ function ClickHandler () {
 	
 	// returns the user location and cached search results after twitter log in
 	this.userLocation = function(req, res) {
-    console.log("userLocation", req.query)
+    console.log("userLocation", req.user)
 		Users.find({_id: req.user._id})
 			.exec(function(err, user){
 				if(err) throw err;       
+      console.log(user[0])
 				res.json(user[0]);
 			});
 	};
