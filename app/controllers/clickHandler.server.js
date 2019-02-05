@@ -49,7 +49,6 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
-      console.log('user', req.user)
 			console.log('this.getnightlife', req.params, req.query, req.body)
 		 var Client = yelp.client(process.env.API_KEY);
      var searchRequest = {
@@ -85,7 +84,7 @@ function ClickHandler () {
 	
 	// returns the user location and cached search results after twitter log in
 	this.userLocation = function(req, res) {
-    console.log(req.query)
+    console.log("userLocation", req.query)
 		Users.find({_id: req.user._id})
 			.exec(function(err, user){
 				if(err) throw err;       
@@ -95,9 +94,10 @@ function ClickHandler () {
   
   this.logUserLocale = (req, res) => {
     console.log('userLocale', req.params, req.query)
-    Users.findOneAndUpdate({}, 
-                           {current: req.query.location},
-                           {upsert: true}
+    Users.findOneAndUpdate({_id: '5c59ed1e9148306b65d5a1a3'}, 
+                           {current: req.query.locale},
+                           {upsert: true,
+                            new   : true}
                           )
       .exec( (err, logged) => {
       if(err) throw err;

@@ -171,9 +171,9 @@
    search.addEventListener("click", function(event) {
       event.preventDefault();
       location = document.getElementById("location").elements[1].value;
-      //bars = bars.slice();//removes key/properties
+      var path = "user/location?locale=" + location;
       bars = [];
-      $.post('user/:location', location, (data) => {
+      $.post(path, (data) => {
         console.log(data);
       });
      
