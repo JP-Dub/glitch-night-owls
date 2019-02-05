@@ -171,9 +171,7 @@
    search.addEventListener("click", function(event) {
       event.preventDefault();
       location = document.getElementById("location").elements[1].value;
-      //var path = "user/location?locale=" + location;
-      bars = [];
-     
+      bars = [];     
       postResults(location);
    }); // search.EventListener()  
    
