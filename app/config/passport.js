@@ -19,7 +19,7 @@ module.exports = function (passport) {
 	passport.use(new TwitterStrategy({
     	consumerKey: configAuth.twitter.consumerKey,
     	consumerSecret: configAuth.twitter.consumerSecret,
-    	callbackURL: configAuth.twitter.callbackURL//"https://night-owls-jpiazza.c9users.io/auth/twitter/callback"
+    	callbackURL: configAuth.twitter.callbackURL//"https://glitch-night-owls.glitch.me/auth/twitter/callback"
 	},
 	function(token, tokenSecret, profile, cb) {
     	User.findOne({ 'twitter.id': profile.id }, function (err, user) {

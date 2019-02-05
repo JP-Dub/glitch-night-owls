@@ -178,7 +178,9 @@
    
    if(window.location.pathname === '/loggedIn') {
       $.get('/user/:location', function(data) {
-        console.log(data)
+        if(data[0].nightlife.cache.length === 0) {
+          
+        }
          $('#plapal').attr('placeholder', data[1].twitter.location)
          postResults(null, data[0].nightlife.cache);
       });
