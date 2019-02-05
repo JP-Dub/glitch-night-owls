@@ -3,16 +3,16 @@
 
 (function () {
 
-   var login   = document.getElementById('login'),
+   let login   = document.getElementById('login'),
        search  = document.getElementById('search'),
        main    = document.getElementById('main'),
        message = document.querySelector('#data'),
-       alias, latitude, longitude, location,
+       alias, latitude, longitude, location, userId,
        bars = [];
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBtnEvents() { 
-      var twitterBtn = document.getElementsByClassName('bttn'),
+      let twitterBtn = document.getElementsByClassName('bttn'),
           btnLength = twitterBtn.length;
           
       // $('.bttn').click(function(){
@@ -22,9 +22,9 @@
       for(var i = 0; i < btnLength; i++) {
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
-            var name = (this.parentNode.parentNode.id).slice(13);
+            let name = (this.parentNode.parentNode.id).slice(13);
           
-            var logBars = {
+            let logBars = {
               // "id" : bars[name].name,
                "id" : bars[name].id
             };
@@ -47,13 +47,13 @@
      }
      
       var printScreen = function(obj) {   
-         var length = obj.length,
+         let length = obj.length,
              i      = 0;
          
          for(i; i < length; i++) {
-            var div = document.createElement("DIV"),
+           let div       = document.createElement("DIV"),
                imgHolder = document.createElement('DIV'),
-               business = document.createElement('DIV');
+               business  = document.createElement('DIV');
            
             main.appendChild(div);
             div.id = "businesscard_" + i;
@@ -65,7 +65,7 @@
             businesscard.appendChild(business);
                
             // nightlife cache
-            var identity = {
+            let identity = {
                "id"  : obj[i].id,
                "name": obj[i].name
                };
@@ -80,7 +80,7 @@
             // no image will revert to 'no image available' icon
             if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
             
-            var costDescription;
+            let costDescription;
             switch(obj[i].price) {
                case "$":
                   costDescription = "Inexpensive";
@@ -122,9 +122,10 @@
          } else {
             path = '/businesses/search?term=bars&location=' + locale;
          }      
-         let logged = if(window.location.pathname === '/loggedIn') window.location.pathname;
-         $.post(path, {loggedIn: logged}, function(data) {
-            var obj = JSON.parse(data);
+         //let logged = window.location.pathname === '/loggedIn'? window.location.pathname: null;
+         
+         $.post(path, {user: userId}, function(data) {
+            let obj = JSON.parse(data);
             printScreen(obj);
          });
       };
@@ -179,7 +180,7 @@
    if(window.location.pathname === '/loggedUser') {
       $.get('/user/:location', function(user) {
         var locale;
-        
+         userId = user.id;
         !user.previousSession ? locale = user.location
                               : locale = user.previousSession;
                 

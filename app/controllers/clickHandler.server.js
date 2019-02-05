@@ -58,7 +58,7 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-     if(!req.body.loggedIn) {
+     if(!req.body.user) {
        Users.findOneAndUpdate({
              _id: '5c59ed1e9148306b65d5a1a3'
             }, {
@@ -72,7 +72,7 @@ function ClickHandler () {
             });
      } else {
        Users.findOneAndUpdate({ 
-            _id : req.user._id
+            'twitter.id' : req.body.user
             }, {
             'twitter.previousSession' : req.query.location
             }, {
@@ -89,14 +89,7 @@ function ClickHandler () {
      Client.search(searchRequest).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-        	// saves and updates <var results> to db
-        //console.log(results)
-        	// Users.findOneAndUpdate({ '_id':'5b0ffba56dd7f80bbd6a953b' }, { 'twitter.cache' : results })
-        	// 	   .exec(function(err) {
-        	// 		   if(err) return console.error(err);
-        	// 	   });
-
-            res.json(json);
+           res.json(json);
      }).catch(error => {
        	res.end("We apologize, there has been an error processing your request. Error message: " + error);
     }); 
