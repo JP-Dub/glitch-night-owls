@@ -173,24 +173,21 @@
       location = document.getElementById("location").elements[1].value;
       //var path = "user/location?locale=" + location;
       bars = [];
-      // $.post(path, (data) => {
-      //   console.log(data);
-      // });
      
       postResults(location);
    }); // search.EventListener()  
    
    // checks if user is logged in
    if(window.location.pathname === '/loggedIn') {
-      $.get('/user/:location', function(data) {
+      $.get('/user/:location', function(user) {
         var locale, userData;
-
-        if(data.twitter.cache.length === 0) {
-           locale = data.twitter.location;
+        
+        if(!user.previousSession) {
+           locale = user.location;
            userData = null;
         } else {
           locale = location;
-          userData = data.twitter.cache;
+          userData = user.previousSession;
         }
         //plapal
         $('#searchBar').attr('placeholder', locale)
