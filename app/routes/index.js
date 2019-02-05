@@ -27,7 +27,7 @@ module.exports = function (app, passport, cors) {
 			res.sendFile(path + '/public/index.html');
 		});
 	
-	app.route('/loggedIn')
+	app.route('/userId/:')
 		.get(isLoggedIn, function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
@@ -51,8 +51,8 @@ module.exports = function (app, passport, cors) {
 		.get(cors(options), passport.authenticate('twitter', { 
 			failureRedirect: '/' }),
 			function(req, res) {
-    //console.log('twitter user', req.user)
-    			res.redirect('/loggedIn');
+    console.log('twitter user', req.user)
+    			res.redirect('/userId/:' + req.user._id);
 		});	
 		
 
