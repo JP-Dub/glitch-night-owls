@@ -7,7 +7,7 @@
        search  = document.getElementById('search'),
        main    = document.getElementById('main'),
        message = document.querySelector('#data'),
-       alias, latitude, longitude,
+       alias, latitude, longitude, location,
        bars = [];
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
@@ -78,9 +78,7 @@
             }
            
             // no image will revert to 'no image available' icon
-            if(!obj[i].image_url) {
-               obj[i].image_url = '../public/img/NoProductImage_300.jpg';
-            }
+            if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
             
             var costDescription;
             switch(obj[i].price) {
@@ -172,7 +170,7 @@
    // listener for Search button
    search.addEventListener("click", function(event) {
       event.preventDefault();
-      var location = document.getElementById("location").elements[1].value;
+      location = document.getElementById("location").elements[1].value;
       //bars = bars.slice();//removes key/properties
       bars = [];
       postResults(location);
@@ -181,18 +179,18 @@
    // checks if user is logged in
    if(window.location.pathname === '/loggedIn') {
       $.get('/user/:location', function(data) {
-        var location, userData;
+        var locale, userData;
 
         if(data.nightlife.cache.length === 0) {
-           location = data.twitter.location;
+           locale = data.twitter.location;
            userData = null;
         } else {
-          location = null;
+          locale = null;
           userData = data.nightlife.cache;
         }
-        
-        $('#plapal').attr('placeholder', data.twitter.location)
-        postResults(location, userData);
+        //plapal
+        $('#searchBar').attr('placeholder', data.twitter.location)
+        postResults(locale, userData);
       });
    };   
    
