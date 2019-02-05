@@ -39,13 +39,13 @@ function ClickHandler () {
 	};
 	
 	//get.getNightlife
-	this.getNightlife = function(req, res) {
-		Users.find({'_id': '5b0ec12c97f0f00904855412' })
-			.exec(function(err, user) {
-				if(err) return console.error(err);
-				console.log(user)
-			})
-	};
+	// this.getNightlife = function(req, res) {
+	// 	Users.find({'_id': '5b0ec12c97f0f00904855412' })
+	// 		.exec(function(err, user) {
+	// 			if(err) return console.error(err);
+	// 			console.log(user)
+	// 		})
+	// };
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
@@ -93,8 +93,12 @@ function ClickHandler () {
 			});
 	};
   
-  this.userLocation = (req, res) => {
-    Users.findOneAndUpdate({}, {current: req.query.location})
+  this.logUserLocale = (req, res) => {
+    console.log('userLocale', req.params, req.query)
+    Users.findOneAndUpdate({}, 
+                           {current: req.query.location},
+                           {upsert: true}
+                          )
       .exec( (err, logged) => {
       if(err) throw err;
       console.log('success', logged)
