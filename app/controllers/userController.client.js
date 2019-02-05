@@ -178,11 +178,17 @@
    
    if(window.location.pathname === '/loggedIn') {
       $.get('/user/:location', function(data) {
-        if(data[0].nightlife.cache.length === 0) {
-          
+        var location, userData;
+
+        if(data.nightlife.cache.length === 0) {
+           location = data.twitter.location;
+           userData = null;
+        } else {
+          location = null;
+          userData = data.nightlife.cache;
         }
-         $('#plapal').attr('placeholder', data[1].twitter.location)
-         postResults(null, data[0].nightlife.cache);
+        $('#plapal').attr('placeholder', data.twitter.location)
+          postResults(location, userData);
       });
    };   
    
