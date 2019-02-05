@@ -49,7 +49,7 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
-		console.log('this.getnightlife', req.user, req.params, req.query)
+		console.log('this.getnightlife', req.user, req.params, req.query, req.body)
 		 var Client = yelp.client(process.env.API_KEY);
      var searchRequest = {
         		term    : 'bars',
@@ -58,7 +58,7 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-     if(!req.user) {
+     if(!req.body.loggedIn) {
        Users.findOneAndUpdate({
              _id: '5c59ed1e9148306b65d5a1a3'
             }, {

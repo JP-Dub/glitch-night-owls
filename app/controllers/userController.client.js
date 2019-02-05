@@ -122,8 +122,8 @@
          } else {
             path = '/businesses/search?term=bars&location=' + locale;
          }      
-      
-         $.post(path, function(data) {
+         let logged = if(window.location.pathname === '/loggedIn') window.location.pathname;
+         $.post(path, {loggedIn: logged}, function(data) {
             var obj = JSON.parse(data);
             printScreen(obj);
          });
