@@ -6,12 +6,10 @@ var yelp = require('yelp-fusion');
 function ClickHandler () {
 	
 	this.getClicks = function (req, res) {
-		console.log('getClicks', req.query)
 		Users
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec(function (err, results) {
 				if (err) { throw err; }
-        console.log('getClicks results', results.length)
        
        let nightlife = [];
        results.forEach( (array, idx) => {
@@ -21,10 +19,9 @@ function ClickHandler () {
              var item = arr[i];
              if(item.count > 0) {
                nightlife.push(item.id);
-             } // if
-           } // for
-         } // if > 0
-         
+             } 
+           } 
+         }        
        });// forEach()
      
 			res.json(nightlife);
