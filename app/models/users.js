@@ -12,11 +12,11 @@ var NightOwl = new Schema({
      username       : String,
      location       : String,
      previousSession: String,
-     nightlife      : {
+     nightlife      : [{
        name : String,
        id   : String,
        count: Number
-     },
+     }],
    }
 });
 
