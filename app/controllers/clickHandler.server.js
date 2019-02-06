@@ -25,13 +25,13 @@ function ClickHandler () {
                    key = 1;
                  }              
                }
-               if(!key) nightlife[arr[i].id] = arr[i].id;
+               if(!key) nightlife[arr[i].id] = arr[i].count;
              }
            }
          }
        });
-        //console.log('nightlife', nightlife);
-				res.json(results);
+        console.log('nightlife', nightlife);
+			res.json(nightlife);
 			});
 	};
 
@@ -68,7 +68,7 @@ function ClickHandler () {
                          };
             }
             
-            result.save(err => console.log(err) );            
+            result.save(err => console.log('err', err) );            
             
             res.json(barCount);
          }
