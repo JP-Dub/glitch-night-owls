@@ -8,16 +8,16 @@ function ClickHandler () {
 	this.getClicks = function (req, res) {
 		console.log('getClicks', req.query)
 		Users
-			.findOne({ }, { '_id': false })
+			.find({}).select({ nightlife: 1, _id: false })
 			.exec(function (err, result) {
 				if (err) { throw err; }
         console.log(result)
-				res.json(result.nbrClicks);
+				res.json(result);
 			});
 	};
 
 	this.addClick = function (req, res) {
-		console.log(req.query, req.body)
+		console.log('addClicks', req.query, req.body)
 		Users
 			.find({'nightlife.id': req.body.id})
 			.exec(function (err, result) {
@@ -33,12 +33,14 @@ function ClickHandler () {
             user.save().exec( (err, user) => {
               if(err) throw err;
               console.log(user)
+              res.json(user)
             });
             
           }
         if(result) {
 				//'twitter.id': req.user.twitter.id	
 				console.log('addClick', result)
+          res.json(result);
         }
 				//	res.json(result.nbrClicks);
 				}

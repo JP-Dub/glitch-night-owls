@@ -41,7 +41,7 @@ module.exports = (app, passport, cors) => {
 		.post(clickHandler.getNightlife);
 	
 	app.route('/api/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
+		.get(clickHandler.getClicks)
 		.post(clickHandler.addClick);
 		//.delete(isLoggedIn, clickHandler.resetClicks);			
 		
