@@ -26,16 +26,15 @@ function ClickHandler () {
          } // if > 0
          
        });// forEach()
-      //  console.log('nightlife', nightlife);
+     
 			res.json(nightlife);
 			}); // Users.exec
 	}; // getClicks
 
 	this.addClick = function (req, res) {
-		console.log('addClicks', req.query, req.body)
 		Users
-			.findOne({'_id': req.body.userId}).select({'twitter.nightlife': 1})
-      //.where('id', req.body.id)
+			.findOne({'_id': req.body.userId})
+      .select({'twitter.nightlife': 1})
 			.exec(function (err, result) {
 					if (err) throw err; 
           let barCount = {}        
@@ -50,7 +49,7 @@ function ClickHandler () {
                  barCount.count = nightlife[i].count;
                  found = 0;
                }
-            }                      
+            };                      
             
             if(found) {
               let obj = { 
@@ -59,15 +58,15 @@ function ClickHandler () {
                 count : 1
                 };
               result.twitter.nightlife.push(obj);
-              barCount = { id   : req.body.id,
-                           count: 1
-                         };
+              barCount = { id : req.body.id, count: 1};
             }
             
-            result.save(err => console.log('err', err) );            
+            result.save(err => {
+              if(err) throw err;
+            });            
             
             res.json(barCount);
-         }
+         };
 
 			});
 	};
@@ -117,8 +116,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-           //console.log('yelp', json)
-          //json[0].id
+
            res.json(json);
      }).catch(error => {
        	res.end("We apologize, there has been an error processing your request. Error message: " + error);
@@ -136,21 +134,6 @@ function ClickHandler () {
 			});
 	};
   
-  // records current search location
-  // this.logUserLocale = (req, res) => {
-  //   console.log('userLocale', req.params, req.query)
-  //   Users.findOneAndUpdate({
-  //          _id: '5c59ed1e9148306b65d5a1a3'
-  //         }, {
-  //          session: req.query.locale
-  //         }, {
-  //          upsert: true,
-  //          new   : true
-  //         })
-  //     .exec( (err, logged) => {
-  //       if(err) throw err; 
-  //   });
-  // };
 
 };
 

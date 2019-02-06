@@ -1,8 +1,7 @@
 'use strict';
 /*global appUrl, ajax, $, navigator*/
-let math = require('math.js');
-(function () {
 
+(function () {
    let login   = document.getElementById('login'),
        search  = document.getElementById('search'),
        main    = document.getElementById('main'),
@@ -26,18 +25,12 @@ let math = require('math.js');
               //let str = Integer.parseInt(val,10)++; 
             }
             bttnId.innerHTML = count;
-            }
-          
-        
-        });
-        
-           //document.getElementById(id).innerHTML += 1;  
-        
+            }              
+        });              
       });
         
       for(var i = 0; i < btnLength; i++) {
-          
-        
+                  
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
             if(!userId) return alert('You have to be logged in to perform this action!');
@@ -56,7 +49,7 @@ let math = require('math.js');
               let count = going.innerHTML;
               let sum;
               bar.count === 0 ? sum = -1 : sum = 1;
-              going.innerHTML = math.eval(count + sum);
+              going.innerHTML = (parseInt(count, 10) + sum);
             })
          }); 
       }; // for(loop) 
