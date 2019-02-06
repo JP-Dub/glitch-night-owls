@@ -28,8 +28,8 @@
 /****** Media Queries ******/
 
 @media all and (min-width: 1081px) {
-    body{
-        font-size: 1.5em; /*18px;*/
+    body {
+      font-size: 1.5em; /*18px;*/
     }
     .img-holder {
   		margin-left: -1.00em !important;
@@ -37,8 +37,8 @@
 }
  
 @media all and (max-width: 1080px) and (min-width: 641px) {
-    body{
-        font-size: 1.2em; /*16*/
+    body {
+      font-size: 1.2em; /*16*/
     }
     .img-holder {
   		margin-left: -1.25em !important;
@@ -46,13 +46,12 @@
 }
  
 @media all and (max-width: 640px) and (min-width: 300px) {
-    body{
-        font-size: .8em; /*12px*/
+    body {
+      font-size: .8em; /*12px*/
     }
     .img-holder {
   		margin-left: -1.90em !important;
     }
- 
 }
 
 /****** Main Styling ******/
