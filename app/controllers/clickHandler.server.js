@@ -19,17 +19,21 @@ function ClickHandler () {
          if(arr.length > 0) {       
            for(var i = 0; i < arr.length; i++) {
              var item = arr[i];
-            
+             
              if(item.count > 0) {
+               console.log('item.count', item);
                var key = 0;
                for(var key in nightlife) {
-                 console.log(key)
-                 if(key === nightlife[item.id]) {
-                   nightlife[item.id] += 1;
+                 if(item.id === key) {
+                   console.log('nightlifeKey', nightlife[key], key, item.id)
+                   nightlife[key] += 1;
                    key = 1;
                  }              
                }
-               if(!key) nightlife[item.id] = item.count;
+               if(!key) {
+                console.log('no key')
+               nightlife[item.id] = item.count;
+               }
              } // if
             } // for
            } // if > 0
