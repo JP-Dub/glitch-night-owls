@@ -33,9 +33,10 @@
                 };
             
             //console.log(logBars)
-            $.post('api/:id/clicks', logBars, function(data) {
-               console.log('post(api/clicks)', data)
-              let going = docu
+            $.post('api/:id/clicks', logBars, function(bar) {
+               console.log('post(api/clicks)', bar)
+              let going = document.getElementById(bar.id);
+              going.innerHTML = bar.count;
             })
          }); 
       }; // for(loop) 

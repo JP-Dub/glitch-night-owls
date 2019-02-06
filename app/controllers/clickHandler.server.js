@@ -8,11 +8,13 @@ function ClickHandler () {
 	this.getClicks = function (req, res) {
 		console.log('getClicks', req.query)
 		Users
-			.find({}).select({ nightlife: 1, _id: false })
-			.exec(function (err, result) {
+			.find({}).select({ 'twitter.nightlife': 1, _id: false})
+			.exec(function (err, results) {
 				if (err) { throw err; }
-        console.log('getClicks results', result)
-				res.json(result);
+      console.log('getClicks results', results)
+        let nightlife = results[0].twitter.nightlife;
+        console.log('nightlife', nightlife);
+				res.json(results);
 			});
 	};
 
@@ -44,13 +46,13 @@ function ClickHandler () {
                 count : 1
                 };
               result.twitter.nightlife.push(obj);
+              barCount = { id   : req.body.id,
+                           count: 1
+                         };
             }
             
-            result.save( (err, user) => {
-              if(err) throw err;
-              
-            }, {new: true});  
-            console.log('barcount', barCount);
+            result.save(err => console.log(err) );            
+            
             res.json(barCount);
          }
 
