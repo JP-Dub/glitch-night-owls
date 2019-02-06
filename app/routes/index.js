@@ -48,11 +48,10 @@ module.exports = function (app, passport, cors) {
 	app.get('/auth/twitter', cors(options), passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(cors(options), passport.authenticate('twitter', { 
-			failureRedirect: '/' }),
-			function(req, res) {
-    console.log('twitter user', req.user)
-    			res.redirect('/loggedUser');
+		.get(cors(options), passport.authenticate('twitter', 
+      { failureRedirect: '/' }), (req, res) => {
+			 // function(req, res) {
+    	    res.redirect('/loggedUser');
 		});	
 		
 

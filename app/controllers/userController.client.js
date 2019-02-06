@@ -23,13 +23,13 @@
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
             let name = (this.parentNode.parentNode.id).slice(13);
-          
+            console.log(name)
             let logBars = {
-               //"" : bars[name].name,
-               "id" : bars[name].id
-            };
+                "name" : bars[name].name,
+                "id"   : bars[name].id
+                };
             
-            console.log(bars[name].name, bars[name].id, logBars)
+            console.log(logBars)
             $.post('api/:id/clicks', logBars, function(data) {
                
             })
@@ -46,7 +46,7 @@
        };
      }
      
-      var printScreen = function(obj) {   
+     let printScreen = function(obj) {   
          let length = obj.length,
              i      = 0;
          
@@ -65,12 +65,12 @@
             businesscard.appendChild(business);
                
             // nightlife cache
-//             let identity = {
-//                "id"  : obj[i].id,
-//                "name": obj[i].name
-//               };
+            let identity = {
+               "id"  : obj[i].id,
+               "name": obj[i].name
+              };
             
-//             bars.push(identity);
+            bars.push(identity);
             
             // if statement used when getLocation() is called prior to loading the screen
             if(typeof locale === "object" && locale != null) {
