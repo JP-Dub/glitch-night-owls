@@ -35,14 +35,13 @@
             //event.preventDefault();
             if(!userId) return alert('You have to be logged in to perform this action!');
             let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
-            //console.log('name', this)
+            
             let logBars = {
                 userId : userId,
                 name      : bars[name].name,
                 id        : bars[name].id
                 };
             
-            //console.log(logBars)
             $.post('api/:id/clicks', logBars, function(bar) {
                console.log('post(api/clicks)', bar)
               let going = document.getElementById(bar.id);
