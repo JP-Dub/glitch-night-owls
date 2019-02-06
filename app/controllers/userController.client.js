@@ -26,7 +26,7 @@
             let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
             console.log('name', this)
             let logBars = {
-                twitterId : userId,
+                userId : userId,
                 name      : bars[name].name,
                 id        : bars[name].id
                 };
