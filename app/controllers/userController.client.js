@@ -18,13 +18,16 @@
            
         clicks.forEach( id => {
           let bttnId = document.getElementById(id);
-          
+          var count;
           if(bttnId) {
-            for(var i
-            let val = bttnId.innerHTML;
-            //let str = Integer.parseInt(val,10)++; 
-            bttnId.innerHTML = 1;
-          }
+            count = 0; 
+            for(var i=0; i < clicks.length; i++) {                      
+              if(id === clicks[i]) count++;
+              //let str = Integer.parseInt(val,10)++; 
+            }
+            bttnId.innerHTML = count;
+            }
+          
         
         });
         
@@ -50,6 +53,7 @@
             $.post('api/:id/clicks', logBars, function(bar) {
                console.log('post(api/clicks)', bar)
               let going = document.getElementById(bar.id);
+              
               going.innerHTML = bar.count;
             })
          }); 
