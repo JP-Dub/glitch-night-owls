@@ -17,11 +17,15 @@ function ClickHandler () {
 	};
 
 	this.addClick = function (req, res) {
-		console.log(req.query, req.body.logBars)
+		console.log(req.query, req.body)
 		Users
-			.find({}).select({nightlife: 1})
+			.find({'nightlife.id': req.body.id})
 			.exec(function (err, result) {
 					if (err) throw err; 
+          
+          if(!result) {
+            
+          }
 				//'twitter.id': req.user.twitter.id	
 				console.log('addClick', result)
 				//	res.json(result.nbrClicks);
@@ -73,6 +77,7 @@ function ClickHandler () {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
            console.log('yelp', json)
+          //json[0].id
            res.json(json);
      }).catch(error => {
        	res.end("We apologize, there has been an error processing your request. Error message: " + error);
