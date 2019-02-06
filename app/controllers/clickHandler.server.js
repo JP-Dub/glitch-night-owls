@@ -88,7 +88,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-           console.log('yelp', json)
+           //console.log('yelp', json)
           //json[0].id
            res.json(json);
      }).catch(error => {

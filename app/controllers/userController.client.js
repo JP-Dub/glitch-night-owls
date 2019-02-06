@@ -22,15 +22,15 @@
       for(var i = 0; i < btnLength; i++) {
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
-            let name = (this.parentNode.parentNode.id).slice(13);
-            console.log(name)
+            let name = (this.parentNode.parentNode.id).slice(13);// id of 
+            console.log('name', this)
             let logBars = {
                 twitterId : userId,
                 name      : bars[name].name,
                 id        : bars[name].id
                 };
             
-            console.log(logBars)
+            //console.log(logBars)
             $.post('api/:id/clicks', logBars, function(data) {
                console.log(data)
             })
