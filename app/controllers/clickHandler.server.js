@@ -17,41 +17,24 @@ function ClickHandler () {
 	};
 
 	this.addClick = function (req, res) {
-		//console.log(req.body.logBars)
+		console.log(req.query, req.body.logBars)
 		Users
 			.find({})//.select({'_id' : '5b0ffcbb2f55ef0bf9c5398a'})
 			.exec(function (err, result) {
 					if (err) throw err; 
 				//'twitter.id': req.user.twitter.id	
-				console.log(result)
+				console.log('addClick', result)
 				//	res.json(result.nbrClicks);
 				}
 			);
 	};
 	
-	this.whosGoing = function(req, res) {
-		
-		Users.find({}).select({"nightlife": 1})
-        	.exec(function(err, user){
-            	if(err) return console.error(err);
-            	console.log(user)
-        	})
-	};
-	
-	//get.getNightlife
-	// this.getNightlife = function(req, res) {
-	// 	Users.find({'_id': '5b0ec12c97f0f00904855412' })
-	// 		.exec(function(err, user) {
-	// 			if(err) return console.error(err);
-	// 			console.log(user)
-	// 		})
-	// };
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = function(req, res) {
-		console.log('this.getnightlife', req.user, req.params, req.query, req.body)
+		//console.log('this.getnightlife', req.user, req.params, req.query, req.body)
 		 var Client = yelp.client(process.env.API_KEY);
-     var searchRequest = {
+     var request = {
         		term    : 'bars',
     	    	location: req.query.location,
             sort_by : 'rating',
@@ -86,9 +69,10 @@ function ClickHandler () {
      };
         
       // Yelp api	
-     Client.search(searchRequest).then(response => {
+     Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
+           console.log('yelp', json)
            res.json(json);
      }).catch(error => {
        	res.end("We apologize, there has been an error processing your request. Error message: " + error);
@@ -101,7 +85,7 @@ function ClickHandler () {
 		Users.find({_id: req.user._id})
 			.exec(function(err, user){
 				if(err) throw err;       
-      console.log(user[0].twitter)
+      //console.log(user[0].twitter)
 				res.json(user[0].twitter);
 			});
 	};
@@ -125,3 +109,23 @@ function ClickHandler () {
 };
 
 module.exports = ClickHandler;
+
+/*
+	this.whosGoing = function(req, res) {
+		
+		Users.find({}).select({"nightlife": 1})
+        	.exec(function(err, user){
+            	if(err) return console.error(err);
+            	console.log(user)
+        	})
+	};
+	
+	//get.getNightlife
+	// this.getNightlife = function(req, res) {
+	// 	Users.find({'_id': '5b0ec12c97f0f00904855412' })
+	// 		.exec(function(err, user) {
+	// 			if(err) return console.error(err);
+	// 			console.log(user)
+	// 		})
+	// };
+*/

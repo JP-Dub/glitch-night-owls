@@ -1,10 +1,10 @@
 'use strict';
 //var cors = require('cors');
 //var Client = require('../controllers/serverSide');
-var path = process.cwd();
-var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+let path = process.cwd();
+const ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
-module.exports = function (app, passport, cors) {
+module.exports = (app, passport, cors) => {
 	
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {
@@ -15,20 +15,20 @@ module.exports = function (app, passport, cors) {
 		}
 	}
 	
-	var clickHandler = new ClickHandler();
-	var options = ({
+	let clickHandler = new ClickHandler();
+	let options = ({
 		origin : 'https://glitch-night-owls.glitch.me',//'https://www.night-owls-jpiazza.c9users.io:8080',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	})
 	
 	app.route('/')
-		.get( function (req, res) {
+		.get( (req, res) => {
 			res.sendFile(path + '/public/index.html');
 		});
 	
 	app.route('/loggedUser')
-		.get(isLoggedIn, function (req, res) {
+		.get(isLoggedIn, (req, res) => {
 			res.sendFile(path + '/public/index.html');
 		});
 		
@@ -37,7 +37,7 @@ module.exports = function (app, passport, cors) {
     //.post(clickHandler.logUserLocale);
 			
 	app.route('/businesses/:search')
-		.get(clickHandler.getNightlife) // not being used
+		//.get(clickHandler.getNightlife) // not being used
 		.post(clickHandler.getNightlife);
 	
 	app.route('/api/:id/clicks')
