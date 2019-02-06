@@ -16,11 +16,12 @@
           btnLength = twitterBtn.length;
       $.get('api/:id/clicks', (clicks) => {
            
-        console.log(clicks)
         clicks.forEach( id => {
-          if(document.getElementById(id) ) {
-             document.getElementById(id).innerHTML += 1;
-          }
+         let bttnId = document.getElementById(id);
+          if( bttnId) bttnId.innerHTML += 1;
+        
+        });
+        
            //document.getElementById(id).innerHTML += 1;  
         
       });
