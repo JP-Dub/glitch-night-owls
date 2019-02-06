@@ -37,7 +37,7 @@ module.exports = function (app, passport, cors) {
     //.post(clickHandler.logUserLocale);
 			
 	app.route('/businesses/:search')
-		.get(clickHandler.getNightlife)
+		.get(clickHandler.getNightlife) // not being used
 		.post(clickHandler.getNightlife);
 	
 	app.route('/api/:id/clicks')

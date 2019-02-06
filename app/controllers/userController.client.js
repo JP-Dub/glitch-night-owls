@@ -176,7 +176,7 @@
       postResults(location);
    }); // search.EventListener()  
    
-   // checks if user is logged in
+   // checks if user is logged in /  returns previous session
    if(window.location.pathname === '/loggedUser') {
       $.get('/user/:location', function(user) {
         var locale;
