@@ -18,7 +18,12 @@
            
         clicks.forEach( id => {
          let bttnId = document.getElementById(id);
-          if( bttnId) bttnId.innerHTML += 1;
+        
+          if( bttnId) {
+            let val = bttnId.innerHTML;
+            let num = Number.parseInt(val, 10) += 1;
+            bttnId.innerHTML = parseInt(;
+          }
         
         });
         
