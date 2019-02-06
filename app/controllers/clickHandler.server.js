@@ -13,14 +13,14 @@ function ClickHandler () {
 				if (err) { throw err; }
         console.log('getClicks results', results.length)
        
-      let nightlife = {};
+      let nightlife = [];
        results.forEach( (array, idx) => {
          let arr = array.twitter.nightlife;
          if(arr.length > 0) {       
            for(var i = 0; i < arr.length; i++) {
              var item = arr[i];
              if(item.count > 0) {
-               nightlife[item.name] = item.id
+               nightlife.push(item.id);
              } // if
            } // for
          } // if > 0
