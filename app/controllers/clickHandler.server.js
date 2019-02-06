@@ -22,18 +22,20 @@ function ClickHandler () {
              
              if(item.count > 0) {
                console.log('item.count', item);
-               var key = 0;
+               //var key = 0;
                for(var key in nightlife) {
-                 if(item.id === key) {
-                   console.log('nightlifeKey', nightlife[key], key, item.id)
+                 console.log(key, item.id)
+                 var key=0;
+                 if(key === item.id) {
                    nightlife[key] += 1;
                    key = 1;
-                 }              
+                 }  
+                 if(!key) {
+                   console.log('no key', item.name)
+                   nightlife[item.id] = item.count;
+                 }
                }
-               if(!key) {
-                console.log('no key')
-               nightlife[item.id] = item.count;
-               }
+
              } // if
             } // for
            } // if > 0
