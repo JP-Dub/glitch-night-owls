@@ -15,7 +15,7 @@
       let twitterBtn = document.getElementsByClassName('bttn'),
           btnLength = twitterBtn.length;
       $.get('api/:id/clicks', (clicks) => {
-        console.log(clicks)                  
+        console.log('get(api/clicks)', clicks)                  
       });
         
       for(var i = 0; i < btnLength; i++) {
@@ -33,7 +33,7 @@
             
             //console.log(logBars)
             $.post('api/:id/clicks', logBars, function(data) {
-               console.log(data)
+               console.log('post(api/clicks)', data)
             })
          }); 
       }; // for(loop) 

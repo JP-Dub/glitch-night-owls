@@ -11,7 +11,7 @@ function ClickHandler () {
 			.find({}).select({ nightlife: 1, _id: false })
 			.exec(function (err, result) {
 				if (err) { throw err; }
-        console.log(result)
+        console.log('getClicks results', result)
 				res.json(result);
 			});
 	};
@@ -19,7 +19,7 @@ function ClickHandler () {
 	this.addClick = function (req, res) {
 		console.log('addClicks', req.query, req.body)
 		Users
-			.findOne({'_id': req.body.userId})//.select({'twitter.id': req.body.twitterId})
+			.findOne({'_id': req.body.userId}).select({'twitter.nightlife.id': req.body.id})
 			.exec(function (err, result) {
 					if (err) throw err; 
           console.log('result', result)
@@ -34,18 +34,12 @@ function ClickHandler () {
           
             result.save( (err, user) => {
               if(err) throw err;
-              console.log(user)
+              //console.log(user)
               res.json(user)
-            });
-            
-           }
-        //if(result) {
-				//'twitter.id': req.user.twitter.id	
-				//console.log('addClick', result)
-          //res.json(result);
-        //}
-				//	res.json(result.nbrClicks);
-				});
+            });            
+         }
+
+			});
 	};
 	
 	
@@ -59,7 +53,7 @@ function ClickHandler () {
             sort_by : 'rating',
             limit   : 20,
         	};
-     
+     console.log('this.getNightLife', req.body)
      if(!req.body.user) {
        Users.findOneAndUpdate({
              _id: '5c59ed1e9148306b65d5a1a3'
@@ -105,7 +99,7 @@ function ClickHandler () {
 		Users.find({_id: req.user._id})
 			.exec(function(err, user){
 				if(err) throw err;       
-      console.log(user[0].id)
+      
 				res.json(user);
 			});
 	};
