@@ -23,26 +23,30 @@ function ClickHandler () {
       //.where('id', req.body.id)
 			.exec(function (err, result) {
 					if (err) throw err; 
-                  console.log(result)  
+                  
           if(result) {
             let nightlife = result.twitter.nightlife;
-            
+            let found = 1;
             for(var i = 0; i < nightlife.length; i++) {
-               if(nightlife[i].id === req.body.id) {
-               result.twitter.nightlife[i].count = 0;
+               if(nightlife[i].id === req.body.id ) {
+                 nightlife[i].count === 1 ? nightlife[i].count = 0 
+                   :nightlife[i].count = 1;                           
+                 found = 0;
                }
-             }                      
+            }                      
             
-            // let obj = { 
-            //   id    : req.body.id,
-            //   name  : req.body.name,
-            //   count : 1
-            //   };
-            // result.twitter.nightlife.push(obj);
-          
+            if(found) {
+              let obj = { 
+                id    : req.body.id,
+                name  : req.body.name,
+                count : 1
+                };
+              result.twitter.nightlife.push(obj);
+            }
+            
             result.save( (err, user) => {
               if(err) throw err;
-              //console.log(user)
+              console.log(user)
               res.json(user)
             });            
          }
