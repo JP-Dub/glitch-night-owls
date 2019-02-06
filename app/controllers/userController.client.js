@@ -38,112 +38,103 @@
             
             let logBars = {
                 userId : userId,
-                name      : bars[name].name,
-                id        : bars[name].id
+                name   : bars[name].name,
+                id     : bars[name].id
                 };
             
             $.post('api/:id/clicks', logBars, function(bar) {
                console.log('post(api/clicks)', bar)
-              let going = document.getElementById(bar.id);
-              let count = going.innerHTML;
-              let sum;
-              bar.count === 0 ? sum = -1 : sum = 1;
-              going.innerHTML = (parseInt(count, 10) + sum);
+              let going = document.getElementById(bar.id);            
+              let sum = bar.count === 0 ?  -1 :  1;
+              going.innerHTML = (parseInt(going.innerHTML, 10) + sum);
             })
          }); 
       }; // for(loop) 
    }; // loadBtnEvents()   
 
-   function postResults(locale, userData) { 
+   function postResults(locale) { 
      
      // delete previous bar info
      if(main.childNodes.length > 1) {
        while(main.firstChild) {
          main.removeChild(main.firstChild);
        };
-     }
+     };
      
      let printScreen = function(obj) {   
-         let length = obj.length,
-             i      = 0;
+       let length = obj.length,
+           i      = 0;
          
-         for(i; i < length; i++) {
-            let div       = document.createElement("DIV"),
-                imgHolder = document.createElement('DIV'),
-                business  = document.createElement('DIV');
+       for(i; i < length; i++) {
+         let div       = document.createElement("DIV"),
+             imgHolder = document.createElement('DIV'),
+             business  = document.createElement('DIV');
            
-            main.appendChild(div);
-            div.id              = 'businesscard_' + i;
-            div.className       = 'container'; 
-            imgHolder.className = 'img-holder';
-            business.className  = 'business';
-            let businesscard    = document.getElementById(div.id);
-            businesscard.appendChild(imgHolder);
-            businesscard.appendChild(business);
-               
-            // nightlife cache
-            let identity = {
-               "id"  : obj[i].id,
-               "name": obj[i].name
-              };
+         main.appendChild(div);
+         div.id              = 'businesscard_' + i;
+         div.className       = 'container'; 
+         imgHolder.className = 'img-holder';
+         business.className  = 'business';
+         let businesscard    = document.getElementById(div.id);
+         businesscard.appendChild(imgHolder);
+         businesscard.appendChild(business);
+              
+         // nightlife cache
+         let identity = {
+           "id"  : obj[i].id,
+           "name": obj[i].name
+           };
             
-            bars.push(identity);
+         bars.push(identity);
             
-            // if statement used when getLocation() is called prior to loading the screen
-            if(typeof locale === "object" && locale != null) {
-               obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
-            }
+         // if statement used when getLocation() is called prior to loading the screen
+         if(typeof locale === "object" && locale != null) {
+           obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
+         }
            
-            // no image will revert to 'no image available' icon
-            if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
-            
-            let costDescription;
-            switch(obj[i].price) {
-               case "$":
-                  costDescription = "Inexpensive";
-                  break;
-               case "$$":
-                  costDescription = "Moderate";
-                  break;
-               case "$$$":
-                  costDescription = "Pricey";
-                  break;
-               case "$$$$":
-                  costDescription = "Ultra High End";
-                  break;
-               default:
-                  obj[i].price = '';
-                  costDescription = "Unavailable";
-                  break;
-            };
-            let zero = 0;
-            //$("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
-            $("#businesscard_" + i + "> .img-holder").append("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='bttn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='" + obj[i].id + "' class='badge'>" + zero + "</span></button>");
-            $("#businesscard_" + i + "> .business").append("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p>");
+         // no image will revert to 'no image available' icon
+         if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
            
-         }; // for(loop)
+         let costDescription;
+         switch(obj[i].price) {
+           case "$":
+             costDescription = "Inexpensive";
+             break;
+           case "$$":
+             costDescription = "Moderate";
+             break;
+           case "$$$":
+             costDescription = "Pricey";
+             break;
+           case "$$$$":
+             costDescription = "Ultra High End";
+             break;
+           default:
+             obj[i].price = '';
+             costDescription = "Unavailable";
+             break;
+         };
+         
+         $("#businesscard_" + i + "> .img-holder").append("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='bttn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='" + obj[i].id + "' class='badge'>0</span></button>");
+         $("#businesscard_" + i + "> .business").append("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p>");
+           
+       }; // for(loop)
         
-         loadBtnEvents();
+       loadBtnEvents();
       };   
-      
-      // userData comes from screen refresh after twitter log in
-      // if(userData) {
-      //    printScreen(userData);
-      // } else {
-         let path;
-         if(typeof locale === "object") {
-            path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
-         } else {
-            path = '/businesses/search?term=bars&location=' + locale;
-         }      
-        
-         
-         $.post(path, {user: userId}, function(data) {
-            let obj = JSON.parse(data);
-            printScreen(obj);
-         });
-      };
-  // }; // postResults();
+
+      let path;
+      if(typeof locale === "object") {
+        path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
+      } else {
+        path = '/businesses/search?term=bars&location=' + locale;
+      }      
+             
+      $.post(path, {user: userId}, function(data) {
+         let obj = JSON.parse(data);
+         printScreen(obj);
+      });
+   }; // postResults()
 
    // currently not in use
    function getLocation(done) {
@@ -159,6 +150,7 @@
       };
    };
   
+    // currently not in use - used in conjunction with getLocation()  
    function showError(error) {
       switch(error.code) {
          case error.PERMISSION_DENIED:
@@ -205,26 +197,3 @@
    };   
    
 })();
-
-
-//<button class='twitter-btn' title='Let people know that you are going by pushing the button' value='submit'>Going <span id='going' class='badge'>0</span</button>
-   
-   /*
-   function showPosition(position) {
-      var local = {};
-      local.latitude = position.coords.latitude;
-      local.longitude = position.coords.longitude;
-     
-      var posi = "Latitude: " + latitude + "<br>Longitude: " + longitude; 
-      console.log(location);
-   }
-   */
-
-            //var num = alias.split("").pop();
-            //var address = 'https://www.yelp.com/map/' + alias + '?start='+ local.latitude + '%20' + local.longitude;
-            //window.open(address, '_blank');
-
-//var lat = 26.579147499999998;
-//var long = -80.1595932;
-//var address = 'https://www.yelp.com/map/' + obj[i].alias + '?start='+ latitude + '%20' + longitude;
-
