@@ -8,11 +8,20 @@ function ClickHandler () {
 	this.getClicks = function (req, res) {
 		console.log('getClicks', req.query)
 		Users
-			.find({twitter: 'nightlife'})//.select({ 'twitter.nightlife': 1, _id: false})
+			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec(function (err, results) {
 				if (err) { throw err; }
-      console.log('getClicks results', results)
-        let nightlife = results[0].twitter.nightlife;
+      console.log('getClicks results', results.length)
+       let nightlife = {};
+       results.forEach( (array, idx) => {
+         let arr = array.twitter.nightlife;
+         if(arr.length > 0) {
+           for(var i = 0; i < arr.length; i++) {
+             if(arr[i].count > 0) {
+               nightlife[arr[i].id] = arr[i].id
+           }
+         }
+       });
         //console.log('nightlife', nightlife);
 				res.json(results);
 			});
