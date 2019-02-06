@@ -16,33 +16,29 @@ function ClickHandler () {
       let nightlife = {};
        results.forEach( (array, idx) => {
          let arr = array.twitter.nightlife;
-         if(arr.length > 0) {
-           
+         if(arr.length > 0) {       
            for(var i = 0; i < arr.length; i++) {
              var item = arr[i];
-             
+            
              if(item.count > 0) {
-               if(i === 0) {
-                 nightlife[item.id] = item.count;
-               } else {
-                console.log('else');
                var key = 0;
                for(var key in nightlife) {
+                 console.log(key)
                  if(key === nightlife[item.id]) {
                    nightlife[item.id] += 1;
                    key = 1;
                  }              
                }
                if(!key) nightlife[item.id] = item.count;
-             }
-            }
-           }
-         }
-       });
+             } // if
+            } // for
+           } // if > 0
+         
+       });// forEach()
         console.log('nightlife', nightlife);
 			res.json(nightlife);
-			});
-	};
+			}); // Users.exec
+	}; // getClicks
 
 	this.addClick = function (req, res) {
 		console.log('addClicks', req.query, req.body)
