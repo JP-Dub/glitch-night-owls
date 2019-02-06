@@ -177,9 +177,10 @@
    
    // checks if user is logged in /  returns previous session
    if(window.location.pathname === '/loggedUser') {
-      $.get('/user/:location', function(user) {
+      $.get('/user/:location', function(session) {
         var location;
-        userId = user.id;
+        userId = session[0]._id;
+        let user = session[0].twitter;
         !user.previousSession ? location = user.location
                               : location = user.previousSession;
                 
