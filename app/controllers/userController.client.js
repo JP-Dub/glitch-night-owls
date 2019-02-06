@@ -1,6 +1,6 @@
 'use strict';
 /*global appUrl, ajax, $, navigator*/
-
+let math = require('math.js');
 (function () {
 
    let login   = document.getElementById('login'),
@@ -53,8 +53,10 @@
             $.post('api/:id/clicks', logBars, function(bar) {
                console.log('post(api/clicks)', bar)
               let going = document.getElementById(bar.id);
-              
-              going.innerHTML = bar.count;
+              let count = going.innerHTML;
+              let sum;
+              bar.count === 0 ? sum = -1 : sum = 1;
+              going.innerHTML = math.eval(count + sum);
             })
          }); 
       }; // for(loop) 

@@ -1,5 +1,4 @@
-'use strict';
-
+'use strict'
 var express = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes/index.js'),
