@@ -11,22 +11,31 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec(function (err, results) {
 				if (err) { throw err; }
-      console.log('getClicks results', results.length)
-       let nightlife = {};
+        console.log('getClicks results', results.length)
+       
+      let nightlife = {};
        results.forEach( (array, idx) => {
          let arr = array.twitter.nightlife;
          if(arr.length > 0) {
+           
            for(var i = 0; i < arr.length; i++) {
-             if(arr[i].count > 0) {
+             var item = arr[i];
+             
+             if(item.count > 0) {
+               if(i === 0) {
+                 nightlife[item.id] = item.count;
+               } else {
+                console.log('else');
                var key = 0;
                for(var key in nightlife) {
-                 if(key === nightlife[arr[i].id]) {
-                   nightlife[arr[i].id] += 1;
+                 if(key === nightlife[item.id]) {
+                   nightlife[item.id] += 1;
                    key = 1;
                  }              
                }
-               if(!key) nightlife[arr[i].id] = arr[i].count;
+               if(!key) nightlife[item.id] = item.count;
              }
+            }
            }
          }
        });
