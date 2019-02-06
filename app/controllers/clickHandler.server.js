@@ -20,7 +20,7 @@ function ClickHandler () {
 		console.log('addClicks', req.query, req.body)
 		Users
 			.findOne({'_id': req.body.userId}).select({'twitter.nightlife': 1})
-      .where('id', req.body.id)
+      //.where('id', req.body.id)
 			.exec(function (err, result) {
 					if (err) throw err; 
                   console.log(result)  
@@ -32,19 +32,19 @@ function ClickHandler () {
                result.twitter.nightlife[i].count = 0;
                }
              }                      
-         
-            let obj = { 
-              id    : req.body.id,
-              name  : req.body.name,
-              count : 1
-              };
-            result.twitter.nightlife.push(obj);
+            
+            // let obj = { 
+            //   id    : req.body.id,
+            //   name  : req.body.name,
+            //   count : 1
+            //   };
+            // result.twitter.nightlife.push(obj);
           
-            // result.save( (err, user) => {
-            //   if(err) throw err;
-            //   //console.log(user)
-            //   res.json(user)
-            // });            
+            result.save( (err, user) => {
+              if(err) throw err;
+              //console.log(user)
+              res.json(user)
+            });            
          }
 
 			});
