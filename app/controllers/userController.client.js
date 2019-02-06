@@ -7,7 +7,7 @@
        search  = document.getElementById('search'),
        main    = document.getElementById('main'),
        message = document.querySelector('#data'),
-       alias, latitude, longitude, location, userId,
+       alias, latitude, longitude, userId,
        bars = [];
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
@@ -51,26 +51,26 @@
              i      = 0;
          
          for(i; i < length; i++) {
-           let div       = document.createElement("DIV"),
-               imgHolder = document.createElement('DIV'),
-               business  = document.createElement('DIV');
+            let div       = document.createElement("DIV"),
+                imgHolder = document.createElement('DIV'),
+                business  = document.createElement('DIV');
            
             main.appendChild(div);
-            div.id = "businesscard_" + i;
-            div.className = "container"; 
+            div.id              = 'businesscard_' + i;
+            div.className       = 'container'; 
             imgHolder.className = 'img-holder';
-            business.className = 'business';
-            var businesscard = document.getElementById('businesscard_' + i);
+            business.className  = 'business';
+            let businesscard    = document.getElementById(div.id);
             businesscard.appendChild(imgHolder);
             businesscard.appendChild(business);
                
             // nightlife cache
-            let identity = {
-               "id"  : obj[i].id,
-               "name": obj[i].name
-               };
+//             let identity = {
+//                "id"  : obj[i].id,
+//                "name": obj[i].name
+//               };
             
-            bars.push(identity);
+//             bars.push(identity);
             
             // if statement used when getLocation() is called prior to loading the screen
             if(typeof locale === "object" && locale != null) {
@@ -103,33 +103,30 @@
             //$("#businesscard_" + i).html("<div class='img-holder'><img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button></div><div class='business'><h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");    
             $("#businesscard_" + i + "> .img-holder").append("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='bttn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
             $("#businesscard_" + i + "> .business").append("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p>");
-            // $('.img-holder').html("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br>") 
-            // $('.img-holder').append("<button class='twitter-btn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='going' class='badge'>0</span></button>");
-            // $('.business').html("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel='" + obj[i].alias + "'>" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p></div>");  
-  
+           
          }; // for(loop)
         
          loadBtnEvents();
       };   
       
       // userData comes from screen refresh after twitter log in
-      if(userData) {
-         printScreen(userData);
-      } else {
+      // if(userData) {
+      //    printScreen(userData);
+      // } else {
          let path;
          if(typeof locale === "object") {
             path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
          } else {
             path = '/businesses/search?term=bars&location=' + locale;
          }      
-         //let logged = window.location.pathname === '/loggedIn'? window.location.pathname: null;
+        
          
          $.post(path, {user: userId}, function(data) {
             let obj = JSON.parse(data);
             printScreen(obj);
          });
       };
-   }; // postResults();
+  // }; // postResults();
 
    // currently not in use
    function getLocation(done) {
@@ -171,7 +168,7 @@
    // listener for Search button
    search.addEventListener("click", function(event) {
       event.preventDefault();
-      location = document.getElementById("location").elements[1].value;
+      var location = document.getElementById("location").elements[1].value;
       bars = [];     
       postResults(location);
    }); // search.EventListener()  
@@ -179,13 +176,13 @@
    // checks if user is logged in /  returns previous session
    if(window.location.pathname === '/loggedUser') {
       $.get('/user/:location', function(user) {
-        var locale;
-         userId = user.id;
-        !user.previousSession ? locale = user.location
-                              : locale = user.previousSession;
+        var location;
+        userId = user.id;
+        !user.previousSession ? location = user.location
+                              : location = user.previousSession;
                 
-        $('#searchBar').attr('placeholder', locale)
-        postResults(locale, null);
+        $('#searchBar').attr('placeholder', location)
+        postResults(location);
       });
    };   
    

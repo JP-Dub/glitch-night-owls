@@ -88,7 +88,6 @@ body {
   color: #1DA1F2;
 }
   
-
 h1 {
 	font-family: 'riffic_mediumbold', sans-serif;
 	font-size: 4.236em;
@@ -106,20 +105,13 @@ h2 {
 }
  
 p {
-  	font-size: 1em;
-  	line-height: 1.5em;
+ 	font-size: 1em;
+ 	line-height: 1.5em;
 }
 
 
 /****** Business thumbnail and info container ******/
 
-
-/*#businesscard_1, #businesscard_2, #businesscard_3 { 
-  margin-top: .625em; /*10px;/
-  border: 1px solid grey;
-  border-radius: .3em; /*5px;/
-  background-color: #daf1e0/*lightgrey;/
-}*/
 
 .img-holder {
 	margin-left: -12.25em; /*-1.23em -14px;*/
@@ -127,8 +119,8 @@ p {
 }
 
 .img-thumbnail {
-  	width: 9.5em; /*9.9em 50px;*/
-  	height: 9.5em;
+  width: 9.5em; /*9.9em 50px;*/
+  height: 9.5em;
 }
 
 .bttn {
