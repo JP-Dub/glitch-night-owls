@@ -13,7 +13,7 @@ function ClickHandler () {
 				if (err) { throw err; }
       console.log('getClicks results', results)
         let nightlife = results[0].twitter.nightlife;
-        console.log('nightlife', nightlife);
+        //console.log('nightlife', nightlife);
 				res.json(results);
 			});
 	};
