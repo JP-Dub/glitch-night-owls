@@ -19,13 +19,12 @@ function ClickHandler () {
 	this.addClick = function (req, res) {
 		console.log('addClicks', req.query, req.body)
 		Users
-			.findOneAndUpdate({'twitter.id': req.body.twitterId})
+			.findOne({'twitter.id': req.body.twitterId}).select({'twitter.nightlife.id': 1})
 			.exec(function (err, result) {
 					if (err) throw err; 
           console.log('result', result)
-          if(result) {
-            //console.log('no user');
-            //let user = new Users();
+          
+          if(result.twitter.nightlife.id !== req.body.id) {
             result.twitter.nightlife.id = req.body.id;
             result.twitter.nightlife.name = req.body.name;
             result.twitter.nightlife.count = 1;
