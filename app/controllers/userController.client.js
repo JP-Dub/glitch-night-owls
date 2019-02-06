@@ -25,7 +25,7 @@
             let name = (this.parentNode.parentNode.id).slice(13);
           
             let logBars = {
-              // "id" : bars[name].name,
+               //"" : bars[name].name,
                "id" : bars[name].id
             };
             
