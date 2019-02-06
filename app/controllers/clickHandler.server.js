@@ -26,11 +26,11 @@ function ClickHandler () {
           if(result) {
             //console.log('no user');
             let user = new Users();
-            user.nightlife.id = req.body.id;
-            result.nightlife.name = req.body.name;
-            result.nightlife.count = 1;
+            user.twitter.nightlife.id = req.body.id;
+            user.twitter.nightlife.name = req.body.name;
+            user.twitter.nightlife.count = 1;
           
-            result.save( (err, user) => {
+            user.save( (err, user) => {
               if(err) throw err;
               console.log(user)
               res.json(user)
