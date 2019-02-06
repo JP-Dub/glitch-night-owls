@@ -19,10 +19,10 @@ function ClickHandler () {
 	this.addClick = function (req, res) {
 		console.log(req.query, req.body)
 		Users
-			.find({'nightlife.id': req.body.twitterId})
+			.find({'nightlife.id': req.body.id})
 			.exec(function (err, result) {
 					if (err) throw err; 
-          
+          console.log('result', result)
           if(!result) {
             console.log('no user');
             let user = new Users();
