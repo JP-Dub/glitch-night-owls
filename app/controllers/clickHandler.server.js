@@ -19,12 +19,16 @@ function ClickHandler () {
 	this.addClick = function (req, res) {
 		console.log('addClicks', req.query, req.body)
 		Users
-			.findOne({'_id': req.body.userId}).select({'twitter.nightlife.id': req.body.id})
+			.findOne({'_id': req.body.userId}).select({'twitter.nightlife': 1})
 			.exec(function (err, result) {
 					if (err) throw err; 
-          console.log('result', result)
+         let nightlife = result.twitter.nightlife;
+         for(var i = 0; i < nightlife.length; i++) {
+           if(nightlife[i].id === req.body.id) console.log(nightlife[i])
+         }
+          console.log('addClick result', nightlife)
           
-         if(result) {
+         if(!result) {
             let obj = { 
               id    : req.body.id,
               name  : req.body.name,
@@ -53,8 +57,9 @@ function ClickHandler () {
             sort_by : 'rating',
             limit   : 20,
         	};
-     console.log('this.getNightLife', req.body)
+     
      if(!req.body.user) {
+       console.log('updated locale session')
        Users.findOneAndUpdate({
              _id: '5c59ed1e9148306b65d5a1a3'
             }, {
@@ -67,8 +72,9 @@ function ClickHandler () {
               if(err) throw err; 
             });
      } else {
+       console.log('updated user session')
        Users.findOneAndUpdate({ 
-            'twitter.id' : req.body.user
+            '_id' : req.body.user
             }, {
             'twitter.previousSession' : req.query.location
             }, {
