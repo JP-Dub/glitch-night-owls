@@ -26,7 +26,7 @@ function ClickHandler () {
          } // if > 0
          
        });// forEach()
-        console.log('nightlife', nightlife);
+      //  console.log('nightlife', nightlife);
 			res.json(nightlife);
 			}); // Users.exec
 	}; // getClicks
