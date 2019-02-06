@@ -6,12 +6,12 @@ var yelp = require('yelp-fusion');
 function ClickHandler () {
 	
 	this.getClicks = function (req, res) {
-		//console.log(req.query)
+		console.log('getClicks', req.query)
 		Users
-			.findOne({ 'twitter.id': req.user.twitter.id }, { '_id': false })
+			.findOne({ }, { '_id': false })
 			.exec(function (err, result) {
 				if (err) { throw err; }
-
+        console.log(result)
 				res.json(result.nbrClicks);
 			});
 	};
@@ -19,7 +19,7 @@ function ClickHandler () {
 	this.addClick = function (req, res) {
 		console.log(req.query, req.body.logBars)
 		Users
-			.find({})//.select({'_id' : '5b0ffcbb2f55ef0bf9c5398a'})
+			.find({}).select({nightlife: 1})
 			.exec(function (err, result) {
 					if (err) throw err; 
 				//'twitter.id': req.user.twitter.id	

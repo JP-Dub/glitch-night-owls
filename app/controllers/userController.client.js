@@ -25,13 +25,14 @@
             let name = (this.parentNode.parentNode.id).slice(13);
             console.log(name)
             let logBars = {
-                "name" : bars[name].name,
-                "id"   : bars[name].id
+                twitterId : userId,
+                name      : bars[name].name,
+                id        : bars[name].id
                 };
             
             console.log(logBars)
             $.post('api/:id/clicks', logBars, function(data) {
-               
+               console.log(data)
             })
          }); 
       }; // for(loop) 
