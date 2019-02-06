@@ -19,29 +19,29 @@ function ClickHandler () {
 	this.addClick = function (req, res) {
 		console.log('addClicks', req.query, req.body)
 		Users
-			.find({'nightlife.id': req.body.id})
+			.find({'twitter.id': req.body.twitterId})
 			.exec(function (err, result) {
 					if (err) throw err; 
           console.log('result', result)
-          if(!result) {
-            console.log('no user');
+          if(result) {
+            //console.log('no user');
             let user = new Users();
             user.nightlife.id = req.body.id;
-            user.nightlife.name = req.body.name;
-            user.nightlife.count = 1;
+            result.nightlife.name = req.body.name;
+            result.nightlife.count = 1;
           
-            user.save().exec( (err, user) => {
+            result.save( (err, user) => {
               if(err) throw err;
               console.log(user)
               res.json(user)
             });
             
           }
-        if(result) {
+        //if(result) {
 				//'twitter.id': req.user.twitter.id	
-				console.log('addClick', result)
-          res.json(result);
-        }
+				//console.log('addClick', result)
+          //res.json(result);
+        //}
 				//	res.json(result.nbrClicks);
 				}
 			);

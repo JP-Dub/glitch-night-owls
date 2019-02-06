@@ -5,17 +5,18 @@ var Schema = mongoose.Schema;
 
 var NightOwl = new Schema({
    session  : {},
-   nightlife: {
-     name : String,
-     id   : String,
-     count: Number
-   },
+
    twitter: {
      id             : String,
      displayName    : String,
      username       : String,
      location       : String,
-     previousSession: String
+     previousSession: String,
+     nightlife      : {
+       name : String,
+       id   : String,
+       count: Number
+     },
    }
 });
 
