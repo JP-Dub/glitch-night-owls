@@ -35,6 +35,7 @@
             //console.log(logBars)
             $.post('api/:id/clicks', logBars, function(data) {
                console.log('post(api/clicks)', data)
+              let going = docu
             })
          }); 
       }; // for(loop) 

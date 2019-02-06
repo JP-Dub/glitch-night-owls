@@ -23,14 +23,16 @@ function ClickHandler () {
       //.where('id', req.body.id)
 			.exec(function (err, result) {
 					if (err) throw err; 
-                  
+          let barCount = {}        
           if(result) {
             let nightlife = result.twitter.nightlife;
             let found = 1;
             for(var i = 0; i < nightlife.length; i++) {
                if(nightlife[i].id === req.body.id ) {
+                 barCount.id = nightlife[i].id;
                  nightlife[i].count === 1 ? nightlife[i].count = 0 
-                   :nightlife[i].count = 1;                           
+                   :nightlife[i].count = 1; 
+                 barCount.count = nightlife[i].count;
                  found = 0;
                }
             }                      
@@ -46,9 +48,10 @@ function ClickHandler () {
             
             result.save( (err, user) => {
               if(err) throw err;
-              console.log(user)
-              res.json(user)
-            });            
+              
+            }, {new: true});  
+            console.log('barcount', barCount);
+            res.json(barCount);
          }
 
 			});
