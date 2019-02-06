@@ -25,10 +25,11 @@ function ClickHandler () {
           console.log('result', result)
           
          if(result) {
-                       let obj = { id : req.body.id,
-                                   name: req.body.name,
-                                    count : 1
-                                 };
+            let obj = { 
+              id    : req.body.id,
+              name  : req.body.name,
+              count : 1
+              };
             result.twitter.nightlife.push(obj);
           
             result.save( (err, user) => {
@@ -44,8 +45,7 @@ function ClickHandler () {
           //res.json(result);
         //}
 				//	res.json(result.nbrClicks);
-				}
-			);
+				});
 	};
 	
 	
