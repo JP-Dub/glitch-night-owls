@@ -18,7 +18,15 @@ function ClickHandler () {
          if(arr.length > 0) {
            for(var i = 0; i < arr.length; i++) {
              if(arr[i].count > 0) {
-               nightlife[arr[i].id] = arr[i].id
+               var key = 0;
+               for(var key in nightlife) {
+                 if(key === nightlife[arr[i].id]) {
+                   nightlife[arr[i].id] += 1;
+                   key = 1;
+                 }              
+               }
+               if(!key) nightlife[arr[i].id] = arr[i].id;
+             }
            }
          }
        });
