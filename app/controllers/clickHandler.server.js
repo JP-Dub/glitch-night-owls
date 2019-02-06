@@ -20,15 +20,19 @@ function ClickHandler () {
 		console.log('addClicks', req.query, req.body)
 		Users
 			.findOne({'_id': req.body.userId}).select({'twitter.nightlife': 1})
+      .where('id', req.body.id)
 			.exec(function (err, result) {
 					if (err) throw err; 
-         let nightlife = result.twitter.nightlife;
-         for(var i = 0; i < nightlife.length; i++) {
-           if(nightlife[i].id === req.body.id) console.log(nightlife[i])
-         }
-          console.log('addClick result', nightlife)
-          
-         if(!result) {
+                  console.log(result)  
+          if(result) {
+            let nightlife = result.twitter.nightlife;
+            
+            for(var i = 0; i < nightlife.length; i++) {
+               if(nightlife[i].id === req.body.id) {
+               result.twitter.nightlife[i].count = 0;
+               }
+             }                      
+         
             let obj = { 
               id    : req.body.id,
               name  : req.body.name,
@@ -36,11 +40,11 @@ function ClickHandler () {
               };
             result.twitter.nightlife.push(obj);
           
-            result.save( (err, user) => {
-              if(err) throw err;
-              //console.log(user)
-              res.json(user)
-            });            
+            // result.save( (err, user) => {
+            //   if(err) throw err;
+            //   //console.log(user)
+            //   res.json(user)
+            // });            
          }
 
 			});
