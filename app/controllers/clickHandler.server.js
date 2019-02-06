@@ -19,26 +19,11 @@ function ClickHandler () {
          if(arr.length > 0) {       
            for(var i = 0; i < arr.length; i++) {
              var item = arr[i];
-             
              if(item.count > 0) {
-               console.log('item.count', item);
-               //var key = 0;
-               for(var key in nightlife) {
-                 console.log(key, item.id)
-                 var key=0;
-                 if(key === item.id) {
-                   nightlife[key] += 1;
-                   key = 1;
-                 }  
-                 if(!key) {
-                   console.log('no key', item.name)
-                   nightlife[item.id] = item.count;
-                 }
-               }
-
+               nightlife[item.name] = item.id
              } // if
-            } // for
-           } // if > 0
+           } // for
+         } // if > 0
          
        });// forEach()
         console.log('nightlife', nightlife);

@@ -15,17 +15,22 @@
       let twitterBtn = document.getElementsByClassName('bttn'),
           btnLength = twitterBtn.length;
       $.get('api/:id/clicks', (clicks) => {
-        console.log('get(api/clicks)', clicks)                  
+           
+        for(var key in clicks) {
+          let id = clicks[key];
+          console.log('id', id)
+           document.getElementById(id).innerHTML += 1;  
+        }
       });
         
       for(var i = 0; i < btnLength; i++) {
-
+          
         
          twitterBtn[i].addEventListener('click', function(event) {
             //event.preventDefault();
             if(!userId) return alert('You have to be logged in to perform this action!');
             let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
-            console.log('name', this)
+            //console.log('name', this)
             let logBars = {
                 userId : userId,
                 name      : bars[name].name,
