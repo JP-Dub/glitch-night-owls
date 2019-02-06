@@ -8,7 +8,7 @@ function ClickHandler () {
 	this.getClicks = function (req, res) {
 		console.log('getClicks', req.query)
 		Users
-			.find({}).select({ 'twitter.nightlife': 1, _id: false})
+			.find({twitter: 'nightlife'})//.select({ 'twitter.nightlife': 1, _id: false})
 			.exec(function (err, results) {
 				if (err) { throw err; }
       console.log('getClicks results', results)
