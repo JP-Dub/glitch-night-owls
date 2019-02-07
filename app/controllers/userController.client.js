@@ -3,14 +3,14 @@
 
 (function () {
   
-   let login   = document.getElementById('login'),
-       search  = document.getElementById('search'),
-       main    = document.getElementById('main'),
-       message = document.querySelector('#data'),
-       bars    = [],;
+   let search = document.getElementById('search'),
+       login  = document.getElementById('login'),
+       main   = document.getElementById('main'),
+       bars   = [],
+       userId;
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
-   const loadBttnEvents = () => { 
+   function loadBttnEvents() { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength = twitterBttn.length;
       
@@ -31,9 +31,10 @@
         
       for(var i = 0; i < bttnLength; i++) {
                   
-        twitterBttn[i].addEventListener('click', (event) => {
+        twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
           if(!userId) return alert('You have to be logged in to perform this action!');
+          console.log(this)
           let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
           
           let logBars = {
@@ -41,7 +42,8 @@
                 name   : bars[name].name,
                 id     : bars[name].id
               };
-            
+          bars[name].userId = userId;
+          console.log('bars name', bars[name])  
           $.post('api/:id/clicks', logBars, (bar) => {
             let going = document.getElementById(bar.id),            
                 sum   = bar.count === 0 ?  -1 :  1;
@@ -60,7 +62,7 @@
        };
      };
      
-     let printScreen = function(obj) {   
+     let printScreen = (obj) => {   
        let length = obj.length,
            i      = 0;
          
@@ -144,7 +146,7 @@
    // listener for Search button
    search.addEventListener("click", (event) => {
       event.preventDefault();
-      var location = document.getElementById("location").elements[1].value;
+      let location = document.getElementById("location").elements[1].value;
       bars = [];     
       postResults(location);
    }); // search.EventListener()  
