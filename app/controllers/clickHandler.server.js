@@ -5,6 +5,29 @@ var yelp = require('yelp-fusion');
 
 function ClickHandler () {
 	
+  setInterval(() => {
+    if(new Date().getHours() === 2) {
+      Users
+			.find({}).select({ 'twitter.nightlife': 1, _id: false})
+			.exec(function (err, results) {
+				if (err) { throw err; }
+       
+       let nightlife = [];
+       results.forEach( (array, idx) => {
+         let arr = array.twitter.nightlife;
+         if(arr.length > 0) {       
+           for(var i = 0; i < arr.length; i++) {
+             var item = arr[i];
+             if(item.count > 0) {
+               nightlife.push(item.id);
+             } 
+           } 
+         }        
+       });
+    }
+     
+  }, 3600000);
+  
 	this.getClicks = function (req, res) {
 		Users
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
