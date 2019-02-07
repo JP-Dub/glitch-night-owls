@@ -5,7 +5,7 @@ var yelp = require('yelp-fusion');
 
 function ClickHandler () {
   // resets RSVP's after 2am;
-  let resetRSVP = () => {
+  const resetRSVP = () => {
     if(new Date().getHours() === 2) {
       Users
         .find({}).select({ 'twitter.nightlife': 1, _id: false})

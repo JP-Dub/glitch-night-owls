@@ -2,51 +2,52 @@
 /*global appUrl, ajax, $, navigator*/
 
 (function () {
+  
    let login   = document.getElementById('login'),
        search  = document.getElementById('search'),
        main    = document.getElementById('main'),
        message = document.querySelector('#data'),
-       alias, latitude, longitude, userId,
-       bars = [];
+       bars    = [],;
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
-   function loadBttnEvents() { 
+   const loadBttnEvents = () => { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength = twitterBttn.length;
       
-     $.get('api/:id/clicks', (clicks) => {      
+      $.get('api/:id/clicks', (clicks) => {      
         clicks.forEach( id => {
-          let bttnId = document.getElementById(id);
-          var count;
+          let bttnId = document.getElementById(id),
+              count;
+         
           if(bttnId) {
             count = 0; 
             for(var i=0; i < clicks.length; i++) {                      
               if(id === clicks[i]) count++;
             }
             bttnId.innerHTML = count;
-            }              
+          };        
         });              
       });
         
       for(var i = 0; i < bttnLength; i++) {
                   
-         twitterBttn[i].addEventListener('click', function(event) {
-            //event.preventDefault();
-            if(!userId) return alert('You have to be logged in to perform this action!');
-            let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
+        twitterBttn[i].addEventListener('click', (event) => {
+          //event.preventDefault();
+          if(!userId) return alert('You have to be logged in to perform this action!');
+          let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
           
-            let logBars = {
+          let logBars = {
                 userId : userId,
                 name   : bars[name].name,
                 id     : bars[name].id
-                };
+              };
             
-            $.post('api/:id/clicks', logBars, function(bar) {
-              let going = document.getElementById(bar.id),            
-                  sum   = bar.count === 0 ?  -1 :  1;
-              going.innerHTML = (parseInt(going.innerHTML, 10) + sum);
-            })
-         }); 
+          $.post('api/:id/clicks', logBars, (bar) => {
+            let going = document.getElementById(bar.id),            
+                sum   = bar.count === 0 ?  -1 :  1;
+            going.innerHTML = (parseInt(going.innerHTML, 10) + sum);
+          });
+        }); 
       }; // for(loop) 
    }; // loadBtnEvents()   
 
@@ -133,6 +134,39 @@
          printScreen(obj);
       });
    }; // postResults()
+   
+   // listener for Twitter login button
+   login.addEventListener("click", (event) => {
+     event.preventDefault();
+     window.location.href = '/auth/twitter';
+   });
+  
+   // listener for Search button
+   search.addEventListener("click", (event) => {
+      event.preventDefault();
+      var location = document.getElementById("location").elements[1].value;
+      bars = [];     
+      postResults(location);
+   }); // search.EventListener()  
+   
+   // checks if user is logged in /  returns previous session
+   if(window.location.pathname === '/loggedUser') {
+      $.get('/user/:location', (session) => { 
+        let location,  
+            user   = session[0].twitter;
+            userId = session[0]._id;                   
+        
+        !user.previousSession ? location = user.location
+                              : location = user.previousSession;
+                
+        $('#searchBar').attr('placeholder', location)
+        postResults(location);
+      });
+   };
+     
+})();
+
+/*
 
    // currently not in use
    function getLocation(done) {
@@ -166,35 +200,4 @@
       };
    };
    
-   // listener for Twitter login button
-   login.addEventListener("click", (event) => {
-     event.preventDefault();
-     window.location.href = '/auth/twitter';
-   });
-  
-   // listener for Search button
-   search.addEventListener("click", (event) => {
-      event.preventDefault();
-      var location = document.getElementById("location").elements[1].value;
-      bars = [];     
-      postResults(location);
-   }); // search.EventListener()  
-   
-   // checks if user is logged in /  returns previous session
-   if(window.location.pathname === '/loggedUser') {
-      $.get('/user/:location', (session) => { 
-        userId   = session[0]._id;
-        let user = session[0].twitter,
-            location;           
-        
-        !user.previousSession ? location = user.location
-                              : location = user.previousSession;
-                
-        $('#searchBar').attr('placeholder', location)
-        postResults(location);
-      });
-   };
-  
-  
-   
-})();
+*/
