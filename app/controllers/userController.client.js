@@ -10,11 +10,11 @@
        bars = [];
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
-   function loadBtnEvents() { 
-      let twitterBtn = document.getElementsByClassName('bttn'),
-          btnLength = twitterBtn.length;
-      $.get('api/:id/clicks', (clicks) => {
-           
+   function loadBttnEvents() { 
+      let twitterBttn = document.getElementsByClassName('bttn'),
+          bttnLength = twitterBttn.length;
+      
+     $.get('api/:id/clicks', (clicks) => {      
         clicks.forEach( id => {
           let bttnId = document.getElementById(id);
           var count;
@@ -22,20 +22,19 @@
             count = 0; 
             for(var i=0; i < clicks.length; i++) {                      
               if(id === clicks[i]) count++;
-              //let str = Integer.parseInt(val,10)++; 
             }
             bttnId.innerHTML = count;
             }              
         });              
       });
         
-      for(var i = 0; i < btnLength; i++) {
+      for(var i = 0; i < bttnLength; i++) {
                   
-         twitterBtn[i].addEventListener('click', function(event) {
+         twitterBttn[i].addEventListener('click', function(event) {
             //event.preventDefault();
             if(!userId) return alert('You have to be logged in to perform this action!');
             let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
-            
+          
             let logBars = {
                 userId : userId,
                 name   : bars[name].name,
@@ -43,9 +42,8 @@
                 };
             
             $.post('api/:id/clicks', logBars, function(bar) {
-               console.log('post(api/clicks)', bar)
-              let going = document.getElementById(bar.id);            
-              let sum = bar.count === 0 ?  -1 :  1;
+              let going = document.getElementById(bar.id),            
+                  sum   = bar.count === 0 ?  -1 :  1;
               going.innerHTML = (parseInt(going.innerHTML, 10) + sum);
             })
          }); 
@@ -120,7 +118,7 @@
            
        }; // for(loop)
         
-       loadBtnEvents();
+       loadBttnEvents();
       };   
 
       let path;
