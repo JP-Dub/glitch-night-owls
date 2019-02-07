@@ -192,6 +192,8 @@
         $('#searchBar').attr('placeholder', location)
         postResults(location);
       });
-   };   
+   };
+  
+  
    
 })();

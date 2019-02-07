@@ -10,17 +10,16 @@ module.exports = (app, passport, cors) => {
 		if (req.isAuthenticated()) {
 			return next()
 		} else {
-			//alert("You're not logged in! The page will refresh and you can try again");
 			res.redirect('/auth/twitter')
 		}
 	}
 	
 	let clickHandler = new ClickHandler();
-	let options = ({
-		origin : 'https://glitch-night-owls.glitch.me',//'https://www.night-owls-jpiazza.c9users.io:8080',
-		preflightContinue: true,
-		optionsSuccessStatus: 200
-	})
+	// let options = ({
+	// 	origin : 'https://glitch-night-owls.glitch.me',
+	// 	preflightContinue: true,
+	// 	optionsSuccessStatus: 200
+	//   })
 	
 	app.route('/')
 		.get( (req, res) => {
@@ -34,23 +33,19 @@ module.exports = (app, passport, cors) => {
 		
 	app.route('/user/:location')	
 		.get(clickHandler.userLocation);
-    //.post(clickHandler.logUserLocale);
 			
 	app.route('/businesses/:search')
-		//.get(clickHandler.getNightlife) // not being used
 		.post(clickHandler.getNightlife);
 	
 	app.route('/api/:id/clicks')
 		.get(clickHandler.getClicks)
-		.post(clickHandler.addClick);
-		//.delete(isLoggedIn, clickHandler.resetClicks);			
+		.post(clickHandler.addClick);		
 		
-	app.get('/auth/twitter', cors(options), passport.authenticate('twitter'));
+	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(cors(options), passport.authenticate('twitter', 
+		.get(cors(), passport.authenticate('twitter', 
       { failureRedirect: '/' }), (req, res) => {
-			 // function(req, res) {
     	    res.redirect('/loggedUser');
 		});	
 		

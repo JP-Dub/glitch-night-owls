@@ -107,7 +107,7 @@ function ClickHandler () {
         	  });    
      };
         
-      // Yelp api	
+      // Yelp Fusion api	
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
@@ -133,23 +133,3 @@ function ClickHandler () {
 };
 
 module.exports = ClickHandler;
-
-/*
-	this.whosGoing = function(req, res) {
-		
-		Users.find({}).select({"nightlife": 1})
-        	.exec(function(err, user){
-            	if(err) return console.error(err);
-            	console.log(user)
-        	})
-	};
-	
-	//get.getNightlife
-	// this.getNightlife = function(req, res) {
-	// 	Users.find({'_id': '5b0ec12c97f0f00904855412' })
-	// 		.exec(function(err, user) {
-	// 			if(err) return console.error(err);
-	// 			console.log(user)
-	// 		})
-	// };
-*/
