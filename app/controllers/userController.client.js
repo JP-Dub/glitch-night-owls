@@ -34,17 +34,11 @@
         twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
           if(!userId) return alert('You have to be logged in to perform this action!');
-          console.log(this)
-          let name = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
           
-          let logBars = {
-                userId : userId,
-                name   : bars[name].name,
-                id     : bars[name].id
-              };
-          bars[name].userId = userId;
-          console.log('bars name', bars[name])  
-          $.post('api/:id/clicks', logBars, (bar) => {
+          let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
+          bars[index].userId = userId;
+          
+          $.post('api/:id/clicks', bars[index], (bar) => {
             let going = document.getElementById(bar.id),            
                 sum   = bar.count === 0 ?  -1 :  1;
             going.innerHTML = (parseInt(going.innerHTML, 10) + sum);
