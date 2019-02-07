@@ -173,7 +173,7 @@
    });
   
    // listener for Search button
-   search.addEventListener("click", function(event) {
+   search.addEventListener("click", (event) => {
       event.preventDefault();
       var location = document.getElementById("location").elements[1].value;
       bars = [];     
@@ -182,10 +182,11 @@
    
    // checks if user is logged in /  returns previous session
    if(window.location.pathname === '/loggedUser') {
-      $.get('/user/:location', function(session) {
-        var location;
-        userId = session[0]._id;
-        let user = session[0].twitter;
+      $.get('/user/:location', (session) => { 
+        userId   = session[0]._id;
+        let user = session[0].twitter,
+            location;           
+        
         !user.previousSession ? location = user.location
                               : location = user.previousSession;
                 
