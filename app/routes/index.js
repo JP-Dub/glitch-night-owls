@@ -15,11 +15,6 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	let clickHandler = new ClickHandler();
-	// let options = ({
-	// 	origin : 'https://glitch-night-owls.glitch.me',
-	// 	preflightContinue: true,
-	// 	optionsSuccessStatus: 200
-	//   })
 	
 	app.route('/')
 		.get( (req, res) => {
@@ -51,3 +46,9 @@ module.exports = (app, passport, cors) => {
 		
 
 };
+
+	// let options = ({
+	// 	origin : 'https://glitch-night-owls.glitch.me',
+	// 	preflightContinue: true,
+	// 	optionsSuccessStatus: 200
+	//   })
