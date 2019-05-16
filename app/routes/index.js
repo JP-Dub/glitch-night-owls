@@ -1,7 +1,7 @@
 'use strict';
 //var cors = require('cors');
 //var Client = require('../controllers/serverSide');
-let path = process.cwd();
+const path = process.cwd();
 const ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
 module.exports = (app, passport, cors) => {
