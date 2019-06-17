@@ -14,7 +14,10 @@ app.options('/', cors());
 require('dotenv').config();
 require('./app/config/passport')(passport);
 
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser : true});
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser : true,
+  useFindAndModify: false
+});
 mongoose.Promise = global.Promise;
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));

@@ -3,7 +3,8 @@ Welcome to Night Owls
 
 This is a build-up for the FCC Dynamic Web App challenge: Build a nightlife coordination app<br>
 
-Users can see which places and the number of people who have RSVP'd. Authenticated users (via Twitter) are able to RSVP ahead of time with a single click to join and another to cancel. Authenticated users sessions are saved so when you log in the last location you were viewing will be restored. 
+Users can see which places are RSVP'd and how many. Authenticated users (via Twitter) are able to RSVP ahead of time with a single click to join and another to cancel. Authenticated users sessions are saved so when you login, the last location you were viewing will be restored. 
+
 
 Joel Piazza<br><br>
 linkedin:<br> <em>www.linkedin.com/in/joelpiazza</em><br><br>
