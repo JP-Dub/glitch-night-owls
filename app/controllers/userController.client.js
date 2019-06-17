@@ -1,7 +1,7 @@
 'use strict';
 /*global appUrl, ajax, $, navigator*/
 
-(function () {
+
   
    let search = document.getElementById('search'),
        login  = document.getElementById('login'),
@@ -160,7 +160,7 @@
       });
    };
      
-})();
+
 
 /*
 
