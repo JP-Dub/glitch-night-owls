@@ -1,7 +1,5 @@
 'use strict';
 /*global appUrl, ajax, $, navigator*/
-
-
   
    let search = document.getElementById('search'),
        login  = document.getElementById('login'),
