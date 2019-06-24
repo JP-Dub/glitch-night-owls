@@ -82,7 +82,11 @@ body {
   padding: 1px;
 }
 
-.fa  {
+#login {
+  border: 1px solid rgb(206, 212, 218);
+}
+
+.fab  {
   font-Size: 1.2em;
   color: #1DA1F2;
 }
@@ -127,6 +131,7 @@ p {
  	text-align: center;
  	border-radius: .3125em;
 }
+
 
 
 /****** Business name and address details ******/
