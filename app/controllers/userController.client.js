@@ -135,15 +135,15 @@ const ajax = {
         
         if(!obj[i].price) {
             obj[i].price = '';         
-          }
+        }
  
-          costDescription = {
+        costDescription = {
             '$'   : 'Inexpensive',
             '$$'  : 'Moderate',
             '$$$' : 'Pricey',
             '$$$$': 'Ultra High End',
             ''    : 'Unavailable'
-          }         
+        }         
               
          // nightlife cache
          let identity = {
@@ -255,7 +255,9 @@ const ajax = {
    console.log(window.location.pathname)
    // checks if user is logged in /  returns previous session
    if(window.location.pathname === '/loggedUser') {
-      $.get('/user/:location', (session) => { 
+     
+     ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
+     // $.get('/user/:location', (session) => { 
         let location,  
             user   = session[0].twitter;
             userId = session[0]._id;                   
@@ -267,7 +269,7 @@ const ajax = {
                 
         //$('#searchBar').attr('placeholder', location)
         postResults(location);
-      });
+     }));
    };
      
 
