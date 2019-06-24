@@ -18,12 +18,12 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/')
 		.get( (req, res) => {
-			res.sendFile(path + '/public/index.html');
+			res.sendFile(path + '/dist/index.html');
 		});
 	
 	app.route('/loggedUser')
 		.get(isLoggedIn, (req, res) => {
-			res.sendFile(path + '/public/index.html');
+			res.sendFile(path + '/dist/index.html');
 		});
 		
 	app.route('/user/:location')	

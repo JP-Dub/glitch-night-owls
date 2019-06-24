@@ -5,8 +5,9 @@ const webpack = require('webpack');
 module.exports = {
    mode: 'development',
    entry: [
-      './app/src/index.js',
-      'webpack-dev-middleware/client'
+      './public/index.js',
+      'webpack-dev-middleware/client',
+      'react-hot-loader/patch'
    ],
    output: {
       path: path.join(__dirname, './dist'),
@@ -27,7 +28,7 @@ module.exports = {
             }
          }, {
              test: /\.css$/,
-             include: path.resolve(__dirname, './app/src'),
+             include: path.resolve(__dirname, './public/css'),
              use: [
                  'style-loader',
                  'css-loader'
