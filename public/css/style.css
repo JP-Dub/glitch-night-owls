@@ -81,12 +81,12 @@ body {
 .business {
   padding: 1px;
 }
-
+/* 
 #login {
   border: 1px solid rgb(206, 212, 218);
 }
-
-.fab  {
+ */
+.fa  {
   font-Size: 1.2em;
   color: #1DA1F2;
 }
