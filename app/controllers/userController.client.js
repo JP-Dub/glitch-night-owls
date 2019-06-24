@@ -246,9 +246,9 @@ const ajax = {
    // listener for Search button
    search.addEventListener("click", (evt) => {
       evt.preventDefault();
-      //let location = document.getElementById("location").elements[1].value;
+      let location = document.getElementById("location").elements[1].value;
       if(bars.length) bars = [];     
-      postResults(document.getElementById("location").elements[1].value);
+      postResults(location.elements[1].value);
    }); // search.EventListener()  
 
    console.log(window.location.pathname)

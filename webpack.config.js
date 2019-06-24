@@ -6,7 +6,7 @@ module.exports = {
    mode: 'development',
    entry: [
       './public/index.js',
-      'webpack-dev-middleware/client',
+      'webpack-hot-middleware/client',
       'react-hot-loader/patch'
    ],
    output: {
@@ -56,7 +56,7 @@ module.exports = {
    },
    plugins:[
       new HtmlWebpackPlugin({
-         template: './app/dist/index.html',
+         template: './dist/index.html',
          inject: 'body',
          showErrors: true,
          cache : true
