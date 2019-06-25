@@ -100,7 +100,7 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = (req, res) => {
-    console.log(req.body, req.params, req.query)
+    //console.log(req.body, req.params, req.query)
 		 var Client = yelp.client(process.env.API_KEY);
      var request = {
         		term    : 'bars',

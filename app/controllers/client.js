@@ -277,7 +277,7 @@ const ajax = {
             var obj = {};
             obj.latitude = position.coords.latitude;
             obj.longitude = position.coords.longitude;
-            //done(obj);
+            postResults(obj);
          }, showError);
       } else {
          console.log("Geolocation is not supported by this browser.");
