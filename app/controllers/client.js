@@ -103,7 +103,7 @@ const ajax = {
    }; // loadBtnEvents()   
 
    function postResults(locale) { 
-     //delete previous bar info
+     //delete previous bar info if it exists
      if(main.childNodes !== null && main.childNodes.length > 1) {
        while(main.firstChild) {
          main.removeChild(main.firstChild);
