@@ -16,10 +16,10 @@ module.exports = (app, passport, cors) => {
 	
 	let clickHandler = new ClickHandler();
 	
-	app.route('/')
-		.get( (req, res) => {
-			res.sendFile(path + '/dist/index.html');
-		});
+// 	app.route('/')
+// 		.get( (req, res) => {
+// 			res.sendFile(path + '/dist/index.html');
+// 		});
 	
 	app.route('/loggedUser')
 		.get(isLoggedIn, (req, res) => {
