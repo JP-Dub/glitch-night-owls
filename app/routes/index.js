@@ -21,7 +21,7 @@ module.exports = (app, passport, cors) => {
 // 			res.sendFile(path + '/dist/index.html');
 // 		});
 	
-	app.route('/loggedUser')
+	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
 			res.sendFile(path + '/dist/index.html');
 		});
@@ -41,8 +41,8 @@ module.exports = (app, passport, cors) => {
 	app.route('/auth/twitter/callback')
 		.get(cors(), passport.authenticate('twitter', 
       { failureRedirect: '/' }), (req, res) => {
-    console.log(req.user)
-    	    res.redirect('/loggedUser');
+          let user = req.user.twitter['username'];
+    	    res.redirect('/login/' + user);
 		});	
 		
 
