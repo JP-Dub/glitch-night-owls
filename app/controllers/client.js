@@ -3,9 +3,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 //$(document).ready(function() {
-const search  = document.getElementById('search'),
-      input   = document.getElementById('input'),
-      main    = document.getElementById('main');
+const search = document.getElementById('search'),
+      input  = document.getElementById('input'),
+      main   = document.getElementById('main');
 
 let userId, bars = [];
 
@@ -241,7 +241,7 @@ const ajax = {
      window.location.href = '/auth/twitter';
    });
 */
-
+console.log('window.location.pathname == ' , window.location.pathname === '/login/:user' ? true : false, 'userId', userId)
    // listener for Search button
    search.addEventListener("click", (evt) => {
       evt.preventDefault();
@@ -250,10 +250,10 @@ const ajax = {
       postResults(location);
    }); // search.EventListener()  
 
-   
+   console.log('window.location.pathname == ' , window.location.pathname)
    // checks if user is logged in /  returns previous session
-   if(window.location.pathname === '/loggedUser') {
-     
+   if(window.location.pathname === '/login/:user') {
+     console.log('window.location.pathname == ' , window.location.pathname)
      ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
      // $.get('/user/:location', (session) => { 
         let location,  

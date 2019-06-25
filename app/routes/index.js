@@ -22,7 +22,7 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
-			//res.sendFile(path + '/dist/index.html');
+			res.sendFile(path + '/dist/index.html');
 		});
 		
 	app.route('/user/:location')	
