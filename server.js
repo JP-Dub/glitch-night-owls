@@ -34,7 +34,7 @@ app.use(
 
 app.use(require("webpack-hot-middleware")(compiler));
 
-app.use('/controllers', express.static(process.cwd() + '/app/controllers/'));
+app.use('/', express.static(process.cwd() + '/app/controllers/'));
 app.use('/dist', express.static(process.cwd() + '/dist/'));
 
 //app.use('/src', express.static(process.cwd() + '/app/src/'));
@@ -58,9 +58,9 @@ app.use(passport.session());
 
 routes(app, passport, cors);
 
-//var port = process.env.PORT || 8080;
-app.listen(8080,  function () {
-	console.log('Node.js listening on port ' + 8080 + '...');
+var port = process.env.PORT || 8080;
+app.listen(port,  function () {
+	console.log('Node.js listening on port ' + port + '...');
 });
 
 

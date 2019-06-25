@@ -18,12 +18,11 @@ const ajax = {
       document.addEventListener('DOMContentLoaded', fn, false);
   },
   request: function ajaxRequest (method, url, data, callback) {
-      var xmlhttp = new XMLHttpRequest();
-      //rconsole.log('data', data)
+      let xmlhttp = new XMLHttpRequest();
+     
 
-      var params = typeof data == 'string' ? data 
+      let params = typeof data == 'string' ? data 
                    : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
-      console.log({params: params, data: data})
       
       xmlhttp.open(method, url, true);
 
