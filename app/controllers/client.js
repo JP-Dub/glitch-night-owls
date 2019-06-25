@@ -123,10 +123,10 @@ const ajax = {
         costDescription;
                
         main.appendChild(div);
-        div.id              = 'businesscard_' + i;
-        div.className       = 'container'; 
-        img_div.className = 'img-holder';
-        business_div.className  = 'business';
+        div.id                 = 'businesscard_' + i;
+        div.className          = 'container'; 
+        img_div.className      = 'img-holder';
+        business_div.className = 'business';
         
         let businesscard    = document.getElementById(div.id);
         businesscard.appendChild(img_div);
