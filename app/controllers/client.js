@@ -247,12 +247,11 @@ const ajax = {
    search.addEventListener("click", (evt) => {
       evt.preventDefault();
       let location = document.getElementById("location").elements[1].value;
-     console.log('location', location)
       if(bars.length) bars = [];     
       postResults(location);
    }); // search.EventListener()  
 
-   console.log(window.location.pathname)
+   
    // checks if user is logged in /  returns previous session
    if(window.location.pathname === '/loggedUser') {
      
@@ -262,8 +261,8 @@ const ajax = {
             user   = session[0].twitter;
             userId = session[0]._id;                   
         
-        !user.previousSession ? location = user.location
-                              : location = user.previousSession;
+        location = !user.previousSession ? user.location
+                                         : user.previousSession;
 
         input.setAttribute('placeholder', location)                      
                 
