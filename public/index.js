@@ -3,41 +3,6 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import '../public/css/style.css';
 
-/*
-// Configure ajax call
-const ajax = {
-    ready: function ready (fn) {
-  
-        if (typeof fn !== 'function') return;
-        if (document.readyState === 'complete') return fn();
-  
-        document.addEventListener('DOMContentLoaded', fn, false);
-    },
-    request: function ajaxRequest (method, url, data, callback) {
-        var xmlhttp = new XMLHttpRequest();
-        //rconsole.log('data', data)
-
-        var params = typeof data == 'string' ? data 
-                     : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
-        //console.log('params', params)
-        
-        xmlhttp.open(method, url, true);
-
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-              callback(JSON.parse(xmlhttp.response));
-            }
-        };
-
-        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        
-        xmlhttp.send(params);
-        return xmlhttp;
-    }
-};
-*/
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -94,7 +59,8 @@ class App extends Component {
 
     twitterHandler(evt) {
         evt.preventDefault();
-        window.location.href = '/auth/twitter';
+        //window.location.href = '/auth/twitter';
+        window.location.assign('/auth/twitter');
     }
 
     // submitHandler(evt) {
@@ -125,7 +91,8 @@ class App extends Component {
                                    type="text" 
                                    placeholder="Search location" 
                                    value={this.state.value}
-                                   onChange={this.changeHandler} />
+                                   onChange={this.changeHandler} 
+                                   required/>
                             <div className="input-group-btn">
                                 <button id="search" 
                                         className="btn btn-default" 
@@ -211,3 +178,38 @@ ReactDOM.render(
     <App />, 
     document.getElementById('root')
 );
+
+/*
+// Configure ajax call
+const ajax = {
+    ready: function ready (fn) {
+  
+        if (typeof fn !== 'function') return;
+        if (document.readyState === 'complete') return fn();
+  
+        document.addEventListener('DOMContentLoaded', fn, false);
+    },
+    request: function ajaxRequest (method, url, data, callback) {
+        var xmlhttp = new XMLHttpRequest();
+        //rconsole.log('data', data)
+
+        var params = typeof data == 'string' ? data 
+                     : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+        //console.log('params', params)
+        
+        xmlhttp.open(method, url, true);
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+              callback(JSON.parse(xmlhttp.response));
+            }
+        };
+
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        xmlhttp.send(params);
+        return xmlhttp;
+    }
+};
+*/

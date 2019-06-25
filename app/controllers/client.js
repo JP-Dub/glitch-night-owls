@@ -247,7 +247,7 @@ const ajax = {
       evt.preventDefault();
       let location = document.getElementById("location").elements[1].value;
       if(bars.length) bars = [];     
-      postResults(location);
+      !location? getLocation() : postResults(location);
    }); // search.EventListener()  
 
        
@@ -257,12 +257,10 @@ const ajax = {
   
      ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
      // $.get('/user/:location', (session) => { 
-        let location,  
-            user   = session[0].twitter;
-            userId = session[0]._id;                   
-        
-        location = !user.previousSession ? user.location
-                                         : user.previousSession;
+        let user     = session[0].twitter;
+            userId   = session[0]._id,                   
+            location = !user.previousSession ? user.location
+                                             : user.previousSession;
 
         input.setAttribute('placeholder', location)                      
                 
