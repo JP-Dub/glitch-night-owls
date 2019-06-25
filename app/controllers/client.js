@@ -240,8 +240,8 @@ const ajax = {
      evt.preventDefault();
      window.location.href = '/auth/twitter';
    });
-*/var pathname = window.location.pathname;
-console.log('window.location.pathname == ' , window.location)
+*/
+
    // listener for Search button
    search.addEventListener("click", (evt) => {
       evt.preventDefault();
@@ -250,10 +250,11 @@ console.log('window.location.pathname == ' , window.location)
       postResults(location);
    }); // search.EventListener()  
 
-   console.log('window.location.pathname == ' , window.location.pathname)
+       
    // checks if user is logged in /  returns previous session
-   if(window.location.pathname === '/login/:user') {
-     console.log('window.location.pathname == ' , window.location.pathname)
+   let regex = RegExp('^/login/.*');
+   if( regex.test(window.location.pathname) ) {
+  
      ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
      // $.get('/user/:location', (session) => { 
         let location,  
