@@ -2,15 +2,15 @@
 const express    = require('express'),
       bodyParser = require('body-parser'),
       routes     = require('./app/routes/index.js'),
-	  mongoose   = require('mongoose'),
+	    mongoose   = require('mongoose'),
       passport   = require('passport'),
-	  session    = require('express-session'),
+	    session    = require('express-session'),
       cors       = require('cors'),
-	  app        = express();
+	    app        = express();
 	
 const webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
-	  compiler      = webpack(webpackConfig);	
+	    compiler      = webpack(webpackConfig);	
 
 app.options('/', cors());    
  
