@@ -240,8 +240,8 @@ const ajax = {
      evt.preventDefault();
      window.location.href = '/auth/twitter';
    });
-*/var pathname = window.location.port;
-console.log('window.location.pathname == ' , window.location.pathname, pathname.toString().matches(/^\/login\/.*/i), 'userId', userId)
+*/var pathname = window.location.pathname;
+console.log('window.location.pathname == ' , window.location)
    // listener for Search button
    search.addEventListener("click", (evt) => {
       evt.preventDefault();
