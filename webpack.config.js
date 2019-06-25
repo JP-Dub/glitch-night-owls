@@ -5,9 +5,9 @@ const webpack = require('webpack');
 module.exports = {
    mode: 'development',
    entry: [
-      './public/index.js',
-      'webpack-hot-middleware/client',
-      'react-hot-loader/patch'
+       './public/index.js',
+       'webpack-hot-middleware/client',
+       'react-hot-loader/patch',
    ],
    output: {
       path: path.join(__dirname, './dist'),
