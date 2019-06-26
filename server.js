@@ -35,8 +35,8 @@ app.use(
 app.use(require("webpack-hot-middleware")(compiler));
 
 app.use('/', express.static(process.cwd() + '/app/controllers/'));
-app.use('/dist', express.static(process.cwd() + '/dist/'));
 
+//app.use('/dist', express.static(process.cwd() + '/dist/'));
 //app.use('/src', express.static(process.cwd() + '/app/src/'));
 //app.use('/common', express.static(process.cwd() + '/app/common/'));
 
