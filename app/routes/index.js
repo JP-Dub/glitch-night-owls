@@ -1,7 +1,7 @@
 'use strict';
 
 const path = process.cwd();
-const ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+const ClickHandler = require(path + '/app/controllers/server.js');
 
 module.exports = (app, passport, cors) => {
 	
