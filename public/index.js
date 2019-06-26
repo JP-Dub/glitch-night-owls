@@ -113,7 +113,7 @@ class App extends Component {
 }
 
 
-// class Main extends Component {
+// class Results extends Component {
 //     constructor(props) {
 //         super(props);
 //     }
