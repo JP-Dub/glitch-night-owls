@@ -23,8 +23,9 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
+      console.log(req)
 			//res.sendFile(path + '/dist/index.html');
-    res.sendFile(process.cwd() + "/public/index.js");
+    res.json({success: '/login'})
 		});
 		
 	app.route('/user/:location')	

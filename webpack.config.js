@@ -6,6 +6,7 @@ module.exports = {
    mode: 'development',
    entry: [
        './public/index.js',
+       '/login/:user',
        'webpack-hot-middleware/client',
        'react-hot-loader/patch',
    ],
