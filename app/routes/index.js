@@ -1,8 +1,8 @@
 'use strict';
 
-const path = process.cwd();
-console.log(path + '/app/controllers/server.js', path.resolve(__dirname, "/public/index"))
-const ClickHandler = require(path + '/app/controllers/server.js');
+const path = require('path'); //process.cwd();
+//console.log( path.resolve(__dirname, "/public/index"))
+const ClickHandler = require(process.cwd() + '/app/controllers/server.js');
 
 module.exports = (app, passport, cors) => {
 	
@@ -25,7 +25,7 @@ module.exports = (app, passport, cors) => {
 		.get(isLoggedIn, (req, res) => {
     console.log('path= ', __dirname)
 			//res.sendFile(path + '/dist/index.html');
-    res.sendFile('./public/index')
+    res.sendFile(path.resolve(process.cwd(), "./public/index"))
 		});
 		
 	app.route('/user/:location')	
