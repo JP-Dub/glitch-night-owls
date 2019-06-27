@@ -1,6 +1,7 @@
 'use strict';
 
 const path = process.cwd();
+console.log(path + '/app/controllers/server.js', path.resolve(__dirname, "/public/index"))
 const ClickHandler = require(path + '/app/controllers/server.js');
 
 module.exports = (app, passport, cors) => {
