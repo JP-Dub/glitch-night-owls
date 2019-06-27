@@ -6,7 +6,6 @@ module.exports = {
    mode: 'development',
    entry: [
        './public/index.js',
-       '/login/:user',
        'webpack-hot-middleware/client',
        'react-hot-loader/patch',
    ],
@@ -56,6 +55,11 @@ module.exports = {
       ],
    },
    plugins:[
+      new HtmlWebpackPlugin({
+        title : '/login/',
+        template: './dist/index.html',
+        inject: 'body',
+      }),
       new HtmlWebpackPlugin({
          template: './dist/index.html',
          inject: 'body',

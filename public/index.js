@@ -2,6 +2,7 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import '../public/css/style.css';
+console.log(window.location.pathname)
 
 class App extends Component {
     constructor(props) {
