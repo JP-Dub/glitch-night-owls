@@ -58,7 +58,7 @@ app.use(passport.session());
 
 routes(app, passport, cors);
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });

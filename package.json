@@ -22,6 +22,7 @@
   "scripts": {
     "start": "node server.js"
   },
+  "proxy" : "http://localhost:3001/",
   "author": "Joel Piazza",
   "license": "MIT",
   "dependencies": {
@@ -52,6 +53,7 @@
     "style-loader": "^0.23.1",
     "css-loader": "^2.1.1",
     "url-loader": "^2.0.1",
-    "file-loader": "^3.0.1"
+    "file-loader": "^3.0.1",
+    "react-scripts": "^3.0.1"
   }
 }
