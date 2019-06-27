@@ -1,8 +1,8 @@
 'use strict';
 
 const path = require('path'); //process.cwd();
-//console.log( path.resolve(__dirname, "/public/index"))
-const ClickHandler = require(process.cwd() + '/app/controllers/server.js');
+
+const Server = require(process.cwd() + '/app/controllers/server.js');
 
 module.exports = (app, passport, cors) => {
 	
@@ -14,7 +14,7 @@ module.exports = (app, passport, cors) => {
 		}
 	}
 	
-	let clickHandler = new ClickHandler();
+	let handleServer = new Server();
 	
 // 	app.route('/')
 // 		.get( (req, res) => {
@@ -23,20 +23,19 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
-    console.log('path= ', __dirname)
 			//res.sendFile(path + '/dist/index.html');
-    res.sendFile(path.resolve(process.cwd(), "./public/index"))
+    res.sendFile(process.cwd() + "/public/index.js");
 		});
 		
 	app.route('/user/:location')	
-		.get(clickHandler.userLocation);
+		.get(handleServer.userLocation);
 			
 	app.route('/businesses/:search')
-		.post(clickHandler.getNightlife);
+		.post(handleServer.getNightlife);
 	
 	app.route('/api/:id/clicks')
-		.get(clickHandler.getClicks)
-		.post(clickHandler.addClick);		
+		.get(handleServer.getClicks)
+		.post(handleServer.addClick);		
 		
 	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
 
