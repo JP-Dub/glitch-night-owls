@@ -2,7 +2,7 @@
   "name": "night-owls",
   "version": "1.0.1",
   "description": "A nightlife co-ordination app built on React.js",
-  "main": "server.js",
+  "main" : "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/JP-Dub/glitch-night-owls"
@@ -20,9 +20,11 @@
     "Babel"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "proxy" : "http://localhost:3001/",
   "author": "Joel Piazza",
   "license": "MIT",
   "dependencies": {

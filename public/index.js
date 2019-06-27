@@ -1,6 +1,7 @@
 
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
+import { BrowserRouter, Route} from 'react-router-dom';
 import '../public/css/style.css';
 console.log(window.location.pathname)
 
@@ -175,8 +176,19 @@ class ErrorBoundary extends React.Component {
 		};
 }; 
 
+class Main extends Component {
+  render() {
+  return (
+    <BrowserRouter>
+      <Route path='/' component={App} />
+      <Route path='/login' component={App} />
+    </BrowserRouter>
+    );
+  }
+}
+
 ReactDOM.render(
-    <App />, 
+    <Main />, 
     document.getElementById('root')
 );
 

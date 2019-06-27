@@ -252,7 +252,7 @@ const ajax = {
 
        
    // checks if user is logged in /  returns previous session
-   //let regex = RegExp('^/login/.*');
+   let regex = RegExp('^/login/.*');
    if( regex.test(window.location.pathname) ) {
   
      ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
