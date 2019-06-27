@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import '../public/css/style.css';
 console.log(window.location.pathname)
 
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.changeHandler  = this.changeHandler.bind(this);
