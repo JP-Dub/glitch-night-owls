@@ -2,6 +2,7 @@
   "name": "night-owls",
   "version": "1.0.1",
   "description": "A nightlife co-ordination app built on React.js",
+  "private" : true,
   "main": "server.js",
   "repository": {
     "type": "git",
