@@ -35,6 +35,7 @@ module.exports = {
              ]
          }, {
              test: /\.(svg|ttf|woff|woff2|ttf)$/i,
+             include: path.resolve(__dirname, './public/fonts'),
              use: [
                  {
                      loader: 'url-loader',
@@ -45,6 +46,7 @@ module.exports = {
              ],
          }, {
              test: /\.(png|jpe?g|gif)$/,
+             include: path.resolve(__dirname, './public/img'),
              use: [
                  {
                 loader: 'file-loader',
