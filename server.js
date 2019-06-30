@@ -27,6 +27,7 @@ app.use(
 	require("webpack-dev-middleware")(
 	compiler, {
 		noInfo    : true,
+    reload    : true,
 		publicPath: webpackConfig.output.publicPath	
 	}
 	)

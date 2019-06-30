@@ -2,7 +2,7 @@
   "name": "night-owls",
   "version": "1.0.1",
   "description": "A nightlife co-ordination app built on React.js",
-  "main" : "server.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/JP-Dub/glitch-night-owls"
@@ -32,7 +32,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
-    "mongoose": "^5.5.12",
+    "mongoose": "^5.6.2",
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "yelp-fusion": "^3.0.0",
@@ -50,12 +50,13 @@
     "@babel/preset-react": "^7.0.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-dev-middleware": "^3.7.0",
-    "react-hot-loader": "^4.9.0",
+    "react-hot-loader": "^4.11.2",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
     "css-loader": "^2.1.1",
     "url-loader": "^2.0.1",
     "file-loader": "^3.0.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^3.0.1",
+    "webpack-dev-server": "^3.3.1"
   }
 }
