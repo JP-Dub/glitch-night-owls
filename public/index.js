@@ -122,7 +122,7 @@ export default class App extends Component {
 // }
 
 // Error class React Component
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends Component {
 		
 		constructor(props) {
 			super(props);
@@ -149,14 +149,21 @@ class ErrorBoundary extends React.Component {
 		};
 }; 
 
+
+class Hello extends Component {
+ render() {
+  return (<h1>Hello</h1>)
+  }
+}
+
 class Main extends Component {
   render() {
-  return (
-    <BrowserRouter>
-      <Route exact path='/' strict component={App} />
-      <Route path='/login' component={App} />
-    </BrowserRouter>
-    );
+    return (
+      <BrowserRouter>
+        <Route exact path='/' strict component={App} />
+        <Route path='/login/*' component={Hello} />
+      </BrowserRouter>
+      );
   }
 }
 

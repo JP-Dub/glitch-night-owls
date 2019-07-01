@@ -12,7 +12,7 @@ const webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
 
-app.options('/', cors());    
+//app.options('/', cors());    
  
 require('dotenv').config();
 require('./app/config/passport')(passport);
