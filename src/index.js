@@ -181,7 +181,7 @@ class Main extends Component {
   return (
     <BrowserRouter>
       <Route exact path='/' strict component={App} />
-      <Route path='/login' component={App} />
+      <Route path='/login' component={App}/>
     </BrowserRouter>
     );
   }
