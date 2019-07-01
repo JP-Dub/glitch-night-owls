@@ -3,7 +3,6 @@ dependencies:
   '@babel/core': 7.4.5
   '@babel/preset-env': 7.4.5
   '@babel/preset-react': 7.0.0
-  babel-loader: 8.0.6
   body-parser: 1.19.0
   cors: 2.8.5
   css-loader: 2.1.1
@@ -3152,20 +3151,6 @@ packages:
       webpack: '>=2'
     resolution:
       integrity: sha512-NTnHnVRd2JnRqPC0vW+iOQWU5pchDbYXsG2E6DMXEpMfUcQKclF9gmf3G3ZMhzG7IG9ji4coL0cm+FxeWxDpnw==
-  /babel-loader/8.0.6:
-    dependencies:
-      find-cache-dir: 2.1.0
-      loader-utils: 1.2.3
-      mkdirp: 0.5.1
-      pify: 4.0.1
-    dev: false
-    engines:
-      node: '>= 6.9'
-    peerDependencies:
-      '@babel/core': ^7.0.0
-      webpack: '>=2'
-    resolution:
-      integrity: sha512-4BmWKtBOBm13uoUwd08UwjZlaw3O9GWf456R9j+5YykFZ6LUIjIKLc0zEZf+hauxPOJs96C8k6FvYD09vWzhYw==
   /babel-plugin-dynamic-import-node/2.2.0:
     dependencies:
       object.assign: 4.1.0
@@ -12483,7 +12468,6 @@ specifiers:
   '@babel/core': ^7.2.0
   '@babel/preset-env': ^7.2.0
   '@babel/preset-react': ^7.0.0
-  babel-loader: ^8.0.5
   body-parser: ^1.19.0
   cors: ^2.8.5
   css-loader: ^2.1.1

@@ -2,7 +2,7 @@
   "name": "night-owls",
   "version": "1.0.1",
   "description": "A nightlife co-ordination app built on React.js",
-  "private" : true,
+  "private": true,
   "main": "server.js",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "Babel"
   ],
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -46,7 +46,6 @@
     "react-router-dom": "^5.0.0",
     "@babel/core": "^7.2.0",
     "@babel/cli": "^7.2.0",
-    "babel-loader": "^8.0.5",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "webpack-hot-middleware": "^2.25.0",
