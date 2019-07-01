@@ -1,6 +1,6 @@
 'use strict';
 /*global appUrl, ajax, $, navigator*/
-
+console.log('I"ve been read')
 document.addEventListener("DOMContentLoaded", () => {
 //$(document).ready(function() {
 const search = document.getElementById('search'),
@@ -158,7 +158,7 @@ const ajax = {
          }
            
          // no image will revert to 'no image available' icon
-         if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
+         if(!obj[i].image_url) obj[i].image_url = '../src/img/NoProductImage_300.jpg';            
           
          img_div.appendChild(document.createElement('IMG'));
          img_div.firstChild.className = 'img-thumbnail';
