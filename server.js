@@ -37,9 +37,11 @@ app.use(require("webpack-hot-middleware")(compiler));
 
 app.use('/', express.static(process.cwd() + '/app/controllers/'));
 
-//app.use('/dist', express.static(process.cwd() + '/dist/'));
-//app.use('/src', express.static(process.cwd() + '/app/src/'));
-//app.use('/common', express.static(process.cwd() + '/app/common/'));
+app.get('/login/*', function(req, res) {
+    res.sendFile(__dirname + '/dist/index.html');
+});
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
