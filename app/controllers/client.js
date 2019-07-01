@@ -1,6 +1,6 @@
 'use strict';
 /*global appUrl, ajax, $, navigator*/
-console.log('I"ve been read')
+console.log('I"ve been read', localStorage, sessionStorage)
 document.addEventListener("DOMContentLoaded", () => {
 //$(document).ready(function() {
 const search = document.getElementById('search'),

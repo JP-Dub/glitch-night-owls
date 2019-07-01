@@ -1,8 +1,7 @@
 'use strict';
 
-const path = require('path'); //process.cwd();
-
-const Server = require(process.cwd() + '/app/controllers/server.js');
+const Server = require(process.cwd() + '/app/controllers/server.js'),
+      path = require('path'); //process.cwd();
 
 module.exports = (app, passport, cors) => {
 	
@@ -23,7 +22,6 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
-      //console.log(req)
 			res.sendFile(process.cwd() + '/dist/index.html');
     //res.json({success: '/login'})
 		});
@@ -38,10 +36,10 @@ module.exports = (app, passport, cors) => {
 		.get(handleServer.getClicks)
 		.post(handleServer.addClick);		
 		
-	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
+	app.get('/auth/twitter', passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(cors(), passport.authenticate('twitter', 
+		.get(passport.authenticate('twitter', 
     { failureRedirect: '/' }), (req, res) => {
           let user = req.user.twitter['username'];
     	    res.redirect('/login/' + user);
