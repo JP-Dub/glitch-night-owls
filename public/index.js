@@ -180,7 +180,7 @@ class Main extends Component {
   render() {
   return (
     <BrowserRouter>
-      <Route path='/' component={App} />
+      <Route exact path='/' strict component={App} />
       <Route path='/login' component={App} />
     </BrowserRouter>
     );

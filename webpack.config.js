@@ -58,11 +58,6 @@ module.exports = {
    },
    plugins:[
       new HtmlWebpackPlugin({
-        title : '/login/',
-        template: './dist/index.html',
-        inject: 'body',
-      }),
-      new HtmlWebpackPlugin({
          template: './dist/index.html',
          inject: 'body',
          showErrors: true,
