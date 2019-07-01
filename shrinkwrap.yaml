@@ -16,6 +16,7 @@ dependencies:
   mongoose: 5.6.2
   passport: 0.4.0
   passport-twitter: 1.0.4
+  proxy: 0.2.4
   react: 16.8.6
   react-dom: 16.8.6
   react-hot-loader: 4.12.0
@@ -1097,6 +1098,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ccav/yGvoa80BQDljCxsmmQ3Xvx60/UpBIij5QN21W3wBi/hhIC9OoO+KLpu9IJTS9j4DRVJ3aDDF9cMSoa2lw==
+  /basic-auth-parser/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-zp5xp38jwSee7NJlmypGJEwVbkE=
   /big.js/3.2.0:
     dev: false
     resolution:
@@ -1450,6 +1455,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
+  /commander/2.9.0:
+    dependencies:
+      graceful-readlink: 1.0.1
+    dev: false
+    engines:
+      node: '>= 0.6.x'
+    resolution:
+      integrity: sha1-nJkJQXbhIkDLItbFFGCYQA/g99Q=
   /commondir/1.0.1:
     dev: false
     resolution:
@@ -1658,6 +1671,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
+  /debug/2.2.0:
+    dependencies:
+      ms: 0.7.1
+    dev: false
+    resolution:
+      integrity: sha1-+HBX6ZWxofauaklgZkE3vFbwOdo=
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -2345,6 +2364,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jpSvDPV4Cq/bgtpndIWbI5hmYxhQGHPC4d4cqBPb4DLniCfhJokdXhwhaDuLBGLQdvvRum/UiX6ECVIPvDXqdg==
+  /graceful-readlink/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
   /gud/1.0.0:
     dev: false
     resolution:
@@ -3289,6 +3312,10 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-kY/K8QToZWTTocm0U+r8rqcJCp5PRl6e8tPmoDs5OeSO3DInZE2rAL6AYH+V406JTo8305LdASOQcxRDqHojyw==
+  /ms/0.7.1:
+    dev: false
+    resolution:
+      integrity: sha1-nNE8A62/8ltl7/3nzoZO6VIBcJg=
   /ms/2.0.0:
     dev: false
     resolution:
@@ -3800,6 +3827,15 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-5erio2h9jp5CHGwcybmxmVqHmnCBZeewlfJ0pex+UW7Qny7OOZXTtH56TGNyBizkgiOwhJtMKrVzDTeKcySZwA==
+  /proxy/0.2.4:
+    dependencies:
+      basic-auth-parser: 0.0.2
+      commander: 2.9.0
+      debug: 2.2.0
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-vdgOXv/zwzsr8L8qEM5Gm7t9Xj4=
   /prr/1.0.1:
     dev: false
     resolution:
@@ -5152,6 +5188,7 @@ specifiers:
   mongoose: ^5.6.2
   passport: ^0.4.0
   passport-twitter: ^1.0.4
+  proxy: ^0.2.4
   react: ^16.8.6
   react-dom: ^16.8.6
   react-hot-loader: ^4.11.2

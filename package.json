@@ -56,6 +56,7 @@
     "webpack-cli": "^3.3.4",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-dev-middleware": "^3.7.0",
-    "babel-loader": "^8.0.5"
+    "babel-loader": "^8.0.5",
+    "proxy": "^0.2.4"
   }
 }
