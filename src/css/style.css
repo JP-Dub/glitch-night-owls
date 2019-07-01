@@ -1,5 +1,5 @@
 /********* Fonts **********/
-/* 
+
 @font-face {
 	font-family: 'Roboto';
   	font-style: normal;
@@ -12,9 +12,9 @@
   	font-style: normal;
   	font-weight: 500;
   	src: local('Roboto Medium'), local('Roboto-Medium'), url('./src/fonts/Roboto-Medium.ttf') format('truetype');
-} */
+}
 
-/* @font-face {
+@font-face {
     font-family: 'riffic_mediumbold';
     src: url('./src/fonts/riffic-bold-webfont.woff2') format('woff2'),
          url('./src/fonts/riffic-bold-webfont.woff') format('woff'),
@@ -22,7 +22,7 @@
          url('./src/fonts/riffic-bold-webfont.svg#riffic_mediumbold') format('svg');
     font-weight: normal;
     font-style: normal;
-} */
+}
 
 
 /****** Media Queries ******/
