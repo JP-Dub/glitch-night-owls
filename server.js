@@ -32,16 +32,10 @@ app.use(
 	}
 	)
 );
-
+console.log(webpackConfig.output.publicPath	)
 app.use(require("webpack-hot-middleware")(compiler));
 
 app.use('/', express.static(process.cwd() + '/app/controllers/'));
-
-app.get('/login/*', function(req, res) {
-    res.sendFile(__dirname + '/dist/index.html');
-});
-
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
