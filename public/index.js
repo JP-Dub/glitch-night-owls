@@ -16,34 +16,7 @@ export default class App extends Component {
         }
     }
 
-    componentDidMount() {
-        // this.enterBttn = document.getElementById('searchBar');
-        // this.enterBttn.addEventListener('keydown', (bttn) => {
-        //     console.log(bttn)
-        //     if(bttn.key === '9') {
-        //    bttn.preventDefault();
-        //    let location = document.getElementById("location").elements[1].value;
-        //    console.log('location', location)
-        //    let bars = [];     
-        //     postResults(location);
-        //     }
-        // })
-        
-        // // listener for Twitter login button
-        // twitter.addEventListener("click", (evt) => {
-        //     evt.preventDefault();
-        //     window.location.href = '/auth/twitter';
-        // });
-  
-        // // listener for Search button
-        // search.addEventListener("click", (evt) => {
-        //     evt.preventDefault();
-     
-        //     let location = document.getElementById("location").elements[1].value;
-        //     bars = [];     
-        //     postResults(location);
-        // }); // search.EventListener()  
-    }
+    componentDidMount() {}
 
     componentWillUnmount() {
         this.enterBttn.removeEventListener('keydown', (bttn) => {
@@ -228,12 +201,32 @@ const ajax = {
 */
 
 /*
-         {
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            options: {
-               presets: ['@babel/preset-env', '@babel/preset-react']
-            }
-         }, 
+    componentDidMount() {
+        // this.enterBttn = document.getElementById('searchBar');
+        // this.enterBttn.addEventListener('keydown', (bttn) => {
+        //     console.log(bttn)
+        //     if(bttn.key === '9') {
+        //    bttn.preventDefault();
+        //    let location = document.getElementById("location").elements[1].value;
+        //    console.log('location', location)
+        //    let bars = [];     
+        //     postResults(location);
+        //     }
+        // })
+        
+        // // listener for Twitter login button
+        // twitter.addEventListener("click", (evt) => {
+        //     evt.preventDefault();
+        //     window.location.href = '/auth/twitter';
+        // });
+  
+        // // listener for Search button
+        // search.addEventListener("click", (evt) => {
+        //     evt.preventDefault();
+     
+        //     let location = document.getElementById("location").elements[1].value;
+        //     bars = [];     
+        //     postResults(location);
+        // }); // search.EventListener()  
+    }
 */
