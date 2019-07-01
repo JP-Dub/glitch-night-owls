@@ -21,7 +21,7 @@
     "Babel"
   ],
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -52,18 +52,10 @@
     "css-loader": "^2.1.1",
     "url-loader": "^2.0.1",
     "file-loader": "^3.0.1",
-    "react-scripts": "^3.0.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-dev-middleware": "^3.7.0",
+    "babel-loader": "^8.0.5"
   }
 }
