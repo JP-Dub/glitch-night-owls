@@ -1,7 +1,7 @@
 
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import { BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import '../public/css/style.css';
 import Login from '../public/login.js';
 console.log(window.location.pathname)
@@ -161,8 +161,10 @@ class Main extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Switch>
         <Route exact path='/' strict component={App} />
-        <Route path='/login/*' component={Login} />
+        <Route path='/login' component={Hello} />
+        </Switch>
       </BrowserRouter>
       );
   }
