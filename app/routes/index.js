@@ -36,7 +36,7 @@ module.exports = (app, passport, cors) => {
 		.get(  handleServer.getClicks )
 		.post( handleServer.addClick );		
 		
-	//app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
+	app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
 
 	app.route( '/auth/twitter/callback' )
 		.get( passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
