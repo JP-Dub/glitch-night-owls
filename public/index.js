@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
 import '../public/css/style.css';
+import Login from '../public/login.js';
 console.log(window.location.pathname)
 
 export default class App extends Component {
@@ -161,7 +162,7 @@ class Main extends Component {
     return (
       <BrowserRouter>
         <Route exact path='/' strict component={App} />
-        <Route path='/login/*' component={Hello} />
+        <Route path='/login/*' component={Login} />
       </BrowserRouter>
       );
   }

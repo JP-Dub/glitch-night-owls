@@ -10,7 +10,7 @@ module.exports = {
        'webpack-hot-middleware/client',
        'react-hot-loader/patch',
    ],
-     "private" : "public/index.js"
+     "private" : "./public/login.js"
    },
    output: {
       path: path.join(__dirname, './dist'),

@@ -5,7 +5,7 @@ import { BrowserRouter, Route} from 'react-router-dom';
 import '../public/css/style.css';
 console.log(window.location.pathname)
 
-export default class App extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
         this.changeHandler  = this.changeHandler.bind(this);
@@ -150,27 +150,21 @@ class ErrorBoundary extends Component {
 }; 
 
 
-class Hello extends Component {
- render() {
-  return (<h1>Hello</h1>)
-  }
-}
+// class Main extends Component {
+//   render() {
+//     return (
+//       <BrowserRouter>
+//         <Route exact path='/' strict component={App} />
+//         <Route path='/login/*' component={Hello} />
+//       </BrowserRouter>
+//       );
+//   }
+// }
 
-class Main extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Route exact path='/' strict component={App} />
-        <Route path='/login/*' component={Hello} />
-      </BrowserRouter>
-      );
-  }
-}
-
-ReactDOM.render(
-    <Main />, 
-    document.getElementById('root')
-);
+// ReactDOM.render(
+//     <Login />, 
+//     document.getElementById('root')
+// );
 
 /*
 // Configure ajax call
