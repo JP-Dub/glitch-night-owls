@@ -4,14 +4,17 @@ const webpack = require('webpack');
 
 module.exports = {
    mode: 'development',
-   entry: [
+   entry: {
+     "public" : [
        './public/index.js',
        'webpack-hot-middleware/client',
        'react-hot-loader/patch',
    ],
+     "private" : "public/index.js"
+   },
    output: {
       path: path.join(__dirname, './dist'),
-      filename: 'bundle.js'
+      filename: '[name].js'
    },
    devServer: {
       historyApiFallback: true,
@@ -57,6 +60,12 @@ module.exports = {
       ],
    },
    plugins:[
+     new HtmlWebpackPlugin({
+         template: './dist/index.html',
+         inject: 'body',
+         showErrors: true,
+         cache : true
+      }),
       new HtmlWebpackPlugin({
          template: './dist/index.html',
          inject: 'body',
