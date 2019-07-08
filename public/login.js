@@ -52,12 +52,12 @@ export default class App extends Component {
 
     yelpHandler(locale) {
         //delete previous bar info if it exists
-      const main = document.getElementById('main');
-        if(main.childNodes !== null && main.childNodes.length > 1) {
-            while(main.firstChild) {
-            main.removeChild(main.firstChild);
-            };
-        };
+      // const main = document.getElementById('main');
+      //   if(main.childNodes !== null && main.childNodes.length > 1) {
+      //       while(main.firstChild) {
+      //       main.removeChild(main.firstChild);
+      //       };
+      //   };
         //console.log('yelpHandler', locale)
         let url = '/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
