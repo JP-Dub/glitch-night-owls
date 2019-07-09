@@ -135,6 +135,11 @@ p {
 	outline: none;
 }
 
+.badge {
+	font-size: .8em;
+}
+
+
 
 /****** Business name and address details ******/
 
