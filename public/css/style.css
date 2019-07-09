@@ -95,16 +95,16 @@ h1 {
 	font-family: 'riffic_mediumbold', sans-serif;
 	font-size: 4.236em;
 	color: #e60000;
-	text-shadow: .0525em .0588em #000000/*2px 3px #000000;*/
+	text-shadow: .0525em .0588em #000000
 }
  
  
 h2 { 
 	font-family: 'riffic_mediumbold', sans-serif;
-	font-size: 2em;/*2.168em;*/
+	font-size: 2em;
 	color: #e60000;
 	margin: 0;
-	left: .625em;/*10px*/
+	left: .625em;
 }
  
 p {
@@ -117,13 +117,17 @@ p {
 
 
 .img-holder {
-	margin-left: -12.25em; /*-1.23em -14px;*/
+  margin-left: -12.25em; 
   float: left;
 }
 
 .img-thumbnail {
-  width: 9.5em; /*9.9em 50px;*/
+  width: 9.5em;
   height: 9.5em;
+  z-index: 2;
+  border-right: .1em solid gray;
+  border-bottom: .1em solid gray;
+  border-radius: .3125em 0 .3125em 0;
 }
 
 .bttn {
