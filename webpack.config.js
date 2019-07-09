@@ -14,7 +14,7 @@ module.exports = {
       filename: 'bundle.js'
    },
    devServer: {
-      historyApiFallback: true,
+      historyApiFallback: false,
       inline: true,
    },
    module: {

@@ -29,7 +29,7 @@
 
 @media all and (min-width: 1081px) {
     body {
-      font-size: 1.5em; /*18px;*/
+      font-size: 1.5em;
     }
     .img-holder {
   		margin-left: -1.00em !important;
@@ -38,7 +38,7 @@
  
 @media all and (max-width: 1080px) and (min-width: 641px) {
     body {
-      font-size: 1.2em; /*16*/
+      font-size: 1.2em; 
     }
     .img-holder {
   		margin-left: -1.25em !important;
@@ -47,7 +47,7 @@
  
 @media all and (max-width: 640px) and (min-width: 300px) {
     body {
-      font-size: .8em; /*12px*/
+      font-size: .8em;
     }
     .img-holder {
   		margin-left: -1.90em !important;
@@ -60,6 +60,7 @@ body {
 	font-family: 'Roboto', 'riffic_mediumbold', sans-serif;
 	margin: 0;
 	padding: 0;
+	background-color: #f2f2f2;
 }
 
 #heading {
@@ -81,11 +82,8 @@ body {
 .business {
   padding: 1px;
 }
-/* 
-#login {
-  border: 1px solid rgb(206, 212, 218);
-}
- */
+
+
 .fa  {
   font-Size: 1.2em;
   color: #1DA1F2;
@@ -95,7 +93,7 @@ h1 {
 	font-family: 'riffic_mediumbold', sans-serif;
 	font-size: 4.236em;
 	color: #e60000;
-	text-shadow: .0525em .0588em #000000
+	text-shadow: .0525em .0588em #000000;
 }
  
  
@@ -122,20 +120,20 @@ p {
 }
 
 .img-thumbnail {
-  width: 9.5em;
+  width: 9.5em; 
   height: 9.5em;
   z-index: 2;
   border-right: .1em solid gray;
-  border-bottom: .1em solid gray;
-  border-radius: .3125em 0 .3125em 0;
+  border-bottom: .05em solid gray;
+  border-radius: .3125em .3125em .3125em 0;
 }
 
 .bttn {
  	width: 9.5em; 
  	text-align: center;
- 	border-radius: .3125em;
+	border-radius: 0 .3125em .3125em .3125em;
+	outline: none;
 }
-
 
 
 /****** Business name and address details ******/
@@ -143,17 +141,12 @@ p {
 
 .business {
   	margin-top: .625em;
-  	margin-left: 9.375em;
+  	margin-left: 9.375em; 
 }
 
 .address {
-	margin-top: -1.3em;
+	margin-top: -1.3em 
 }
-
-/*
-button {
-  	border-radius: .3125em;/*5px;
-}*/
 
 a:link {
     color: #e60000; 
@@ -168,7 +161,7 @@ a:visited {
 }
 
 a:hover {
-    color: white;/*#00BCD4;*/
+    color: white;
     background-color: transparent;
     text-decoration: none;
 }

@@ -25,11 +25,10 @@ mongoose.Promise = global.Promise;
 
 app.use(
 	require("webpack-dev-middleware")(
-	compiler, {
-		noInfo    : true,
-    reload    : true,
-		publicPath: webpackConfig.output.publicPath	
-	}
+    compiler, {
+      noInfo    : true,
+      publicPath: webpackConfig.output.publicPath	
+    }
 	)
 );
 console.log(webpackConfig.output.publicPath	)
