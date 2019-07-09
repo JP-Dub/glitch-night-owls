@@ -1,28 +1,35 @@
-
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import '../public/css/style.css';
-import Login from '../public/login.js';
-console.log(window.location.pathname)
+import noImage from '../public/img/NoProductImage_300.jpg';
 
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.changeHandler  = this.changeHandler.bind(this);
         this.twitterHandler = this.twitterHandler.bind(this);
-        //this.submitHandler  = this.submitHandler.bind(this);
         this.state = {
             value: ""
         }
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.bars = [],
+        this.userId = '';
+        this.searchInput = document.getElementById('search'),
+
+        this.searchInput.addEventListener('click', (evt)  => {
+            evt.preventDefault();
+
+            let location = document.getElementById("location").elements[1].value;
+            if(this.bars.length) this.bars = [];     
+            !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
+                      : this.yelpHandler(location);            
+        });        
+    }
 
     componentWillUnmount() {
-        this.enterBttn.removeEventListener('keydown', (bttn) => {
-
-        })
     }
     
     changeHandler(evt) {
@@ -31,19 +38,110 @@ export default class App extends Component {
         this.setState({
             value: evt.target.value
           });
-    }
+    }  
 
     twitterHandler(evt) {
         evt.preventDefault();
+
         //window.location.href = '/auth/twitter';
         window.location.assign('/auth/twitter');
     }
 
-    // submitHandler(evt) {
-    //     evt.preventDefault();
-    //     //if(bars.length) bars = [];
-    //     postResults(this.state.value);    
-    //  }
+    yelpHandler(locale) {
+
+        let url = '/businesses/search?term=bars&location=';        
+        url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
+                                          : locale;
+        
+        let data = !this.userId ? {} : {user: this.userId};
+       
+        ajax.ready(ajax.request("POST", url, data, (res) => {
+            let obj = JSON.parse(res);
+            if(obj.error) return alert(res);
+
+            ReactDOM.render(
+                <SearchResults 
+                    data={obj}
+                    bars={this.bars}
+                    searchLocation={locale} />,
+                    document.getElementById('main')
+            );
+               
+            this.loadBttnEvents();                
+        }));
+    }
+
+    loadBttnEvents() {
+        let twitterBttn = document.getElementsByClassName('bttn'),
+            bttnLength  = twitterBttn.length,
+            url         = 'api/:id/clicks';
+
+        ajax.ready(ajax.request("GET", url, {}, (clicks) => {
+            clicks.forEach( id => {
+                let bttnId = document.getElementById(id),
+                    count  = 0;
+            
+                if(bttnId) {
+                    //count=0;
+                    for(var i=0; i < clicks.length; i++) {                      
+                        if(id === clicks[i]) count++;
+                    }
+                    bttnId.innerHTML = count;
+                };       
+            });        
+        }));          
+        
+        for(var i = 0; i < bttnLength; i++) {                  
+            twitterBttn[i].addEventListener('click', function(event) {
+                //event.preventDefault();
+                
+                if(!this.userId) return alert('You have to be logged in to perform this action!');
+                
+                let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
+                this.bars[index].userId = this.userId;
+                
+                ajax.ready(ajax.request("POST", url, this.bars[index], (bar) => {
+                let going = document.getElementById(bar.id),            
+                    sum   = bar.count === 0 ?  -1 :  1;
+
+                going.innerHTML = (parseInt(going.innerHTML, 10) + sum);            
+                }))
+
+            }); 
+        }; // for(loop)         
+    }
+
+    getLocation(next) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var obj = {};
+                obj.latitude = position.coords.latitude;
+                obj.longitude = position.coords.longitude;
+               
+                next(obj);
+        }, showError);
+        } else {
+        console.log("Geolocation is not supported by this browser.");
+        };
+
+        const showError = (error) => {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    console.log("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log("An unknown error occurred.");
+                    break;
+            };
+        };
+
+    }      
 
     render() {
         return (
@@ -72,8 +170,8 @@ export default class App extends Component {
                             <div className="input-group-btn">
                                 <button id="search" 
                                         className="btn btn-default" 
-                                        type="submit">
-                                    <span className="glyphicon glyphicon-search"></span>
+                                        type="submit">    
+                                    <span className="glyphicon glyphicon-search" />
                                 </button>
                             </div>
                         </div>
@@ -88,39 +186,108 @@ export default class App extends Component {
     }
 }
 
+const SearchResults =  (props) => {
+    let obj    = props.data,
+        locale = props.searchLocation;
 
-// class Results extends Component {
-//     constructor(props) {
-//         super(props);
-//     }
+    const costDescription = {
+            '$'   : 'Inexpensive',
+            '$$'  : 'Moderate',
+            '$$$' : 'Pricey',
+            '$$$$': 'Ultra High End',
+            ''    : 'Unavailable'
+    };
+    
+    const data = function(arr) {
+        const results = arr.map( (key, i) => {
+            
+            if(!obj[i].price) {
+                obj[i].price = '';         
+            }
 
-//     componentDidMount() {
+            // nightlife cache
+            let identity = {
+                "id"  : obj[i].id,
+                "name": obj[i].name
+                };
+                
+            props.bars.push(identity);
+            
+            // check if var locale is object
+            if(locale) {
+                obj[i].alias += '?start=';
+                obj[i].alias += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude
+                                                           : locale;
+            }
 
+            // no image will revert to 'no image available' icon
+            if(!obj[i].image_url) obj[i].image_url = noImage;         
+            
+            var businesscard = 'businesscard_' + i;
+            return (
+                <div id={businesscard} className='container' key={i}>
+                    <div className='img-holder'>
+                        <img className='img-thumbnail' 
+                                alt='img-url'
+                                src={obj[i].image_url} />
+                        <br />
+                        <button className='bttn'
+                                title='Let people know you are going by pushing the button'
+                                type='button'
+                                value='submit'>Going <span id={obj[i].id} className='badge'>0</span>
+                        </button>
+                    </div>
+                    <div className='business'>
+                        <h2 title='Visit Website'>
+                            <a href={obj[i].url}
+                               target='_blank'
+                               rel='external'
+                               dangerouslySetInnerHTML={{__html: obj[i].name}} />
+                        </h2>
+                        <br />
+                        <p className='address'>
+                            <a href={'https://www.yelp.com/map/' + obj[i].alias}
+                                target='_blank'
+                                title='Get Directions'
+                                rel='external'
+                                dangerouslySetInnerHTML={{__html:  
+                                    obj[i].location.address1 + `.<br>` 
+                                    + obj[i].location.city + `, ` 
+                                    + obj[i].location.state + `. ` 
+                                    + obj[i].location.zip_code }} />
+                            <br />
+                            <span className='phone'>Telephone:
+                            <a href={obj[i].phone}
+                                target='_blank'
+                                title='Call Number'
+                                dangerouslySetInnerHTML={{__html:
+                                    ` ` + obj[i].display_phone}} />
+                            </span>
+                            <br />
+                            <span className='rate'
+                                  dangerouslySetInnerHTML={{__html:
+                                    `Price: ` + obj[i].price + ` `  + costDescription[obj[i].price] }} />
+                            <br />
+                            <span dangerouslySetInnerHTML={{__html: 
+                                    `Rating: `+ obj[i].rating}} />
+                        </p>
+                    </div>
+                </div>
+            )
+        })
         
-//         return(
-//             <div className='container'>
-//                 <div className='img-holder'>
-                    
-//                 </div>
-//                 <div className='business'>
+        return (
+            <div>{results}</div>
+        );        
+    }
 
-//                 </div>
-//             </div>
-//         )
-//     }
-
+    return (
+        <div>
+            {data(obj)}
+        </div>
+    );
  
-//     render() {
-
-//     return(
-//         <ErrorBoundary>
-//             <div id='main'>
-//                 {searchResults}
-//             </div>
-//         </ErrorBoundary>
-//     )
-//    }
-// }
+}
 
 // Error class React Component
 class ErrorBoundary extends Component {
@@ -150,32 +317,6 @@ class ErrorBoundary extends Component {
 		};
 }; 
 
-
-class Hello extends Component {
- render() {
-  return (<h1>Hello</h1>)
-  }
-}
-
-class Main extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Switch>
-        <Route exact path='/' strict component={App} />
-        <Route path='/login' component={Hello} />
-        </Switch>
-      </BrowserRouter>
-      );
-  }
-}
-
-ReactDOM.render(
-    <Main />, 
-    document.getElementById('root')
-);
-
-/*
 // Configure ajax call
 const ajax = {
     ready: function ready (fn) {
@@ -187,11 +328,9 @@ const ajax = {
     },
     request: function ajaxRequest (method, url, data, callback) {
         var xmlhttp = new XMLHttpRequest();
-        //rconsole.log('data', data)
 
         var params = typeof data == 'string' ? data 
                      : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
-        //console.log('params', params)
         
         xmlhttp.open(method, url, true);
 
@@ -208,35 +347,23 @@ const ajax = {
         return xmlhttp;
     }
 };
-*/
 
-/*
-    componentDidMount() {
-        // this.enterBttn = document.getElementById('searchBar');
-        // this.enterBttn.addEventListener('keydown', (bttn) => {
-        //     console.log(bttn)
-        //     if(bttn.key === '9') {
-        //    bttn.preventDefault();
-        //    let location = document.getElementById("location").elements[1].value;
-        //    console.log('location', location)
-        //    let bars = [];     
-        //     postResults(location);
-        //     }
-        // })
-        
-        // // listener for Twitter login button
-        // twitter.addEventListener("click", (evt) => {
-        //     evt.preventDefault();
-        //     window.location.href = '/auth/twitter';
-        // });
-  
-        // // listener for Search button
-        // search.addEventListener("click", (evt) => {
-        //     evt.preventDefault();
-     
-        //     let location = document.getElementById("location").elements[1].value;
-        //     bars = [];     
-        //     postResults(location);
-        // }); // search.EventListener()  
+class Main extends Component {
+    render() {
+      return (
+        <BrowserRouter>
+          <Switch>
+          <Route exact path='/' strict component={App} />
+          <Route path='/login' render={ () => {
+              return (<h1>Hello!</h1>)
+              }} />
+          </Switch>
+        </BrowserRouter>
+        );
     }
-*/
+  }
+  
+ReactDOM.render(
+    <Main />, 
+    document.getElementById('root')
+);
