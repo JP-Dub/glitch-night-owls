@@ -1,20 +1,17 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin'),
+      webpack = require('webpack'),
+      path    = require('path');
 
 module.exports = {
    mode: 'development',
-   entry: {
-     "public" : [
+   entry: [
        './public/index.js',
        'webpack-hot-middleware/client',
-       'react-hot-loader/patch',
+       'react-hot-loader/patch'
    ],
-     "private" : "./public/login.js"
-   },
    output: {
       path: path.join(__dirname, './dist'),
-      filename: '[name].js'
+      filename: 'bundle.js'
    },
    devServer: {
       historyApiFallback: true,
@@ -66,14 +63,8 @@ module.exports = {
          showErrors: true,
          cache : true
       }),
-      new HtmlWebpackPlugin({
-         template: './dist/index.html',
-         inject: 'body',
-         showErrors: true,
-         cache : true
-      }),
       new webpack.HotModuleReplacementPlugin({
-         multiStep: true
+         multiStep: false
       })
    ]
 }
