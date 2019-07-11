@@ -44,7 +44,10 @@ export default class App extends Component {
         evt.preventDefault();
 
         //window.location.href = '/auth/twitter';
-        window.location.assign('/auth/twitter');
+        //window.location.assign('/auth/twitter');
+      ajax.ready(ajax.request("GET", '/auth/twitter', {}, (login) => {
+          console.log(login);                   
+      }))
     }
 
     yelpHandler(locale) {
