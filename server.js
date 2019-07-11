@@ -32,7 +32,7 @@ app.use(
 
 app.use(require("webpack-hot-middleware")(compiler));
 
-app.use('/', express.static(process.cwd() + '/app/controllers/'));
+//app.use('/', express.static(process.cwd() + '/app/controllers/'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

@@ -24,7 +24,7 @@ module.exports = (app, passport, cors) => {
 		.get(isLoggedIn, (req, res) => {
       console.log(req.user.twitter)
       //res.redirect('/user/' + req.user.twitter['location']);
-			//res.sendFile( process.cwd() + '/dist/idex.html' );
+			res.sendFile( process.cwd() + '/public/index.js' );
     //res.json({success: req.url, user: req.user.twitter['username']})
 		});
 		
