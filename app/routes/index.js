@@ -22,8 +22,8 @@ module.exports = (app, passport, cors) => {
 	
 	app.route( '/login/:user' )
 		.get(isLoggedIn, (req, res) => {
-			//res.sendFile( process.cwd() + '/dist/index.html' );
-    res.json({success: req.url, user: req.user.twitter['username']})
+			res.sendFile( '../dist/bundle.js' );
+    //res.json({success: req.url, user: req.user.twitter['username']})
 		});
 		
 	app.route( '/user/:location' )	
