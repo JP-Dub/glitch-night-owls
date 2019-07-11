@@ -20,10 +20,11 @@ module.exports = (app, passport, cors) => {
 // 			res.sendFile(path + '/dist/index.html');
 // 		});
 	
-	app.route( '/' ) // '/login/:user'
+	app.route( '/login/:user' ) // '/login/:user'
 		.get(isLoggedIn, (req, res) => {
       console.log(req.user.twitter)
-			res.sendFile( process.cwd() + '/dist/idex.html' );
+      //res.redirect('/user/' + req.user.twitter['location']);
+			//res.sendFile( process.cwd() + '/dist/idex.html' );
     //res.json({success: req.url, user: req.user.twitter['username']})
 		});
 		
@@ -37,14 +38,15 @@ module.exports = (app, passport, cors) => {
 		.get(  handleServer.getClicks )
 		.post( handleServer.addClick );		
 		
-	app.get( '/auth/twitter', cors(), passport.authenticate( 'twitter' ) );
+	app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
 
 	app.route( '/auth/twitter/callback' )
 		.get( passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
           let user = req.user.twitter['username'];
-    	    //res.redirect('/login/' + user);
-          res.redirect('/')
+          console.log(req.user.twitter)
+    	    res.redirect('/login/' + user);
+          //res.redirect('/')
 		});	
 		
 
