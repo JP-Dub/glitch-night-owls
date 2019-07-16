@@ -63,7 +63,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 routes(app, passport, cors);
-
+process.env.ENVIRONMENT = ''
 var port = process.env.PORT || 3000;
 app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
