@@ -4,14 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
 
 module.exports = {
    mode: 'development',
-   entry: [
-       './public/index.js',
-       'webpack-hot-middleware/client',
-       'react-hot-loader/patch'
-   ],
+   entry: './public/index.js',     
    output: {
       path: path.join(__dirname, './dist'),
-      filename: 'bundle.js'
+      filename: '[name].bundle.js',
+      publicPath: '/'
    },
    devServer: {
       historyApiFallback: true,

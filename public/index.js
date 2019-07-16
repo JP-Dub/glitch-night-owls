@@ -52,7 +52,7 @@ console.log('just clicked')
 
     yelpHandler(locale) {
 
-        let url = '/businesses/search?term=bars&location=';        
+        let url = '/api/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
