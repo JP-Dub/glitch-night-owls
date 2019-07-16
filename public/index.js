@@ -27,7 +27,7 @@ export default class App extends Component {
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
         }); 
-      //confirm("This app is being updated, some of the features not might work correctly.")
+      confirm("This app is being updated, some of the features not might work correctly.")
     }
 
     componentWillUnmount() {
@@ -53,7 +53,7 @@ console.log('just clicked')
 
     yelpHandler(locale) {
 
-        let url = '/api/businesses/search?term=bars&location=';        
+        let url = '/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
