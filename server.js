@@ -63,14 +63,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 routes(app, passport, cors);
-process.env.ENVIRONMENT = ''
+
+console.log(process.env)
 var port = process.env.PORT || 3000;
 app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
 
-
-// server.listen(8081, process.env.API_SERVER_EXTERNA, () => {
+// server.listen(8081, '127.0.0.1', () => {
 // 	console.log('Webpack Dev Server listening on 8081...')
 // });
 
