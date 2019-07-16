@@ -23,28 +23,28 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.Promise = global.Promise;
 
-const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-	open: true,
-	stats: {
-		colors: true
-	}
-});
+// const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+// 	open: true,
+// 	stats: {
+// 		colors: true
+// 	}
+// });
 
-const server = new webpackDevServer(compiler, devServerOptions);
+// const server = new webpackDevServer(compiler, devServerOptions);
 
 
-// app.use(
-// 	require("webpack-dev-middleware")(
-//     compiler, {
-//       noInfo    : true,
-//       publicPath: webpackConfig.output.publicPath	
-//     }
-// 	)
-// );
+app.use(
+	require("webpack-dev-middleware")(
+    compiler, {
+      noInfo    : true,
+      publicPath: webpackConfig.output.publicPath	
+    }
+	)
+);
 
-// app.use(require("webpack-hot-middleware")(compiler));
+app.use(require("webpack-hot-middleware")(compiler));
 
-//app.use('/', express.static(process.cwd() + '/app/controllers/'));
+app.use('/', express.static(process.cwd() + '/app/controllers/'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -69,8 +69,8 @@ app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
 
-server.listen(8081, process.env.HOSTNAME, () => {
-	console.log('Webpack Dev Server listening on 8081...')
-});
 
- //'127.0.0.1'
+// server.listen(8081, process.env.API_SERVER_EXTERNA, () => {
+// 	console.log('Webpack Dev Server listening on 8081...')
+// });
+
