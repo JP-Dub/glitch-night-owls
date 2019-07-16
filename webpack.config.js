@@ -4,7 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
 
 module.exports = {
    mode: 'development',
-   entry: './public/index.js',     
+   entry: [
+      './public/index.js',
+      'webpack-hot-middleware/client',
+      'react-hot-loader/patch'
+   ],    
    output: {
       path: path.join(__dirname, './dist'),
       filename: '[name].bundle.js',
