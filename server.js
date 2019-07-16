@@ -20,6 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser : true,
 	useFindAndModify: false
 });
+
 mongoose.Promise = global.Promise;
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
@@ -28,6 +29,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 		colors: true
 	}
 });
+
 const server = new webpackDevServer(compiler, devServerOptions);
 
 
@@ -67,6 +69,8 @@ app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
 
-server.listen(8081, '127.0.0.1', () => {
+server.listen(8081, process.env.HOSTNAME, () => {
 	console.log('Webpack Dev Server listening on 8081...')
 });
+
+ //'127.0.0.1'
