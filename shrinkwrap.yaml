@@ -19,7 +19,7 @@ dependencies:
   proxy: 0.2.4
   react: 16.8.6
   react-dom: 16.8.6
-  react-hot-loader: 4.12.5
+  react-hot-loader: 4.12.7
   react-router-dom: 5.0.1
   style-loader: 0.23.1
   url-loader: 2.0.1
@@ -4018,7 +4018,7 @@ packages:
       react: ^16.0.0
     resolution:
       integrity: sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
-  /react-hot-loader/4.12.5:
+  /react-hot-loader/4.12.7:
     dependencies:
       fast-levenshtein: 2.0.6
       global: 4.4.0
@@ -4035,7 +4035,7 @@ packages:
       react: ^15.0.0 || ^16.0.0
       react-dom: ^15.0.0 || ^16.0.0
     resolution:
-      integrity: sha512-RH7mi2hSp+74pM/GCwFoQ+nHY6JnFKrzBNbSWnOfT9LJMMnCWf/Eg5CoaeJHMpvqF+x6hdT//T2GoSpqImEzfg==
+      integrity: sha512-ejnGcNttqIsgaLEpCl3KHLzFfKiEKHz/VTLYv57/xKQoryDMXQ/w31+jicrOAiCStYsY+KvrulVqkOqqkRaifg==
   /react-is/16.8.6:
     dev: false
     resolution:
@@ -5237,7 +5237,7 @@ specifiers:
   proxy: ^0.2.4
   react: ^16.8.6
   react-dom: ^16.8.6
-  react-hot-loader: ^4.12.5
+  react-hot-loader: ^4.12.7
   react-router-dom: ^5.0.0
   style-loader: ^0.23.1
   url-loader: ^2.0.1
