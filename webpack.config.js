@@ -3,26 +3,100 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
       path    = require('path');
 
 module.exports = {
-   mode: 'development',
+   // mode: 'development',
    entry: './public/index.js',
    output: {
       path: path.join(__dirname, './dist'),
       filename: '[name].bundle.js',
       publicPath: '/'
    },
-   // devServer: {
-   //    historyApiFallback: false,
-   //    inline: true,
-   //    port: 8081,
-   //    allowedHosts: [ 'glitch.com', 'glitch-night-owls.glitch.me'],
-   //    proxy: {
-   //       '/api' : {
-   //          target: 'https://glitch-night-owls.glitch.me',
-   //          pathRewrite : {'^/api' : ''},
-   //          secure: false
-   //       }
-   //    }     
-   // },
+   devServer: {
+      historyApiFallback: true,
+      inline: true,
+      port: 8081,
+      //host: 'glitch-night-owls.glitch.me',
+      public: 'glitch-night-owls.glitch.me',
+      // allowedHosts: ['glitch-night-owls.glitch.me'],
+      proxy: {
+         '/api' : {
+            target: 'https://glitch-night-owls.glitch.me',
+            pathRewrite : {'^/api' : ''},
+            secure: false
+         }
+      }     
+   },
+   module: {
+      rules: [
+         {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            options: {
+               presets: ['@babel/preset-env', '@babel/preset-react']
+            }
+         }, {
+             test: /\.css$/,
+             include: path.resolve(__dirname, './public/css'),
+             use: [
+                 'style-loader',
+                 'css-loader'
+             ]
+         }, {
+             test: /\.(png|jpe?g|gif|svg|ttf|woff|woff2|ttf)$/,
+             include: path.resolve(__dirname, './public'),
+             use: [
+                 {
+                loader: 'file-loader',
+                options: {},
+               },
+            ],
+          },
+      ],
+   },
+   plugins:[
+     new HtmlWebpackPlugin({
+         template: './dist/index.html',
+         inject: 'body',
+         showErrors: true,
+         cache : true
+      }),
+      // new webpack.HotModuleReplacementPlugin({
+      //    multiStep: false
+      // })
+   ]
+}
+
+/*
+   entry: [
+      './public/index.js',
+      'webpack-hot-middleware/client',
+      'react-hot-loader/patch'
+   ], 
+*/
+
+/*
+module.exports = {
+   // mode: 'development',
+   entry: './public/index.js',
+   output: {
+      path: path.join(__dirname, './dist'),
+      filename: '[name].bundle.js',
+      publicPath: '/'
+   },
+   devServer: {
+      historyApiFallback: true,
+      inline: true,
+      port: 8081,
+       host: 'glitch-night-owls.glitch.me',
+      // allowedHosts: ['glitch-night-owls.glitch.me'],
+      proxy: {
+         '/api' : {
+            target: 'https://glitch-night-owls.glitch.me',
+            pathRewrite : {'^/api' : ''},
+            secure: false
+         }
+      }     
+   },
    module: {
       rules: [
          {
@@ -74,11 +148,4 @@ module.exports = {
       // })
    ]
 }
-
-/*
-   entry: [
-      './public/index.js',
-      'webpack-hot-middleware/client',
-      'react-hot-loader/patch'
-   ], 
 */
