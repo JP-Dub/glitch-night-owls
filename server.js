@@ -44,7 +44,7 @@ const server = new webpackDevServer(compiler, devServerOptions);
 
 // app.use(require("webpack-hot-middleware")(compiler));
 
-app.use('/', express.static(process.cwd() + '/app/controllers/'));
+//app.use('/', express.static(process.cwd() + '/app/controllers/'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -76,7 +76,7 @@ app.listen(port,  function () {
 // })
 
 
-server.listen(3000, '127.0.0.1', () => {
+server.listen(8081, '127.0.0.1', () => {
 	console.log('Webpack Dev Server listening on 8081...')
 });
 

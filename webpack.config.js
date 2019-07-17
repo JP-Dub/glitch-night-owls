@@ -4,11 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
 
 module.exports = {
    mode: 'development',
-   entry: [
-      './public/index.js',
-      'webpack-hot-middleware/client',
-      'react-hot-loader/patch'
-   ],    
+   entry: './public/index.js',
    output: {
       path: path.join(__dirname, './dist'),
       filename: '[name].bundle.js',
@@ -17,7 +13,8 @@ module.exports = {
    devServer: {
       historyApiFallback: true,
       inline: true,
-      port: 3000,
+      port: 8081,
+      allowedHosts: [ 'glitch.com', 'glitch-night-owls.glitch.me'],
       proxy: {
          '/api' : {
             target: 'https://glitch-night-owls.glitch.me:8080',
@@ -72,8 +69,16 @@ module.exports = {
          showErrors: true,
          cache : true
       }),
-      new webpack.HotModuleReplacementPlugin({
-         multiStep: false
-      })
+      // new webpack.HotModuleReplacementPlugin({
+      //    multiStep: false
+      // })
    ]
 }
+
+/*
+   entry: [
+      './public/index.js',
+      'webpack-hot-middleware/client',
+      'react-hot-loader/patch'
+   ], 
+*/

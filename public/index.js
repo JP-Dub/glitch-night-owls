@@ -53,7 +53,7 @@ export default class App extends Component {
 
     yelpHandler(locale) {
 
-        let url = '/businesses/search?term=bars&location=';        
+        let url = '/api/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
@@ -78,7 +78,7 @@ export default class App extends Component {
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
-            url         = 'api/:id/clicks';
+            url         = '/api/:id/clicks';
 
         ajax.ready(ajax.request("GET", url, {}, (clicks) => {
             clicks.forEach( id => {
@@ -379,10 +379,10 @@ function maintenanceUpdate(obj, event) {
   });
 }
 
-if(window.addEventListener) {
-  maintenanceUpdate(window, 'load');
-} else {
-  maintenanceUpdate(document, 'DOMContentedLoaded');  
-}
+// if(window.addEventListener) {
+//   maintenanceUpdate(window, 'load');
+// } else {
+//   maintenanceUpdate(document, 'DOMContentedLoaded');  
+// }
 
 
