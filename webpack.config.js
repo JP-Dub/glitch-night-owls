@@ -10,19 +10,19 @@ module.exports = {
       filename: '[name].bundle.js',
       publicPath: '/'
    },
-   devServer: {
-      historyApiFallback: true,
-      inline: true,
-      port: 8081,
-      allowedHosts: [ 'glitch.com', 'glitch-night-owls.glitch.me'],
-      proxy: {
-         '/api' : {
-            target: 'https://glitch-night-owls.glitch.me:8080',
-            pathRewrite : {'^/api' : ''},
-            secure: true
-         }
-      }     
-   },
+   // devServer: {
+   //    historyApiFallback: false,
+   //    inline: true,
+   //    port: 8081,
+   //    allowedHosts: [ 'glitch.com', 'glitch-night-owls.glitch.me'],
+   //    proxy: {
+   //       '/api' : {
+   //          target: 'https://glitch-night-owls.glitch.me',
+   //          pathRewrite : {'^/api' : ''},
+   //          secure: false
+   //       }
+   //    }     
+   // },
    module: {
       rules: [
          {
