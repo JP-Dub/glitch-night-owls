@@ -22,7 +22,7 @@ module.exports = {
          '/api' : {
             target: 'http://glitch-night-owls.glitch.me:8080',
             pathRewrite : {'^/api' : ''},
-            secure: false
+            secure: true
          }
       }     
    },
