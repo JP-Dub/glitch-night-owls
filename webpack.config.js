@@ -13,16 +13,17 @@ module.exports = {
    devServer: {
       historyApiFallback: true,
       inline: true,
+      contentBase: './dist',
       port: 8081,
       //host: 'glitch-night-owls.glitch.me',
       public: 'https://glitch-night-owls.glitch.me',
       allowedHosts: ['glitch-night-owls.glitch.me'],
       proxy: {
          '/api' : {
-            target: 'glitch-night-owls.glitch.me:8081',
-            //target: 'https://localhost:8081',
+            target: 'https://glitch-night-owls.glitch.me:8080',
+            //target: 'https://localhost:8080',
             pathRewrite : {'^/api' : ''},
-            secure: false
+            secure: true
          }
       }     
    },

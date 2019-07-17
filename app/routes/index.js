@@ -31,7 +31,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
 			
-	app.route( '/businesses/:search' )
+	app.route( '/api/businesses/:search' )
 		.post( handleServer.getNightlife );
 	
 	app.route( '/:id/clicks' )
