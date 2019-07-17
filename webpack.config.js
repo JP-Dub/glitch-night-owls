@@ -20,7 +20,7 @@ module.exports = {
       port: 8081,
       proxy: {
          '/api' : {
-            target: 'http://glitch-night-owls.glitch.me:8080',
+            target: 'https://glitch-night-owls.glitch.me:8080',
             pathRewrite : {'^/api' : ''},
             secure: true
          }

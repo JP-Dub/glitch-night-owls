@@ -356,12 +356,10 @@ class Main extends Component {
     render() {
       return (
         <BrowserRouter>
-          <Switch>
           <Route exact path='/' strict component={App} />
           <Route path='/user' render={ () => {
               return (<h1>Hello!</h1>)
               }} />
-          </Switch>
         </BrowserRouter>
         );
     }
