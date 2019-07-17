@@ -17,7 +17,7 @@ module.exports = {
    devServer: {
       historyApiFallback: true,
       inline: true,
-      port: 8081,
+      port: 3000,
       proxy: {
          '/api' : {
             target: 'https://glitch-night-owls.glitch.me:8080',

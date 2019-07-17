@@ -75,7 +75,8 @@ app.listen(port,  function () {
 //   console.log('Server listening...')
 // })
 
-// server.listen(8081, '127.0.0.1', () => {
-// 	console.log('Webpack Dev Server listening on 8081...')
-// });
+
+server.listen(3000, '127.0.0.1', () => {
+	console.log('Webpack Dev Server listening on 8081...')
+});
 
