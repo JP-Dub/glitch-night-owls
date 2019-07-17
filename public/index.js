@@ -26,8 +26,8 @@ export default class App extends Component {
             if(this.bars.length) this.bars = [];     
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
-        }); 
-      confirm("This app is being updated, some of the features not might work correctly.")
+        });       
+     
     }
 
     componentWillUnmount() {
@@ -371,3 +371,7 @@ ReactDOM.render(
     <Main />, 
     document.getElementById('root')
 );
+
+document.addEventListener("DOMContentLoaded", () => {
+  confirm("This app is being updated, some of the features not might work correctly.")
+});
