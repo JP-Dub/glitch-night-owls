@@ -6,13 +6,14 @@ const express    = require('express'),
       passport   = require('passport'),
 	    session    = require('express-session'),
       cors       = require('cors'),
+      proxy      = require('http-proxy-middleware'),
 	    app        = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
-	    compiler      = webpack(webpackConfig),	
-      apiProxy         = require('http-proxy-middleware');
+	    compiler      = webpack(webpackConfig);	
+     
  
 require('dotenv').config();
 require('./app/config/passport')(passport);
@@ -33,7 +34,16 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const server = new webpackDevServer(compiler, devServerOptions);
 
+// const options = {
+//   target: 'https://glitch-night-owls.glitch.me',
+//   pathRewrite: {
+//     '^/api' : ''
+//   }
+// }
 
+// const runProxy = proxy(options);
+
+// app.use('/api', runProxy)
 // app.use(
 // 	require("webpack-dev-middleware")(
 //     compiler, {
