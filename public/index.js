@@ -332,7 +332,7 @@ const ajax = {
     },
     request: function ajaxRequest (method, url, data, callback) {
         var xmlhttp = new XMLHttpRequest();
-
+        console.log(url, data)
         var params = typeof data == 'string' ? data 
                      : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
         
@@ -346,7 +346,7 @@ const ajax = {
 
         xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        
+        console.log(params)
         xmlhttp.send(params);
         return xmlhttp;
     }

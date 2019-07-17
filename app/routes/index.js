@@ -19,9 +19,9 @@ module.exports = (app, passport, cors) => {
 // 		.get( (req, res) => {
 // 			res.sendFile(path + '/dist/index.html');
 // 		});
-  function checkit(next) {
+  function checkit( callback) {
     console.log('looks like we made it')
-    return next()
+    return callback();
   }
 	
 	app.route( '/login/:user' ) // '/login/:user'
@@ -36,7 +36,7 @@ module.exports = (app, passport, cors) => {
 		.get( handleServer.userLocation );
 			
 	app.route( '/businesses/:search' )
-		.post( checkit(), handleServer.getNightlife );
+		.post( checkit, handleServer.getNightlife );
 	
 	app.route( '/:id/clicks' )
 		.get(  handleServer.getClicks )
