@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
       path    = require('path');
 
 module.exports = {
-   // mode: 'development',
+   mode: 'development',
    entry: './public/index.js',
    output: {
       path: path.join(__dirname, './dist'),
@@ -15,11 +15,12 @@ module.exports = {
       inline: true,
       port: 8081,
       //host: 'glitch-night-owls.glitch.me',
-      public: 'glitch-night-owls.glitch.me',
-      // allowedHosts: ['glitch-night-owls.glitch.me'],
+      public: 'https://glitch-night-owls.glitch.me',
+      allowedHosts: ['glitch-night-owls.glitch.me'],
       proxy: {
          '/api' : {
-            target: 'https://glitch-night-owls.glitch.me',
+            target: 'glitch-night-owls.glitch.me:8081',
+            //target: 'https://localhost:8081',
             pathRewrite : {'^/api' : ''},
             secure: false
          }
