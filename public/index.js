@@ -372,6 +372,18 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-document.addEventListener("DOMContentLoaded", () => {
-  confirm("This app is being updated, some of the features not might work correctly.")
-});
+function maintenanceUpdate(obj, event) {
+  obj.addEventListener(event, () => {
+    setTimeout(() =>{
+      confirm("This app is being updated, some of the features not might work correctly.")
+    }, 2000)
+  });
+}
+console.log()
+if(window.addEventListener) {
+  maintenanceUpdate(window, 'load');
+} else {
+  maintenanceUpdate(document, 'DOMContentedLoaded');  
+}
+
+
