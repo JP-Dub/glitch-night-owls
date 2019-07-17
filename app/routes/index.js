@@ -2,7 +2,7 @@
 
 const Server = require(process.cwd() + '/app/controllers/server.js'),
       path = require('path'); //process.cwd();
-console.log('routes have been called')
+
 module.exports = (app, passport, cors) => {
 	
 	function isLoggedIn (req, res, next) {

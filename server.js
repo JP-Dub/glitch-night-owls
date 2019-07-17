@@ -11,7 +11,8 @@ const express    = require('express'),
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
-	    compiler      = webpack(webpackConfig);	
+	    compiler      = webpack(webpackConfig),	
+      apiProxy         = require('http-proxy-middleware');
  
 require('dotenv').config();
 require('./app/config/passport')(passport);
