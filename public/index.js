@@ -339,7 +339,7 @@ const ajax = {
         }
         
         xmlhttp.open(method, url, true);
-        xmlhttp.withCredentials = true;
+        //xmlhttp.withCredentials = true;
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
               callback(JSON.parse(xmlhttp.response));

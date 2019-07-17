@@ -15,11 +15,10 @@ module.exports = {
      stats: 'errors-only',
       historyApiFallback: true,
       inline: true,
-      contentBase: './dist',
       port: 3000,
       //host: 'glitch-night-owls.glitch.me',
       public: 'https://glitch-night-owls.glitch.me',
-      allowedHosts: ['glitch-night-owls.glitch.me', 'glitch.com'],
+      allowedHosts: ['.glitch-night-owls.glitch.me', 'glitch.com'],
       proxy: {
          '/api' : {
             target: 'https://glitch-night-owls.glitch.me',
