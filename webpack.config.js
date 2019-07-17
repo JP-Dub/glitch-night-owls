@@ -20,7 +20,7 @@ module.exports = {
       allowedHosts: ['glitch-night-owls.glitch.me', 'glitch.com'],
       proxy: {
          '/api' : {
-            target: 'https://glitch-night-owls.glitch.me:' + process.env.PORT,
+            target: 'https://glitch-night-owls.glitch.me',
             //target: 'https://localhost:8080',
             pathRewrite : {'^/api' : ''},
             secure: true

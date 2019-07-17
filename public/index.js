@@ -57,7 +57,7 @@ export default class App extends Component {
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
-        let data = !this.userId ? {} : {user: this.userId};
+        let data = !this.userId ? null : {user: this.userId};
        
         ajax.ready(ajax.request("POST", url, data, (res) => {
             let obj = JSON.parse(res);
@@ -80,7 +80,7 @@ export default class App extends Component {
             bttnLength  = twitterBttn.length,
             url         = '/api/:id/clicks';
 
-        ajax.ready(ajax.request("GET", url, {}, (clicks) => {
+        ajax.ready(ajax.request("GET", url, null, (clicks) => {
             clicks.forEach( id => {
                 let bttnId = document.getElementById(id),
                     count  = 0;
@@ -333,8 +333,10 @@ const ajax = {
     request: function ajaxRequest (method, url, data, callback) {
         var xmlhttp = new XMLHttpRequest();
         console.log(url, data)
+        if(data) {
         var params = typeof data == 'string' ? data 
                      : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+        }
         
         xmlhttp.open(method, url, true);
         xmlhttp.withCredentials = true;
