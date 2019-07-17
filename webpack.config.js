@@ -17,10 +17,10 @@ module.exports = {
       port: 8081,
       //host: 'glitch-night-owls.glitch.me',
       public: 'https://glitch-night-owls.glitch.me',
-      allowedHosts: ['glitch-night-owls.glitch.me'],
+      allowedHosts: ['glitch-night-owls.glitch.me', 'glitch.com'],
       proxy: {
          '/api' : {
-            target: 'https://glitch-night-owls.glitch.me:8080',
+            target: 'https://glitch-night-owls.glitch.me',
             //target: 'https://localhost:8080',
             pathRewrite : {'^/api' : ''},
             secure: true
