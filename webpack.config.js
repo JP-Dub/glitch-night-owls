@@ -11,10 +11,12 @@ module.exports = {
       publicPath: '/'
    },
    devServer: {
+     useLocalIp: true,
+     stats: 'errors-only',
       historyApiFallback: true,
       inline: true,
       contentBase: './dist',
-      port: 8081,
+      port: 3000,
       //host: 'glitch-night-owls.glitch.me',
       public: 'https://glitch-night-owls.glitch.me',
       allowedHosts: ['glitch-night-owls.glitch.me', 'glitch.com'],
@@ -23,7 +25,7 @@ module.exports = {
             target: 'https://glitch-night-owls.glitch.me',
             //target: 'https://localhost:8080',
             pathRewrite : {'^/api' : ''},
-            secure: true
+            secure: false
          }
       }     
    },
