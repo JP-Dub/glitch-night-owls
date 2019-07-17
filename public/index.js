@@ -337,16 +337,16 @@ const ajax = {
                      : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
         
         xmlhttp.open(method, url, true);
-
+        xmlhttp.withCredentials = true;
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
               callback(JSON.parse(xmlhttp.response));
             }
         };
-
+        console.log('params', params, xmlhttp)
         xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        console.log(params)
+        
         xmlhttp.send(params);
         return xmlhttp;
     }
