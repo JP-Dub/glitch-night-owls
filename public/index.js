@@ -358,7 +358,7 @@ class Main extends Component {
         <BrowserRouter>
           <Switch>
           <Route exact path='/' strict component={App} />
-          <Route path='/login' render={ () => {
+          <Route path='/user' render={ () => {
               return (<h1>Hello!</h1>)
               }} />
           </Switch>
@@ -372,6 +372,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
+
 function maintenanceUpdate(obj, event) {
   obj.addEventListener(event, () => {
     setTimeout(() =>{
@@ -379,7 +380,7 @@ function maintenanceUpdate(obj, event) {
     }, 2000)
   });
 }
-console.log()
+
 if(window.addEventListener) {
   maintenanceUpdate(window, 'load');
 } else {
