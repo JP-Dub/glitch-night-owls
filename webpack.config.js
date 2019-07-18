@@ -28,8 +28,8 @@ module.exports = {
          '/api' : {
             target: 'https://glitch-night-owls.glitch.me',
             //target: 'http://localhost:8080',
-            //target: 'https://api.glitch.com',
-            //target: '172.17.0.1:8080',
+            //target: 'https://api.glitch.com:8080',
+            //target: 'https://172.17.0.1:8080',
             pathRewrite : {'^/api' : ''},
             secure: false
          }
