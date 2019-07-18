@@ -343,7 +343,7 @@ console.log('ajax request', url, data)
         }
         
         xmlhttp.open(method, url, true);
-        //xmlhttp.withCredentials = true;
+        xmlhttp.withCredentials = true;
       
         xmlhttp.onreadystatechange = function () {
 console.log('onreadystatechange ', xmlhttp)
@@ -352,9 +352,9 @@ console.log('onreadystatechange ', xmlhttp)
             }
         };
       
-        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        
+        // xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        // xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        console.log(xmlhttp)
         xmlhttp.send(params);
         return xmlhttp;
     }

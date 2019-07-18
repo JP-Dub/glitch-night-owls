@@ -36,16 +36,16 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const server = new webpackDevServer(compiler, devServerOptions);
 
 
-// app.use(
-// 	require("webpack-dev-middleware")(
-//     compiler, {
-//       noInfo    : true,
-//       publicPath: webpackConfig.output.publicPath	
-//     }
-// 	)
-// );
+app.use(
+	require("webpack-dev-middleware")(
+    compiler, {
+      noInfo    : true,
+      publicPath: webpackConfig.output.publicPath	
+    }
+	)
+);
 
-// app.use(require("webpack-hot-middleware")(compiler));
+app.use(require("webpack-hot-middleware")(compiler));
 
 //app.use('/', express.static(process.cwd() + '/app/controllers/'));
 
@@ -77,10 +77,10 @@ app.listen(port,  function () {
 console.log(process.env)
 
 
-var serverPort = 3000;
-server.listen(serverPort, '127.0.0.1', () => {
-	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
-});
+// var serverPort = 3000;
+// server.listen(serverPort, '127.0.0.1', () => {
+// 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
+// });
 
 //HOSTNAME
 //'8f7bbb40c193'
