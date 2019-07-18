@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
       path    = require('path');
 
 module.exports = {
-   mode: 'development',
+   mode: 'production',
+   target: 'node',
    entry: './public/index.js',
    output: {
       path: path.join(__dirname, './dist'),
@@ -24,17 +25,17 @@ module.exports = {
                      'http://glitch-night-owls.glitch.me',
                      'https://api.glitch.com',
                      'https://glitch.com'],
-      proxy: {
-         '/api' : {
-            //target: 'https://glitch-night-owls.glitch.me',
-            //target: 'http://localhost:8080',
-            //target: 'https://api.glitch.com:8080',
-            //target: 'https://172.17.0.1:8080',
-            target: 'node',
-            pathRewrite : {'^/api' : ''},
-            secure: false
-         }
-      }     
+      // proxy: {
+      //    '/api' : {
+      //       target: 'https://glitch-night-owls.glitch.me',
+      //       //target: 'http://localhost:8080',
+      //       //target: 'https://api.glitch.com:8080',
+      //       //target: 'https://172.17.0.1:8080',
+      //       //target: 'node',
+      //       pathRewrite : {'^/api' : ''},
+      //       secure: true
+      //    }
+      // }     
    },
    module: {
       rules: [

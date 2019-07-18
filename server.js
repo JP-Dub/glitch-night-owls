@@ -14,7 +14,7 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
      
-app.options('/', cors());  
+app.options('/api', cors());  
 require('dotenv').config();
 require('./app/config/passport')(passport);
 
