@@ -35,14 +35,14 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const server = new webpackDevServer(compiler, devServerOptions);
 
 const options = {
-  target: 'https://glitch-night-owls.glitch.me',
+  target: 'http://glitch-night-owls.glitch.me',
   pathRewrite: {
     '^/api' : ''
   }
 }
 
 const runProxy = proxy(options);
-
+console.log(process.env.PROJECT_NAME)
 app.use('/api', runProxy)
 // app.use(
 // 	require("webpack-dev-middleware")(
