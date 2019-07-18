@@ -11,20 +11,20 @@ module.exports = {
       publicPath: '/'
    },
    devServer: {
-     useLocalIp: true,
+     //useLocalIp: true,
      stats: 'errors-only',
-     https: true,
+     //https: true,
       historyApiFallback: true,
       inline: true,
       port: 3000,
       //host: 'https://glitch-night-owls.glitch.me',
       public: 'glitch-night-owls.glitch.me',
-      allowedHosts: ['https://glitch-night-owls.glitch.me', 'glitch.com'],
+      allowedHosts: ['https://glitch-night-owls.glitch.me', 'https://glitch.com'],
       proxy: {
          '/api' : {
-            //target: 'https://glitch-night-owls.glitch.me',
+            target: 'https://glitch-night-owls.glitch.me',
             //target: 'https://localhost:8080',
-            target: 'https://api.glitch.com:3000',
+            //target: 'https://api.glitch.com',
             pathRewrite : {'^/api' : ''},
             secure: true
          }
