@@ -1,7 +1,7 @@
 'use strict';
 
-var Users = require('../models/users.js');
-var yelp = require('yelp-fusion');
+const Users = require('../models/users.js'),
+      yelp = require('yelp-fusion');
 
 function ClickHandler () {
   // resets RSVP's after 2am;
