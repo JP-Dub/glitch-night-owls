@@ -14,7 +14,7 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
      
- 
+app.options('/', cors());  
 require('dotenv').config();
 require('./app/config/passport')(passport);
 
@@ -34,16 +34,16 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const server = new webpackDevServer(compiler, devServerOptions);
 
-const options = {
-  target: 'https://api.glitch.com',
-  pathRewrite: {
-    '^/api' : ''
-  }
-}
+// const options = {
+//   target: 'https://api.glitch.com',
+//   pathRewrite: {
+//     '^/api' : ''
+//   }
+// }
 
-const runProxy = proxy(options);
+// const runProxy = proxy(options);
 
-app.use('/api', runProxy)
+// app.use('/api', runProxy)
 // app.use(
 // 	require("webpack-dev-middleware")(
 //     compiler, {
