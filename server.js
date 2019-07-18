@@ -86,7 +86,7 @@ console.log(process.env)
 
 
 var serverPort = 3000;
-server.listen(serverPort, 'localhost', () => {
+server.listen(serverPort, '127.0.0.1', () => {
 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
 });
 
