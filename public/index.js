@@ -44,7 +44,7 @@ export default class App extends Component {
     twitterHandler(evt) {
         evt.preventDefault();
         console.log('just clicked')
-        window.location.href = '/auth/twitter';
+        window.location.href = '/api/auth/twitter';
         //window.location.assign('/auth/twitter');
       // ajax.ready(ajax.request("GET", '/auth/twitter', {}, (login) => {
       //     console.log(login);                   
@@ -343,7 +343,7 @@ console.log('ajax request', url, data)
         }
         
         xmlhttp.open(method, url, true);
-        xmlhttp.withCredentials = true;
+        //xmlhttp.withCredentials = true;
       
         xmlhttp.onreadystatechange = function () {
 console.log('onreadystatechange ', xmlhttp)

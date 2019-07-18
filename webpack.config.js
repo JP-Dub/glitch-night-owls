@@ -18,16 +18,20 @@ module.exports = {
       inline: true,
       port: 3000,
       //host: 'https://glitch-night-owls.glitch.me',
+      host: '172.17.0.1',
       public: 'glitch-night-owls.glitch.me',
-      allowedHosts: ['https://glitch-night-owls.glitch.me', 'https://glitch.com'],
+      allowedHosts: ['https://glitch-night-owls.glitch.me',
+                     'http://glitch-night-owls.glitch.me',
+                     'https://api.glitch.com',
+                     'https://glitch.com'],
       proxy: {
          '/api' : {
-            //target: 'https://glitch-night-owls.glitch.me',
-            //target: 'https://localhost:8080',
+            target: 'https://glitch-night-owls.glitch.me',
+            //target: 'http://localhost:8080',
             //target: 'https://api.glitch.com',
             //target: '172.17.0.1:8080',
             pathRewrite : {'^/api' : ''},
-            secure: true
+            secure: false
          }
       }     
    },
