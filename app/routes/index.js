@@ -47,7 +47,7 @@ module.exports = (app, passport, cors) => {
 		
 	app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
 
-	app.route( '/api/auth/twitter/callback' )
+	app.route( '/auth/twitter/callback' )
 		.get( cors(), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
           let user = req.user.twitter['username'];

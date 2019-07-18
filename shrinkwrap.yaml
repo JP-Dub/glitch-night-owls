@@ -19,7 +19,7 @@ dependencies:
   passport-twitter: 1.0.4
   react: 16.8.6
   react-dom: 16.8.6
-  react-hot-loader: 4.12.7
+  react-hot-loader: 4.12.8
   react-router-dom: 5.0.1
   style-loader: 0.23.1
   webpack: 4.35.2
@@ -4533,7 +4533,7 @@ packages:
       react: ^16.0.0
     resolution:
       integrity: sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
-  /react-hot-loader/4.12.7:
+  /react-hot-loader/4.12.8:
     dependencies:
       fast-levenshtein: 2.0.6
       global: 4.4.0
@@ -4550,7 +4550,7 @@ packages:
       react: ^15.0.0 || ^16.0.0
       react-dom: ^15.0.0 || ^16.0.0
     resolution:
-      integrity: sha512-ejnGcNttqIsgaLEpCl3KHLzFfKiEKHz/VTLYv57/xKQoryDMXQ/w31+jicrOAiCStYsY+KvrulVqkOqqkRaifg==
+      integrity: sha512-/Df2J3znMHzRzI6CW0dTOIWD2sjkVHxv56XCqujAo9mR+k2PVTiGjUgYBiGPGsix9zQzgCRfOKca93o9Zdj2vQ==
   /react-is/16.8.6:
     dev: false
     resolution:
@@ -6003,7 +6003,7 @@ specifiers:
   passport-twitter: ^1.0.4
   react: ^16.8.6
   react-dom: ^16.8.6
-  react-hot-loader: ^4.12.7
+  react-hot-loader: ^4.12.8
   react-router-dom: ^5.0.0
   style-loader: ^0.23.1
   webpack: ^4.35.0

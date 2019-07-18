@@ -6,7 +6,6 @@ const express    = require('express'),
       passport   = require('passport'),
 	    session    = require('express-session'),
       cors       = require('cors'),
-      proxy      = require('http-proxy-middleware'),
 	    app        = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -28,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI, {
 mongoose.Promise = global.Promise;
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-	open: true,
+	//open: true,
 	stats: {
 		colors: true
 	}
@@ -36,16 +35,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const server = new webpackDevServer(compiler, devServerOptions);
 
-// const options = {
-//   target: 'https://api.glitch.com',
-//   pathRewrite: {
-//     '^/api' : ''
-//   }
-// }
 
-// const runProxy = proxy(options);
-
-// app.use('/api', runProxy)
 // app.use(
 // 	require("webpack-dev-middleware")(
 //     compiler, {
@@ -87,10 +77,10 @@ app.listen(port,  function () {
 console.log(process.env)
 
 
-// var serverPort = 3000;
-// server.listen(serverPort, '127.0.0.1', () => {
-// 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
-// });
+var serverPort = 3000;
+server.listen(serverPort, '127.0.0.1', () => {
+	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
+});
 
 //HOSTNAME
 //'8f7bbb40c193'
