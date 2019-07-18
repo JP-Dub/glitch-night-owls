@@ -36,7 +36,7 @@ module.exports = (app, passport, cors) => {
 		.get( handleServer.userLocation );
 			
 	app.route( '/businesses/:search' )
-		.post( (req, res) => { 
+		.post(cors(), (req, res) => { 
     console.log('from routes, looks like we made it')  
     handleServer.getNightlife
   });
