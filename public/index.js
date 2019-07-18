@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import '../public/css/style.css';
 import noImage from '../public/img/NoProductImage_300.jpg';
 
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -30,8 +31,7 @@ export default class App extends Component {
      
     }
 
-    componentWillUnmount() {
-    }
+    componentWillUnmount() {}
     
     changeHandler(evt) {
         evt.preventDefault();
