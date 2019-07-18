@@ -13,6 +13,7 @@ module.exports = {
    devServer: {
      useLocalIp: true,
      stats: 'errors-only',
+     https: true,
       historyApiFallback: true,
       inline: true,
       port: 3000,
@@ -23,7 +24,7 @@ module.exports = {
          '/api' : {
             //target: 'https://glitch-night-owls.glitch.me',
             //target: 'https://localhost:8080',
-            target: 'https://api.glitch.com',
+            target: 'https://api.glitch.com:3000',
             pathRewrite : {'^/api' : ''},
             secure: true
          }
