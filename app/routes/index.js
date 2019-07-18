@@ -14,6 +14,12 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	let handleServer = new Server();
+  
+	var options = ({
+		origin : 'https://glitch.night-owls.glitch.me:8080',
+		preflightContinue: true,
+		optionsSuccessStatus: 200
+	})  
 	
 // 	app.route('/')
 // 		.get( (req, res) => {
@@ -48,7 +54,7 @@ module.exports = (app, passport, cors) => {
 	app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
 
 	app.route( '/auth/twitter/callback' )
-		.get( cors(), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
+		.get( cors(options), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
           let user = req.user.twitter['username'];
           console.log(req.user.twitter)
