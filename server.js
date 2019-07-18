@@ -25,14 +25,14 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.Promise = global.Promise;
 
-const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-	//open: true,
-	stats: {
-		colors: true
-	}
-});
+// const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+// 	//open: true,
+// 	stats: {
+// 		colors: true
+// 	}
+// });
 
-const server = new webpackDevServer(compiler, devServerOptions);
+// const server = new webpackDevServer(compiler, devServerOptions);
 
 
 app.use(

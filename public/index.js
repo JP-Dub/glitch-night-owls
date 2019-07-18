@@ -59,7 +59,7 @@ export default class App extends Component {
         
         let data = !this.userId ? null : {user: this.userId};
        
-        ajax.ready(ajax.request("POST", web+url, data, (res) => {
+        ajax.ready(ajax.request("POST", url, data, (res) => {
             let obj = JSON.parse(res);
             if(obj.error) return alert(res);
 

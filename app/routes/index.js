@@ -16,7 +16,7 @@ module.exports = (app, passport, cors) => {
 	let handleServer = new Server();
   
 	var options = ({
-		origin : 'https://glitch.night-owls.glitch.me:8080',
+		origin : 'https://glitch.night-owls.glitch.me',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	})  
@@ -42,12 +42,9 @@ module.exports = (app, passport, cors) => {
 		.get( handleServer.userLocation );
 			
 	app.route( '/api/businesses/:search' )
-		.post(cors, (req, res) => { 
-    console.log('from routes, looks like we made it')  
-    handleServer.getNightlife
-  });
+		.post( handleServer.getNightlife );
 	
-	app.route( '/:id/clicks' )
+	app.route( '/api/:id/clicks' )
 		.get(  handleServer.getClicks )
 		.post( handleServer.addClick );		
 		
