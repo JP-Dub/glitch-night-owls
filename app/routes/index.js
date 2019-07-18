@@ -21,14 +21,10 @@ module.exports = (app, passport, cors) => {
 		optionsSuccessStatus: 200
 	})  
 	
-// 	app.route('/')
-// 		.get( (req, res) => {
-// 			res.sendFile(path + '/dist/index.html');
-// 		});
-  function checkit( callback) {
-    console.log('looks like we made it')
-    return callback();
-  }
+	app.route('/')
+		.get( (req, res) => {
+			res.sendFile(process.cwd() + '/dist/index.html');
+		});
 	
 	app.route( '/login/:user' ) // '/login/:user'
 		.get(isLoggedIn, (req, res) => {
