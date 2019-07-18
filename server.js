@@ -1,8 +1,8 @@
 'use strict'
-var express = require('express'),
+var express    = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes/index.js'),
-	mongoose = require('mongoose'),
+	  mongoose = require('mongoose'),
     passport = require('passport'),
     session = require('express-session'),
     cors = require('cors'),
@@ -22,7 +22,7 @@ mongoose.Promise = global.Promise;
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
-app.use('/common', express.static(process.cwd() + '/app/common'));
+//app.use('/common', express.static(process.cwd() + '/app/common'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

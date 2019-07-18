@@ -1,165 +1,199 @@
 'use strict';
+/*global appUrl, ajax, $, navigator*/
 
-const Users = require('../models/users.js'),
-      yelp = require('yelp-fusion');
-
-function ClickHandler () {
-  // resets RSVP's after 2am;
-  const resetRSVP = () => {
-    if(new Date().getHours() === 2) {
-      Users
-        .find({}).select({ 'twitter.nightlife': 1, _id: false})
-        .exec((err, results) => {
-          if (err) throw err; 
-      
-          results.forEach( (array, idx) => {
-            let arr = array.twitter.nightlife;
-            if(arr.length > 0) {       
-              for(var i = 0; i < arr.length; i++) {
-                var item = arr[i];
-                if(item.count > 0) {
-                  item.count = 0;
-                }; 
-              }; 
-            };        
-          }); // forEach()
-        results.save();
-      }); 
-    };  
-  };
-	
-  // interval checks time once an hour
-  //setInterval(resetRSVP, 3600000);
+(function () {
   
-	this.getClicks = (req, res) => {
-    let nightlife = [];
-		
-    Users
-			.find({}).select({ 'twitter.nightlife': 1, _id: false})
-			.exec((err, results) => {
-				if (err) { throw err; }
-           
-        results.forEach((array, idx) => {
-          let arr = array.twitter.nightlife;
-          if(arr.length > 0) {       
-            for(var i = 0; i < arr.length; i++) {
-              var item = arr[i];
-             
-              if(item.count > 0) {
-                nightlife.push(item.id);
-              } 
-            } 
-          }        
-        });// forEach()
+   let search = document.getElementById('search'),
+       login  = document.getElementById('login'),
+       main   = document.getElementById('main'),
+       bars   = [],
+       userId;
      
-			res.json(nightlife);
-			}); // Users.exec
-	}; // getClicks
-
-	this.addClick = (req, res) => {
-		Users
-			.findOne({'_id': req.body.userId})
-      .select({'twitter.nightlife': 1})
-			.exec((err, result) => {
-					if (err) throw err; 
-          let barCount = {}        
-          
-          if(result) {
-            let nightlife = result.twitter.nightlife;
-            let found = 1;
-            for(var i = 0; i < nightlife.length; i++) {
-               if(nightlife[i].id === req.body.id ) {
-                 barCount.id = nightlife[i].id;
-                 nightlife[i].count === 1 ? nightlife[i].count = 0 
-                                          : nightlife[i].count = 1;
-                 
-                 barCount.count = nightlife[i].count;
-                 found = 0;
-               }
-            };                      
-            
-            if(found) {
-              let obj = { 
-                id    : req.body.id,
-                name  : req.body.name,
-                count : 1
-                };
-              result.twitter.nightlife.push(obj);
-              barCount = { id : req.body.id, count: 1};
-            }
-            
-            result.save(err => {
-              if(err) throw err;
-            });            
-            
-            res.json(barCount);
-         };
-
-			});
-	};
-	
-	// queries the Yelp api and stores session data and location
-	this.getNightlife = (req, res) => {
-    console.log("getNightLife", req.body, req.params, req.query)
-		 var Client = yelp.client(process.env.API_KEY);
-     var request = {
-        		term    : 'bars',
-    	    	location: req.query.location,
-            sort_by : 'rating',
-            limit   : 20,
-        	};
-     
-      // if user authenticates save location to user
-     if(!req.body.user) {
-       //console.log('updated locale session')
-       Users.findOneAndUpdate({
-             _id: '5c59ed1e9148306b65d5a1a3'
-            }, {
-             session: req.query.location
-            }, {
-             upsert: true,
-             new   : true
-            })
-            .exec( (err, logged) => {
-              if(err) throw err; 
-            });
-     } else {
-       //console.log('updated user session')
-       Users.findOneAndUpdate({ 
-            '_id' : req.body.user
-            }, {
-            'twitter.previousSession' : req.query.location
-            }, {
-            new   : true, 
-            upsert: true
-            })
-          	.exec((err, success) => {
-             	if(err) return console.error(err);
-        	  });    
-     };
-        
-      // Yelp Fusion api	
-     Client.search(request).then(response => {
-       var results = response.jsonBody.businesses,
-           json    = JSON.stringify(results, null, 4);
-
-           res.json(json);
-     }).catch(error => {
-       	res.end("We apologize, there has been an error processing your request. Error message: " + error);
-    }); 
-	};
-	
-	// returns the user location and cached search results after twitter log in
-	this.userLocation = (req, res) => {
-    console.log("userLocation")
-		Users.find({_id: req.user._id})
-			.exec((err, user) => {
-				if(err) throw err;       
+   // pressing the "going" button returns name of bar and yelp ID and should log to db 
+   function loadBttnEvents() { 
+      let twitterBttn = document.getElementsByClassName('bttn'),
+          bttnLength = twitterBttn.length;
       
-				res.json(user);
-			});
-	}; 
+      $.get('api/:id/clicks', (clicks) => {      
+        clicks.forEach( id => {
+          let bttnId = document.getElementById(id),
+              count;
+         
+          if(bttnId) {
+            count = 0; 
+            for(var i=0; i < clicks.length; i++) {                      
+              if(id === clicks[i]) count++;
+            }
+            bttnId.innerHTML = count;
+          };        
+        });              
+      });
+        
+      for(var i = 0; i < bttnLength; i++) {
+                  
+        twitterBttn[i].addEventListener('click', function(event) {
+          //event.preventDefault();
+          if(!userId) return alert('You have to be logged in to perform this action!');
+          
+          let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
+          bars[index].userId = userId;
+          
+          $.post('api/:id/clicks', bars[index], (bar) => {
+            let going = document.getElementById(bar.id),            
+                sum   = bar.count === 0 ?  -1 :  1;
+            going.innerHTML = (parseInt(going.innerHTML, 10) + sum);
+          });
+        }); 
+      }; // for(loop) 
+   }; // loadBtnEvents()   
 
-};
+   function postResults(locale) { 
+     
+     // delete previous bar info
+     if(main.childNodes.length > 1) {
+       while(main.firstChild) {
+         main.removeChild(main.firstChild);
+       };
+     };
+     
+     let printScreen = (obj) => {   
+       let length = obj.length,
+           i      = 0;
+         
+       for(i; i < length; i++) {
+         let div       = document.createElement("DIV"),
+             imgHolder = document.createElement('DIV'),
+             business  = document.createElement('DIV');
+           
+         main.appendChild(div);
+         div.id              = 'businesscard_' + i;
+         div.className       = 'container'; 
+         imgHolder.className = 'img-holder';
+         business.className  = 'business';
+         let businesscard    = document.getElementById(div.id);
+         businesscard.appendChild(imgHolder);
+         businesscard.appendChild(business);
+              
+         // nightlife cache
+         let identity = {
+           "id"  : obj[i].id,
+           "name": obj[i].name
+           };
+            
+         bars.push(identity);
+            
+         // if statement used when getLocation() is called prior to loading the screen
+         if(typeof locale === "object" && locale != null) {
+           obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
+         }
+           
+         // no image will revert to 'no image available' icon
+         if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
+           
+         let costDescription;
+         switch(obj[i].price) {
+           case "$":
+             costDescription = "Inexpensive";
+             break;
+           case "$$":
+             costDescription = "Moderate";
+             break;
+           case "$$$":
+             costDescription = "Pricey";
+             break;
+           case "$$$$":
+             costDescription = "Ultra High End";
+             break;
+           default:
+             obj[i].price = '';
+             costDescription = "Unavailable";
+             break;
+         };
+         
+         $("#businesscard_" + i + "> .img-holder").append("<img src=" + obj[i].image_url + " class='img-thumbnail' alt='image_url'><br><button class='bttn' title='Let people know that you are going by pushing the button' type='button' value='submit'>Going <span id='" + obj[i].id + "' class='badge'>0</span></button>");
+         $("#businesscard_" + i + "> .business").append("<h2 title='Visit Website'><a href=" + obj[i].url + " target='_blank'>" + obj[i].name + "</a></h2><br><p class='address'><a href='https://www.yelp.com/map/" + obj[i].alias + "' target='_blank' title='Get Directions' rel=" + obj[i].alias + ">" + obj[i].location.address1 + "<br>" + obj[i].location.city + ", " + obj[i].location.state + ". " + obj[i].location.zip_code + "</a><br><span class='phone'>Telephone: <a href='tel:" + obj[i].phone + "' target='_blank' title='Call Number'>" + obj[i].display_phone + "</a></span><br><span class='rate'>Price: " + obj[i].price + " " + costDescription + "</span><br><span>Rating: " + obj[i].rating + "</span></p>");
+           
+       }; // for(loop)
+        
+       loadBttnEvents();
+      };   
 
-module.exports = ClickHandler;
+      let path;
+      if(typeof locale === "object") {
+        path = '/businesses/search?term=bars&location=' + locale.latitude + '%20' + locale.longitude; 
+      } else {
+        path = '/businesses/search?term=bars&location=' + locale;
+      }      
+             
+      $.post(path, {user: userId}, function(data) {
+         let obj = JSON.parse(data);
+         printScreen(obj);
+      });
+   }; // postResults()
+   
+   // listener for Twitter login button
+   login.addEventListener("click", (event) => {
+     event.preventDefault();
+     window.location.href = '/auth/twitter';
+   });
+  
+   // listener for Search button
+   search.addEventListener("click", (event) => {
+      event.preventDefault();
+      let location = document.getElementById("location").elements[1].value;
+      bars = [];     
+      postResults(location);
+   }); // search.EventListener()  
+   
+   // checks if user is logged in /  returns previous session
+   if(window.location.pathname === '/loggedUser') {
+      $.get('/user/:location', (session) => { 
+        let location,  
+            user   = session[0].twitter;
+            userId = session[0]._id;                   
+        
+        !user.previousSession ? location = user.location
+                              : location = user.previousSession;
+                
+        $('#searchBar').attr('placeholder', location)
+        postResults(location);
+      });
+   };
+     
+})();
+
+/*
+
+   // currently not in use
+   function getLocation(done) {
+      if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+            var obj = {};
+            obj.latitude = position.coords.latitude;
+            obj.longitude = position.coords.longitude;
+            done(obj);
+         }, showError);
+      } else {
+         console.log("Geolocation is not supported by this browser.");
+      };
+   };
+  
+    // currently not in use - used in conjunction with getLocation()  
+   function showError(error) {
+      switch(error.code) {
+         case error.PERMISSION_DENIED:
+            console.log("User denied the request for Geolocation.");
+            break;
+         case error.POSITION_UNAVAILABLE:
+            console.log("Location information is unavailable.");
+            break;
+         case error.TIMEOUT:
+            console.log("The request to get user location timed out.");
+            break;
+         case error.UNKNOWN_ERROR:
+            console.log("An unknown error occurred.");
+            break;
+      };
+   };
+   
+*/
