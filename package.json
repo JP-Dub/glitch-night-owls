@@ -1,7 +1,7 @@
 {
   "name": "night-owls",
   "version": "1.0.1",
-  "description": "A nightlife co-ordination app built on React.js",
+  "description": "A nightlife co-ordination app",
   "private": true,
   "main": "server.js",
   "repository": {
@@ -22,9 +22,6 @@
   ],
   "scripts": {
     "start": "node server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "author": "Joel Piazza",
   "license": "MIT",
@@ -39,24 +36,5 @@
     "yelp-fusion": "^3.0.0",
     "body-parser": "^1.19.0",
     "math.js": "^1.1.43",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "@babel/core": "^7.5.5",
-    "@babel/cli": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "react-hot-loader": "^4.12.8",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.23.1",
-    "css-loader": "^3.1.0",
-    "file-loader": "^4.1.0",
-    "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.5",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-dev-middleware": "^3.7.0",
-    "babel-loader": "^8.0.5",
-    "webpack-dev-server": "^3.3.1",
-    "http-proxy-middleware": "^0.19.1"
   }
 }

@@ -1,7 +1,8 @@
 'use strict';
-
-const Server = require(process.cwd() + '/app/controllers/server.js'),
-      path = require('path'); //process.cwd();
+//var cors = require('cors');
+//var Client = require('../controllers/serverSide');
+let path = process.cwd();
+const ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
 module.exports = (app, passport, cors) => {
 	
@@ -13,53 +14,40 @@ module.exports = (app, passport, cors) => {
 		}
 	}
 	
-	let handleServer = new Server();
-  
-	var options = ({
-		origin : 'https://glitch.night-owls.glitch.me',
-		preflightContinue: true,
-		optionsSuccessStatus: 200
-	})  
-	
-	app.route('/')
-		.get( (req, res) => {
-			res.sendFile(process.cwd() + '/dist/index.html');
-		});
-	
-	app.route( '/login/:user' ) // '/login/:user'
-		.get(isLoggedIn, (req, res) => {
-      console.log(req.user.twitter)
-      //res.redirect('/user/' + req.user.twitter['location']);
-			res.sendFile( process.cwd() + '/public/index.js' );
-    //res.json({success: req.url, user: req.user.twitter['username']})
-		});
-		
-	app.route( '/user/:location' )	
-		.get( handleServer.userLocation );
-			
-	app.route( '/api/businesses/:search' )
-		.post( handleServer.getNightlife );
-	
-	app.route( '/api/:id/clicks' )
-		.get(  handleServer.getClicks )
-		.post( handleServer.addClick );		
-		
-	app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
-
-	app.route( '/auth/twitter/callback' )
-		.get( cors(options), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
-        (req, res) => {
-          let user = req.user.twitter['username'];
-       
-    	    res.redirect('/login/' + user);
-          //res.redirect('/')
-		});	
-		
-
-};
-
+	let clickHandler = new ClickHandler();
 	// let options = ({
 	// 	origin : 'https://glitch-night-owls.glitch.me',
 	// 	preflightContinue: true,
 	// 	optionsSuccessStatus: 200
 	//   })
+	
+	app.route('/')
+		.get( (req, res) => {
+			res.sendFile(path + '/public/index.html');
+		});
+	
+	app.route('/loggedUser')
+		.get(isLoggedIn, (req, res) => {
+			res.sendFile(path + '/public/index.html');
+		});
+		
+	app.route('/user/:location')	
+		.get(clickHandler.userLocation);
+			
+	app.route('/businesses/:search')
+		.post(clickHandler.getNightlife);
+	
+	app.route('/api/:id/clicks')
+		.get(clickHandler.getClicks)
+		.post(clickHandler.addClick);		
+		
+	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
+
+	app.route('/auth/twitter/callback')
+		.get(cors(), passport.authenticate('twitter', 
+      { failureRedirect: '/' }), (req, res) => {
+    	    res.redirect('/loggedUser');
+		});	
+		
+
+};
