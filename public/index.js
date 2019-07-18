@@ -327,12 +327,16 @@ const ajax = {
   
         if (typeof fn !== 'function') return;
         if (document.readyState === 'complete') return fn();
-  
+      
+console.log('ajax ready')
+      
         document.addEventListener('DOMContentLoaded', fn, false);
     },
     request: function ajaxRequest (method, url, data, callback) {
         var xmlhttp = new XMLHttpRequest();
-        console.log(url, data)
+        
+console.log('ajax request', url, data)
+        
         if(data) {
         var params = typeof data == 'string' ? data 
                      : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
@@ -340,12 +344,14 @@ const ajax = {
         
         xmlhttp.open(method, url, true);
         //xmlhttp.withCredentials = true;
+      
         xmlhttp.onreadystatechange = function () {
+console.log('onreadystatechange ', xmlhttp)
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
               callback(JSON.parse(xmlhttp.response));
             }
         };
-        console.log('params', params, xmlhttp)
+      
         xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         
@@ -358,7 +364,7 @@ class Main extends Component {
     render() {
       return (
         <BrowserRouter>
-          <Route exact path='/' strict component={App} />
+          <Route exact path='/' component={App} />
           <Route path='/user' render={ () => {
               return (<h1>Hello!</h1>)
               }} />

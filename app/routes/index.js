@@ -37,7 +37,7 @@ module.exports = (app, passport, cors) => {
 			
 	app.route( '/businesses/:search' )
 		.post( (req, res) => { 
-    console.log('looks like we made it')  
+    console.log('from routes, looks like we made it')  
     handleServer.getNightlife
   });
 	
