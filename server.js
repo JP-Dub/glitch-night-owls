@@ -26,21 +26,21 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.Promise = global.Promise;
 
-const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-	//open: true,
-	stats: {
-		colors: true
-	},
-});
+// const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+// 	//open: true,
+// 	stats: {
+// 		colors: true
+// 	},
+// });
 
-const server = new webpackDevServer(compiler, devServerOptions);
+// const server = new webpackDevServer(compiler, devServerOptions);
 
-app.use('/api', proxy({
-  target: 'https://glitch-night-owls.glitch.me'
-  })
-);
+// app.use('/api', proxy({
+//   target: 'https://glitch-night-owls.glitch.me'
+//   })
+// );
 
-app.use('/',
+app.use(
 	require("webpack-dev-middleware")(
     compiler, {
       noInfo    : true,
@@ -78,13 +78,11 @@ app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
 
-console.log(process.env)
 
-
-var serverPort = 3000;
-server.listen(serverPort, '127.0.0.1', () => {
-	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
-});
+// var serverPort = 3000;
+// server.listen(serverPort, '127.0.0.1', () => {
+// 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
+// });
 
 //HOSTNAME
 //'8f7bbb40c193'
