@@ -343,7 +343,7 @@ console.log('ajax request', url, data)
         }
         
         xmlhttp.open(method, url, true);
-        //xmlhttp.withCredentials = true;
+        xmlhttp.withCredentials = true;
       
         xmlhttp.onreadystatechange = function () {
 console.log('onreadystatechange ', xmlhttp)

@@ -35,14 +35,14 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const server = new webpackDevServer(compiler, devServerOptions);
 
 const options = {
-  target: 'http://glitch-night-owls.glitch.me',
+  target: 'https://api.glitch.com',
   pathRewrite: {
     '^/api' : ''
   }
 }
 
 const runProxy = proxy(options);
-console.log(process.env.PROJECT_NAME)
+
 app.use('/api', runProxy)
 // app.use(
 // 	require("webpack-dev-middleware")(
@@ -82,10 +82,7 @@ app.listen(port,  function () {
 	console.log('Node.js listening on port ' + port + '...');
 });
 
-// server.listen(8081, () => {
-//   console.log('Server listening...')
-// })
-
+console.log(process.env)
 
 
 var serverPort = 3000;
@@ -93,3 +90,6 @@ server.listen(serverPort, '127.0.0.1', () => {
 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
 });
 
+//HOSTNAME
+//'8f7bbb40c193'
+//'127.0.0.1'
