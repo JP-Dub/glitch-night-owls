@@ -14,7 +14,9 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
      
-app.options('/api', cors());  
+app.options('/', cors());  
+app.use(cors());
+
 require('dotenv').config();
 require('./app/config/passport')(passport);
 
@@ -85,10 +87,10 @@ app.listen(port,  function () {
 console.log(process.env)
 
 
-var serverPort = 3000;
-server.listen(serverPort, '127.0.0.1', () => {
-	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
-});
+// var serverPort = 3000;
+// server.listen(serverPort, '127.0.0.1', () => {
+// 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
+// });
 
 //HOSTNAME
 //'8f7bbb40c193'

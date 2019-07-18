@@ -35,7 +35,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
 			
-	app.route( '/businesses/:search' )
+	app.route( '/api/businesses/:search' )
 		.post(cors, (req, res) => { 
     console.log('from routes, looks like we made it')  
     handleServer.getNightlife
@@ -47,7 +47,7 @@ module.exports = (app, passport, cors) => {
 		
 	app.get( '/auth/twitter', passport.authenticate( 'twitter' ) );
 
-	app.route( '/auth/twitter/callback' )
+	app.route( '/api/auth/twitter/callback' )
 		.get( cors(), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
           let user = req.user.twitter['username'];

@@ -19,7 +19,7 @@ module.exports = {
       inline: true,
       port: 3000,
       //host: 'https://glitch-night-owls.glitch.me',
-      host: '172.17.0.1',
+      //host: '172.17.0.1',
       public: 'glitch-night-owls.glitch.me',
       allowedHosts: ['https://glitch-night-owls.glitch.me',
                      'http://glitch-night-owls.glitch.me',

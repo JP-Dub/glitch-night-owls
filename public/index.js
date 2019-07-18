@@ -44,7 +44,7 @@ export default class App extends Component {
     twitterHandler(evt) {
         evt.preventDefault();
         console.log('just clicked')
-        window.location.href = '/api/auth/twitter';
+        window.location.href = '/auth/twitter';
         //window.location.assign('/auth/twitter');
       // ajax.ready(ajax.request("GET", '/auth/twitter', {}, (login) => {
       //     console.log(login);                   
@@ -364,8 +364,8 @@ class Main extends Component {
     render() {
       return (
         <BrowserRouter>
-          <Route exact path='/' component={App} />
-          <Route path='/user' render={ () => {
+          <Route exact path='/' strict component={App} />
+          <Route exact path='/user' strict render={ () => {
               return (<h1>Hello!</h1>)
               }} />
         </BrowserRouter>
