@@ -6,6 +6,7 @@ const express    = require('express'),
       passport   = require('passport'),
 	    session    = require('express-session'),
       cors       = require('cors'),
+      proxy      = require('http-proxy-middleware'),
 	    app        = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -30,33 +31,23 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
 		colors: true
 	},
-  // allowedHosts: ['https://glitch-night-owls.glitch.me',
-  //                'http://glitch-night-owls.glitch.me',
-  //                'https://api.glitch.com',
-  //                'https://glitch.com'],
-  // port: 3000,
-
-  // proxy : {
-  // '/api' : {
-  //   target: 'https://glitch-night-owls.glitch.me',
-  //   pathRewrite : {'^/api' : ''},
-  //   secure: true
-  // }
-  // }
-
 });
 
- const server = new webpackDevServer(compiler, devServerOptions);
+const server = new webpackDevServer(compiler, devServerOptions);
 
+app.use('/api', proxy({
+  target: 'https://glitch-night-owls.glitch.me'
+  })
+);
 
-// app.use('/',
-// 	require("webpack-dev-middleware")(
-//     compiler, {
-//       noInfo    : true,
-//       publicPath: webpackConfig.output.publicPath	
-//     }
-// 	)
-// );
+app.use('/',
+	require("webpack-dev-middleware")(
+    compiler, {
+      noInfo    : true,
+      publicPath: webpackConfig.output.publicPath	
+    }
+	)
+);
 
 //app.use(require("webpack-hot-middleware")(compiler));
 

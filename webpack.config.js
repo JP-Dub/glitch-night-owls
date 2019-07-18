@@ -11,32 +11,32 @@ module.exports = {
       filename: '[name].bundle.js',
       publicPath: '/'
    },
-   // devServer: {
-   //   //useLocalIp: true,
-   //   stats: 'errors-only',
-   //   //https: true,
-   //    historyApiFallback: true,
-   //    inline: true,
-   //    port: 3000,
-   //    //host: 'https://glitch-night-owls.glitch.me',
-   //    //host: '172.17.0.1',
-   //    public: 'glitch-night-owls.glitch.me',
-   //    allowedHosts: ['https://glitch-night-owls.glitch.me',
-   //                   'http://glitch-night-owls.glitch.me',
-   //                   'https://api.glitch.com',
-   //                   'https://glitch.com'],
-   //    // proxy: {
-   //    //    '/api' : {
-   //    //       target: 'https://glitch-night-owls.glitch.me',
-   //    //       //target: 'http://localhost:8080',
-   //    //       //target: 'https://api.glitch.com:8080',
-   //    //       //target: 'https://172.17.0.1:8080',
-   //    //       //target: 'node',
-   //    //       pathRewrite : {'^/api' : ''},
-   //    //       secure: true
-   //    //    }
-   //    // }     
-   // },
+   devServer: {
+     //useLocalIp: true,
+     stats: 'errors-only',
+     //https: true,
+      historyApiFallback: true,
+      inline: true,
+      port: 3000,
+      //host: 'https://glitch-night-owls.glitch.me',
+      //host: '172.17.0.1',
+      public: 'glitch-night-owls.glitch.me',
+      allowedHosts: ['https://glitch-night-owls.glitch.me',
+                     'http://glitch-night-owls.glitch.me',
+                     'https://api.glitch.com',
+                     'https://glitch.com'],
+      // proxy: {
+      //    '/api' : {
+      //       target: 'https://glitch-night-owls.glitch.me',
+      //       //target: 'http://localhost:8080',
+      //       //target: 'https://api.glitch.com:8080',
+      //       //target: 'https://172.17.0.1:8080',
+      //       //target: 'node',
+      //       pathRewrite : {'^/api' : ''},
+      //       secure: true
+      //    }
+      // }     
+   },
    module: {
       rules: [
          {
