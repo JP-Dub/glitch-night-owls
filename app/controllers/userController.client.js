@@ -90,17 +90,17 @@ const ajax = {
        };
      };
      console.log(locale)
-     let printScreen = (obj) => {   
+     const printScreen = (obj) => {   
        let length = obj.length,
            i      = 0;
        console.log(obj)
        for(i; i < length; i++) {
-        let div      = document.createElement("DIV"),
-        img_div      = document.createElement('DIV'),
-        business_div = document.createElement('DIV'),
-        h2_ele       = document.createElement('H2'),
-        p_ele        = document.createElement('P'),
-        costDescription;
+        let div          = document.createElement("DIV"),
+            img_div      = document.createElement('DIV'),
+            business_div = document.createElement('DIV'),
+            h2_ele       = document.createElement('H2'),
+            p_ele        = document.createElement('P'),
+            costDescription;
                
         main.appendChild(div);
         div.id                 = 'businesscard_' + i;
@@ -134,7 +134,10 @@ const ajax = {
             
          // if statement used when getLocation() is called prior to loading the screen
          if(typeof locale === "object" && locale != null) {
+           let searchValue = document.getElementById('searchBar');
+           console.log('locale', searchValue.value)
            obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
+           if(!searchValue.value) searchValue.value = obj[i].location.zip_code;
          }
            
          // no image will revert to 'no image available' icon
