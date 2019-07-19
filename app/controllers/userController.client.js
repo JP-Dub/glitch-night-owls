@@ -89,17 +89,17 @@ const ajax = {
          main.removeChild(main.firstChild);
        };
      };
-     
+     console.log(locale)
      let printScreen = (obj) => {   
        let length = obj.length,
            i      = 0;
-      //console.log(obj)
+       console.log(obj)
        for(i; i < length; i++) {
-        let div     = document.createElement("DIV"),
-        img_div = document.createElement('DIV'),
-        business_div  = document.createElement('DIV'),
-        h2_ele = document.createElement('H2'),
-        p_ele  = document.createElement('P'),
+        let div      = document.createElement("DIV"),
+        img_div      = document.createElement('DIV'),
+        business_div = document.createElement('DIV'),
+        h2_ele       = document.createElement('H2'),
+        p_ele        = document.createElement('P'),
         costDescription;
                
         main.appendChild(div);
@@ -108,7 +108,7 @@ const ajax = {
         img_div.className      = 'img-holder';
         business_div.className = 'business';
         
-        let businesscard    = document.getElementById(div.id);
+        let businesscard = document.getElementById(div.id);
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
         
@@ -213,8 +213,7 @@ const ajax = {
      window.location.href = '/auth/twitter';
    });
 
-
-    
+  
    // listener for Search button
    search.addEventListener("click", (evt) => {
       evt.preventDefault();
@@ -229,21 +228,19 @@ const ajax = {
    if( regex.test(window.location.pathname) ) {
   
      ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
-     // $.get('/user/:location', (session) => { 
         let user     = session[0].twitter;
             userId   = session[0]._id,                   
             location = !user.previousSession ? user.location
                                              : user.previousSession;
 
-        input.setAttribute('placeholder', location)                      
+        input.setAttribute('placeholder', location);
                 
-        //$('#searchBar').attr('placeholder', location)
         postResults(location);
      }));
    };
      
 
-   // currently not in use
+   // run if search bar is empty when a search is exec.
    function getLocation(done) {
       if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(function(position) {
@@ -257,7 +254,7 @@ const ajax = {
       };
    };
   
-    // currently not in use - used in conjunction with getLocation()  
+    // used in conjunction with getLocation()  
    function showError(error) {
       switch(error.code) {
          case error.PERMISSION_DENIED:
