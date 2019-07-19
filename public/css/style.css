@@ -29,7 +29,7 @@
 
 @media all and (min-width: 1081px) {
     body {
-      font-size: 1.5em;
+      font-size: 1.5em; /*18px;*/
     }
     .img-holder {
   		margin-left: -1.00em !important;
@@ -38,7 +38,7 @@
  
 @media all and (max-width: 1080px) and (min-width: 641px) {
     body {
-      font-size: 1.2em; 
+      font-size: 1.2em; /*16*/
     }
     .img-holder {
   		margin-left: -1.25em !important;
@@ -47,7 +47,7 @@
  
 @media all and (max-width: 640px) and (min-width: 300px) {
     body {
-      font-size: .8em;
+      font-size: .8em; /*12px*/
     }
     .img-holder {
   		margin-left: -1.90em !important;
@@ -82,8 +82,11 @@ body {
 .business {
   padding: 1px;
 }
-
-
+/* 
+#login {
+  border: 1px solid rgb(206, 212, 218);
+}
+ */
 .fa  {
   font-Size: 1.2em;
   color: #1DA1F2;
@@ -93,16 +96,16 @@ h1 {
 	font-family: 'riffic_mediumbold', sans-serif;
 	font-size: 4.236em;
 	color: #e60000;
-	text-shadow: .0525em .0588em #000000;
+	text-shadow: .0525em .0588em #000000/*2px 3px #000000;*/
 }
  
  
 h2 { 
 	font-family: 'riffic_mediumbold', sans-serif;
-	font-size: 2em;
+	font-size: 2em;/*2.168em;*/
 	color: #e60000;
 	margin: 0;
-	left: .625em;
+	left: .625em;/*10px*/
 }
  
 p {
@@ -110,26 +113,44 @@ p {
  	line-height: 1.5em;
 }
 
+input[type=text] {
+	box-sizing: border-box;
+	outline: none;
+}
+
+.form-control {
+	box-shadow: 2px 2px 3px inset black;
+  }
+
+.form-control:focus {
+  	box-shadow: 1px 1px 3px inset black;
+  }
+
+input[type=text]:focus {
+	background-color: #daf1e0;
+}
 
 /****** Business thumbnail and info container ******/
 
 
 .img-holder {
-  margin-left: -12.25em; 
+  margin-left: -12.25em; /*-1.23em -14px;*/
   float: left;
+  /* border-right: 1px solid red !important; */
 }
 
 .img-thumbnail {
-  width: 9.5em; 
+  width: 9.5em; /*9.9em 50px;*/
   height: 9.5em;
   z-index: 2;
-  border-right: .1em solid gray;
+  border-right: .05em solid gray;
   border-bottom: .05em solid gray;
   border-radius: .3125em .3125em .3125em 0;
+  /* border: 1px lightslategray; */
 }
 
 .bttn {
- 	width: 9.5em; 
+ 	width: 9.5em; /*150px;*/
  	text-align: center;
 	border-radius: 0 .3125em .3125em .3125em;
 	outline: none;
@@ -140,18 +161,22 @@ p {
 }
 
 
-
 /****** Business name and address details ******/
 
 
 .business {
-  	margin-top: .625em;
-  	margin-left: 9.375em; 
+  	margin-top: .625em; /*10px;*/
+  	margin-left: 9.375em; /*150px;*/
 }
 
 .address {
-	margin-top: -1.3em 
+	margin-top: -1.3em /*-15px;*/
 }
+
+/*
+button {
+  	border-radius: .3125em;/*5px;
+}*/
 
 a:link {
     color: #e60000; 
@@ -166,7 +191,7 @@ a:visited {
 }
 
 a:hover {
-    color: white;
+    color: white;/*#00BCD4;*/
     background-color: transparent;
     text-decoration: none;
 }
