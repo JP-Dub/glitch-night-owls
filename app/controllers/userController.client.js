@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const twitter = document.getElementById('login'),
       search  = document.getElementById('search'),
-      input   = document.getElementById('input'),
+      input   = document.getElementById('location-input'),
       main    = document.getElementById('main');
 
 let userId, bars = [];
