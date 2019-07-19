@@ -236,13 +236,14 @@ const ajax = {
       !location? getLocation() : postResults(location);
    }); // search.EventListener()  
 
-       console.log(window.session)
+
    // checks if user is logged in /  returns previous session
    let regex = RegExp('^/login/.*');
-   console.log(window.location.pathname)
-   if( regex.test(window.location.pathname) ) {
-  
-     ajax.ready(ajax.request('POST', '/user/:location', {}, (session) => {
+   let login;
+   if( regex.test(window.location.pathname) && !login ) {
+     login = true;
+     console.log('login', login)
+     ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
         let user     = session[0].twitter;
             userId   = session[0]._id,                   
             location = !user.previousSession ? user.location

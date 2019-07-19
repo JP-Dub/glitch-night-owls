@@ -154,7 +154,7 @@ function ClickHandler () {
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
-      
+        console.log(user)
 				res.json(user);
 			});
 	}; 
