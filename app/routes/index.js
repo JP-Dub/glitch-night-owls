@@ -26,6 +26,34 @@ module.exports = (app, passport, cors) => {
 			res.sendFile(path + '/public/index.html');
 		});
 	
+	app.route('/login/:user')
+		.get(isLoggedIn, (req, res) => {
+			res.sendFile(path + '/public/index.html');
+		});
+		
+	app.route('/user/:location')	
+		.get(clickHandler.userLocation);
+			
+	app.route('/businesses/:search')
+		.post(clickHandler.getNightlife);
+	
+	app.route('/api/:id/clicks')
+		.get(clickHandler.getClicks)
+		.post(clickHandler.addClick);		
+		
+	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
+
+	app.route('/auth/twitter/callback')
+		.get(cors(), passport.authenticate('twitter', 
+      { failureRedirect: '/' }), (req, res) => {
+        let user = req.user.twitter['username'];
+    	  res.redirect('/login/' + user);
+		});	
+		
+
+};
+
+/*
 	app.route('/loggedUser')
 		.get(isLoggedIn, (req, res) => {
 			res.sendFile(path + '/public/index.html');
@@ -48,6 +76,4 @@ module.exports = (app, passport, cors) => {
       { failureRedirect: '/' }), (req, res) => {
     	    res.redirect('/loggedUser');
 		});	
-		
-
-};
+*/

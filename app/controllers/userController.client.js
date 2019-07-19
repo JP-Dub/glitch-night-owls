@@ -236,9 +236,10 @@ const ajax = {
       !location? getLocation() : postResults(location);
    }); // search.EventListener()  
 
-       
+       console.log(window.session)
    // checks if user is logged in /  returns previous session
    let regex = RegExp('^/login/.*');
+   console.log(window.location.pathname)
    if( regex.test(window.location.pathname) ) {
   
      ajax.ready(ajax.request('GET', '/user/:location', {}, (session) => {
