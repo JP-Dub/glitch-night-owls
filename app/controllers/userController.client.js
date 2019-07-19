@@ -2,6 +2,9 @@
 /*global navigator*/
 
 document.addEventListener("DOMContentLoaded", () => {
+  
+const regex = RegExp('^/login/.*');
+const loggedIn = regex.test(window.location.pathname);   
 
 const twitter = document.getElementById('login'),
       search  = document.getElementById('search'),
@@ -209,7 +212,7 @@ const ajax = {
       let url = '/businesses/search?term=bars&location=';        
       url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                         : locale;
-
+      
       // verify data to be sent;
       let data = !userId ? {} : {user: userId};
 
@@ -236,8 +239,8 @@ const ajax = {
 
    // checks if user is logged in /  returns previous session
    let regex = RegExp('^/login/.*');
-   let login;
-   if( regex.test(window.location.pathname) && !login ) {
+
+   if( regex.test(window.location.pathname)  ) {
      
      console.log('login', login)
      ajax.ready(ajax.request('GET', '/user/location', {}, (session) => {
