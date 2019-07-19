@@ -31,8 +31,8 @@ module.exports = (app, passport, cors) => {
 			res.sendFile(path + '/public/index.html');
 		});
 		
-	app.route('/login/user/:location')	
-		.get(clickHandler.userLocation);
+	app.route('/user/:location')	
+		.post(clickHandler.userLocation);
 			
 	app.route('/businesses/:search')
 		.post(clickHandler.getNightlife);

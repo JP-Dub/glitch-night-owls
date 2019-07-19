@@ -242,7 +242,7 @@ const ajax = {
    console.log(window.location.pathname)
    if( regex.test(window.location.pathname) ) {
   
-     ajax.ready(ajax.request('POST', '/login/user/:location', {}, (session) => {
+     ajax.ready(ajax.request('POST', '/user/:location', {}, (session) => {
         let user     = session[0].twitter;
             userId   = session[0]._id,                   
             location = !user.previousSession ? user.location
