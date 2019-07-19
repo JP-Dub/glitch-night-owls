@@ -150,7 +150,7 @@ function ClickHandler () {
 	
 	// returns the user location and cached search results after twitter log in
 	this.userLocation = (req, res) => {
-   
+   console.log('userLocation')
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
