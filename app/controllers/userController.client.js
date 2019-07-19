@@ -131,10 +131,13 @@ const ajax = {
            };
             
          bars.push(identity);
-            
+         
+         let distance = obj[i].distance;
+         let closest;    
          // if statement used when getLocation() is called prior to loading the screen
          if(typeof locale === "object" && locale != null) {
            let searchValue = document.getElementById('searchBar');
+           if(distance > obj[i].distance)  
            console.log('locale', searchValue.value)
            obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
            if(!searchValue.value) searchValue.value = obj[i].location.zip_code;
