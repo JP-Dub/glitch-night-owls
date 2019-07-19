@@ -3,9 +3,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-const search = document.getElementById('search'),
-      input  = document.getElementById('input'),
-      main   = document.getElementById('main');
+const twitter = document.getElementById('login'),
+      search  = document.getElementById('search'),
+      input   = document.getElementById('input'),
+      main    = document.getElementById('main');
 
 let userId, bars = [];
 
@@ -218,15 +219,12 @@ const ajax = {
           printScreen(obj);
       }))
    }; // postResults()
-   
-   
-   const twitter = document.getElementById('login');
+     
    // listener for Twitter login button
    twitter.addEventListener("click", (evt) => {
      evt.preventDefault();
      window.location.href = '/auth/twitter';
    });
-
   
    // listener for Search button
    search.addEventListener("click", (evt) => {
@@ -235,7 +233,6 @@ const ajax = {
       if(bars.length) bars = [];     
       !location? getLocation() : postResults(location);
    }); // search.EventListener()  
-
 
    // checks if user is logged in /  returns previous session
    let regex = RegExp('^/login/.*');
@@ -250,12 +247,11 @@ const ajax = {
                                              : user.previousSession;
 
         input.setAttribute('placeholder', location);
-                
-        postResults(location);
+        console.log(session.nightlife, session)
+       // postResults(location);
      }));
    };
      
-
    // run if search bar is empty when a search is exec.
    function getLocation(done) {
       if (navigator.geolocation) {
