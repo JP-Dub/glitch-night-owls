@@ -89,10 +89,12 @@ const ajax = {
          main.removeChild(main.firstChild);
        };
      };
-     console.log(locale)
+    
      const printScreen = (obj) => {   
        let length = obj.length,
-           i      = 0;
+           dist   = obj[length-1].distance,
+           i      = 0, zip;
+       
        console.log(obj)
        for(i; i < length; i++) {
         let div          = document.createElement("DIV"),
@@ -130,17 +132,23 @@ const ajax = {
            "name": obj[i].name
            };
             
-         bars.push(identity);
-         
-         let distance = obj[i].distance;
-         let closest;    
+         bars.push(identity);       
+  
          // if statement used when getLocation() is called prior to loading the screen
          if(typeof locale === "object" && locale != null) {
-           let searchValue = document.getElementById('searchBar');
-           if(distance > obj[i].distance)  
-           console.log('locale', searchValue.value)
+           let searchValue = document.getElementById('searchBar'); 
            obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
-           if(!searchValue.value) searchValue.value = obj[i].location.zip_code;
+           
+           // find closest zip code to coordinates
+           if(dist > obj[i].distance) {
+             dist = obj[i].distance;
+             zip = obj[i].location.zip_code;
+           }
+           
+           // write value of zip code to search bar
+           if(i === length -1) {
+             if(!searchValue.value) searchValue.value = zip;
+           }
          }
            
          // no image will revert to 'no image available' icon
