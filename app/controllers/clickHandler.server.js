@@ -142,7 +142,7 @@ function ClickHandler () {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
       
-           res.json(json);
+           return res.json(json);
      }).catch(error => {
        	res.end("We apologize, there has been an error processing your request. Error message: " + error);
     }); 
@@ -155,7 +155,7 @@ function ClickHandler () {
 			.exec((err, user) => {
 				if(err) throw err;       
         
-				res.json(user);
+				return res.json(user);
 			});
 	}; 
 

@@ -238,18 +238,17 @@ const ajax = {
    let regex = RegExp('^/login/.*');
    let login;
    if( regex.test(window.location.pathname) && !login ) {
-     login = true;
+     
      console.log('login', login)
-//      ajax.ready(ajax.request('GET', '/user/location', {}, (session) => {
-//         let user     = session[0].twitter;
-//             userId   = session[0]._id,                   
-//             location = !user.previousSession ? user.location
-//                                              : user.previousSession;
-
-//         input.setAttribute('placeholder', location);
-//         console.log(session.nightlife, session)
-       // postResults(location);
-    // }));
+     ajax.ready(ajax.request('GET', '/user/location', {}, (session) => {
+        let user     = session[0].twitter,                
+            location = !user.previousSession ? user.location
+                                             : user.previousSession;
+           console.log(session)
+        input.setAttribute('placeholder', location);
+       
+       return postResults(location);
+     }));
    };
      
    // run if search bar is empty when a search is exec.
@@ -290,7 +289,16 @@ const ajax = {
 
 
 
+/*
+        let user     = session[0].twitter;
+            userId   = session[0]._id,                  
+            location = !user.previousSession ? user.location
+                                             : user.previousSession;
 
+        input.setAttribute('placeholder', location);
+        console.log(session.nightlife, session)
+       return postResults(location);
+*/
 
 
 

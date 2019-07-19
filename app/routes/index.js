@@ -32,14 +32,14 @@ module.exports = (app, passport, cors) => {
 		});
 		
 	app.route('/user/location')	
-		.get(clickHandler.userLocation);
+		.get(isLoggedIn, clickHandler.userLocation);
 			
 	app.route('/businesses/:search')
 		.post(clickHandler.getNightlife);
 	
 	app.route('/api/:id/clicks')
-		.get(clickHandler.getClicks)
-		.post(clickHandler.addClick);		
+		.get( clickHandler.getClicks)
+		.post(isLoggedIn, clickHandler.addClick);		
 		
 	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
 
