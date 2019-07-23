@@ -108,60 +108,49 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-    Users.findOneAndUpdate({
-      'session.location' : /\w*/
-    }, {
-      'session.location' : req.query.location
-    }, {
-      upsert : true,
-      new    : true,
-    }).exec( (err, session) => {
-      if(err) console.log(err);
-      console.log(session);
-//       if(!session) {
-        
-//         let newUser = new Users();
-        
-//         newUser.session.location = req.query.location;
-        
-//         newUser.save( (err, pass) => {
-//           if(err) console.log(err);
-//           console.log('pass', pass);
-//         })
-//      }
-    });  
+    // Users.findOneAndUpdate({
+    //   'session.location' : /\w*/
+    // }, {
+    //   'session.location' : req.query.location
+    // }, {
+    //   upsert : true,
+    //   new    : true,
+    // }).exec( (err, session) => {
+    //   if(err) console.log(err);
+    //   console.log(session);
+    // });  
     
-    
-      // if user authenticates save location to user
-     // if(!req.body.user) {
-     //   console.log('updated locale session')
-     //   Users.findOneAndUpdate({
-     //         _id: '5c59ed1e9148306b65d5a1a3'
-     //        }, {
-     //         session: req.query.location
-     //        }, {
-     //         upsert: true,
-     //         new   : true
-     //        })
-     //        .exec( (err, logged) => {
-     //     console.log('logged', logged)
-     //          if(err) throw err; 
-     //        });
-     // } else {
-     //   console.log('updated user session')
-     //   Users.findOneAndUpdate({ 
-     //        '_id' : req.body.user
-     //        }, {
-     //        'twitter.previousSession' : req.query.location
-     //        }, {
-     //        new   : true, 
-     //        upsert: true
-     //        })
-     //      	.exec((err, success) => {
-     //     console.log('success', success)
-     //         	if(err) return console.error(err);
-     //    	  });    
-     // };
+    console.log('req.body', req.body)
+     //if user authenticates save location to user
+     if(!req.body.user) {
+       console.log('updated locale session')
+       Users.findOneAndUpdate({
+             'session.location' : /\w*/
+            }, {
+             'session.location' : req.query.location
+            }, {
+             upsert: true,
+             new   : true
+            })
+            .exec( (err, logged) => {
+         console.log('logged', logged)
+              if(err) throw err; 
+            });
+     } else {
+       console.log('updated user session')
+       Users.findOneAndUpdate({ 
+            '_id' : req.body.user
+            }, {
+            'twitter.previousSession' : req.query.location
+            }, {
+            new   : true, 
+            upsert: true
+            })
+          	.exec((err, success) => {
+         console.log('success', success)
+             	if(err) return console.error(err);
+        	  });    
+     };
         
       // Yelp Fusion api	
      Client.search(request).then(response => {
@@ -176,11 +165,11 @@ function ClickHandler () {
 	
 	// returns the user location and cached search results after twitter log in
 	this.userLocation = (req, res) => {
-   console.log('userLocation')
+   console.log('userLocation', req.user)
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
-        
+        console.log('user', user)
 				return res.json(user);
 			});
 	}; 
