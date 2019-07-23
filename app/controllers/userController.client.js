@@ -99,7 +99,7 @@ const ajax = {
            dist   = obj[length-1].distance,
            i      = 0, zip;
        
-       console.log(obj)
+       //console.log(obj)
        for(i; i < length; i++) {
         let div          = document.createElement("DIV"),
             img_div      = document.createElement('DIV'),
@@ -244,14 +244,17 @@ const ajax = {
    if( loggedIn ) {
      
      ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-        let user     = req.twitter,                
+        let user     = req.twitter,
             location = user.previousSession; 
-            !location ? req.session.location
+            !location && location != 'undefined undefined' ? req.session.location
                       : user.location;
+       
+        userId = user.id;
+           
            console.log('req', req)
         //input.setAttribute('placeholder', location);
        
-       return postResults(location);
+        return postResults(location);
      }));
    };
      

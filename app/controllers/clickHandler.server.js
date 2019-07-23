@@ -173,7 +173,7 @@ function ClickHandler () {
             
             const userObj = {
               location : loc[0].session.location,
-              twitter : user[0].twitter
+              twitter  : user[0].twitter
             }
             console.log('user', userObj)
             return res.json(userObj);
