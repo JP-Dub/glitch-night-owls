@@ -48,7 +48,7 @@ const ajax = {
    function loadBttnEvents() { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength  = twitterBttn.length,
-          url         = 'api/:id/clicks';
+          url         = '../api/:id/clicks';
       
 
       ajax.ready(ajax.request("GET", url, {}, (clicks) => {
