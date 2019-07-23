@@ -251,8 +251,8 @@ const ajax = {
        
         userId = user.id;
            
-           console.log('req', req)
-        //input.setAttribute('placeholder', location);
+        console.log('req', req)
+        input.setAttribute('placeholder', location);
        
         return postResults(location);
      }));

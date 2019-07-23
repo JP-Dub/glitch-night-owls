@@ -123,7 +123,7 @@ function ClickHandler () {
     
     console.log('req.session', req.session)
      //if user authenticates save location to user
-     if(!req.body.user) {
+     if(!req.session) { //req.body.user
        console.log('updated locale session')
        Users.findOneAndUpdate({
              'session.location' : /\w*/
@@ -139,7 +139,7 @@ function ClickHandler () {
      } else {
        console.log('updated user session')
        Users.findOneAndUpdate({ 
-            '_id' : req.body.user
+            '_id' : req.session.passport.user //req.body.user
             }, {
             'twitter.previousSession' : req.query.location
             }, {
