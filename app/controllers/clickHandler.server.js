@@ -120,10 +120,10 @@ function ClickHandler () {
     //   console.log(session);
     // });  
     
-    
+    console.log(req.body, req.params, req.query)
     console.log('req.session', req.session)
      //if user authenticates save location to user
-     if(!req.session) { //req.body.user
+     if(!req.session.passport) { //req.body.user
        console.log('updated locale session')
        Users.findOneAndUpdate({
              'session.location' : /\w*/
