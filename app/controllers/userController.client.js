@@ -3,8 +3,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   
-const regex = RegExp('^/login/.*');
-const loggedIn = regex.test(window.location.pathname);   
+const loggedIn = regex.test(window.location.pathname),
+      regex = RegExp('^/login/.*');
 
 const twitter = document.getElementById('login'),
       search  = document.getElementById('search'),
@@ -222,6 +222,7 @@ const ajax = {
           printScreen(obj);
       }))
    }; // postResults()
+  
      
    // listener for Twitter login button
    twitter.addEventListener("click", (evt) => {
@@ -236,10 +237,9 @@ const ajax = {
       if(bars.length) bars = [];     
       !location? getLocation() : postResults(location);
    }); // search.EventListener()  
+  
 
    // checks if user is logged in /  returns previous session
-  // let regex = RegExp('^/login/.*');
-
    if( loggedIn ) {
      
      ajax.ready(ajax.request('GET', '/user/location', {}, (session) => {
