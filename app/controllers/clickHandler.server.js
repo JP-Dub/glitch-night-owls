@@ -167,18 +167,21 @@ function ClickHandler () {
    
     let storedLocation;
     
-    Users.find({'session.location' : /\w*/}).exec((err, loc) => {
-      if(err)console.log(err);
-      storedLocation = loc[0].session.location;
-    });
+
     
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
-        //console.log('user', user)
-        user.session['location'] = storedLocation;
-      console.log('myUser', user)
-				return res.json(user);
+          Users.find({'session.location' : /\w*/}).exec((err, loc) => {
+            if(err)console.log(err);
+            const userObj = {
+              location : storedLocation,
+              user : user[0]
+            }
+            Object.create(userObj)
+            return res.json(user, storedLocation);
+          });
+				
 			});
 	}; 
 

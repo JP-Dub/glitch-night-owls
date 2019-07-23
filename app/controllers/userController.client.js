@@ -243,11 +243,12 @@ const ajax = {
    // checks if user is logged in /  returns previous session
    if( loggedIn ) {
      
-     ajax.ready(ajax.request('GET', '/user/location', {}, (session) => {
-        let user     = session[0].twitter,                
-            location = !user.previousSession ? user.location
-                                             : user.previousSession;
-           console.log(user, session)
+     ajax.ready(ajax.request('GET', '/user/location', {}, (member, session) => {
+        let user     = member[0].twitter,                
+            location = user.previousSession; 
+            !location ? session.location
+                      : user.location;
+           console.log(member, session)
         input.setAttribute('placeholder', location);
        
        return postResults(location);
