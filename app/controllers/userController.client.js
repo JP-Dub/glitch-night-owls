@@ -227,6 +227,7 @@ const ajax = {
    // listener for Twitter login button
    twitter.addEventListener("click", (evt) => {
      evt.preventDefault();
+     
      window.location.href = '/auth/twitter';
    });
   
