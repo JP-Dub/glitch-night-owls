@@ -108,9 +108,27 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-    Users.find({}).exec( (err, session) => {
+    Users.findOneAndUpdate({
+      'session.location' : 'west palm beach'
+    }, {
+      'session.location' : req.query.location
+    }, {
+      upsert : true,
+      new    : true,
+    }).exec( (err, session) => {
       if(err) console.log(err);
       console.log(session);
+//       if(!session) {
+        
+//         let newUser = new Users();
+        
+//         newUser.session.location = req.query.location;
+        
+//         newUser.save( (err, pass) => {
+//           if(err) console.log(err);
+//           console.log('pass', pass);
+//         })
+//      }
     });  
     
     
