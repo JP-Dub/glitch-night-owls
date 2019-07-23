@@ -108,9 +108,9 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-    Users.findOneAndUpdate({}).exec( (err, log) => {
+    Users.find({}).exec( (err, session) => {
       if(err) console.log(err);
-      console.log(log);
+      console.log(session);
     });  
     
     

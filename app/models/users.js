@@ -4,7 +4,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var NightOwl = new Schema({
-   session  : {},
+   session: {
+     location: Schema.Types.Mixed
+   },
 
    twitter: {
      id             : String,
