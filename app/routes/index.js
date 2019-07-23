@@ -16,11 +16,11 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	let clickHandler = new ClickHandler();
-	// let options = ({
-	// 	origin : 'https://glitch-night-owls.glitch.me',
-	// 	preflightContinue: true,
-	// 	optionsSuccessStatus: 200
-	//   })
+	let options = ({
+		origin : 'https://glitch-night-owls.glitch.me',
+		preflightContinue: true,
+		optionsSuccessStatus: 200
+	  })
 	
 	app.route('/')
 		.get( (req, res) => {
@@ -41,7 +41,7 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/api/:id/clicks')
 		.get( clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick);		
+		.post(isLoggedIn, cors(), clickHandler.addClick);		
 		
 	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
 

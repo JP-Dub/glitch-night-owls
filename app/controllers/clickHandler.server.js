@@ -58,7 +58,7 @@ function ClickHandler () {
 
 	this.addClick = (req, res) => {
 		Users
-			.findOne({'_id': req.body.userId})
+			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
 			.exec((err, result) => {
 					if (err) throw err; 
@@ -139,7 +139,7 @@ function ClickHandler () {
      } else {
        console.log('updated user session')
        Users.findOneAndUpdate({ 
-            '_id' : req.session.passport.user //req.body.user
+            '_id' : req.session.passport['user'] //req.body.user
             }, {
             'twitter.previousSession' : req.query.location
             }, {
@@ -148,6 +148,7 @@ function ClickHandler () {
             })
           	.exec((err, success) => {
              	if(err) return console.error(err);
+              console.log('success', success)
         	  });    
      };
         
