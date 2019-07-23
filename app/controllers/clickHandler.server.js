@@ -110,7 +110,7 @@ function ClickHandler () {
      
       // if user authenticates save location to user
      if(!req.body.user) {
-       /console.log('updated locale session')
+       console.log('updated locale session')
        Users.findOneAndUpdate({
              _id: '5c59ed1e9148306b65d5a1a3'
             }, {
@@ -120,6 +120,7 @@ function ClickHandler () {
              new   : true
             })
             .exec( (err, logged) => {
+         console.log('logged', logged)
               if(err) throw err; 
             });
      } else {
@@ -133,6 +134,7 @@ function ClickHandler () {
             upsert: true
             })
           	.exec((err, success) => {
+         console.log('success', success)
              	if(err) return console.error(err);
         	  });    
      };
