@@ -108,36 +108,42 @@ function ClickHandler () {
             limit   : 20,
         	};
      
+    Users.findOneAndUpdate({}).exec( (err, log) => {
+      if(err) console.log(err);
+      console.log(log);
+    });  
+    
+    
       // if user authenticates save location to user
-     if(!req.body.user) {
-       console.log('updated locale session')
-       Users.findOneAndUpdate({
-             _id: '5c59ed1e9148306b65d5a1a3'
-            }, {
-             session: req.query.location
-            }, {
-             upsert: true,
-             new   : true
-            })
-            .exec( (err, logged) => {
-         console.log('logged', logged)
-              if(err) throw err; 
-            });
-     } else {
-       console.log('updated user session')
-       Users.findOneAndUpdate({ 
-            '_id' : req.body.user
-            }, {
-            'twitter.previousSession' : req.query.location
-            }, {
-            new   : true, 
-            upsert: true
-            })
-          	.exec((err, success) => {
-         console.log('success', success)
-             	if(err) return console.error(err);
-        	  });    
-     };
+     // if(!req.body.user) {
+     //   console.log('updated locale session')
+     //   Users.findOneAndUpdate({
+     //         _id: '5c59ed1e9148306b65d5a1a3'
+     //        }, {
+     //         session: req.query.location
+     //        }, {
+     //         upsert: true,
+     //         new   : true
+     //        })
+     //        .exec( (err, logged) => {
+     //     console.log('logged', logged)
+     //          if(err) throw err; 
+     //        });
+     // } else {
+     //   console.log('updated user session')
+     //   Users.findOneAndUpdate({ 
+     //        '_id' : req.body.user
+     //        }, {
+     //        'twitter.previousSession' : req.query.location
+     //        }, {
+     //        new   : true, 
+     //        upsert: true
+     //        })
+     //      	.exec((err, success) => {
+     //     console.log('success', success)
+     //         	if(err) return console.error(err);
+     //    	  });    
+     // };
         
       // Yelp Fusion api	
      Client.search(request).then(response => {

@@ -3,8 +3,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   
-const loggedIn = regex.test(window.location.pathname),
-      regex = RegExp('^/login/.*');
+const regex    = RegExp('^/login/.*'),
+      loggedIn = regex.test(window.location.pathname);
 
 const twitter = document.getElementById('login'),
       search  = document.getElementById('search'),
@@ -247,7 +247,7 @@ const ajax = {
         let user     = session[0].twitter,                
             location = !user.previousSession ? user.location
                                              : user.previousSession;
-           console.log(user)
+           console.log(user, session)
         input.setAttribute('placeholder', location);
        
        return postResults(location);

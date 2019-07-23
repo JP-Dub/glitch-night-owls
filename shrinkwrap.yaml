@@ -5,7 +5,7 @@ dependencies:
   express: 4.16.4
   express-session: 1.16.2
   math.js: 1.1.43
-  mongoose: 5.6.5
+  mongoose: 5.6.6
   passport: 0.4.0
   passport-twitter: 1.0.4
   yelp-fusion: 3.0.0
@@ -34,7 +34,7 @@ packages:
       integrity: sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
   /async/2.6.2:
     dependencies:
-      lodash: 4.17.14
+      lodash: 4.17.15
     dev: false
     resolution:
       integrity: sha512-H1qVYh1MYhEEFLsP97cVKqCGo7KfCyTt6uEWqsTBr9SO84oK9Uwbyd/yCW+6rKJLHksBNUVWZDAjfS+Ccx0Bbg==
@@ -321,10 +321,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6hHxsp9e6zQU8nXsP+02HGWXwTkOEw6IROhF2ZA28cYbUk4eJ6QbtZvdqZOdD9YPKghG3apk5eOCvs+tLl3lRg==
-  /lodash/4.17.14:
+  /lodash/4.17.15:
     dev: false
     resolution:
-      integrity: sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
+      integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
   /math.js/1.1.43:
     dev: false
     resolution:
@@ -408,7 +408,7 @@ packages:
       mongoose: '*'
     resolution:
       integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
-  /mongoose/5.6.5:
+  /mongoose/5.6.6:
     dependencies:
       async: 2.6.2
       bson: 1.1.1
@@ -427,7 +427,7 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-c8bIo8mxbf1ybwo9jgPKcJRICQBlIMKwDWt2A+M7h0AutroQ5EqzRAYOK1vrHwwwq00EcJyVwjVBW2wv8E9Wfw==
+      integrity: sha512-5uecJSyl2TwbGM9vJteP4C54zsQL6qllq1qe/JPGO3oqIWcK/PnzCL91E0gfPH5VVpvWGX+6PafNYmU3NK8S7w==
   /mpath/0.6.0:
     dev: false
     engines:
@@ -808,7 +808,7 @@ specifiers:
   express: ^4.16.4
   express-session: ^1.16.1
   math.js: ^1.1.43
-  mongoose: ^5.6.5
+  mongoose: ^5.6.6
   passport: ^0.4.0
   passport-twitter: ^1.0.4
   yelp-fusion: ^3.0.0
