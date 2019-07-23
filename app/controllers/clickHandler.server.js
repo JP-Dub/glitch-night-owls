@@ -109,7 +109,7 @@ function ClickHandler () {
         	};
      
     Users.findOneAndUpdate({
-      'session.location' : 'west palm beach'
+      'session.location' : /\w*/
     }, {
       'session.location' : req.query.location
     }, {
