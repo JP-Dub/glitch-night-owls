@@ -246,7 +246,7 @@ const ajax = {
         let user     = session[0].twitter,                
             location = !user.previousSession ? user.location
                                              : user.previousSession;
-           console.log(session)
+           console.log(user)
         input.setAttribute('placeholder', location);
        
        return postResults(location);
