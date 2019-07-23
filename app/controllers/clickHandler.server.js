@@ -120,6 +120,12 @@ function ClickHandler () {
     //   console.log(session);
     // });  
     
+    Users.find({'session.location' : /\w*/}).exec((err, loc) => {
+      if(err)console.log(err);
+      console.log('loc', loc)
+    });
+    
+    
     console.log('req.body', req.body)
      //if user authenticates save location to user
      if(!req.body.user) {
