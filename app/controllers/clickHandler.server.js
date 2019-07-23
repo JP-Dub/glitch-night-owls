@@ -120,13 +120,8 @@ function ClickHandler () {
     //   console.log(session);
     // });  
     
-    Users.find({'session.location' : /\w*/}).exec((err, loc) => {
-      if(err)console.log(err);
-      console.log('loc', loc)
-    });
     
-    
-    console.log('req.body', req.body)
+    console.log('req.session', req.session)
      //if user authenticates save location to user
      if(!req.body.user) {
        console.log('updated locale session')
@@ -139,7 +134,6 @@ function ClickHandler () {
              new   : true
             })
             .exec( (err, logged) => {
-         console.log('logged', logged)
               if(err) throw err; 
             });
      } else {
@@ -153,7 +147,6 @@ function ClickHandler () {
             upsert: true
             })
           	.exec((err, success) => {
-         console.log('success', success)
              	if(err) return console.error(err);
         	  });    
      };
@@ -171,11 +164,20 @@ function ClickHandler () {
 	
 	// returns the user location and cached search results after twitter log in
 	this.userLocation = (req, res) => {
-   console.log('userLocation', req.user)
+   
+    let storedLocation;
+    
+    Users.find({'session.location' : /\w*/}).exec((err, loc) => {
+      if(err)console.log(err);
+      storedLocation = loc[0].session.location;
+    });
+    
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
-        console.log('user', user)
+        //console.log('user', user)
+        user.session['location'] = storedLocation;
+      console.log('myUser', user)
 				return res.json(user);
 			});
 	}; 
