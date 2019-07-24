@@ -10,7 +10,11 @@ const twitter = document.getElementById('login'),
       search  = document.getElementById('search'),
       input   = document.getElementById('location-input'),
       main    = document.getElementById('main');
+  
+const myButton  = document.getElementsByClass("input-group-btn");
 
+  console.log()
+  
 let userId, bars = [];
 
 const ajax = {

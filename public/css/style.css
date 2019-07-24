@@ -105,7 +105,7 @@ p {
 }
 
 
-/****** button and input styling ******/
+/****** twitter/search button and input styling ******/
 
 .fa  {
   font-Size: 1.2em;
@@ -115,6 +115,10 @@ p {
 .btn {
   box-shadow: -1px 1px 3px 0px inset #333333;
   outline: none;
+}
+
+.input-group-btn:first-child {
+  background-color: red;
 }
 
 .btn:hover {
