@@ -11,9 +11,9 @@ const twitter = document.getElementById('login'),
       input   = document.getElementById('location-input'),
       main    = document.getElementById('main');
   
-const myButton  = document.getElementsByClass("input-group-btn");
+const myButton  = document.getElementsByClassName("input-group-btn");
 
-  console.log()
+  console.log(myButton)
   
 let userId, bars = [];
 

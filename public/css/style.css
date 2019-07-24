@@ -113,30 +113,39 @@ p {
 }
 
 .btn {
-  box-shadow: -1px 1px 3px 0px inset #333333;
+  box-shadow: -1px 1px 3px 0px inset #333;
   outline: none;
-}
-
-.input-group-btn:first-child {
-  background-color: red;
-}
-
-.btn:hover {
-  box-shadow: 0px 1px 3px inset #333333;
-  background-color: #daf1e0;
-  outline: none;
-  border: 0;
   width: 42px;
 }
 
+.btn:hover {
+  box-shadow: 0px 1px 3px inset #333;
+  background-color: #daf1e0;
+  outline: none;
+  border: 0;
+/*   width: 42px; */
+}
+
+#login {
+  box-shadow: 1px 1px 3px 0px inset #333;
+}
+
+/* #login:hover {
+  box-shadow: 
+} */
+
+#search:hover {
+  
+}
+
 #location-input {
-	box-shadow: 0px 2px 4px inset #333333;
+	box-shadow: 0px 2px 4px inset #333;
   box-sizing: border-box;
   color: black;
   }
 
 #location-input:focus {
-  box-shadow: 1px 1px 3px inset #333333;
+  box-shadow: 1px 1px 3px inset #333;
 	background-color: #daf1e0;
   box-sizing: border-box;
   border: 0;  
