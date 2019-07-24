@@ -113,11 +113,12 @@ p {
 }
 
 #login {
-  box-shadow: 1px 2px 4px 0px inset #333;
+  box-shadow: 1px 2px 4px inset #333;
 }
 
 .btn {
-  box-shadow: -1px 2px 4px 0px inset #333;
+  box-sizing: border-box;
+  box-shadow: -1px 2px 4px inset #333;
   width: 42px;
 }
 
@@ -128,8 +129,9 @@ p {
 /*   width: 42px; */
 }
 
-#search:hover {
-  
+#login:hover {
+  box-shadow: 0p 0px 0px inset #333;
+  backgroun-color: blue;
 }
 
 #location-input {
