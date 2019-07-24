@@ -113,19 +113,20 @@ p {
 }
 
 .btn {
-  box-shadow: 2px 2px 4px inset #333333;
+  box-shadow: -1px 1px 3px 0px inset #333333;
   outline: none;
 }
 
 .btn:hover {
-  box-shadow: 1px 1px 3px inset #333333;
+  box-shadow: 0px 1px 3px inset #333333;
   background-color: #daf1e0;
   outline: none;
   border: 0;
+  width: 42px;
 }
 
 #location-input {
-	box-shadow: 2px 2px 4px inset #333333;
+	box-shadow: 0px 2px 4px inset #333333;
   box-sizing: border-box;
   color: black;
   }
