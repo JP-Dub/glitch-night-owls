@@ -119,6 +119,7 @@ p {
 
 .btn:hover {
   background-color: #daf1e0;
+  outline: none;
 }
 
 input[type=text] {
@@ -136,6 +137,7 @@ input[type=text] {
 
 input[type=text]:focus {
 	background-color: #daf1e0;
+  outline: none;
 }
 
 /****** Business thumbnail and info container ******/
