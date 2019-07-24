@@ -2,57 +2,58 @@
 
 @font-face {
 	font-family: 'Roboto';
-  	font-style: normal;
-  	font-weight: 400;
-  	src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  	font-family: 'Roboto';
-  	font-style: normal;
-  	font-weight: 500;
-  	src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'riffic_mediumbold';
-    src: url('../fonts/riffic-bold-webfont.woff2') format('woff2'),
-         url('../fonts/riffic-bold-webfont.woff') format('woff'),
-         url('../fonts/riffic-bold-webfont.ttf') format('truetype'),
-         url('../fonts/riffic-bold-webfont.svg#riffic_mediumbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'riffic_mediumbold';
+  src: url('../fonts/riffic-bold-webfont.woff2') format('woff2'),
+       url('../fonts/riffic-bold-webfont.woff') format('woff'),
+       url('../fonts/riffic-bold-webfont.ttf') format('truetype'),
+       url('../fonts/riffic-bold-webfont.svg#riffic_mediumbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
 /****** Media Queries ******/
 
 @media all and (min-width: 1081px) {
-    body {
-      font-size: 1.5em; /*18px;*/
-    }
-    .img-holder {
-  		margin-left: -1.00em !important;
-    }
+  body {
+    font-size: 1.5em;
+  }
+  .img-holder {
+  	margin-left: -1.00em !important;
+  }
 }
  
 @media all and (max-width: 1080px) and (min-width: 641px) {
-    body {
-      font-size: 1.2em; /*16*/
-    }
-    .img-holder {
-  		margin-left: -1.25em !important;
-    }
+  body {
+    font-size: 1.2em;
+  }
+  .img-holder {
+    margin-left: -1.25em !important;
+  }
 }
  
 @media all and (max-width: 640px) and (min-width: 300px) {
-    body {
-      font-size: .8em; /*12px*/
-    }
-    .img-holder {
-  		margin-left: -1.90em !important;
-    }
+  body {
+    font-size: .8em; 
+  }
+  .img-holder {
+    margin-left: -1.90em !important;
+  }
 }
+
 
 /****** Main Styling ******/
 
@@ -69,10 +70,10 @@ body {
 }
 
 [id*='businesscard_'] {
-  margin-top : .625em;
-  border : 1px solid grey;
-  border-radius : .3em;
-  background-color : #daf1e0;  
+  margin-top: .625em;
+  border: 1px solid grey;
+  border-radius: .3em;
+  background-color: #daf1e0;  
 }
 
 .container  {
@@ -81,11 +82,6 @@ body {
 
 .business {
   padding: 1px;
-}
-
-.fa  {
-  font-Size: 1.2em;
-  color: #1DA1F2;
 }
   
 h1 {
@@ -106,6 +102,14 @@ h2 {
 p {
  	font-size: 1em;
  	line-height: 1.5em;
+}
+
+
+/****** button and input styling ******/
+
+.fa  {
+  font-Size: 1.2em;
+  color: #1DA1F2;
 }
 
 .btn {
@@ -135,7 +139,8 @@ input[type=text]:focus {
   border: 0;
 }
 
-/****** Business thumbnail and info container ******/
+
+/****** Business thumbnail and info container (div) ******/
 
 .img-holder {
   margin-left: -12.25em;
