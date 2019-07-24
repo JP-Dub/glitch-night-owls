@@ -111,44 +111,35 @@ p {
   font-Size: 1.2em;
   color: #1DA1F2;
 }
-/* 
+
 .btn {
   box-sizing: border-box;
-  box-shadow: -1px 2px 4px inset #333;
   width: 42px;
 }
 
 .btn:hover {
-  box-shadow: 0px 1px 3px inset #333;
   background-color: #daf1e0;
   border: 0;
-} */
+} 
 
-#login {
+#login.btn {
   box-shadow: 1px 2px 4px inset #333;
-  width: 42px;
 }
 
 #login:hover {
   box-shadow: 0p 0px 0px inset #333;
-  background-color: #daf1e0;
-  border: 0;
 }
 
-#seach {
- box-sizing: border-box;
+#search.btn {
   box-shadow: -1px 2px 4px inset #333;
-  width: 42px;  
 }
 
-#search:hover {
+#search.btn:hover {
   box-shadow: 0px 1px 3px inset #333;
-  background-color: #daf1e0;
-  border: 0;
 }
 
 #location-input {
-	box-shadow: 0px 2px 4px inset #333;
+	box-shadow: .5px 2px 4px inset #333;
   box-sizing: border-box;
   color: black;
 /*   height: 34px; */
