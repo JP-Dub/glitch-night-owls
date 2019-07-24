@@ -113,6 +113,31 @@ p {
 }
 
 .btn {
+  box-shadow: 2px 2px 4px inset #333333;
+  outline: none;
+}
+
+.btn:hover {
+  box-shadow: 1px 1px 3px inset #333333;
+  background-color: #daf1e0;
+  outline: none;
+  border: 0;
+}
+
+#location-input {
+	box-shadow: 2px 2px 4px inset #333333;
+  box-sizing: border-box;
+  color: black;
+  }
+
+#location-input:focus {
+  box-shadow: 1px 1px 3px inset #333333;
+	background-color: #daf1e0;
+  box-sizing: border-box;
+  border: 0;  
+}
+
+/* .btn {
   box-shadow: 1px 1px 3px inset black;
   outline: none;
 }
@@ -137,7 +162,7 @@ input[type=text] {
 input[type=text]:focus {
 	background-color: #daf1e0;
   border: 0;
-}
+} */
 
 
 /****** Business thumbnail and info container (div) ******/
