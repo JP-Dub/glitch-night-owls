@@ -97,62 +97,61 @@ const ajax = {
      const printScreen = (obj) => {   
        let length = obj.length,
            dist   = obj[length-1].distance,
-           i      = 0, zip;
+           zip;
        
-       //console.log(obj)
-       for(i; i < length; i++) {
-        let div          = document.createElement("DIV"),
-            img_div      = document.createElement('DIV'),
-            business_div = document.createElement('DIV'),
-            h2_ele       = document.createElement('H2'),
-            p_ele        = document.createElement('P'),
-            costDescription;
+       for(var i = 0; i < length; i++) {
+         let div          = document.createElement("DIV"),
+             img_div      = document.createElement('DIV'),
+             business_div = document.createElement('DIV'),
+             h2_ele       = document.createElement('H2'),
+             p_ele        = document.createElement('P'),
+             costDescription;
                
-        main.appendChild(div);
-        div.id                 = 'businesscard_' + i;
-        div.className          = 'container'; 
-        img_div.className      = 'img-holder';
-        business_div.className = 'business';
+       main.appendChild(div);
+       div.id                 = 'businesscard_' + i;
+       div.className          = 'container'; 
+       img_div.className      = 'img-holder';
+       business_div.className = 'business';
         
-        let businesscard = document.getElementById(div.id);
-        businesscard.appendChild(img_div);
-        businesscard.appendChild(business_div);     
+       let businesscard = document.getElementById(div.id);
+       businesscard.appendChild(img_div);
+       businesscard.appendChild(business_div);     
         
-        if(!obj[i].price) {
-            obj[i].price = '';         
-        }
+       if(!obj[i].price) {
+         obj[i].price = '';         
+       }
  
-        costDescription = {
-            '$'   : 'Inexpensive',
-            '$$'  : 'Moderate',
-            '$$$' : 'Pricey',
-            '$$$$': 'Ultra High End',
-            ''    : 'Unavailable'
-        }         
+       costDescription = {
+         '$'   : 'Inexpensive',
+         '$$'  : 'Moderate',
+         '$$$' : 'Pricey',
+         '$$$$': 'Ultra High End',
+         ''    : 'Unavailable'
+       }         
               
-         // nightlife cache
-         let identity = {
-           "id"  : obj[i].id,
-           "name": obj[i].name
-           };
+       // nightlife cache
+       let identity = {
+         "id"  : obj[i].id,
+         "name": obj[i].name
+       };
             
-         bars.push(identity);       
+       bars.push(identity);       
   
-         // if statement used when getLocation() is called prior to loading the screen
-         if(typeof locale === "object" && locale != null) {
-           let searchValue = document.getElementById('searchBar'); 
-           obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
+       // if statement used when getLocation() is called prior to loading the screen
+       if(typeof locale === "object" && locale != null) {
+         let searchValue  = document.getElementById('location-input'); 
+             obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
            
-           // find closest zip code to coordinates
-           if(dist > obj[i].distance) {
-             dist = obj[i].distance;
-             zip = obj[i].location.zip_code;
-           }
+         // find closest zip code to coordinates
+         if(dist > obj[i].distance) {
+           dist = obj[i].distance;
+           zip = obj[i].location.zip_code;
+         }
            
-           // write value of zip code to search bar
-           if(i === length -1) {
-             if(!searchValue.value) searchValue.value = zip;
-           }
+         // write value of zip code to search bar
+         if(i === length -1) {
+           if(!searchValue.value) searchValue.placeholder = zip;
+         }
          }
            
          // no image will revert to 'no image available' icon
