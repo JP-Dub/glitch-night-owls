@@ -114,7 +114,6 @@ p {
 
 .btn {
   box-shadow: 1px 1px 3px inset black;
-  z-index: 2;
 }
 
 input[type=text] {
