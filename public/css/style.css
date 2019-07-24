@@ -114,6 +114,11 @@ p {
 
 .btn {
   box-shadow: 1px 1px 3px inset black;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #daf1e0;
 }
 
 input[type=text] {
