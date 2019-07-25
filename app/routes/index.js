@@ -8,19 +8,18 @@ module.exports = (app, passport, cors) => {
 	
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {
-      console.log('user is Authenticated')
-			return next()
+			return next();
 		} else {
-			res.redirect('/auth/twitter')
+			res.redirect('/auth/twitter');
 		}
 	}
 	
 	let clickHandler = new ClickHandler();
 	let options = ({
-		origin : 'https://glitch-night-owls.glitch.me',
+	  origin : 'https://glitch-night-owls.glitch.me',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
-	  })
+	});
 	
 	app.route('/')
 		.get( (req, res) => {
@@ -29,7 +28,6 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
-    //console.log('login', req.session)
 			res.sendFile(path + '/public/index.html');
 		});
 		
@@ -48,35 +46,8 @@ module.exports = (app, passport, cors) => {
 	app.route('/auth/twitter/callback')
 		.get(cors(), passport.authenticate('twitter', 
       { failureRedirect: '/' }), (req, res) => {
-        let user = req.user.twitter['username'];
-         //console.log('callback', req.user)
-    	  res.redirect('/login/' + user);
+        res.redirect('/login/' + req.user.twitter['username']);
 		});	
 		
 
 };
-
-/*
-	app.route('/loggedUser')
-		.get(isLoggedIn, (req, res) => {
-			res.sendFile(path + '/public/index.html');
-		});
-		
-	app.route('/user/:location')	
-		.get(clickHandler.userLocation);
-			
-	app.route('/businesses/:search')
-		.post(clickHandler.getNightlife);
-	
-	app.route('/api/:id/clicks')
-		.get(clickHandler.getClicks)
-		.post(clickHandler.addClick);		
-		
-	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
-
-	app.route('/auth/twitter/callback')
-		.get(cors(), passport.authenticate('twitter', 
-      { failureRedirect: '/' }), (req, res) => {
-    	    res.redirect('/loggedUser');
-		});	
-*/
