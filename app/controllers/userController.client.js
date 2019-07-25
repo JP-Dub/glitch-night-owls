@@ -3,46 +3,46 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   
-const regex    = RegExp('^/login/.*'),
-      loggedIn = regex.test(window.location.pathname);
+  const regex    = RegExp('^/login/.*'),
+        loggedIn = regex.test(window.location.pathname);
 
-const twitter = document.getElementById('login'),
-      search  = document.getElementById('search'),
-      input   = document.getElementById('location-input'),
-      main    = document.getElementById('main');
-  
-let userId, bars = [];
+  const twitter = document.getElementById('login'),
+        search  = document.getElementById('search'),
+        input   = document.getElementById('location-input'),
+        main    = document.getElementById('main');
 
-const ajax = {
-  ready: function ready (fn) {
+  let userId, bars = [];
 
-      if (typeof fn !== 'function') return;
-      if (document.readyState === 'complete') return fn();
+  const ajax = {
+    ready: function ready (fn) {
 
-      document.addEventListener('DOMContentLoaded', fn, false);
-  },
-  request: function ajaxRequest (method, url, data, callback) {
-      let xmlhttp = new XMLHttpRequest();
-     
+        if (typeof fn !== 'function') return;
+        if (document.readyState === 'complete') return fn();
 
-      let params = typeof data == 'string' ? data 
-                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
-      
-      xmlhttp.open(method, url, true);
+        document.addEventListener('DOMContentLoaded', fn, false);
+    },
+    request: function ajaxRequest (method, url, data, callback) {
+        let xmlhttp = new XMLHttpRequest();
 
-      xmlhttp.onreadystatechange = function () {
-          if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            callback(JSON.parse(xmlhttp.response));
-          }
-      };
 
-      xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-      xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      
-      xmlhttp.send(params);
-      return xmlhttp;
-  }
-};
+        let params = typeof data == 'string' ? data 
+                     : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+
+        xmlhttp.open(method, url, true);
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+              callback(JSON.parse(xmlhttp.response));
+            }
+        };
+
+        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xmlhttp.send(params);
+        return xmlhttp;
+    }
+  };
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
    function loadBttnEvents() { 
@@ -94,7 +94,7 @@ const ajax = {
        };
      };
     
-     const printScreen = (obj) => {   
+     const createMainDiv = (obj) => {   
        let length = obj.length,
            dist   = obj[length-1].distance,
            zip;
@@ -216,7 +216,7 @@ const ajax = {
      ajax.ready(ajax.request("POST", url, data, (res) => {
        let obj = JSON.parse(res);
        if(obj.error) return alert(res);
-         printScreen(obj);
+         createMainDiv(obj);
      }));
    }; // postResults()
   
