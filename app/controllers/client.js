@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let businesscard = document.getElementById(div.id);
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
-        console.log(obj[i].price)
+        console.log( (obj[i].price).length, obj[i].price)
         if(!obj[i].price) obj[i].price = '';  
 
         costDescription = {
@@ -127,7 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
           '$$$' : 'Pricey',
           '$$$$': 'Ultra High End',
           ''    : 'Unavailable'
-        }         
+        }
+        
 
         // nightlife cache
         let identity = {
