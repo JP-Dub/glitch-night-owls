@@ -159,9 +159,7 @@ function ClickHandler () {
            
            return res.json(json);
      }).catch(error => {
-       	res.json( {message: "There has been an error processing your request : ",
-                   error: error
-                  });
+       	return res.json(error);
     }); 
 	};
 	
