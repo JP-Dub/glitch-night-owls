@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   
         twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
-          console.log(event)
+          console.log('data-id', twitterBttn[i].getAttribute('data-id'))
           if(!userId) return alert('You have to be logged in to perform this action!');
           
           let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.lastChild.setAttribute('title', 'Let people know that you are going by pushing the button');
         img_div.lastChild.setAttribute('type', 'button');
         img_div.lastChild.setAttribute('value', 'submit');
+        img_div.lastChild.setAttribute('data-id', i)
         img_div.lastChild.innerHTML = "Going ";
         img_div.lastChild.appendChild(document.createElement('SPAN'));
         img_div.childNodes[2].lastChild.setAttribute('id', obj[i].id )
