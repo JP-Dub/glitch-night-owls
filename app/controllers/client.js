@@ -119,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
 
-        if(!obj[i].price) {
-          obj[i].price = '';         
-        }
+        if(!obj[i].price) obj[i].price = '';  
 
         costDescription = {
           '$'   : 'Inexpensive',
@@ -147,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // find closest zip code to coordinates
         if(dist > obj[i].distance) {
           dist = obj[i].distance;
-          city  = obj[i].location.city;//.zip_code;
+          city = obj[i].location.city;//.zip_code;
         }
          
         // write value of zip code to search bar
