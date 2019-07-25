@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const createMainDiv = (obj) => {   
       let length = obj.length,
           dist   = obj[length-1].distance,
-          zip;
+          city;
        
       for(var i = 0; i < length; i++) {
         let div          = document.createElement("DIV"),
@@ -151,12 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // find closest zip code to coordinates
         if(dist > obj[i].distance) {
           dist = obj[i].distance;
-          zip  = obj[i].location.city;//.zip_code;
+          city  = obj[i].location.city;//.zip_code;
         }
          
         // write value of zip code to search bar
         if(i === length -1) {
-          if(!input.value) input.placeholder = zip;
+          if(!input.value) input.placeholder = city;
         }  
 
         // no image will revert to 'no image available' icon
