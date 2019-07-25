@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // find closest zip code to coordinates
         if(dist > obj[i].distance) {
           dist = obj[i].distance;
-          zip  = obj[i].location.zip_code;
+          zip  = obj[i].location.city;//.zip_code;
         }
          
         // write value of zip code to search bar
@@ -250,8 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
        
        userId = user.id;
           
-       //console.log('req', req)
-       input.setAttribute('placeholder', location || user.location);
+       /console.log('req', req)
+       //input.setAttribute('placeholder', location || user.location);
        
        return postResults(location);
     }));
