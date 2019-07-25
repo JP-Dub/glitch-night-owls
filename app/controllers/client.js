@@ -2,7 +2,7 @@
 /*global navigator*/
 
 document.addEventListener("DOMContentLoaded", () => {
-  
+ 
   const regex    = RegExp('^/login/.*'),
         loggedIn = regex.test(window.location.pathname);
 
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let businesscard = document.getElementById(div.id);
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
-
+        console.log(obj[i].price)
         if(!obj[i].price) obj[i].price = '';  
 
         costDescription = {
