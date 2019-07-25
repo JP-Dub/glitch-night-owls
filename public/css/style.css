@@ -31,6 +31,15 @@
   body {
     font-size: 1.5em;
   }
+  #main {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+/*     height: 10%; */
+/*     z-index: 9999;     */
+    background: url('https://cdn.glitch.com/8383db98-19b9-4935-9b88-7f14c9e50cf9%2FPreloader_8.gif?v=1564089485445') center no-repeat;
+  }
   .img-holder {
   	margin-left: -1.00em !important;
   }
@@ -40,6 +49,15 @@
   body {
     font-size: 1.2em;
   }
+  #main {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;    
+    background: url('https://cdn.glitch.com/8383db98-19b9-4935-9b88-7f14c9e50cf9%2FPreloader_8.gif?v=1564089474997') center no-repeat #fff;
+  }
   .img-holder {
     margin-left: -1.25em !important;
   }
@@ -48,6 +66,15 @@
 @media all and (max-width: 640px) and (min-width: 300px) {
   body {
     font-size: .8em; 
+  }
+  #main {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: url('https://cdn.glitch.com/8383db98-19b9-4935-9b88-7f14c9e50cf9%2FPreloader_8.gif?v=1564089458530') center no-repeat #fff;
   }
   .img-holder {
     margin-left: -1.90em !important;
