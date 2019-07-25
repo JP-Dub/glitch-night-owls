@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let userId, bars = [];
 
   const ajax = {
-//     ready: function ready (fn) {
+    ready: function ready (fn) {
+        console.log(fn)
+        if (typeof fn !== 'function') return;
+        if (document.readyState === 'complete') return fn();
 
-//         if (typeof fn !== 'function') return;
-//         if (document.readyState === 'complete') return fn();
-
-//         document.addEventListener('DOMContentLoaded', fn, false);
-//     },
+        document.addEventListener('DOMContentLoaded', fn, false);
+    },
     request: function ajaxRequest (method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
 
