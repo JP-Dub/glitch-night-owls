@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     const createMainDiv = (obj) => {  
-      console.log(obj)
+   
       let length = obj.length,
           dist   = obj[length-1].distance,
           city;
