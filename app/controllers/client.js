@@ -243,17 +243,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        let user     = req.twitter,
-           location = user.previousSession;
-           if(!location) {
-             location = req.session.location
-           }
+           location = user.previousSession || req.session.location;
+           // if(!location) {
+           //   location = req.session.location
+           // }
        
        userId = user.id;
-          
-       /console.log('req', req)
+  
        //input.setAttribute('placeholder', location || user.location);
        
-       return postResults(location);
+       return postResults(location || user.location);
     }));
   };
      
