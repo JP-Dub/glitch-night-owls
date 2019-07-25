@@ -57,14 +57,17 @@
 
 /****** Main Styling ******/
 
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;  
+}
+
 body {
 	font-family: 'Roboto', 'riffic_mediumbold', sans-serif;
 	margin: 0;
 	padding: 0;
 	background-color: #f2f2f2;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 #heading {
@@ -124,7 +127,6 @@ p {
 }
 
 .btn {
-  box-sizing: border-box;
   width: 42px;
 }
 
@@ -136,16 +138,22 @@ p {
 #login.btn,
 #search.btn,
 #location-input {
-  box-shadow: 0px 1px 3px inset #333;
+  -webkit-box-shadow: 0px 1px 3px inset #333;
+     -moz-box-shadow: 0px 1px 3px inset #333;
+          box-shadow: 0px 1px 3px inset #333;
   
   }
 
 #search.btn:hover {
-  box-shadow: -1px 2px 4px inset #333;
+  -webkit-box-shadow: -1px 2px 4px inset #333;
+     -moz-box-shadow: -1px 2px 4px inset #333;
+          box-shadow: -1px 2px 4px inset #333;
 }
 
 #login:hover {
-  box-shadow: 1px 2px 4px inset #333;
+  -webkit-box-shadow: 1px 2px 4px inset #333;
+     -moz-box-shadow: 1px 2px 4px inset #333;
+          box-shadow: 1px 2px 4px inset #333;
 }
 
 #location-input:focus,
@@ -153,7 +161,9 @@ p {
   padding: 0;
   padding-left: .9em;
   color: black;
-  box-shadow: 0px 1px 3px 1px inset #333;
+  -webkit-box-shadow: 0px 1px 3px 1px inset #333;
+     -moz-box-shadow: 0px 1px 3px 1px inset #333;
+          box-shadow: 0px 1px 3px 1px inset #333;
 	background-color: #daf1e0;
   border: 0;  
 }
@@ -172,7 +182,9 @@ p {
   z-index: 2;
   border-right: .05em solid gray;
   border-bottom: .05em solid gray;
-  border-radius: .3125em .3125em .3125em 0;
+  -webkit-border-radius: .3125em .3125em .3125em 0;
+     -moz-border-radius: .3125em .3125em .3125em 0;
+          border-radius: .3125em .3125em .3125em 0;
 }
 
 .bttn {
