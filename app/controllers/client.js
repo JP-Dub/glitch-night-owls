@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
               let res = JSON.parse(xmlhttp.response);
               if(res.statusCode === 400) return alert(res.response.body)
               
-              callback(xmlhttp.response);
+              callback(res);
             }
         };
 
@@ -99,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     };
     
-    const createMainDiv = (obj) => {   
+    const createMainDiv = (obj) => {  
+      console.log(obj)
       let length = obj.length,
           dist   = obj[length-1].distance,
           city;
