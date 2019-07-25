@@ -138,24 +138,22 @@ const ajax = {
          bars.push(identity);       
 
          // if statement used when getLocation() is called prior to loading the screen
-         if(typeof locale === "object" && locale != null) {
-           console.log('locale', locale)
-           let searchValue  = document.getElementById('location-input'); 
-               obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
-
-           // find closest zip code to coordinates
-           if(dist > obj[i].distance) {
-             dist = obj[i].distance;
-             zip  = obj[i].location.zip_code;
-           }
-           console.log(dist, zip)
-           // write value of zip code to search bar
-           if(i === length -1) {
-             if(!searchValue.value) searchValue.placeholder = zip;
-           }
+         if(typeof locale === "object" && locale != null) {        
+           obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
          }
+         
+         // find closest zip code to coordinates
+         if(dist > obj[i].distance) {
+           dist = obj[i].distance;
+           zip  = obj[i].location.zip_code;
+         }
+         
+         // write value of zip code to search bar
+         if(i === length -1) {
+           if(!input.value) input.placeholder = zip;
+         }  
 
-           // no image will revert to 'no image available' icon
+         // no image will revert to 'no image available' icon
          if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
 
          img_div.appendChild(document.createElement('IMG'));
@@ -248,10 +246,6 @@ const ajax = {
             if(!location) {
               location = req.session.location
             }
-            
-
-            // !location ? req.session.location
-            //           : user.location;
        
         userId = user.id;
            
@@ -266,10 +260,12 @@ const ajax = {
    function getLocation(done) {
       if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(function(position) {
-            var obj = {};
-            obj.latitude = position.coords.latitude;
-            obj.longitude = position.coords.longitude;
-            postResults(obj);
+           
+           postResults({
+             latitude : position.coords.latitude,
+             longitude: position.coords.longitude
+           });
+           
          }, showError);
       } else {
          console.log("Geolocation is not supported by this browser.");
@@ -294,7 +290,7 @@ const ajax = {
       };
    };
    //getLocation()
-  });
+});
 
 
 
