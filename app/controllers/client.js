@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     const createMainDiv = (obj) => {  
-      if(load.classList[0] === 'loading') load.classList.remove('loading');
+     
       let length = obj.length,
           dist   = obj[length-1].distance,
           city;
@@ -224,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ajax.ready(ajax.request("POST", url, data, (res) => {
       let obj = JSON.parse(res);
+      if(load.classList[0] === 'loading') load.classList.remove('loading');
       if(obj.error) return alert(res);
         createMainDiv(obj);
     }));
