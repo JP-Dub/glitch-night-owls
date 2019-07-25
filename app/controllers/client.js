@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
               let res = JSON.parse(xmlhttp.response);
+              
               if(res.statusCode === 400) return alert(res.response.body)
               
               callback(res);
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     const createMainDiv = (obj) => {  
-   
+      if(load.classList[0] === 'loading') load.classList.remove('loading');
       let length = obj.length,
           dist   = obj[length-1].distance,
           city;
@@ -239,10 +240,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // listener for Search button
   search.addEventListener("click", (evt) => {
      evt.preventDefault();
-     load.setAttribute('display', 'inline-block');
+     load.classList.add('loading');
      let location = input.value;
      if(bars.length) bars = [];     
-     !location? getLocation() : postResults(location);
+
+     return !location? getLocation() : postResults(location);
   });  
   
 

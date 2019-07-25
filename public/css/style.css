@@ -279,8 +279,7 @@ a:active {
 
 
 /****** Loading icon ******/
-#loading {
-  display: none;
+.loading {
   margin-left: 50%;
   margin-right: 50%;
   border: .15em solid #000000; /* Light grey */
