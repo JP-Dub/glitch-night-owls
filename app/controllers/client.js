@@ -32,12 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-              let res = JSON.parse(xmlhttp.response);
-              console.log('this is the error', typeof res, typeof xmlhttp.response)
-              if(res.statusCode === 400) {
-                console.log('res.body', res.error.response.body)
-                alert('Error. Please check console for more info')
-              }
+
               callback(xmlhttp.response);
             }
         };
@@ -121,29 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.className      = 'img-holder';
         business_div.className = 'business';
 
-        let businesscard = document.getElementById(div.id),
-            price        = obj[i].price;
+        let businesscard = document.getElementById(div.id);
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
        
-        // if(!obj[i].price) obj[i].price = '';  
+        let price = obj[i].price;
         if(!price) price = 0;  
-        // costDescription = {
-        //   '$'   : 'Inexpensive',
-        //   '$$'  : 'Moderate',
-        //   '$$$' : 'Pricey',
-        //   '$$$$': 'Ultra High End',
-        //   ''    : 'Unavailable'
-        // }
-        
+
         costDescription = {
-          1   : 'Inexpensive',
-          2  : 'Moderate',
+          0 : 'Unavailable',
+          1 : 'Inexpensive',
+          2 : 'Moderate',
           3 : 'Pricey',
-          4 : 'Ultra High End',
-          0    : 'Unavailable'
-        }          
-        
+          4 : 'Ultra High End'
+        }         
 
         // nightlife cache
         let identity = {
@@ -213,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Price
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN')).classList.add('rate');
-        p_ele.childNodes[4].innerHTML = "Price: " + obj[i].price + " " + costDescription[price.length];
+        p_ele.childNodes[4].innerHTML = "Price: " + price + " " + costDescription[price.length];
         // Ratings       
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN'));
