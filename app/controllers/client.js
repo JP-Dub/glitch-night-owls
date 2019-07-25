@@ -15,15 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ajax = {
     ready: function ready(fn) {
-        console.log(fn)
-        if (typeof fn !== 'function') { 
-          console.log('typeof', fn)
-          return;
-        }
-        if (document.readyState === 'complete') {
-           console.log('readyState', fn)
-          return fn();
-        }
+        
+        if (typeof fn !== 'function') return;
+        if (document.readyState === 'complete') return fn();
 
         document.addEventListener('DOMContentLoaded', fn, false);
     },
@@ -50,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
      
-   // pressing the "going" button returns name of bar and yelp ID and should log to db 
+   // load RSVP data to buttons and attach event listener
   function loadBttnEvents() { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength  = twitterBttn.length,
@@ -70,12 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
             bttnId.innerHTML = count;
           };        
         });        
-      }))    
-        
+      }));    
+      
+      // "Going" button returns name of bar and yelp ID and logs info to db 
       for(var i = 0; i < bttnLength; i++) {
                   
         twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
+          console.log(event)
           if(!userId) return alert('You have to be logged in to perform this action!');
           
           let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
@@ -86,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 sum   = bar.count === 0 ?  -1 :  1;
 
             going.innerHTML = (parseInt(going.innerHTML, 10) + sum);            
-          }))
+          }));
           
         }); 
       }; // for(loop) 
