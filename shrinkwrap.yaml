@@ -4,7 +4,6 @@ dependencies:
   dotenv: 8.0.0
   express: 4.16.4
   express-session: 1.16.2
-  math.js: 1.1.43
   mongoose: 5.6.6
   passport: 0.4.0
   passport-twitter: 1.0.4
@@ -325,10 +324,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-  /math.js/1.1.43:
-    dev: false
-    resolution:
-      integrity: sha1-au8UeWz0IzYKl3gOo+eyg0G0e2o=
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -807,7 +802,6 @@ specifiers:
   dotenv: ^8.0.0
   express: ^4.16.4
   express-session: ^1.16.1
-  math.js: ^1.1.43
   mongoose: ^5.6.6
   passport: ^0.4.0
   passport-twitter: ^1.0.4
