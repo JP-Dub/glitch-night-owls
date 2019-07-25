@@ -71,11 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   
         twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
-          console.log('data-id', this.getAttribute('data-id'), (this.parentNode.parentNode.id).slice(13) )
           if(!userId) return alert('You have to be logged in to perform this action!');
           
-          let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
-  
+          let index = this.getAttribute('data-id');// id (number) of businesscard
           bars[index].userId = userId;
 
           ajax.ready(ajax.request("POST", url, bars[index], (bar) => {
