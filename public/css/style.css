@@ -134,32 +134,39 @@ p {
 } 
 
 #login.btn {
-  box-shadow: 1px 2px 4px inset #333;
+  box-shadow: 0px 1px 3px inset #333;
+/*   box-shadow: 1px 2px 4px inset #333; */
 }
 
 #login:hover {
-  box-shadow: 0p 0px 0px inset #333;
+  box-shadow: 1px 2px 4px inset #333;
+/*   box-shadow: 0px 1px 3px inset #333; */
 }
 
 #search.btn {
-  box-shadow: -1px 2px 4px inset #333;
+   box-shadow: 0px 1px 3px inset #333;
+/*   box-shadow: -1px 2px 4px inset #333; */
 }
 
 #search.btn:hover {
-  box-shadow: 0px 1px 3px inset #333;
+  box-shadow: -1px 2px 4px inset #333;
+/*   box-shadow: 0px 1px 3px inset #333; */
 }
 
 #location-input {
-	box-shadow: .5px 2px 4px inset #333;
-/*   box-sizing: border-box; */
+  box-shadow: 0px 1px 2px inset #333;
+/* 	box-shadow: .5px 2px 4px inset #333; */
   color: black;
   }
 
 #location-input:focus {
-  box-shadow: 1px 1px 3px inset #333;
+  padding: 0;
+  padding-left: .9em;
+  box-shadow: 0px 2px 4px inset #333;
+/*   box-shadow: 0px 1px 2px inset #333; */
 	background-color: #daf1e0;
-/*   box-sizing: border-box; */
   border: 0;  
+  line-height: 19px;
 }
 
 /* .btn {
