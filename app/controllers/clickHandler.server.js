@@ -4,9 +4,9 @@ var Users = require('../models/users.js');
 var yelp = require('yelp-fusion');
 
 function ClickHandler () {
-  // resets RSVP's after 2am;
+  // resets RSVP's after 6am;
   const resetRSVP = () => {
-    if(new Date().getHours() === 2) {
+    if(new Date().getHours() === 6) {
       Users
         .find({}).select({ 'twitter.nightlife': 1, _id: false})
         .exec((err, results) => {
