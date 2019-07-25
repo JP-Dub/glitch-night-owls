@@ -133,82 +133,30 @@ p {
   border: 0;
 } 
 
-/* #login.btn {
-  box-shadow: 0px 1px 3px inset #333;
-/*   box-shadow: 1px 2px 4px inset #333; */
-} */
-
-#login:hover {
-  box-shadow: 1px 2px 4px inset #333;
-/*   box-shadow: 0px 1px 3px inset #333; */
-}
-
-/* #search.btn {
-   box-shadow: 0px 1px 3px inset #333;
-/*   box-shadow: -1px 2px 4px inset #333; */
-}
- */
-#search.btn:hover {
-  box-shadow: -1px 2px 4px inset #333;
-/*   box-shadow: 0px 1px 3px inset #333; */
-}
-
 #login.btn,
 #search.btn,
 #location-input {
   box-shadow: 0px 1px 3px inset #333;
-/* 	box-shadow: .5px 2px 4px inset #333; */
   
   }
 
 #search.btn:hover {
   box-shadow: -1px 2px 4px inset #333;
-/*   box-shadow: 0px 1px 3px inset #333; */
 }
 
 #login:hover {
   box-shadow: 1px 2px 4px inset #333;
-/*   box-shadow: 0px 1px 3px inset #333; */
 }
 
-
-
-#location-input:focus {
+#location-input:focus,
+#location-input:hover {
   padding: 0;
   padding-left: .9em;
   color: black;
   box-shadow: 0px 1px 3px 1px inset #333;
-/*   box-shadow: 0px 1px 2px inset #333; */
 	background-color: #daf1e0;
   border: 0;  
 }
-
-/* .btn {
-  box-shadow: 1px 1px 3px inset black;
-  outline: none;
-}
-
-.btn:hover {
-  background-color: #daf1e0;
-  border: none;
-}
-
-input[type=text] {
-	box-sizing: border-box;
-}
-
-.form-control {
-	box-shadow: 2px 2px 3px inset black;
-}
-
-.form-control:focus {
-	box-shadow: 1px 1px 3px inset black;
-}
-
-input[type=text]:focus {
-	background-color: #daf1e0;
-  border: 0;
-} */
 
 
 /****** Business thumbnail and info container (div) ******/

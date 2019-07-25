@@ -11,10 +11,6 @@ const twitter = document.getElementById('login'),
       input   = document.getElementById('location-input'),
       main    = document.getElementById('main');
   
-const myButton  = document.getElementsByClassName("input-group-btn");
-
-  console.log(myButton)
-  
 let userId, bars = [];
 
 const ajax = {
@@ -143,69 +139,69 @@ const ajax = {
 
          // if statement used when getLocation() is called prior to loading the screen
          if(typeof locale === "object" && locale != null) {
+           console.log('locale', locale)
            let searchValue  = document.getElementById('location-input'); 
                obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
 
            // find closest zip code to coordinates
            if(dist > obj[i].distance) {
              dist = obj[i].distance;
-             zip = obj[i].location.zip_code;
+             zip  = obj[i].location.zip_code;
            }
-
+           console.log(dist, zip)
            // write value of zip code to search bar
            if(i === length -1) {
              if(!searchValue.value) searchValue.placeholder = zip;
-             }
            }
+         }
 
            // no image will revert to 'no image available' icon
-           if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
+         if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
 
-           img_div.appendChild(document.createElement('IMG'));
-           img_div.firstChild.className = 'img-thumbnail';
-           img_div.firstChild.setAttribute('alt', 'image-url');
-           img_div.firstChild.setAttribute('src', obj[i].image_url);
-           img_div.appendChild(document.createElement('BR'));
-           img_div.appendChild(document.createElement('BUTTON'));
-           img_div.lastChild.className = "bttn";
-           img_div.lastChild.setAttribute('title', 'Let people know that you are going by pushing the button');
-           img_div.lastChild.setAttribute('type', 'button');
-           img_div.lastChild.setAttribute('value', 'submit');
-           img_div.lastChild.innerHTML = "Going ";
-           img_div.lastChild.appendChild(document.createElement('SPAN'));
-           img_div.childNodes[2].lastChild.setAttribute('id', obj[i].id )
-           img_div.childNodes[2].lastChild.classList.add('badge');
-           img_div.childNodes[2].lastChild.innerHTML = 0;
+         img_div.appendChild(document.createElement('IMG'));
+         img_div.firstChild.className = 'img-thumbnail';
+         img_div.firstChild.setAttribute('alt', 'image-url');
+         img_div.firstChild.setAttribute('src', obj[i].image_url);
+         img_div.appendChild(document.createElement('BR'));
+         img_div.appendChild(document.createElement('BUTTON'));
+         img_div.lastChild.className = "bttn";
+         img_div.lastChild.setAttribute('title', 'Let people know that you are going by pushing the button');
+         img_div.lastChild.setAttribute('type', 'button');
+         img_div.lastChild.setAttribute('value', 'submit');
+         img_div.lastChild.innerHTML = "Going ";
+         img_div.lastChild.appendChild(document.createElement('SPAN'));
+         img_div.childNodes[2].lastChild.setAttribute('id', obj[i].id )
+         img_div.childNodes[2].lastChild.classList.add('badge');
+         img_div.childNodes[2].lastChild.innerHTML = 0;
 
+         business_div.appendChild(h2_ele).setAttribute('title', 'Visit Website');
+         h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
+         h2_ele.firstChild.innerHTML = obj[i].name;
 
-           business_div.appendChild(h2_ele).setAttribute('title', 'Visit Website');
-           h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
-           h2_ele.firstChild.innerHTML = obj[i].name;
+         business_div.appendChild(document.createElement('BR'));
+         business_div.appendChild(p_ele).className = 'address';
 
-           business_div.appendChild(document.createElement('BR'));
-           business_div.appendChild(p_ele).className = 'address';
+         p_ele.appendChild(document.createElement('A')).setAttribute('href', "https://www.yelp.com/map/" + obj[i].alias);
+         p_ele.firstChild.innerHTML = obj[i].location.address1 + `<br>` 
+                                      + obj[i].location.city + `, ` 
+                                      + obj[i].location.state + `. ` 
+                                      + obj[i].location.zip_code;
 
-           p_ele.appendChild(document.createElement('A')).setAttribute('href', "https://www.yelp.com/map/" + obj[i].alias);
-           p_ele.firstChild.innerHTML = obj[i].location.address1 + `<br>` 
-                                        + obj[i].location.city + `, ` 
-                                        + obj[i].location.state + `. ` 
-                                        + obj[i].location.zip_code;
+         p_ele.appendChild(document.createElement('BR'));
+         p_ele.appendChild(document.createElement('SPAN'));
+         p_ele.childNodes[2].classList.add('phone');
+         p_ele.childNodes[2].innerHTML ='Telephone:';
+         p_ele.childNodes[2].setAttribute('href', obj[i].phone);
+         p_ele.childNodes[2].setAttribute('title', 'Call Number');
+         p_ele.childNodes[2].appendChild(document.createElement('A')).innerHTML = obj[i].display_phone;
 
-           p_ele.appendChild(document.createElement('BR'));
-           p_ele.appendChild(document.createElement('SPAN'));
-           p_ele.childNodes[2].classList.add('phone');
-           p_ele.childNodes[2].innerHTML ='Telephone:';
-           p_ele.childNodes[2].setAttribute('href', obj[i].phone);
-           p_ele.childNodes[2].setAttribute('title', 'Call Number');
-           p_ele.childNodes[2].appendChild(document.createElement('A')).innerHTML = obj[i].display_phone;
-
-           p_ele.appendChild(document.createElement('BR'));
-           p_ele.appendChild(document.createElement('SPAN')).classList.add('rate');
-           p_ele.childNodes[4].innerHTML = "Price: " + obj[i].price + " " + costDescription[obj[i].price];
-
-           p_ele.appendChild(document.createElement('BR'));
-           p_ele.appendChild(document.createElement('SPAN'));
-           p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
+         p_ele.appendChild(document.createElement('BR'));
+         p_ele.appendChild(document.createElement('SPAN')).classList.add('rate');
+         p_ele.childNodes[4].innerHTML = "Price: " + obj[i].price + " " + costDescription[obj[i].price];
+ 
+         p_ele.appendChild(document.createElement('BR'));
+         p_ele.appendChild(document.createElement('SPAN'));
+         p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
 
        }; // for(loop)
         
