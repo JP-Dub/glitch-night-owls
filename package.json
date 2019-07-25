@@ -31,7 +31,6 @@
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "yelp-fusion": "^3.0.0",
-    "body-parser": "^1.19.0",
-    "math.js": "^1.1.43"
+    "body-parser": "^1.19.0"
   }
 }
