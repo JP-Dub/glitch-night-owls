@@ -156,10 +156,10 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-      
+           
            return res.json(json);
      }).catch(error => {
-       	res.end("We apologize, there has been an error processing your request. Error message: " + error);
+       	res.json( {err: "We apologize, there has been an error processing your request. Error message: " + error});
     }); 
 	};
 	

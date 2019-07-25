@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+              console.log(typeof JSON.parse(xmlhttp.response))
               callback(JSON.parse(xmlhttp.response));
             }
         };
@@ -115,19 +116,28 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.className      = 'img-holder';
         business_div.className = 'business';
 
-        let businesscard = document.getElementById(div.id);
+        let businesscard = document.getElementById(div.id),
+            price        = obj[i].price;
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
-        console.log( (obj[i].price).length, obj[i].price)
-        if(!obj[i].price) obj[i].price = '';  
-
+       
+        // if(!obj[i].price) obj[i].price = '';  
+        if(!price) price = 0;  
+        // costDescription = {
+        //   '$'   : 'Inexpensive',
+        //   '$$'  : 'Moderate',
+        //   '$$$' : 'Pricey',
+        //   '$$$$': 'Ultra High End',
+        //   ''    : 'Unavailable'
+        // }
+        
         costDescription = {
-          '$'   : 'Inexpensive',
-          '$$'  : 'Moderate',
-          '$$$' : 'Pricey',
-          '$$$$': 'Ultra High End',
-          ''    : 'Unavailable'
-        }
+          1   : 'Inexpensive',
+          2  : 'Moderate',
+          3 : 'Pricey',
+          4 : 'Ultra High End',
+          0    : 'Unavailable'
+        }          
         
 
         // nightlife cache
@@ -198,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Price
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN')).classList.add('rate');
-        p_ele.childNodes[4].innerHTML = "Price: " + obj[i].price + " " + costDescription[obj[i].price];
+        p_ele.childNodes[4].innerHTML = "Price: " + obj[i].price + " " + costDescription[price.length];
         // Ratings       
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN'));
