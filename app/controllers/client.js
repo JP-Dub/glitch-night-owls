@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         search  = document.getElementById('search'),
         input   = document.getElementById('location-input'),
         main    = document.getElementById('main');
+        //load    = document.getElementById('loading');
 
   let userId, bars = [];
 
@@ -227,7 +228,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
   }; // postResults()
   
-     
+  //load = document.createElement('DIV');
+ 
+  //load.setAttribute('display', 'inline-block');
+  let load = main.appendChild(document.createElement('DIV'));
+  load.id = 'loading';
+  
+  load.setAttribute('display', 'none');
+  
   // listener for Twitter login button
   twitter.addEventListener("click", (evt) => {
     evt.preventDefault();

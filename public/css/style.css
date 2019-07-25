@@ -282,12 +282,12 @@ a:active {
 #loading {
   margin-left: 50%;
   margin-right: 50%;
-  border: .25em solid #333; /* Light grey */
-  border-top: .25em solid #e60000; /* Blue */
+  border: .15em solid #000000; /* Light grey */
+  border-top: .15em solid #e60000; /* Blue */
   border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  animation: spin 1s linear infinite;
+  width: 1.5em;
+  height: 1.5em;
+  animation: spin .5s linear infinite;
 }
 
 @keyframes spin {
