@@ -172,31 +172,32 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.childNodes[2].lastChild.classList.add('badge');
         img_div.childNodes[2].lastChild.innerHTML = 0;
 
+        // 
         business_div.appendChild(h2_ele).setAttribute('title', 'Visit Website');
         h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
-        h2_ele.firstChild.innerHTML = obj[i].name;
-
+        h2_ele.firstChild.innerHTML = obj[i].name;    
         business_div.appendChild(document.createElement('BR'));
+        
+        // Address
         business_div.appendChild(p_ele).className = 'address';
-
         p_ele.appendChild(document.createElement('A')).setAttribute('href', "https://www.yelp.com/map/" + obj[i].alias);
         p_ele.firstChild.innerHTML = obj[i].location.address1 + `<br>` 
                                      + obj[i].location.city + `, ` 
                                      + obj[i].location.state + `. ` 
                                      + obj[i].location.zip_code;
-
+        // Telephone
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN'));
         p_ele.childNodes[2].classList.add('phone');
-        p_ele.childNodes[2].innerHTML ='Telephone:';
+        p_ele.childNodes[2].innerHTML = 'Telephone: ';
         p_ele.childNodes[2].setAttribute('href', obj[i].phone);
         p_ele.childNodes[2].setAttribute('title', 'Call Number');
         p_ele.childNodes[2].appendChild(document.createElement('A')).innerHTML = obj[i].display_phone;
-
+        // Price
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN')).classList.add('rate');
         p_ele.childNodes[4].innerHTML = "Price: " + obj[i].price + " " + costDescription[obj[i].price];
- 
+        // Ratings       
         p_ele.appendChild(document.createElement('BR'));
         p_ele.appendChild(document.createElement('SPAN'));
         p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
