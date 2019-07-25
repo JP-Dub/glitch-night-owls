@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
           bttnLength  = twitterBttn.length,
           url         = '../api/:id/clicks';
       
-
+      // get all user clicks and match to any applicable business id's
       ajax.ready(ajax.request("GET", url, {}, (clicks) => {
         clicks.forEach( id => {
           let bttnId = document.getElementById(id),
@@ -73,9 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
           //event.preventDefault();
           if(!userId) return alert('You have to be logged in to perform this action!');
           
-          let index = this.getAttribute('data-id');// id (number) of businesscard
+          let index = this.getAttribute('data-id');
           bars[index].userId = userId;
-
+          
+          // log data to user profile
           ajax.ready(ajax.request("POST", url, bars[index], (bar) => {
             let going = document.getElementById(bar.id),            
                 sum   = bar.count === 0 ?  -1 :  1;

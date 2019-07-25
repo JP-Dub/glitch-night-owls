@@ -1,6 +1,5 @@
 'use strict';
-//var cors = require('cors');
-//var Client = require('../controllers/serverSide');
+
 let path = process.cwd();
 const ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
@@ -14,7 +13,7 @@ module.exports = (app, passport, cors) => {
 		}
 	}
 	
-	let clickHandler = new ClickHandler();
+	const clickHandler = new ClickHandler();
 	let options = ({
 	  origin : 'https://glitch-night-owls.glitch.me',
 		preflightContinue: true,
@@ -49,5 +48,4 @@ module.exports = (app, passport, cors) => {
         res.redirect('/login/' + req.user.twitter['username']);
 		});	
 		
-
 };

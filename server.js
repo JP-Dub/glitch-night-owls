@@ -22,7 +22,6 @@ mongoose.Promise = global.Promise;
 
 app.use('/app', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
-//app.use('/common', express.static(process.cwd() + '/app/common'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
