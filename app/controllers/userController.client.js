@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
      
    // pressing the "going" button returns name of bar and yelp ID and should log to db 
-   function loadBttnEvents() { 
+  function loadBttnEvents() { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength  = twitterBttn.length,
           url         = '../api/:id/clicks';
@@ -86,13 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }; // for(loop) 
    }; // loadBtnEvents()   
 
-   function postResults(locale) { 
-     //delete previous bar info if it exists
-     if(main.childNodes !== null && main.childNodes.length > 1) {
-       while(main.firstChild) {
-         main.removeChild(main.firstChild);
-       };
-     };
+  function postResults(locale) { 
+    //delete previous bar info if it exists
+    if(main.childNodes !== null && main.childNodes.length > 1) {
+      while(main.firstChild) {
+        main.removeChild(main.firstChild);
+      };
+    };
     
      const createMainDiv = (obj) => {   
        let length = obj.length,
