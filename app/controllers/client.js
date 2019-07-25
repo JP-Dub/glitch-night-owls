@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
               let res = JSON.parse(xmlhttp.response);
-              console.log(res.error)
+              console.log('this is the error', typeof res, typeof xmlhttp.response)
               if(res.statusCode === 400) {
+                console.log('res.body', res.error.response.body)
                 alert('Error. Please check console for more info')
               }
               callback(xmlhttp.response);
