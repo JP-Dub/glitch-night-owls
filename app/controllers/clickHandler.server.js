@@ -108,18 +108,6 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-    // Users.findOneAndUpdate({
-    //   'session.location' : /\w*/
-    // }, {
-    //   'session.location' : req.query.location
-    // }, {
-    //   upsert : true,
-    //   new    : true,
-    // }).exec( (err, session) => {
-    //   if(err) console.log(err);
-    //   console.log(session);
-    // });  
-    
     console.log(req.body, req.params, req.query)
     console.log('req.session', req.session)
      //if user authenticates save location to user

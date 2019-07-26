@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
      return !location? getLocation() : postResults(location);
   });  
   
-  console.log('seshStorage', sessionStorage)
+  console.log('seshStorage', sessionStorage, localStorage)
   // checks if user is logged in /  returns previous session
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
