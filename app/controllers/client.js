@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     request: function ajaxRequest(method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
 
-
         let params = typeof data == 'string' ? data 
                      : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
 
@@ -243,12 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
      evt.preventDefault();
      load.classList.add('loading');
      let location = input.value;
+     sessionStorage.setItem('current', location);
      if(bars.length) bars = [];     
-
+     
      return !location? getLocation() : postResults(location);
   });  
   
-
+  console.log('seshStorage', sessionStorage)
   // checks if user is logged in /  returns previous session
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
