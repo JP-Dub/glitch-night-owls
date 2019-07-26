@@ -242,26 +242,23 @@ document.addEventListener("DOMContentLoaded", () => {
      evt.preventDefault();
      load.classList.add('loading');
      let location = input.value;
+    
+     // eliminate mongo storing current location item use window.sessionStorage 
+    
      sessionStorage.setItem('current', location);
      if(bars.length) bars = [];     
      
      return !location? getLocation() : postResults(location);
   });  
   
-  console.log('seshStorage', sessionStorage, localStorage)
   // checks if user is logged in /  returns previous session
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        let user     = req.twitter,
            location = user.previousSession || req.session.location;
-           // if(!location) {
-           //   location = req.session.location
-           // }
-       
+
        userId = user.id;
   
-       //input.setAttribute('placeholder', location || user.location);
-       
        return postResults(location || user.location);
     }));
   };

@@ -108,8 +108,8 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-    console.log(req.body, req.params, req.query)
-    console.log('req.session', req.session)
+      // see notes on client.js - modify below for userSession storage only
+    
      //if user authenticates save location to user
      if(!req.session.passport) { //req.body.user
        console.log('updated locale session')
