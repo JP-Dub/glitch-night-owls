@@ -9,7 +9,9 @@ function ClickHandler () {
     console.log('called')
     //if(new Date().getHours() === 6) {
       Users
-        .find({}).select({'twitter.nightlife': 1, _id: false})
+        .updateMany(
+        {},
+        { $pull: {'twitter.nightlife': {$in : '/.*/'}}})
         .exec((err, results) => {
           if (err) throw err; 
           console.log(results)
@@ -34,10 +36,10 @@ function ClickHandler () {
 //             };        
 //           }); // forEach()
         
-//         results.save( (err, pass) => {
-//           if(err) throw err;
-//           console.log(pass)
-//         });
+        // results.save( (err, pass) => {
+        //   if(err) throw err;
+        //   console.log(pass)
+        // });
        }); 
     //};  
   };

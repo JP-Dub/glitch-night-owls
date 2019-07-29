@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   
-  ajax.ready(ajax.request('DELETE', '/api/resetRSVP', {}, (req) => {
+  ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}, (req) => {
     console.log(req)
   }));
      

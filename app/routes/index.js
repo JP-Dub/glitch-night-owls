@@ -41,7 +41,7 @@ module.exports = (app, passport, cors) => {
 		.post(isLoggedIn, cors(), clickHandler.addClick);	
   
   app.route('/api/resetRSVP')
-    .delete( clickHandler.resetRSVP );
+    .put( clickHandler.resetRSVP );
 		
 	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
 
