@@ -17,9 +17,10 @@ function ClickHandler () {
             if(arr.length > 0) {       
               for(var i = 0; i < arr.length; i++) {
                 let item = arr[i];
-                if(item.count > 0) {
-                  item.count = 0;
-                }; 
+                console.log(item)
+                // if(item.count > 0) {
+                //   item.count = 0;
+                // }; 
               }; 
             };        
           }); // forEach()
@@ -34,6 +35,14 @@ function ClickHandler () {
   
 	this.getClicks = (req, res) => {
     let nightlife = [];
+    
+    / find
+    function findId(id) {
+      for(let i = 0; i < nightlife.length; i++) {
+        if(nightlife[i].id === id) return i;
+      }              
+      return false;
+    };    
 		
     Users
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
@@ -127,17 +136,10 @@ function ClickHandler () {
           }  
         };
         results.push(demoObj);
-       
-        function findId(id) {
-          for(let i = 0; i < nightlife.length; i++) {
-            if(nightlife[i].id === id) {
-              return i;
-            }          
-          }
-          return false;
-        }
+        
 
-        // return id and total count for all user data
+
+        // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
           if(arr.length) {
