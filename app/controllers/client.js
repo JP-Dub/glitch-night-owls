@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
               
               if(res.statusCode === 400) return alert(res.response.body)
               
-              callback(res);
+              return callback(res);
             }
         };
 
@@ -53,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   
-  ajax.ready(ajax.request('DELETE', '/api/resetRSVP'));
+  ajax.ready(ajax.request('DELETE', '/api/resetRSVP', (req) => {
+    console.log(req)
+  }));
      
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents() { 
