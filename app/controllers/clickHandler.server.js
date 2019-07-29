@@ -9,23 +9,25 @@ function ClickHandler () {
     console.log('called')
     //if(new Date().getHours() === 6) {
       Users
-        .update({}).select({ 'twitter.nightlife': 1, _id: false})
+        .find({}).select({ 'twitter.nightlife': 1, _id: false})
         .exec((err, results) => {
           if (err) throw err; 
           console.log(results)
-          // results.forEach( (array, idx) => {
-          //   let arr = array.twitter.nightlife;
-          //   if(arr.length > 0) {       
-          //     for(var i = 0; i < arr.length; i++) {
-          //       let item = arr[i];
-          //       arr.unshift(item)
-          //       //console.log('item', item)
-          //       // if(item.count > 0) {
-          //       //   item.count = 0;
-          //       // }; 
-          //     }; 
-          //   };        
-          // }); // forEach()
+          results.forEach( (array, idx) => {
+            array.twitter.nightlife = [];
+            //let arr = array.twitter.nightlife;
+            
+            // if(arr.length > 0) {       
+            //   for(var i = 0; i < arr.length; i++) {
+            //     let item = arr[i];
+            //     arr.unshift(item)
+            //     //console.log('item', item)
+            //     // if(item.count > 0) {
+            //     //   item.count = 0;
+            //     // }; 
+            //   }; 
+            // };        
+          }); // forEach()
         
         results.save( (err, pass) => {
           if(err) throw err;
