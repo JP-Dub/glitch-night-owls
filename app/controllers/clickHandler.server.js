@@ -6,28 +6,33 @@ var yelp = require('yelp-fusion');
 function ClickHandler () {
   // resets RSVP's after 6am;
   this.resetRSVP = (req, res) => {
-    if(new Date().getHours() === 6) {
+    console.log('called')
+    //if(new Date().getHours() === 6) {
       Users
-        .find({}).select({ 'twitter.nightlife': 1, _id: false})
+        .update({}).select({ 'twitter.nightlife': 1, _id: false})
         .exec((err, results) => {
           if (err) throw err; 
-      
-          results.forEach( (array, idx) => {
-            let arr = array.twitter.nightlife;
-            if(arr.length > 0) {       
-              for(var i = 0; i < arr.length; i++) {
-                let item = arr[i];
-                console.log('item', item)
-                // if(item.count > 0) {
-                //   item.count = 0;
-                // }; 
-              }; 
-            };        
-          }); // forEach()
+          console.log(results)
+          // results.forEach( (array, idx) => {
+          //   let arr = array.twitter.nightlife;
+          //   if(arr.length > 0) {       
+          //     for(var i = 0; i < arr.length; i++) {
+          //       let item = arr[i];
+          //       arr.unshift(item)
+          //       //console.log('item', item)
+          //       // if(item.count > 0) {
+          //       //   item.count = 0;
+          //       // }; 
+          //     }; 
+          //   };        
+          // }); // forEach()
         
-        results.save();
+        results.save( (err, pass) => {
+          if(err) throw err;
+          console.log(pass)
+        });
       }); 
-    };  
+    //};  
   };
 	
   // interval checks time once an hour

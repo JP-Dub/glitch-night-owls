@@ -24,9 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     request: function ajaxRequest(method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
-
-        let params = typeof data == 'string' ? data 
-                     : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+        let params;
+        
+        if(data) {
+          params = typeof data == 'string' ? data 
+                       : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');  
+        } else {
+          params = null;
+        }
 
         xmlhttp.open(method, url, true);
 
@@ -48,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   
-  ajax.ready(ajax.request('DELETE', 'api/resetRSVP'));
+  ajax.ready(ajax.request('DELETE', '/api/resetRSVP'));
      
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents() { 
@@ -57,12 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
           url         = '../api/:id/clicks';
       
       // get all user clicks and match to any applicable business id's
-      ajax.ready(ajax.request("GET", url, {}, (clicks) => {
-        console.log(clicks)
+      ajax.ready(ajax.request("GET", url, (clicks) => {
         clicks.forEach( item => {
           let bttnId = document.getElementById(item.id),
               count;
-          console.log(item)
+
           if(bttnId) {
             // count = 0; 
             // for(var i=0; i < clicks.length; i++) {                      
