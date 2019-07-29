@@ -109,11 +109,16 @@ function ClickHandler () {
         	};
      
       // see notes on client.js - modify below for userSession storage only
-     console.log("body", req.body.user, "passport:" , req.session.passport['user'])
+     console.log("body", req.body )
+    
+//     Users.findOneAndUpdate({}).exec( (err, success) => {
+//       if(err) return console.error(err);
+//       console.log(success)
+//     })
      //if user authenticates save location to user
-     if(!req.session.passport) { //req.body.user
+     if(req.body.user) { //req.body.user
        Users.findOneAndUpdate({ 
-            '_id' : req.session.passport['user'] //req.body.user
+            'twitter.id' : req.body.user
             }, {
             'twitter.previousSession' : req.query.location
             }, {

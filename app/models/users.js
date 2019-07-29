@@ -16,7 +16,7 @@ var NightOwl = new Schema({
      previousSession: String,
      nightlife      : [{
        name : String,
-       id   : String,
+       id   : Number,
        count: Number
      }],
    }
