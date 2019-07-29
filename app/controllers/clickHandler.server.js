@@ -11,7 +11,7 @@ function ClickHandler () {
       Users
         .updateMany(
         {},
-        { $pull: {'twitter.nightlife': {$in : '/.*/'}}})
+        { $pull: {'twitter.nightlife': [{$in: {}} ] }})
         .exec((err, results) => {
           if (err) throw err; 
           console.log(results)
@@ -36,10 +36,10 @@ function ClickHandler () {
 //             };        
 //           }); // forEach()
         
-        // results.save( (err, pass) => {
-        //   if(err) throw err;
-        //   console.log(pass)
-        // });
+         // results.save( (err, pass) => {
+         //   if(err) throw err;
+         //     console.log(pass)
+         // });
        }); 
     //};  
   };
