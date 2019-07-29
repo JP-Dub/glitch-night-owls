@@ -148,8 +148,8 @@ function ClickHandler () {
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
-        console.log('userlocation server', user)
-        return res.json(user[0].twitter);     				
+       
+        return res.json(user[0]);     				
 			});
 	}; 
 

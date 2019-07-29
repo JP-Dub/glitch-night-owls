@@ -254,10 +254,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // checks if user is logged in /  returns previous session
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-       console.log(req)
+       
        let user     = req.twitter,
-           location = user.previousSession || sessionStorage.getItem('current'); //req.session.location;
-
+           location = user.previousSession || sessionStorage.getItem('current');
+     
        userId = user.id;
   
        return postResults(location || user.location);
