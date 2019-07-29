@@ -39,6 +39,8 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) throw err;
+      
+         // demo obj to populate 'going' data for zip code 33467     
         let demoObj = { twitter: {
             nightlife: [
             {
@@ -117,20 +119,25 @@ function ClickHandler () {
                 "id": "Os7Sqj07--fH5GlKdaRhOw",
                 "name": "Kaluz Restaurant",
                 "count": 52
+            }, {
+                "id": "l5rYrJlWnvqjV-lY2F2-WQ",
+                "name": "Flanigan's Seafood Bar & Grill",
+                "count": 61
             }]
           }  
         };
         results.push(demoObj);
-        let newObj = [];
+       
         function findId(id) {
-          for(let i = 0; i < newObj.length; i++) {
-            if(newObj[i].id === id) {
+          for(let i = 0; i < nightlife.length; i++) {
+            if(nightlife[i].id === id) {
               return i;
             }          
           }
           return false;
         }
 
+        // return id and total count for all user data
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
           if(arr.length) {
@@ -139,9 +146,9 @@ function ClickHandler () {
               if(item.count) {
                 let index = findId(item.id);
                 if(index !== false) {
-                   newObj[index].count += item.count;
+                   nightlife[index].count += item.count;
                 } else {
-                   newObj.push({
+                   nightlife.push({
                     'id'    : item.id,
                     'count' : item.count
                    }); 

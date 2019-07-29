@@ -56,16 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // get all user clicks and match to any applicable business id's
       ajax.ready(ajax.request("GET", url, {}, (clicks) => {
-        clicks.forEach( id => {
-          let bttnId = document.getElementById(id),
+        console.log(clicks)
+        clicks.forEach( item => {
+          let bttnId = document.getElementById(item.id),
               count;
-          
+          console.log(item)
           if(bttnId) {
-            count = 0; 
-            for(var i=0; i < clicks.length; i++) {                      
-              if(id === clicks[i]) count++;
-            }
-            bttnId.innerHTML = count;
+            // count = 0; 
+            // for(var i=0; i < clicks.length; i++) {                      
+            //   if(id === clicks[i]) count++;
+            // }
+            bttnId.innerHTML = item.count;
           };        
         });        
       }));    
@@ -298,3 +299,18 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   
 });
+
+/*
+        clicks.forEach( id => {
+          let bttnId = document.getElementById(id),
+              count;
+          
+          if(bttnId) {
+            count = 0; 
+            for(var i=0; i < clicks.length; i++) {                      
+              if(id === clicks[i]) count++;
+            }
+            bttnId.innerHTML = count;
+          };        
+        });  
+*/
