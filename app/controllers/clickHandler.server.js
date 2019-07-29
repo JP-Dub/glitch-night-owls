@@ -17,14 +17,14 @@ function ClickHandler () {
             if(arr.length > 0) {       
               for(var i = 0; i < arr.length; i++) {
                 let item = arr[i];
-                console.log(item)
+                console.log('item', item)
                 // if(item.count > 0) {
                 //   item.count = 0;
                 // }; 
               }; 
             };        
           }); // forEach()
-        
+      
         results.save();
       }); 
     };  
@@ -36,7 +36,7 @@ function ClickHandler () {
 	this.getClicks = (req, res) => {
     let nightlife = [];
     
-    / find
+    // check if id exists in nightlife array
     function findId(id) {
       for(let i = 0; i < nightlife.length; i++) {
         if(nightlife[i].id === id) return i;
@@ -136,8 +136,6 @@ function ClickHandler () {
           }  
         };
         results.push(demoObj);
-        
-
 
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
@@ -151,8 +149,8 @@ function ClickHandler () {
                    nightlife[index].count += item.count;
                 } else {
                    nightlife.push({
-                    'id'    : item.id,
-                    'count' : item.count
+                     'id'    : item.id,
+                     'count' : item.count
                    }); 
                 }
               }
