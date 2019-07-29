@@ -38,11 +38,9 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) { throw err; }
-           console.log('results', results[0].twitter)
-       let tweet = results[0].twitter
-       tweet.forEach((array, idx) => {
-          console.log(array)
-          let arr = array.nightlife[idx];
+           
+        results.forEach((array, idx) => {
+          let arr = array.twitter.nightlife;
           if(arr.length > 0) {       
             for(var i = 0; i < arr.length; i++) {
               var item = arr[i];
@@ -150,17 +148,8 @@ function ClickHandler () {
 		Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
-          Users.find({'session.location' : /\w*/}).exec((err, loc) => {
-            if(err)console.log(err);
-            
-            const userObj = {
-              location : loc[0].session.location,
-              twitter  : user[0].twitter
-            }
-            console.log('user', userObj)
-            return res.json(userObj);
-          });
-				
+        console.log('userlocation server', user)
+        return res.json(user[0].twitter);     				
 			});
 	}; 
 
