@@ -108,15 +108,8 @@ function ClickHandler () {
             limit   : 20,
         	};
      
-      // see notes on client.js - modify below for userSession storage only
-     console.log("body", req.body )
-    
-//     Users.findOneAndUpdate({}).exec( (err, success) => {
-//       if(err) return console.error(err);
-//       console.log(success)
-//     })
-     //if user authenticates save location to user
-     if(req.body.user) { //req.body.user
+     //if user authenticates, save location to user
+     if(req.body.user) { 
        Users.findOneAndUpdate({ 
             'twitter.id' : req.body.user
             }, {
@@ -127,7 +120,6 @@ function ClickHandler () {
             })
           	.exec((err, success) => {
              	if(err) return console.error(err);
-              console.log('success', success)
         	  });    
      };
         

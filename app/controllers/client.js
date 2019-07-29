@@ -240,10 +240,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // listener for Search button
   search.addEventListener("click", (evt) => {
      evt.preventDefault();
+    
      load.classList.add('loading');
      let location = input.value;
-    
-     // eliminate mongo storing current location item use window.sessionStorage 
     
      sessionStorage.setItem('current', location);
      if(bars.length) bars = [];     
@@ -259,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
            location = user.previousSession || sessionStorage.getItem('current');
      
        userId = user.id;
-  
+    
        return postResults(location || user.location);
     }));
   };
