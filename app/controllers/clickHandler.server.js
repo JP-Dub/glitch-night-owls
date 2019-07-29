@@ -16,13 +16,14 @@ function ClickHandler () {
             let arr = array.twitter.nightlife;
             if(arr.length > 0) {       
               for(var i = 0; i < arr.length; i++) {
-                var item = arr[i];
+                let item = arr[i];
                 if(item.count > 0) {
                   item.count = 0;
                 }; 
               }; 
             };        
           }); // forEach()
+        
         results.save();
       }); 
     };  
@@ -37,24 +38,25 @@ function ClickHandler () {
     Users
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
-				if (err) { throw err; }
+				if (err) throw err;
            
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
           if(arr.length > 0) {       
             for(var i = 0; i < arr.length; i++) {
-              var item = arr[i];
+              let item = arr[i];
+              console.log('item', item)
              
               if(item.count > 0) {
                 nightlife.push(item.id);
               } 
             } 
           }        
-        });// forEach()
+        });
      
-			res.json(nightlife);
-			}); // Users.exec
-	}; // getClicks
+		res.json(nightlife);
+		}); 
+  }; // getClicks
 
 	this.addClick = (req, res) => {
 		Users
