@@ -39,7 +39,7 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) throw err;
-        let demoArr =    
+        let demoArr = []   
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
           if(arr.length > 0) {       
