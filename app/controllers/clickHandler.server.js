@@ -109,23 +109,9 @@ function ClickHandler () {
         	};
      
       // see notes on client.js - modify below for userSession storage only
-    
+     console.log("body", req.body.user, "passport:" , req.session.passport['user'])
      //if user authenticates save location to user
      if(!req.session.passport) { //req.body.user
-       console.log('updated locale session')
-       Users.findOneAndUpdate({
-             'session.location' : /\w*/
-            }, {
-             'session.location' : req.query.location
-            }, {
-             upsert: true,
-             new   : true
-            })
-            .exec( (err, logged) => {
-              if(err) throw err; 
-            });
-     } else {
-       console.log('updated user session')
        Users.findOneAndUpdate({ 
             '_id' : req.session.passport['user'] //req.body.user
             }, {
@@ -174,3 +160,35 @@ function ClickHandler () {
 };
 
 module.exports = ClickHandler;
+
+/*
+     //if user authenticates save location to user
+     if(!req.session.passport) { //req.body.user
+       console.log('updated locale session')
+       Users.findOneAndUpdate({
+             'session.location' : /\w*(/)
+            }, {
+             'session.location' : req.query.location
+            }, {
+             upsert: true,
+             new   : true
+            })
+            .exec( (err, logged) => {
+              if(err) throw err; 
+            });
+     } else {
+       console.log('updated user session')
+       Users.findOneAndUpdate({ 
+            '_id' : req.session.passport['user'] //req.body.user
+            }, {
+            'twitter.previousSession' : req.query.location
+            }, {
+            new   : true, 
+            upsert: true
+            })
+          	.exec((err, success) => {
+             	if(err) return console.error(err);
+              console.log('success', success)
+        	  });    
+     };
+*/
