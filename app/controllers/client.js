@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clicks.forEach( id => {
           let bttnId = document.getElementById(id),
               count;
-         
+          
           if(bttnId) {
             count = 0; 
             for(var i=0; i < clicks.length; i++) {                      
