@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        let user     = req.twitter,
-           location = user.previousSession || req.session.location;
+           location = user.previousSession || sessionStorage.getItem('current'); //req.session.location;
 
        userId = user.id;
   
