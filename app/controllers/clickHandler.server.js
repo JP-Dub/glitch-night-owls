@@ -38,9 +38,11 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) { throw err; }
-           
-        results.forEach((array, idx) => {
-          let arr = array.twitter.nightlife;
+           console.log('results', results[0].twitter)
+       let tweet = results[0].twitter
+       tweet.forEach((array, idx) => {
+          console.log(array)
+          let arr = array.nightlife[idx];
           if(arr.length > 0) {       
             for(var i = 0; i < arr.length; i++) {
               var item = arr[i];
