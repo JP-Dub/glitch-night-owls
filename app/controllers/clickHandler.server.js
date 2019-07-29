@@ -9,10 +9,10 @@ function ClickHandler () {
     console.log('called')
     //if(new Date().getHours() === 6) {
       Users
-        .find({}).select({'nightlife.twitter': 1, _id: false})
+        .find({}).select({'twitter.nightlife': 1, _id: false})
         .exec((err, results) => {
           if (err) throw err; 
-          console.log(results[0])
+          console.log(results)
         
         // .find({}).select({ 'twitter.nightlife': 1, _id: false})
         // .exec((err, results) => {
