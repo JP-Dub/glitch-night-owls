@@ -5,7 +5,7 @@ var yelp = require('yelp-fusion');
 
 function ClickHandler () {
   // resets RSVP's after 6am;
-  const resetRSVP = () => {
+  this.resetRSVP = (req, res) => {
     if(new Date().getHours() === 6) {
       Users
         .find({}).select({ 'twitter.nightlife': 1, _id: false})
@@ -24,7 +24,7 @@ function ClickHandler () {
               }; 
             };        
           }); // forEach()
-      
+        
         results.save();
       }); 
     };  

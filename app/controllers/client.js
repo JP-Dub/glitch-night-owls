@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return xmlhttp;
     }
   };
+  
+  ajax.ready(ajax.request('DELETE', 'api/resetRSVP'));
      
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents() { 
