@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
       let length = obj.length,
           dist   = obj[length-1].distance,
           city;
-      
-      if(load.classList[0] === 'loading') load.classList.remove('loading');
+     
+      if(load.classList.value === 'loading') load.classList.remove('loading');
       
       for(var i = 0; i < length; i++) {
         let div          = document.createElement("DIV"),
@@ -163,12 +163,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // find closest zip code to coordinates
         if(dist > obj[i].distance) {
           dist = obj[i].distance;
-          city = obj[i].location.city;//.zip_code;
+          city = obj[i].location.city;
         }
          
-        // write value of zip code to search bar
+        // write value of city code to search bar
         if(i === length -1) {
           if(!input.value) input.placeholder = city;
+          console.log(input.value, city)
+          sessionStorage.setItem('current', input.value || city);
         }  
 
         // no image will revert to 'no image available' icon
@@ -300,7 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
      load.classList.add('loading');
      let location = input.value;
     
-     sessionStorage.setItem('current', location);
     
      if(bars.length) bars = [];     
      
