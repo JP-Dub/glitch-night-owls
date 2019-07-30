@@ -140,7 +140,7 @@ function ClickHandler () {
               }
             }
           }
-        })
+        });
      
 		res.json(nightlife);
 		}); 
@@ -156,14 +156,14 @@ function ClickHandler () {
           
           if(result) {
             let nightlife = result.twitter.nightlife;
-            let found = 1;
+            let barExists = 1;
             for(var i = 0; i < nightlife.length; i++) {
                if(nightlife[i].id === req.body.id ) {
                  barCount.id = nightlife[i].id;
-                 nightlife[i].count === 1 ? nightlife[i].count = 0 
-                                          : nightlife[i].count = 1;
-                 
-                 barCount.count = nightlife[i].count;
+                 // nightlife[i].count === 1 ? nightlife[i].count = 0 
+                 //                          : nightlife[i].count = 1;
+                 // nightlife[i].count =  nightlife[i].count === 1 ? 0 : 1;
+                 barCount.count = nightlife[i].count === 1 ? 0 : 1;
                  found = 0;
                }
             };                      
