@@ -173,8 +173,12 @@ function ClickHandler () {
                 name  : req.body.name,
                 count : 1
                 };
-              result.twitter.nightlife.push(obj);
-              barCount = { id : req.body.id, count: 1};
+              
+              // return obj to db and send barCount to UI
+              result.twitter.nightlife.push(obj); 
+              barCount = { id    : req.body.id, 
+                           count : 1
+                         };
             }
             
             result.save( err => {
