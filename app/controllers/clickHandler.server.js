@@ -151,20 +151,19 @@ function ClickHandler () {
 			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
 			.exec((err, result) => {
-					if (err) throw err; 
-          let barCount = {}        
+					if (err) throw err;      
           
           if(result) {
-            let nightlife = result.twitter.nightlife;
-            let barExists = false;
+            let nightlife = result.twitter.nightlife,
+                barCount = {},
+                barExists = false;
             for(var i = 0; i < nightlife.length; i++) {
+                     
                if(nightlife[i].id === req.body.id ) {
-                 barCount.id = nightlife[i].id;
-                 // nightlife[i].count === 1 ? nightlife[i].count = 0 
-                 //                          : nightlife[i].count = 1;
                  nightlife[i].count = nightlife[i].count === 1 ? 0 : 1;
-                 barCount.count = nightlife[i].count;
-                 barExists = true;
+                 barCount.id        = nightlife[i].id;                
+                 barCount.count     = nightlife[i].count;
+                 barExists          = true;
                }
             };                      
             
@@ -178,7 +177,7 @@ function ClickHandler () {
               barCount = { id : req.body.id, count: 1};
             }
             
-            result.save(err => {
+            result.save( err => {
               if(err) throw err;
             });            
             
