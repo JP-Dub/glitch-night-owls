@@ -48,10 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return xmlhttp;
     }
   };
-  
-  ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}, (req) => {
-    console.log(req)
-  }));
      
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents() { 
@@ -301,6 +297,12 @@ document.addEventListener("DOMContentLoaded", () => {
            break;
      };
   };
+  
+  // interval checks time once an hour, clears all user RSVP's
+  setInterval(() => {
+    ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}));    
+  }, 3600000);
+  
   
 });
 
