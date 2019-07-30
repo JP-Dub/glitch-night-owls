@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   
-  // ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}, (req) => {
-  //   console.log(req)
-  // }));
+  ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}, (req) => {
+    console.log(req)
+  }));
      
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents() { 
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         businesscard.appendChild(business_div);     
        
         let price = obj[i].price;
-        if(!price) price = 0;  
+        if(!price) price = "";  
 
         costDescription = {
           0 : 'Unavailable',
@@ -140,9 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
           4 : 'Ultra High End'
         }
         
-        
-        if(!price) price =
-        console.log('price', price)
         // nightlife cache
         let identity = {
           "id"  : obj[i].id,
