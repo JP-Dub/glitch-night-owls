@@ -206,9 +206,8 @@ p {
 
 .img-thumbnail {
   width: 9.5em;
-  height: 9.5em;
-  z-index: 2;
-  background-size: contain;
+  height: 9.5em;  
+  z-index: 2;  
   border-right: .05em solid gray;
   border-bottom: .05em solid gray;
   -webkit-border-radius: .3125em .3125em .3125em 0;
