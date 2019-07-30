@@ -307,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
      return !location? getLocation() : postResults(location);
   });  
   
-
+//load.classList.add('loading');
   // interval checks time once an hour, clears all user RSVP's
   setInterval(() => {
     ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}));    

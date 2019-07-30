@@ -233,8 +233,8 @@ a:active {
 .loading {
   margin-left: 50%;
   margin-right: 50%;
-  border: .15em solid #000000; /* Light grey */
-  border-top: .15em solid #e60000; /* Blue */
+  border: .15em solid #000000;
+  border-top: .15em solid #e60000; 
   border-radius: 50%;
   width: 1.5em;
   height: 1.5em;
@@ -244,14 +244,22 @@ a:active {
           animation: spin .5s linear infinite;
 }
 
-/* -webkit-@keyframes spin,
--moz-@keyframes spin,
--o-@keyframes spin, */
-@keyframes spin {
+-webkit-@keyframes spin {
   0%   { -webkit-transform: rotate(0deg);}
-   0%   { -ms-transform: rotate(0deg);}
-   0%   { --transform: rotate(0deg);}
-  0%   { transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg);}
+}
+-moz-@keyframes spin {
+  0%   { -moz-transform: rotate(0deg);} 
+  100% { -moz-transform: rotate(360deg);}
+}
+-o-@keyframes spin {
+  0%   { -o-transform: rotate(0deg);}  
+  100% { -o-transform: rotate(360deg);}
+} 
+@keyframes spin {
+  0%   { -ms-transform: rotate(0deg);}  
+  0%   { transform: rotate(0deg); }  
+  100% { -ms-transform: rotate(360deg);} 
   100% { transform: rotate(360deg); }
 }  
 
