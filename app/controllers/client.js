@@ -169,7 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // write value of city code to search bar
         if(i === length -1) {
           if(!input.value) input.placeholder = city;
-          console.log(input.value, city)
           sessionStorage.setItem('current', input.value || city);
         }  
 
@@ -315,18 +314,3 @@ document.addEventListener("DOMContentLoaded", () => {
   
   
 });
-
-/*
-        clicks.forEach( id => {
-          let bttnId = document.getElementById(id),
-              count;
-          
-          if(bttnId) {
-            count = 0; 
-            for(var i=0; i < clicks.length; i++) {                      
-              if(id === clicks[i]) count++;
-            }
-            bttnId.innerHTML = count;
-          };        
-        });  
-*/
