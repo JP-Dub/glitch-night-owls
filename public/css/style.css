@@ -231,6 +231,7 @@ a:active {
 
 /****** Loading icon ******/
 .loading {
+  visibility: hidden;
   margin-left: 50%;
   margin-right: 50%;
   border: .15em solid #000000; /* Light grey */
@@ -242,7 +243,7 @@ a:active {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
+  0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }  
 
