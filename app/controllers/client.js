@@ -297,8 +297,8 @@ document.addEventListener("DOMContentLoaded", () => {
   search.addEventListener("click", (evt) => {
      evt.preventDefault();
      console.log(load)
-     // load.classList.add('loading');
-     load.setAttribute('visibility' , 'visible')
+     load.classList.add('loading');
+     //load.setAttribute('display' , 'initial')
      let location = input.value;
     
      sessionStorage.setItem('current', location);
