@@ -138,7 +138,10 @@ document.addEventListener("DOMContentLoaded", () => {
           2 : 'Moderate',
           3 : 'Pricey',
           4 : 'Ultra High End'
-        }         
+        }
+        
+        
+        if(!price) price =
         console.log('price', price)
         // nightlife cache
         let identity = {
