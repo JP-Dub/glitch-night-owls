@@ -10,7 +10,7 @@ function ClickHandler () {
     //if(new Date().getHours() === 6) {
       Users
         .updateMany({},
-        { $pull: {'twitter.nightlife': 'id'}})
+        { $pull: {'twitter.nightlife': [] }})
         .exec((err, results) => {
           if (err) throw err; 
           console.log(results)
