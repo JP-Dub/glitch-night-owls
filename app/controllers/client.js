@@ -102,11 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     const createMainDiv = (obj) => {  
-     
+      
       let length = obj.length,
           dist   = obj[length-1].distance,
           city;
-       
+      
+      if(load.classList[0] === 'loading') load.classList.remove('loading');
+      
       for(var i = 0; i < length; i++) {
         let div          = document.createElement("DIV"),
             img_div      = document.createElement('DIV'),
@@ -123,13 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let businesscard = document.getElementById(div.id);
         
-        // .smallScreen div default display:none
+        // .smallScreen div, default display:none
         let smallScreenH2 = document.createElement('H2');
         businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
         smallScreenH2.setAttribute('title', 'Visit Website');
         smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
         smallScreenH2.firstChild.innerHTML = obj[i].name;         
         
+        // append .img-holder and .business div to #businesscard_*
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
        
@@ -193,8 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
         business_div.appendChild(h2_ele).setAttribute('class', 'avgScreen');
         h2_ele.setAttribute('title', 'Visit Website');
         h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
-        h2_ele.firstChild.innerHTML = obj[i].name;    
-        // business_div.appendChild(document.createElement('BR'));       
+        h2_ele.firstChild.innerHTML = obj[i].name;          
         // Address
         business_div.appendChild(p_ele).className = 'address';
         p_ele.appendChild(document.createElement('A')).setAttribute('href', "https://www.yelp.com/map/" + obj[i].alias);
@@ -226,14 +228,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let url = '/businesses/search?term=bars&location=';        
     url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
-                                        : locale;
+                                      : locale;
       
     // verify data to be sent;
     let data = !userId ? {} : {user: userId};
 
     ajax.ready(ajax.request("POST", url, data, (res) => {
       let obj = JSON.parse(res);
-      if(load.classList[0] === 'loading') load.classList.remove('loading');
       if(obj.error) return alert(res);
         createMainDiv(obj);
     }));
@@ -278,9 +279,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        
        let user     = req.twitter,
-           location = user.previousSession || sessionStorage.getItem('current');
-     
-       userId = user.id;
+           location = user.previousSession || sessionStorage.getItem('current');   
+       userId       = user.id;
     
        return postResults(location || user.location);
     }));
