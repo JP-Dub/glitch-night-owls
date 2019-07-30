@@ -11,7 +11,7 @@ function ClickHandler () {
       Users
         .updateMany(
         {},
-        { $pull: {'twitter.nightlife': [{$in: {}} ] }})
+        { $pull: {'twitter.nightlife.$[]': '$all'}})
         .exec((err, results) => {
           if (err) throw err; 
           console.log(results)
