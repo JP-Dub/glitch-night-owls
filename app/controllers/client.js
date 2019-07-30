@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.childNodes[2].lastChild.innerHTML = 0;
 
         // .businsess div - Name of business
+        business_div.appendChild(h2_ele).setAttribute('class', 'avgScreen');
         business_div.appendChild(h2_ele).setAttribute('title', 'Visit Website');
         h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
         h2_ele.firstChild.innerHTML = obj[i].name;    
