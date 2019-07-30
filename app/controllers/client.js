@@ -230,6 +230,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
   }; // postResults()
   
+  // run if search bar is empty when a search is exec.
+  function getLocation(done) {
+     if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+           
+          postResults({
+            latitude : position.coords.latitude,
+            longitude: position.coords.longitude
+          });
+           
+        }, showError);
+     } else {
+        console.log("Geolocation is not supported by this browser.");
+     };
+  };
+  
+   // used in conjunction with getLocation()  
+  function showError(error) {
+     switch(error.code) {
+        case error.PERMISSION_DENIED:
+           console.log("User denied the request for Geolocation.");
+           break;
+        case error.POSITION_UNAVAILABLE:
+           console.log("Location information is unavailable.");
+           break;
+        case error.TIMEOUT:
+           console.log("The request to get user location timed out.");
+           break;
+        case error.UNKNOWN_ERROR:
+           console.log("An unknown error occurred.");
+           break;
+     };
+  };   
   
   // listener for Twitter login button
   twitter.addEventListener("click", (evt) => {
@@ -264,39 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
   };
      
-  // run if search bar is empty when a search is exec.
-  function getLocation(done) {
-     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-           
-          postResults({
-            latitude : position.coords.latitude,
-            longitude: position.coords.longitude
-          });
-           
-        }, showError);
-     } else {
-        console.log("Geolocation is not supported by this browser.");
-     };
-  };
-  
-   // used in conjunction with getLocation()  
-  function showError(error) {
-     switch(error.code) {
-        case error.PERMISSION_DENIED:
-           console.log("User denied the request for Geolocation.");
-           break;
-        case error.POSITION_UNAVAILABLE:
-           console.log("Location information is unavailable.");
-           break;
-        case error.TIMEOUT:
-           console.log("The request to get user location timed out.");
-           break;
-        case error.UNKNOWN_ERROR:
-           console.log("An unknown error occurred.");
-           break;
-     };
-  };
+
   
   // interval checks time once an hour, clears all user RSVP's
   setInterval(() => {
