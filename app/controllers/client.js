@@ -122,6 +122,14 @@ document.addEventListener("DOMContentLoaded", () => {
         business_div.className = 'business';
 
         let businesscard = document.getElementById(div.id);
+        
+        // .smallScreen div default display:none
+        let smallScreenH2 = document.createElement('H2');
+        businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
+        smallScreenH2.setAttribute('title', 'Visit Website');
+        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
+        smallScreenH2.firstChild.innerHTML = obj[i].name;         
+        
         businesscard.appendChild(img_div);
         businesscard.appendChild(business_div);     
        
@@ -162,13 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // no image will revert to 'no image available' icon
         if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';   
-        
-        // .smallScreen div default display:none
-        let smallScreenH2 = document.createElement('H2');
-        businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
-        smallScreenH2.setAttribute('title', 'Visit Website');
-        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
-        smallScreenH2.firstChild.innerHTML = obj[i].name; 
 
         // .img-holder div
         img_div.appendChild(document.createElement('IMG'));
