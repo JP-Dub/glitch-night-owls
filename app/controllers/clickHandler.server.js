@@ -10,37 +10,11 @@ function ClickHandler () {
     //if(new Date().getHours() === 6) {
       Users
         .updateMany({},
-        { $pull: {'twitter.nightlife': {} }})
-        .exec((err, results) => {
-          if (err) throw err; 
-          console.log(results)
-        
-        // .find({}).select({ 'twitter.nightlife': 1, _id: false})
+        { $pull: {'twitter.nightlife': {} }});
         // .exec((err, results) => {
         //   if (err) throw err; 
-        //   console.log(results)        
-//           results.forEach( (array, idx) => {
-//             array.twitter.nightlife = [];
-//             let arr = array.twitter.nightlife;
-            
-//             if(arr.length > 0) {       
-//               for(var i = 0; i < arr.length; i++) {
-//                 let item = arr[i];
-//                 arr.unshift(item)
-//                 console.log('item', item)
-//                 if(item.count > 0) {
-//                   item.count = 0;
-//                 }; 
-//               }; 
-//             };        
-//           }); // forEach()
-        
-         // results.save( (err, pass) => {
-         //   if(err) throw err;
-         //     console.log(pass)
-         // });
-       }); 
-    //};  
+          
+     //  }); 
   };
 	
   // interval checks time once an hour

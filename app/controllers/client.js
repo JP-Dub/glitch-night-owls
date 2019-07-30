@@ -264,6 +264,19 @@ document.addEventListener("DOMContentLoaded", () => {
      };
   };   
   
+  // checks if user is logged in /  returns previous session
+  if( loggedIn ) {     
+    ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
+       
+       let user     = req.twitter,
+           location = user.previousSession || sessionStorage.getItem('current');
+     
+       userId = user.id;
+    
+       return postResults(location || user.location);
+    }));
+  };  
+  
   // listener for Twitter login button
   twitter.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -284,25 +297,11 @@ document.addEventListener("DOMContentLoaded", () => {
      return !location? getLocation() : postResults(location);
   });  
   
-  // checks if user is logged in /  returns previous session
-  if( loggedIn ) {     
-    ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-       
-       let user     = req.twitter,
-           location = user.previousSession || sessionStorage.getItem('current');
-     
-       userId = user.id;
-    
-       return postResults(location || user.location);
-    }));
-  };
-     
 
-  
   // interval checks time once an hour, clears all user RSVP's
-  setInterval(() => {
+  //setInterval(() => {
     ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}));    
-  }, 3600000);
+  //}, 3600000);
   
   
 });
