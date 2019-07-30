@@ -161,7 +161,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }  
 
         // no image will revert to 'no image available' icon
-        if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';            
+        if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';   
+        
+        // .smallScreen div default display:none
+        let smallScreenH2 = document.createElement('H2');
+        businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
+        smallScreenH2.setAttribute('title', 'Visit Website');
+        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
+        smallScreenH2.firstChild.innerHTML = obj[i].name; 
 
         // .img-holder div
         img_div.appendChild(document.createElement('IMG'));
@@ -183,10 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // .businsess div - Name of business
         business_div.appendChild(h2_ele).setAttribute('class', 'avgScreen');
-        business_div.appendChild(h2_ele).setAttribute('title', 'Visit Website');
+        h2_ele.setAttribute('title', 'Visit Website');
         h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
         h2_ele.firstChild.innerHTML = obj[i].name;    
-        business_div.appendChild(document.createElement('BR'));       
+        // business_div.appendChild(document.createElement('BR'));       
         // Address
         business_div.appendChild(p_ele).className = 'address';
         p_ele.appendChild(document.createElement('A')).setAttribute('href', "https://www.yelp.com/map/" + obj[i].alias);
