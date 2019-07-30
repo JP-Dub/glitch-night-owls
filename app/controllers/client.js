@@ -299,9 +299,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   // interval checks time once an hour, clears all user RSVP's
-  //setInterval(() => {
+  setInterval(() => {
     ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}));    
-  //}, 3600000);
+  }, 3600000);
   
   
 });

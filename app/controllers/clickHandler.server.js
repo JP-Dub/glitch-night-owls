@@ -6,19 +6,16 @@ var yelp = require('yelp-fusion');
 function ClickHandler () {
   // resets RSVP's after 6am;
   this.resetRSVP = (req, res) => {
-    console.log('called')
-    //if(new Date().getHours() === 6) {
-      Users
-        .updateMany({},
-        { $pull: {'twitter.nightlife': {} }});
-        // .exec((err, results) => {
-        //   if (err) throw err; 
-          
-     //  }); 
+    if(new Date().getHours() === 6) {
+      Users.updateMany({},
+        { $pull: 
+          {'twitter.nightlife': {} }
+        })
+        .exec(err => {
+          if (err) throw err;           
+      }); 
+    }
   };
-	
-  // interval checks time once an hour
-  //setInterval(resetRSVP, 3600000);
   
 	this.getClicks = (req, res) => {
     let nightlife = [];
