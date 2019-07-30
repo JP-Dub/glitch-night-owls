@@ -156,19 +156,19 @@ function ClickHandler () {
           
           if(result) {
             let nightlife = result.twitter.nightlife;
-            let barExists = 1;
+            let barExists = false;
             for(var i = 0; i < nightlife.length; i++) {
                if(nightlife[i].id === req.body.id ) {
                  barCount.id = nightlife[i].id;
                  // nightlife[i].count === 1 ? nightlife[i].count = 0 
                  //                          : nightlife[i].count = 1;
-                 // nightlife[i].count =  nightlife[i].count === 1 ? 0 : 1;
-                 barCount.count = nightlife[i].count === 1 ? 0 : 1;
-                 found = 0;
+                 nightlife[i].count = nightlife[i].count === 1 ? 0 : 1;
+                 barCount.count = nightlife[i].count;
+                 barExists = true;
                }
             };                      
             
-            if(found) {
+            if(!barExists) {
               let obj = { 
                 id    : req.body.id,
                 name  : req.body.name,
