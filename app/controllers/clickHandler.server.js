@@ -9,9 +9,8 @@ function ClickHandler () {
     console.log('called')
     //if(new Date().getHours() === 6) {
       Users
-        .updateMany(
-        {},
-        { $pull: {'twitter.nightlife.$[]': '$all'}})
+        .find({'twitter' : 'nightlife'})
+        // { $pull: {'twitter.nightlife.$[]': '$all'}})
         .exec((err, results) => {
           if (err) throw err; 
           console.log(results)
