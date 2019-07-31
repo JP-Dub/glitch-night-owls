@@ -27,7 +27,7 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/login/:user')
 		.get(isLoggedIn, (req, res) => {
-			res.sendFile(path + '/public/index.html');
+		  res.sendFile(path + '/public/index.html');
 		});
 		
 	app.route('/user/location')	
@@ -42,7 +42,7 @@ module.exports = (app, passport, cors) => {
   
   app.route('/api/resetRSVP')
     .put( clickHandler.resetRSVP );
-		
+		 
 	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
