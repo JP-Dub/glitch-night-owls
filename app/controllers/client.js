@@ -104,33 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if(load.classList.value === 'loading') load.classList.remove('loading');
       
       for(var i = 0; i < length; i++) {
-        let div          = document.createElement("DIV"),
-            img_div      = document.createElement('DIV'),
-            business_div = document.createElement('DIV'),
-            h2_ele       = document.createElement('H2'),
-            p_ele        = document.createElement('P'),
+        
+        let price = obj[i].price,
             costDescription;
-              
-        main.appendChild(div);
-        div.id                 = 'businesscard_' + i;
-        div.className          = 'container'; 
-        img_div.className      = 'img-holder';
-        business_div.className = 'business';
-
-        let businesscard = document.getElementById(div.id);
-        
-        // .smallScreen div, default display:none
-        let smallScreenH2 = document.createElement('H2');
-        businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
-        smallScreenH2.setAttribute('title', 'Visit Website');
-        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
-        smallScreenH2.firstChild.innerHTML = obj[i].name;         
-        
-        // append .img-holder and .business div to #businesscard_*
-        businesscard.appendChild(img_div);
-        businesscard.appendChild(business_div);     
-       
-        let price = obj[i].price;
         if(!price) price = "";  
 
         costDescription = {
@@ -167,7 +143,73 @@ document.addEventListener("DOMContentLoaded", () => {
         }  
 
         // no image will revert to 'no image available' icon
-        if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';   
+        if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';  
+        
+        let div           = document.createElement("DIV"),
+            img_div       = document.createElement('DIV'),
+            business_div  = document.createElement('DIV'),
+            h2_ele        = document.createElement('H2'),
+            smallScreenH2 = document.createElement('H2'),
+            p_ele         = document.createElement('P');
+           
+              
+        main.appendChild(div);
+        div.id                 = 'businesscard_' + i;
+        div.className          = 'container'; 
+        img_div.className      = 'img-holder';
+        business_div.className = 'business';
+
+        let businesscard = document.getElementById(div.id);
+        
+        // .smallScreen div, default display:none
+        let 
+        businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
+        smallScreenH2.setAttribute('title', 'Visit Website');
+        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
+        smallScreenH2.firstChild.innerHTML = obj[i].name;         
+        
+        // append .img-holder and .business div to #businesscard_*
+        businesscard.appendChild(img_div);
+        businesscard.appendChild(business_div);     
+       
+//         let price = obj[i].price;
+//         if(!price) price = "";  
+
+//         costDescription = {
+//           0 : 'Unavailable',
+//           1 : 'Inexpensive',
+//           2 : 'Moderate',
+//           3 : 'Pricey',
+//           4 : 'Ultra High End'
+//         }
+        
+//         // nightlife cache
+//         let identity = {
+//           "id"  : obj[i].id,
+//           "name": obj[i].name
+//         };
+
+//         bars.push(identity);       
+
+//         // if statement used when getLocation() is called prior to loading the screen
+//         if(typeof locale === "object" && locale != null) {        
+//           obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
+//         }
+         
+//         // find closest zip code to coordinates
+//         if(dist > obj[i].distance) {
+//           dist = obj[i].distance;
+//           city = obj[i].location.city;
+//         }
+         
+//         // write value of city code to search bar
+//         if(i === length -1) {
+//           if(!input.value) input.placeholder = city;
+//           sessionStorage.setItem('current', input.value || city);
+//         }  
+
+//         // no image will revert to 'no image available' icon
+//         if(!obj[i].image_url) obj[i].image_url = '../public/img/NoProductImage_300.jpg';   
 
         // .img-holder div
         img_div.appendChild(document.createElement('IMG'));
