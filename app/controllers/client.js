@@ -24,10 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     request: function ajaxRequest(method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
-        let params;
-     
-        params = typeof data == 'string' ? data 
-                       : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');  
+        
+        let params = typeof data === 'string' ? data 
+                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
         xmlhttp.open(method, url, true);
 
@@ -58,14 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // get all user clicks and match to any applicable business id's
       ajax.ready(ajax.request("GET", url, {}, (clicks) => {
         clicks.forEach( item => {
-          let bttnId = document.getElementById(item.id),
-              count;
+          let bttnId = document.getElementById(item.id);
 
           if(bttnId) {
-            // count = 0; 
-            // for(var i=0; i < clicks.length; i++) {                      
-            //   if(id === clicks[i]) count++;
-            // }
             bttnId.innerHTML = item.count;
           };        
         });        
