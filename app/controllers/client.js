@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadBttnEvents() { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength  = twitterBttn.length,
-          url         = '../api/:id/clicks';
+          url         = '../api/clicks';
       
       // get all user clicks and match to any applicable business id's
       ajax.ready(ajax.request("GET", url, {}, (clicks) => {

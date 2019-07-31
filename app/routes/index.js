@@ -14,6 +14,7 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	const clickHandler = new ClickHandler();
+  
 	let options = ({
 	  origin : 'https://glitch-night-owls.glitch.me',
 		preflightContinue: true,
@@ -36,7 +37,7 @@ module.exports = (app, passport, cors) => {
 	app.route('/businesses/:search')
 		.post(clickHandler.getNightlife);
 	
-	app.route('/api/:id/clicks')
+	app.route('/api/clicks')
 		.get( clickHandler.getClicks)
 		.post(isLoggedIn, cors(), clickHandler.addClick);	
   
