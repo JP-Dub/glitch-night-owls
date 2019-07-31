@@ -223,10 +223,13 @@ document.addEventListener("DOMContentLoaded", () => {
       loadBttnEvents();
     };   
 
-    let url = '/businesses/search?term=bars&location=';        
-    url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
-                                      : locale;
-      
+    //let url = '/businesses/search?term=bars&location=';        
+    // url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
+    //                                   : locale;
+    
+    if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude; 
+    let url = '/businesses/search?term=bars&location=' + locale;      
+    
     // verify data to be sent;
     let data = !userId ? {} : {user: userId};
 
@@ -277,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
        
        let user     = req.twitter,
            location = user.previousSession || sessionStorage.getItem('current');   
+       
        userId       = user.id;
     
        return postResults(location || user.location);
