@@ -9,7 +9,7 @@ To see a small demo enter zip code 33467 in the search bar. All RSVP's are clear
 
 Searching with an empty input value will call the browsers geo location feature.
 
-A working copy is available here <em>https://glitch-night-owls.glitch.me/<br></em>
+A working copy is available here <em>https://night-owls.glitch.me/<br></em>
 
 Joel Piazza<br><br>
 linkedin:<br> <em>https://www.linkedin.com/in/joelpiazza</em><br><br>
