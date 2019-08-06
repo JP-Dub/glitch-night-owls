@@ -133,12 +133,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // find closest zip code to coordinates
         if(dist > obj[i].distance) {
           dist = obj[i].distance;
-          city = obj[i].location.city;
+          city = obj[i].location.city;       
+        } else {
+          city = obj[length-1].location.city;
         }
-         
+          
         // write value of city code to search bar
         if(i === length -1) {
           if(!input.value) input.placeholder = city;
+         
           sessionStorage.setItem('current', input.value || city);
         }  
 
