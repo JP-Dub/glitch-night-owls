@@ -8,7 +8,8 @@ const express    = require('express'),
       cors       = require('cors'),
       app        = express();
 
-app.options('/', cors());    
+//app.options('/', cors());    
+app.use(cors());
  
 require('dotenv').config();
 require('./app/config/passport')(passport);
