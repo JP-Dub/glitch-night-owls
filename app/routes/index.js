@@ -16,7 +16,7 @@ module.exports = (app, passport, cors) => {
 	const clickHandler = new ClickHandler();
   
 	let options = ({
-	  origin : 'https://glitch-night-owls.glitch.me',
+	  origin : 'https://night-owls.glitch.me',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	});
@@ -39,15 +39,15 @@ module.exports = (app, passport, cors) => {
 	
 	app.route('/api/clicks')
 		.get( clickHandler.getClicks)
-		.post(isLoggedIn, cors(), clickHandler.addClick);	
+		.post(isLoggedIn, clickHandler.addClick);	
   
   app.route('/api/resetRSVP')
     .put( clickHandler.resetRSVP );
 		 
-	app.get('/auth/twitter', cors(), passport.authenticate('twitter'));
+	app.get('/auth/twitter', passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(cors(), passport.authenticate('twitter', 
+		.get( passport.authenticate('twitter', 
       { failureRedirect: '/' }), (req, res) => {
         res.redirect('/login/' + req.user.twitter['username']);
 		});	
