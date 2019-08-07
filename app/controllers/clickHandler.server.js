@@ -120,7 +120,8 @@ function ClickHandler () {
           }  
         };
         results.push(demoObj);
-        console.log(results[0].twitter)
+      
+        console.log(results[1].twitter)
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
