@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }; // for(loop) 
    }; // loadBtnEvents()   
 
+  // sort data for UI   
   function postResults(locale) { 
     //delete previous bar info if it exists
     if(main.childNodes !== null && main.childNodes.length > 1) {
