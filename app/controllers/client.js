@@ -89,6 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // sort data for UI   
   function postResults(locale) { 
+    input.placeholder = locale;
+
     //delete previous bar info if it exists
     if(main.childNodes !== null && main.childNodes.length > 1) {
       while(main.firstChild) {
@@ -142,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // write value of city code to search bar
         if(i === length -1) {
           if(!input.value) input.placeholder = city;
-         
+          
           sessionStorage.setItem('current', input.value || city);
         }  
 
