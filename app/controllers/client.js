@@ -70,22 +70,18 @@ document.addEventListener("DOMContentLoaded", () => {
                   
         twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
-          console.log(this.id)
+          
           if(!userId) return alert('You have to be logged in to perform this action!');
           
-          //let index = this.getAttribute('data-id');
-          //bars[index].userId = userId;
+          let barId = this.firstElementChild.getAttribute('id'),
+              obj   = {
+                id     : barId,
+                name   : this.getAttribute('data-name'),
+                userId : userId
+              };
           
-          let obj = {
-            id     : this.getAttribute('data-id'),
-            name   : this.getAttribute('data-name'),
-            userId : userId
-          }
-          
-         // console.log(bars[index], obj)
-          // log data to user profile
           ajax.ready(ajax.request("POST", url, obj, (bar) => {
-            let going = document.getElementById(bar.id),            
+            let going = document.getElementById(barId), //bar.id            
                 sum   = bar.count === 0 ?  -1 :  1;
 
             going.innerHTML = (parseInt(going.innerHTML, 10) + sum);            
