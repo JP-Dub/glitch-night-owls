@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const regex    = RegExp('^/login/.*'),
         loggedIn = regex.test(window.location.pathname);
 
-  const twitter = document.getElementById('login'),
-        search  = document.getElementById('search'),
-        input   = document.getElementById('location-input'),
+  const input   = document.getElementById('location-input'),
+        load    = document.getElementById('load'),
         main    = document.getElementById('main'),
-        load    = document.getElementById('load');
+        search  = document.getElementById('search'),
+        twitter = document.getElementById('login');
 
   let userId, bars = [];
 
