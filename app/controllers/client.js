@@ -140,13 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
           city = obj[length-1].location.city;
         }
           
-        // write value of city code to search bar
+        // write value of city or zip code to search bar
         if(i === length -1) {
           sessionStorage.setItem('current', input.value || city);
-          input.placeholder = !input.value ? city : locale, input.value = '';
-//           if(!input.value) {
-//             input.placeholder = city;
-//           }      
+          input.placeholder = !input.value ? city : locale, input.value = '';   
         }  
 
         // no image will revert to 'no image available' icon
