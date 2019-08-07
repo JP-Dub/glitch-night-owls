@@ -75,8 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
           let index = this.getAttribute('data-id');
           bars[index].userId = userId;
           
+          let obj = {
+            id     : this.getAttribute('data-id'),
+            name   : this.getAttribute('data-name'),
+            userId : userId
+          }
+          
+          console.log(bars[index], obj)
           // log data to user profile
-          ajax.ready(ajax.request("POST", url, bars[index], (bar) => {
+          ajax.ready(ajax.request("POST", url, obj, (bar) => {
             let going = document.getElementById(bar.id),            
                 sum   = bar.count === 0 ?  -1 :  1;
 
@@ -188,7 +195,8 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.lastChild.setAttribute('title', 'Let people know that you are going by pushing the button');
         img_div.lastChild.setAttribute('type', 'button');
         img_div.lastChild.setAttribute('value', 'submit');
-        img_div.lastChild.setAttribute('data-id', i)
+        img_div.lastChild.setAttribute('data-id', obj[i].id)
+        img_div.lastChild.setAttribute('data-name', obj[i].name);
         img_div.lastChild.innerHTML = "Going ";
         img_div.lastChild.appendChild(document.createElement('SPAN'));
         img_div.childNodes[2].lastChild.setAttribute('id', obj[i].id )
