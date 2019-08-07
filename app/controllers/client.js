@@ -150,8 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             business_div  = document.createElement('DIV'),
             h2_ele        = document.createElement('H2'),
             smallScreenH2 = document.createElement('H2'),
-            p_ele         = document.createElement('P');
-           
+            p_ele         = document.createElement('P');           
               
         main.appendChild(div);
         div.id                 = 'businesscard_' + i;
@@ -223,7 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
         p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
 
       }; // for(loop)
-        
+      
+      if(typeof locale === 'string')
       loadBttnEvents();
     };   
 
