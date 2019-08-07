@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
               };
           
           ajax.ready(ajax.request("POST", url, obj, (bar) => {
-            let going = document.getElementById(barId), //bar.id            
+            let going = document.getElementById(bar.id),          
                 sum   = bar.count === 0 ?  -1 :  1;
 
             going.innerHTML = (parseInt(going.innerHTML, 10) + sum);            
@@ -121,15 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
           2 : 'Moderate',
           3 : 'Pricey',
           4 : 'Ultra High End'
-        }
-        
-        // nightlife cache
-//         let identity = {
-//           "id"  : obj[i].id,
-//           "name": obj[i].name
-//         };
-
-//         bars.push(identity);       
+        }              
 
         // if statement used when getLocation() is called prior to loading the screen
         if(typeof locale === "object" && locale != null) {        
@@ -192,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
         img_div.lastChild.setAttribute('title', 'Let people know that you are going by pushing the button');
         img_div.lastChild.setAttribute('type', 'button');
         img_div.lastChild.setAttribute('value', 'submit');
-        img_div.lastChild.setAttribute('data-id', obj[i].id)
         img_div.lastChild.setAttribute('data-name', obj[i].name);
         img_div.lastChild.innerHTML = "Going ";
         img_div.lastChild.appendChild(document.createElement('SPAN'));
