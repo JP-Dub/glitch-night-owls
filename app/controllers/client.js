@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     request: function ajaxRequest(method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
-        console.log('data', data)
-        let params = typeof data === 'string' ? data 
-                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
-        console.log('params', params)
+       
+        // let params = typeof data === 'string' ? data 
+        //            : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
+        
         xmlhttp.open(method, url, true);
 
         xmlhttp.onreadystatechange = function () {
