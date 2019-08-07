@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }; // postResults()
   
   // run if search bar is empty when a search is exec.
-  function getLocation(done) {
+  function getLocation() {
      if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
            
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
      };
   };
   
-   // used in conjunction with getLocation()  
+  // used in conjunction with getLocation()  
   function showError(error) {
      switch(error.code) {
         case error.PERMISSION_DENIED:
@@ -282,9 +282,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        
        let user     = req.twitter,
-           location = user.previousSession || sessionStorage.getItem('current');   
-       
-       userId       = user.id;
+           location = user.previousSession || sessionStorage.getItem('current');     
+           userId   = user.id;
     
        return postResults(location || user.location);
     }));
@@ -307,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
      return !input.value? getLocation() : postResults(input.value);
   });  
   
-  // interval checks time once an hour, clears all user RSVP's
+  // interval checks time once an hour, clears all user RSVP's daily
   setInterval(() => {
     ajax.ready(ajax.request('PUT', '/api/resetRSVP', {}));    
   }, 3600000);
