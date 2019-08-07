@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         search  = document.getElementById('search'),
         twitter = document.getElementById('login');
 
-  let userId, bars = [];
+  let userId;// bars = [];
 
   const ajax = {
     ready: function ready(fn) {
@@ -70,10 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   
         twitterBttn[i].addEventListener('click', function(event) {
           //event.preventDefault();
+          console.log(this.id)
           if(!userId) return alert('You have to be logged in to perform this action!');
           
-          let index = this.getAttribute('data-id');
-          bars[index].userId = userId;
+          //let index = this.getAttribute('data-id');
+          //bars[index].userId = userId;
           
           let obj = {
             id     : this.getAttribute('data-id'),
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             userId : userId
           }
           
-          console.log(bars[index], obj)
+         // console.log(bars[index], obj)
           // log data to user profile
           ajax.ready(ajax.request("POST", url, obj, (bar) => {
             let going = document.getElementById(bar.id),            
@@ -127,12 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         // nightlife cache
-        let identity = {
-          "id"  : obj[i].id,
-          "name": obj[i].name
-        };
+//         let identity = {
+//           "id"  : obj[i].id,
+//           "name": obj[i].name
+//         };
 
-        bars.push(identity);       
+//         bars.push(identity);       
 
         // if statement used when getLocation() is called prior to loading the screen
         if(typeof locale === "object" && locale != null) {        
@@ -293,11 +294,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // checks if user is logged in /  returns previous session
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-       
+       console.log(req.twitter)
        let user     = req.twitter,
            location = user.previousSession || sessionStorage.getItem('current');     
            userId   = user.id;
-    
+     console.log(userId)
        return postResults(location || user.location);
     }));
   };  
@@ -314,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
      evt.preventDefault();
     
      load.classList.add('loading');    
-     if(bars.length) bars = [];     
+     //if(bars.length) bars = [];     
      
      return !input.value? getLocation() : postResults(input.value);
   });  
