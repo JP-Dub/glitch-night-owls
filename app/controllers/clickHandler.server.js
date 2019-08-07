@@ -109,7 +109,7 @@ function ClickHandler () {
                 "name": "Copperpoint Brewing Co",
                 "count": 48
             }, {
-                "id": "Os7Sqj07--fH5GlKdaRhOw",
+                "id": "6Kw1Rlx44zXsLfBItumCGw",
                 "name": "Kaluz Restaurant",
                 "count": 52
             }, {
@@ -124,7 +124,7 @@ function ClickHandler () {
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
-          //console.log(arr, idx)
+          
           if(arr.length) {
             for(let i = 0; i < arr.length; i++) {
               let item = arr[i];
@@ -221,7 +221,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-           console.log(json)
+         
            return res.json(json);
      }).catch(error => {
        	return res.json(error);
