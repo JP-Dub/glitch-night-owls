@@ -32,7 +32,7 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) throw err;
-        console.log(req.params, req.query)
+        console.log(req.params, req.query, req.body)
          // demo obj to populate 'going' data for zip code 33467     
         let demoObj = { twitter: {
             nightlife: [

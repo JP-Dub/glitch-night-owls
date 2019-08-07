@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     request: function ajaxRequest(method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
-        
+        console.log('data', data)
         let params = typeof data === 'string' ? data 
                    : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
-
+        console.log('params', params)
         xmlhttp.open(method, url, true);
 
         xmlhttp.onreadystatechange = function () {
@@ -43,19 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
         xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        xmlhttp.send(params);
+        xmlhttp.send(data);
         return xmlhttp;
     }
   };
      
    // load RSVP data to buttons and attach event listener
-  function loadBttnEvents() { 
+  function loadBttnEvents(zip) { 
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength  = twitterBttn.length,
           url         = '../api/clicks';
-      
+      console.log(zip)
       // get all user clicks and match to any applicable business id's
-      ajax.ready(ajax.request("GET", url, {}, (clicks) => {
+      ajax.ready(ajax.request("GET", url, {zipcode: zip}, (clicks) => {
         clicks.forEach( item => {
           let bttnId = document.getElementById(item.id);
 
@@ -222,9 +222,9 @@ document.addEventListener("DOMContentLoaded", () => {
         p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
 
       }; // for(loop)
+      let zip = typeof locale === 'string'? locale : '';
       
-      if(typeof locale === 'string')
-      loadBttnEvents();
+      loadBttnEvents(zip);
     };   
 
     //let url = '/businesses/search?term=bars&location=';        
@@ -281,11 +281,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // checks if user is logged in /  returns previous session
   if( loggedIn ) {     
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-       console.log(req.twitter)
+       
        let user     = req.twitter,
            location = user.previousSession || sessionStorage.getItem('current');     
            userId   = user.id;
-     console.log(userId)
+     
        return postResults(location || user.location);
     }));
   };  
@@ -301,8 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   search.addEventListener("click", (evt) => {
      evt.preventDefault();
     
-     load.classList.add('loading');    
-     //if(bars.length) bars = [];     
+     load.classList.add('loading');        
      
      return !input.value? getLocation() : postResults(input.value);
   });  
