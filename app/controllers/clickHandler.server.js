@@ -32,7 +32,7 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) throw err;
-        console.log(req.params, req.query, req.body)
+        
          // demo obj to populate 'going' data for zip code 33467     
         let demoObj = { twitter: {
             nightlife: [
@@ -121,10 +121,10 @@ function ClickHandler () {
         };
         results.push(demoObj);
       
-        console.log(results[1].twitter)
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
+          //console.log(arr, idx)
           if(arr.length) {
             for(let i = 0; i < arr.length; i++) {
               let item = arr[i];
@@ -221,7 +221,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-           
+           console.log(json)
            return res.json(json);
      }).catch(error => {
        	return res.json(error);
