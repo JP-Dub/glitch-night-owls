@@ -168,10 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // .smallScreen div, default display:none
         businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
         smallScreenH2.setAttribute('title', 'Visit Website');
-        smallScreenH2.appendChild(document.createElement('A'))
-          .setAttribute('href', obj[i].url)
-          .setAttribute('target', '_blank')
-          .setAttribute('rel', 'external');
+        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
+        smallScreenH2.firstChild.setAttribute('target', '_blank');
+        smallScreenH2.firstChild.setAttribute('rel', 'external');
         smallScreenH2.firstChild.innerHTML = obj[i].name;         
         
         // append .img-holder and .business div to #businesscard_*
@@ -199,7 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // .businsess div - Name of business
         business_div.appendChild(h2_ele).setAttribute('class', 'avgScreen');
         h2_ele.setAttribute('title', 'Visit Website');
-        h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url)
+        h2_ele.appendChild(document.createElement('A')).setAttribute('href', obj[i].url);
+        h2_ele.firstChild.setAttribute('target', '_blank');
+        h2_ele.firstChild.setAttribute('rel', 'external');
         h2_ele.firstChild.innerHTML = obj[i].name;          
         // Address
         business_div.appendChild(p_ele).className = 'address';
