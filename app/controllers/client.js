@@ -53,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let twitterBttn = document.getElementsByClassName('bttn'),
           bttnLength  = twitterBttn.length,
           url         = '../api/clicks';
-      console.log(zip)
+      
       // get all user clicks and match to any applicable business id's
-      ajax.ready(ajax.request("GET", url, {zipcode: zip}, (clicks) => {
+      ajax.ready(ajax.request("GET", url, {}, (clicks) => {
         clicks.forEach( item => {
           let bttnId = document.getElementById(item.id);
 
@@ -223,14 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
         p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
 
       }; // for(loop)
-      let zip = typeof locale === 'string'? locale : '';
+      //let zip = typeof locale === 'string'? locale : '';
       
-      loadBttnEvents(zip);
+      loadBttnEvents();
     };   
-
-    //let url = '/businesses/search?term=bars&location=';        
-    // url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
-    //                                   : locale;
   
     if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude; 
     let url = '/businesses/search?term=bars&location=' + locale;      
