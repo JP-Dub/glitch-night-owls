@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //let url = '/businesses/search?term=bars&location=';        
     // url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
     //                                   : locale;
-    
+    console.log('locale', locale)
     if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude; 
     let url = '/businesses/search?term=bars&location=' + locale;      
     
