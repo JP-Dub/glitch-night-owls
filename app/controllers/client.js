@@ -105,17 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
       
       let length = obj.length,
           dist   = obj[length-1].distance,
+          costDescription,
           city;
      
       if(load.classList.value === 'loading') load.classList.remove('loading');
       
-      for(var i = 0; i < length; i++) {
-        
-        let price = obj[i].price,
-            costDescription;
-        if(!price) price = "";  
-
-        costDescription = {
+      costDescription = {
           0 : 'Unavailable',
           1 : 'Inexpensive',
           2 : 'Moderate',
@@ -127,6 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if(typeof locale === "object" && locale != null) {        
           obj[i].alias = obj[i].alias + '?start=' + locale.latitude + '%20' + locale.longitude;
         }
+      
+      for(var i = 0; i < length; i++) {
+        
+        let price = obj[i].price;
+            
+        if(!price) price = "";  
          
         // find closest zip code to coordinates
         if(dist > obj[i].distance) {
@@ -230,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //let url = '/businesses/search?term=bars&location=';        
     // url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
     //                                   : locale;
-    console.log('locale', locale)
+  
     if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude; 
     let url = '/businesses/search?term=bars&location=' + locale;      
     
