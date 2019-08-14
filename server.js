@@ -8,8 +8,15 @@ const express    = require('express'),
       cors       = require('cors'),
       app        = express();
 
-//app.options('/', cors());    
-app.use(cors());
+//app.options('/', cors()); 
+  
+let options = ({
+	origin : 'https://night-owls.glitch.me',
+	preflightContinue: true,
+  optionsSuccessStatus: 200
+});
+
+app.use(cors(options));
  
 require('dotenv').config();
 require('./app/config/passport')(passport);

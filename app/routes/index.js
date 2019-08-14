@@ -14,12 +14,6 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	const clickHandler = new ClickHandler();
-  
-	let options = ({
-	  origin : 'https://night-owls.glitch.me',
-		preflightContinue: true,
-		optionsSuccessStatus: 200
-	});
 	
 	app.route('/')
 		.get( (req, res) => {
@@ -50,6 +44,6 @@ module.exports = (app, passport, cors) => {
 		.get( passport.authenticate('twitter', { failureRedirect: '/' }), 
          (req, res) => {
            res.redirect('/login/' + req.user.twitter['username']);
-		     });	
+		});	
 		
 };
