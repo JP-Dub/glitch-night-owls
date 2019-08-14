@@ -4,7 +4,7 @@ dependencies:
   dotenv: 8.0.0
   express: 4.17.1
   express-session: 1.16.2
-  mongoose: 5.6.8
+  mongoose: 5.6.9
   passport: 0.4.0
   passport-twitter: 1.0.4
   yelp-fusion: 3.0.0
@@ -373,7 +373,7 @@ packages:
       mongoose: '*'
     resolution:
       integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
-  /mongoose/5.6.8:
+  /mongoose/5.6.9:
     dependencies:
       async: 2.6.2
       bson: 1.1.1
@@ -392,7 +392,7 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-BhgGU/KvnVX8WbamcWgtG/45rp+xZnaF9MhNbzESIIYxK7g5QurXYcaGGCm/JFiIdIxkVUgBycWG7UzRUEzvDg==
+      integrity: sha512-NRW5UJSmwyJxK+MRHmq+dQKgZqMZCpW1aPkpBZESqrrgF2J15Flo/4K3RYkSSQY7oKhfbgqZTPo+J1snJ3hJ3w==
   /mpath/0.6.0:
     dev: false
     engines:
@@ -552,7 +552,7 @@ packages:
   /require_optional/1.0.1:
     dependencies:
       resolve-from: 2.0.0
-      semver: 5.7.0
+      semver: 5.7.1
     dev: false
     resolution:
       integrity: sha512-qhM/y57enGWHAe3v/NcwML6a3/vfESLe/sGM2dII+gEO0BpKRUkWZow/tyloNqJyN6kXSl3RyyM8Ll5D/sJP8g==
@@ -583,11 +583,11 @@ packages:
     optional: true
     resolution:
       integrity: sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag==
-  /semver/5.7.0:
+  /semver/5.7.1:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
+      integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
   /send/0.17.1:
     dependencies:
       debug: 2.6.9
@@ -734,7 +734,7 @@ specifiers:
   dotenv: ^8.0.0
   express: ^4.17.1
   express-session: ^1.16.2
-  mongoose: ^5.6.8
+  mongoose: ^5.6.9
   passport: ^0.4.0
   passport-twitter: ^1.0.4
   yelp-fusion: ^3.0.0

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         search  = document.getElementById('search'),
         twitter = document.getElementById('login');
 
-  let userId;// bars = [];
+  let userId;
 
   const ajax = {
     ready: function ready(fn) {
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     request: function ajaxRequest(method, url, data, callback) {
         let xmlhttp = new XMLHttpRequest();
        
-        // let params = typeof data === 'string' ? data 
-        //            : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
+        let params = typeof data === 'string' ? data 
+                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
         
         xmlhttp.open(method, url, true);
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        xmlhttp.send(data);
+        xmlhttp.send(params);
         return xmlhttp;
     }
   };
@@ -223,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
         p_ele.childNodes[6].innerHTML = 'Rating: ' + obj[i].rating;         
 
       }; // for(loop)
-      //let zip = typeof locale === 'string'? locale : '';
       
       loadBttnEvents();
     };   
@@ -231,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude; 
     let url = '/businesses/search?term=bars&location=' + locale;      
     
-    // verify data to be sent;
+    // verify if data to be sent
     let data = !userId ? {} : {user: userId};
 
     ajax.ready(ajax.request("POST", url, data, (res) => {
