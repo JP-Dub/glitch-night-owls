@@ -83,14 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
     
       if ( demo ) {
         for(let i = 0; i < bttnLength; i++) {
-          this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(Math.random() * Math.floor(201));
+          rsvpBttn[i].firstElementChild.innerHTML = Math.floor(Math.random() * Math.floor(201));
         }
       } else {
         // fetch all user rsvps
-        ajax.ready(ajax.request("GET", path, {}, (clicks) => {
+        ajax.ready(ajax.request("GET", url, {}, (clicks) => {
+          console.log(clicks)
           for(let i = 0; i < bttnLength; i++) {
             let count = 0,
-                bttn  = this.rsvpBttn[i].firstElementChild;
+                bttn  = rsvpBttn[i].firstElementChild;
             for(let j = 0; j < clicks.length; j++) {
               if(bttn.id === clicks[j].id) {
                 count = clicks[j].count;
