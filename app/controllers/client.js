@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // checks if user is logged in /  returns previous session
   if( loggedIn || demo) {  
-    if(demo) console.log(document.getElementById('heading > h1'))// .innerHTML = 'Night Owls Demo';
+    if(demo) document.getElementsByTagName('h1')[0].innerHTML = 'Night Owls Demo';
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        
        let user     = req.twitter,
@@ -300,8 +300,8 @@ document.addEventListener("DOMContentLoaded", () => {
      evt.preventDefault();
     
      load.classList.add('loading');
-     
-     if(input.value === /demo/i) return window.location.href = '/rsvp/demo';
+    
+     if(input.value.match(/demo/i)) return window.location.href = '/rsvp/demo';
      
      return !input.value? getLocation() : postResults(input.value);
   });  
