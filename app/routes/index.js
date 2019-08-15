@@ -1,3 +1,7 @@
+var path=process.cwd(),ClickHandler=require(path+"/app/controllers/clickHandler.server.js");
+module.exports=function(a,e,c){function d(a,b,c){if(a.isAuthenticated())return c();b.redirect("/")}c=new ClickHandler;a.route("/").get(function(a,b){b.sendFile(path+"/public/index.html")});a.route("/login/:user").get(d,function(a,b){b.sendFile(path+"/public/index.html")});a.route("/user/location").get(d,c.userLocation);a.route("/businesses/:search").post(c.getNightlife);a.route("/rsvp/demo").get(function(a,b){b.sendFile(path+"/public/index.html")});a.route("/rsvp/clicks").get(c.getClicks).post(d,
+c.addClick);a.route("/api/resetRSVP").put(c.resetRSVP);a.get("/auth/twitter",e.authenticate("twitter"));a.route("/auth/twitter/callback").get(e.authenticate("twitter",{failureRedirect:"/"}),function(a,b){b.redirect("/login/"+a.user.twitter.username)})};
+/*
 'use strict';
 
 let path = process.cwd();
@@ -52,3 +56,4 @@ module.exports = (app, passport, cors) => {
 		});	
 		
 };
+*/
