@@ -161,10 +161,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let div           = create("DIV"),
             img_div       = create('DIV'),
-            business_div  = document.createElement('DIV'),
-            h2_ele        = document.createElement('H2'),
-            smallScreenH2 = document.createElement('H2'),
-            p_ele         = document.createElement('P');           
+            business_div  = create('DIV'),
+            h2_ele        = create('H2'),
+            smallScreenH2 = create('H2'),
+            p_ele         = create('P');           
               
         main.appendChild(div);
         div.id                 = 'businesscard_' + i;
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // .smallScreen div, default display:none
         businesscard.appendChild(smallScreenH2).setAttribute('class', 'smallScreen');
         smallScreenH2.setAttribute('title', 'Visit Website');
-        smallScreenH2.appendChild(document.createElement('A')).setAttribute('href', yelp.url);
+        smallScreenH2.appendChild(create('A')).setAttribute('href', yelp.url);
         smallScreenH2.firstChild.setAttribute('target', '_blank');
         smallScreenH2.firstChild.setAttribute('rel', 'external');
         smallScreenH2.firstChild.innerHTML = yelp.name;         
@@ -187,19 +187,19 @@ document.addEventListener("DOMContentLoaded", () => {
         businesscard.appendChild(business_div);     
 
         // .img-holder div
-        img_div.appendChild(document.createElement('IMG'));
+        img_div.appendChild(create('IMG'));
         img_div.firstChild.className = 'img-thumbnail';
         img_div.firstChild.setAttribute('alt', 'image-url');
         img_div.firstChild.setAttribute('src', yelp.image_url);
-        img_div.appendChild(document.createElement('BR'));
-        img_div.appendChild(document.createElement('BUTTON'));
+        img_div.appendChild(create('BR'));
+        img_div.appendChild(create('BUTTON'));
         img_div.lastChild.className = "bttn";
         img_div.lastChild.setAttribute('title', 'Let people know that you are going by pushing the button');
         img_div.lastChild.setAttribute('type', 'button');
         img_div.lastChild.setAttribute('value', 'submit');
         img_div.lastChild.setAttribute('data-name', yelp.name);
         img_div.lastChild.innerHTML = "Going ";
-        img_div.lastChild.appendChild(document.createElement('SPAN'));
+        img_div.lastChild.appendChild(create('SPAN'));
         img_div.childNodes[2].lastChild.setAttribute('id', yelp.id )
         img_div.childNodes[2].lastChild.classList.add('badge');
         img_div.childNodes[2].lastChild.innerHTML = 0;
@@ -207,32 +207,32 @@ document.addEventListener("DOMContentLoaded", () => {
         // .businsess div - Name of business
         business_div.appendChild(h2_ele).setAttribute('class', 'avgScreen');
         h2_ele.setAttribute('title', 'Visit Website');
-        h2_ele.appendChild(document.createElement('A')).setAttribute('href', yelp.url);
+        h2_ele.appendChild(create('A')).setAttribute('href', yelp.url);
         h2_ele.firstChild.setAttribute('target', '_blank');
         h2_ele.firstChild.setAttribute('rel', 'external');
         h2_ele.firstChild.innerHTML = yelp.name;          
         // Address
         business_div.appendChild(p_ele).className = 'address';
-        p_ele.appendChild(document.createElement('A')).setAttribute('href', "https://www.yelp.com/map/" + yelp.alias);
+        p_ele.appendChild(create('A')).setAttribute('href', "https://www.yelp.com/map/" + yelp.alias);
         p_ele.firstChild.innerHTML = yelp.location.address1 + `<br>` 
                                      + yelp.location.city + `, ` 
                                      + yelp.location.state + `. ` 
                                      + yelp.location.zip_code;
         // Telephone
-        p_ele.appendChild(document.createElement('BR'));
-        p_ele.appendChild(document.createElement('SPAN'));
+        p_ele.appendChild(create('BR'));
+        p_ele.appendChild(create('SPAN'));
         p_ele.childNodes[2].classList.add('phone');
         p_ele.childNodes[2].innerHTML = 'Telephone: ';
         p_ele.childNodes[2].setAttribute('href', yelp.phone);
         p_ele.childNodes[2].setAttribute('title', 'Call Number');
-        p_ele.childNodes[2].appendChild(document.createElement('A')).innerHTML = yelp.display_phone;
+        p_ele.childNodes[2].appendChild(create('A')).innerHTML = yelp.display_phone;
         // Price
-        p_ele.appendChild(document.createElement('BR'));
-        p_ele.appendChild(document.createElement('SPAN')).classList.add('rate');
+        p_ele.appendChild(create('BR'));
+        p_ele.appendChild(create('SPAN')).classList.add('rate');
         p_ele.childNodes[4].innerHTML = "Price: " + price + " " + costDescription[price.length];
         // Ratings       
-        p_ele.appendChild(document.createElement('BR'));
-        p_ele.appendChild(document.createElement('SPAN'));
+        p_ele.appendChild(create('BR'));
+        p_ele.appendChild(create('SPAN'));
         p_ele.childNodes[6].innerHTML = 'Rating: ' + yelp.rating;         
 
       }; // for(loop)
