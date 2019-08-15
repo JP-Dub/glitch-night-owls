@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 var Users = require('../models/users.js');
@@ -155,6 +156,7 @@ function ClickHandler () {
 };
 
 module.exports = ClickHandler;
+*/
 /*
          // demo obj to populate 'going' data for zip code 33467     
         let demoObj = { twitter: {
@@ -244,3 +246,8 @@ module.exports = ClickHandler;
         };
         results.push(demoObj);
       */
+var Users=require("../models/users.js"),yelp=require("yelp-fusion");
+function ClickHandler(){this.resetRSVP=function(a,d){6===(new Date).getHours()&&Users.updateMany({},{$pull:{"twitter.nightlife":{}}}).exec(function(b){if(b)throw b;})};this.getClicks=function(a,d){var b=[];Users.find({}).select({"twitter.nightlife":1}).exec(function(a,f){if(a)throw a;f.forEach(function(a,f){var e=a.twitter.nightlife;if(e.length)for(var d=0;d<e.length;d++){var c=e[d];if(c.count){var g;if(b.length)a:{for(g=0;g<b.length;g++)if(b[g].id===c.id)break a;g=!1}else g=!1;!1!==g?b[g].count+=
+c.count:b.push({id:c.id,count:c.count})}}});d.json(b)})};this.addClick=function(a,d){Users.findOne({"twitter.id":a.body.userId}).select({"twitter.nightlife":1}).exec(function(b,c){if(b)throw b;if(c){for(var f=c.twitter.nightlife,h={},k=!1,e=0;e<f.length;e++)f[e].id===a.body.id&&(f[e].count=1===f[e].count?0:1,h.id=f[e].id,h.count=0===f[e].count?-1:1,k=!0);k||(c.twitter.nightlife.push({id:a.body.id,name:a.body.name,count:1}),h={id:a.body.id,count:1});c.save(function(a){if(a)throw a;d.json(h)})}})};
+this.getNightlife=function(a,d){var b=yelp.client(process.env.API_KEY),c={term:"bars",location:a.query.location,sort_by:"rating",limit:20};a.body.user&&Users.findOneAndUpdate({"twitter.id":a.body.user},{"twitter.previousSession":a.query.location},{"new":!0,upsert:!0}).exec(function(a,b){if(a)return console.error(a)});b.search(c).then(function(a){a=JSON.stringify(a.jsonBody.businesses,null,4);return d.json(a)})["catch"](function(a){return d.json(a)})};this.userLocation=function(a,d){Users.find({_id:a.user._id}).exec(function(a,
+c){if(a)throw a;return d.json(c[0])})}}module.exports=ClickHandler;
