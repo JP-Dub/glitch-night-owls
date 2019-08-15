@@ -17,6 +17,7 @@ function ClickHandler () {
     }
   };
   
+  // return all rsvps for users
 	this.getClicks = (req, res) => {
     let nightlife = [];
     
