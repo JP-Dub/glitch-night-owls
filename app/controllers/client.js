@@ -50,10 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
      
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents(zip) { 
-      let twitterBttn = document.getElementsByClassName('bttn'),
+      let rsvpBttn = document.getElementsByClassName('bttn'),
           badge       = document.getElementsByClassName('badge'),
-          bttnLength  = twitterBttn.length,
-          url         = '../api/clicks';
+          bttnLength  = rsvpBttn.length,
+          url         = '../rsvp/clicks';
       
       // get all user clicks and match to any applicable business id's
       ajax.ready(ajax.request("GET", url, {}, (clicks) => {
@@ -67,10 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }));    
       
       // "Going" button returns name of bar and yelp ID and logs info to db 
-      for(var i = 0; i < bttnLength; i++) {
-                  
-        twitterBttn[i].addEventListener('click', function(event) {
-          //event.preventDefault();
+      for(var i = 0; i < bttnLength; i++) {          
+        rsvpBttn[i].addEventListener('click', (evt) => {
+          evt.preventDefault();
           
           if(!userId) return alert('You have to be logged in to perform this action!');
           
