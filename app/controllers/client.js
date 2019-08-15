@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
  
   const path     = window.location.pathname,
         loggedIn = RegExp('^/login/.*').test(path),
-        demo     = RegExp('^/rsvp/.*').test(path);
-        local    
+        demo     = RegExp('^/rsvp/.*').test(path),
+        local    = sessionStorage.getItem('current');
 
   const input   = document.getElementById('location-input'),
         load    = document.getElementById('load'),
@@ -276,7 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   
   // checks if user is logged in /  returns previous session
-  if( loggedIn ) {     
+  if( loggedIn || demo) {  
+    if(demo) console.log(document.getElementById('heading > h1'))// .innerHTML = 'Night Owls Demo';
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        
        let user     = req.twitter,
@@ -286,10 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
        return postResults(location || user.location);
     }));
   };
-  
-  if( demo ) {
-    
-  }
   
   // listener for Twitter login button
   twitter.addEventListener("click", (evt) => {
@@ -303,8 +300,8 @@ document.addEventListener("DOMContentLoaded", () => {
      evt.preventDefault();
     
      load.classList.add('loading');
-    
-     if(demo) return window.location.href = '/rsvp/demo'
+     
+     if(input.value === /demo/i) return window.location.href = '/rsvp/demo';
      
      return !input.value? getLocation() : postResults(input.value);
   });  
