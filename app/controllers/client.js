@@ -56,23 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
           badge       = document.getElementsByClassName('badge'),
           bttnLength  = rsvpBttn.length,
           url         = '../rsvp/clicks';
-      
-      // get all user clicks and match to any applicable business id's
-      ajax.ready(ajax.request("GET", url, {}, (clicks) => {
-        clicks.forEach( item => {
-          let bttnId = document.getElementById(item.id);
-
-          if(bttnId) {
-            bttnId.innerHTML = item.count;
-          };        
-        });        
-      }));    
-      
+    
       // "Going" button returns name of bar and yelp ID and logs info to db 
       for(var i = 0; i < bttnLength; i++) {          
         rsvpBttn[i].addEventListener('click', (evt) => {
           evt.preventDefault();
           
+          if( demo ) return alert('This is the demo version. Please return to home page');
           if(!userId) return alert('You have to be logged in to perform this action!');
           
           let obj = {
@@ -89,7 +79,29 @@ document.addEventListener("DOMContentLoaded", () => {
           }));
           
         }); 
-      }; // for(loop) 
+      }; // for(loop)     
+    
+      if ( demo ) {
+        for(let i = 0; i < bttnLength; i++) {
+          this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(Math.random() * Math.floor(201));
+        }
+      } else {
+        // fetch all user rsvps
+        ajax.ready(ajax.request("GET", path, {}, (clicks) => {
+          for(let i = 0; i < bttnLength; i++) {
+            let count = 0,
+                bttn  = this.rsvpBttn[i].firstElementChild;
+            for(let j = 0; j < clicks.length; j++) {
+              if(bttn.id === clicks[j].id) {
+                count = clicks[j].count;
+              } 
+            }
+            bttn.innerHTML = count;
+          }        
+        }));     
+      }
+      
+
    }; // loadBtnEvents()   
 
   // sort data for UI   
@@ -280,17 +292,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if(demo) {
       document.getElementsByTagName('h1')[0].innerHTML = 'Night Owls Demo';
       if (local) postResults(local);
-      return;
-    }
+  
+    } else {
     
-    ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-       
-       let user     = req.twitter,
-           location = user.previousSession || sessionStorage.getItem('current');     
-           userId   = user.id;
-       
-       return postResults(location || user.location);
-    }));
+      ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
+
+         let user     = req.twitter,
+             location = user.previousSession || sessionStorage.getItem('current');     
+             userId   = user.id;
+
+         return postResults(location || user.location);
+      }));
+    }
   };
   
   // listener for Twitter login button

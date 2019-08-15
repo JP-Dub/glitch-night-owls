@@ -20,117 +20,28 @@ function ClickHandler () {
   // return all rsvps for users
 	this.getClicks = (req, res) => {
     let nightlife = [];
-    
     // check if id exists in nightlife array
     function findId(id) {
       for(let i = 0; i < nightlife.length; i++) {
         if(nightlife[i].id === id) return i;
-      }              
+      }   
       return false;
-    };    
-		
+    };  
+	
     Users
-			.find({}).select({ 'twitter.nightlife': 1, _id: false})
+		  .find({}).select({ 'twitter.nightlife': 1})
 			.exec((err, results) => {
 				if (err) throw err;
         
-         // demo obj to populate 'going' data for zip code 33467     
-        let demoObj = { twitter: {
-            nightlife: [
-            {
-                "id": "6NzbgOQx1onp0q526O55qg",
-                "name": "OAK Bistro & Wine Bar",
-                "count": 14
-            }, {
-                "id": "KBObkCcWPvck1n9ShB5DWg",
-                "name": "Due South Brewing",
-                "count": 8
-            }, {
-                "id": "8LRYOrf-ZRQJjmh929VzIg",
-                "name": "The Venu Restaurant and Bar",
-                "count": 21
-            }, {
-                "id": "QOO0LIBqftW8AYQsbF9Q3g",
-                "name": "McKenna's Place",
-                "count": 11
-            }, {
-                "id": "HK_VnPpIzEFZ0iT1xVbx-A",
-                "name": "Iberia Bar & Grill",
-                "count": 16
-            }, {
-                "id": "K1JzjCE0JnhZ0ahwwS6MZQ",
-                "name": "The Chill Room",
-                "count": 5
-            }, {
-                "id": "bWhgHY7At3T5obS3pORYHw",
-                "name": "JoJo's Raw Bar & Grill",
-                "count": 10
-            }, {
-                "id": "0rzaXNCJ_cT9oz6NQjC4rQ",
-                "name": "Ali Baba Cafe & Hookah Lounge",
-                "count": 18
-            }, {
-                "id": "B9cbm_4R_H1Bdv-L6K3gDQ",
-                "name": "The Brass Tap",
-                "count": 26
-            }, {
-                "id": "ODEyQsSNl26ud1icQy-akQ",
-                "name": "Eagle Grill",
-                "count": 3
-            }, {
-                "id": "vt-PoDTSRjUENvUGArxKsw",
-                "name": "Ford's Garage Wellington",
-                "count": 20
-            }, {
-                "id": "cLQwj3WilmobrjH9wLvQOw",
-                "name": "The Beauty and The Beeeef",
-                "count": 12
-            }, {
-                "id": "uDLElE2G5YpQzEGzkJ9tpg",
-                "name": "Bar Louie",
-                "count": 18
-            }, {
-                "id": "we-nPde5Mws1-pp8YbV2Hw",
-                "name": "Asador Patagonia",
-                "count": 38
-            }, {
-                "id": "RGs0qo2CPGh15-CZ6HC9BA",
-                "name": "Bonefish Mac's Sports Grille",
-                "count": 44
-            }, {
-                "id": "WCaWUMhiKqsc4qtBSThEUw",
-                "name": "Brass Monkey Tavern",
-                "count": 55
-            }, {
-                "id": "52QujdUomOzpW9zgK14gkQ",
-                "name": "Elmo's Rock Bar & Grill",
-                "count": 36
-            }, {
-                "id": "w_TILSpebOiv2Ma46oLX_w",
-                "name": "Copperpoint Brewing Co",
-                "count": 48
-            }, {
-                "id": "6Kw1Rlx44zXsLfBItumCGw",
-                "name": "Kaluz Restaurant",
-                "count": 52
-            }, {
-                "id": "l5rYrJlWnvqjV-lY2F2-WQ",
-                "name": "Flanigan's Seafood Bar & Grill",
-                "count": 61
-            }]
-          }  
-        };
-        results.push(demoObj);
-      
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
-          
+        
           if(arr.length) {
-            for(let i = 0; i < arr.length; i++) {
+            for(let i = 0; i < arr.length; i++) {           
               let item = arr[i];
               if(item.count) {
-                let index = findId(item.id);
+                let index = nightlife.length ? findId(item.id) : false;
                 if(index !== false) {
                    nightlife[index].count += item.count;
                 } else {
@@ -143,7 +54,7 @@ function ClickHandler () {
             }
           }
         });
-     
+
 		res.json(nightlife);
 		}); 
   }; // getClicks
@@ -243,3 +154,92 @@ function ClickHandler () {
 };
 
 module.exports = ClickHandler;
+/*
+         // demo obj to populate 'going' data for zip code 33467     
+        let demoObj = { twitter: {
+            nightlife: [
+            {
+                "id": "6NzbgOQx1onp0q526O55qg",
+                "name": "OAK Bistro & Wine Bar",
+                "count": 14
+            }, {
+                "id": "KBObkCcWPvck1n9ShB5DWg",
+                "name": "Due South Brewing",
+                "count": 8
+            }, {
+                "id": "8LRYOrf-ZRQJjmh929VzIg",
+                "name": "The Venu Restaurant and Bar",
+                "count": 21
+            }, {
+                "id": "QOO0LIBqftW8AYQsbF9Q3g",
+                "name": "McKenna's Place",
+                "count": 11
+            }, {
+                "id": "HK_VnPpIzEFZ0iT1xVbx-A",
+                "name": "Iberia Bar & Grill",
+                "count": 16
+            }, {
+                "id": "K1JzjCE0JnhZ0ahwwS6MZQ",
+                "name": "The Chill Room",
+                "count": 5
+            }, {
+                "id": "bWhgHY7At3T5obS3pORYHw",
+                "name": "JoJo's Raw Bar & Grill",
+                "count": 10
+            }, {
+                "id": "0rzaXNCJ_cT9oz6NQjC4rQ",
+                "name": "Ali Baba Cafe & Hookah Lounge",
+                "count": 18
+            }, {
+                "id": "B9cbm_4R_H1Bdv-L6K3gDQ",
+                "name": "The Brass Tap",
+                "count": 26
+            }, {
+                "id": "ODEyQsSNl26ud1icQy-akQ",
+                "name": "Eagle Grill",
+                "count": 3
+            }, {
+                "id": "vt-PoDTSRjUENvUGArxKsw",
+                "name": "Ford's Garage Wellington",
+                "count": 20
+            }, {
+                "id": "cLQwj3WilmobrjH9wLvQOw",
+                "name": "The Beauty and The Beeeef",
+                "count": 12
+            }, {
+                "id": "uDLElE2G5YpQzEGzkJ9tpg",
+                "name": "Bar Louie",
+                "count": 18
+            }, {
+                "id": "we-nPde5Mws1-pp8YbV2Hw",
+                "name": "Asador Patagonia",
+                "count": 38
+            }, {
+                "id": "RGs0qo2CPGh15-CZ6HC9BA",
+                "name": "Bonefish Mac's Sports Grille",
+                "count": 44
+            }, {
+                "id": "WCaWUMhiKqsc4qtBSThEUw",
+                "name": "Brass Monkey Tavern",
+                "count": 55
+            }, {
+                "id": "52QujdUomOzpW9zgK14gkQ",
+                "name": "Elmo's Rock Bar & Grill",
+                "count": 36
+            }, {
+                "id": "w_TILSpebOiv2Ma46oLX_w",
+                "name": "Copperpoint Brewing Co",
+                "count": 48
+            }, {
+                "id": "6Kw1Rlx44zXsLfBItumCGw",
+                "name": "Kaluz Restaurant",
+                "count": 52
+            }, {
+                "id": "l5rYrJlWnvqjV-lY2F2-WQ",
+                "name": "Flanigan's Seafood Bar & Grill",
+                "count": 61
+            }]
+          }  
+        };
+        results.push(demoObj);
+      */
