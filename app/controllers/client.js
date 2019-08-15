@@ -3,8 +3,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
  
-  const regex    = RegExp('^/login/.*'),
-        loggedIn = regex.test(window.location.pathname);
+  const path     = window.location.pathname,
+        loggedIn = RegExp('^/login/.*').test(path),
+        demo     = RegExp('^/rsvp/.*').test(path);
+        local    
 
   const input   = document.getElementById('location-input'),
         load    = document.getElementById('load'),
@@ -73,9 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
           
           if(!userId) return alert('You have to be logged in to perform this action!');
           
-          let barId = this.firstElementChild.getAttribute('id'),
-              obj   = {
-                id     : barId,
+          let obj = {
+                id     : this.firstElementChild.getAttribute('id'),
                 name   : this.getAttribute('data-name'),
                 userId : userId
               };
@@ -284,7 +285,11 @@ document.addEventListener("DOMContentLoaded", () => {
      
        return postResults(location || user.location);
     }));
-  };  
+  };
+  
+  if( demo ) {
+    
+  }
   
   // listener for Twitter login button
   twitter.addEventListener("click", (evt) => {
@@ -297,7 +302,9 @@ document.addEventListener("DOMContentLoaded", () => {
   search.addEventListener("click", (evt) => {
      evt.preventDefault();
     
-     load.classList.add('loading');        
+     load.classList.add('loading');
+    
+     if(demo) return window.location.href = '/rsvp/demo'
      
      return !input.value? getLocation() : postResults(input.value);
   });  

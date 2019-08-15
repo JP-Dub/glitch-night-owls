@@ -9,7 +9,7 @@ module.exports = (app, passport, cors) => {
 		if (req.isAuthenticated()) {
 			return next();
 		} else {
-			res.redirect('/auth/twitter');
+			res.redirect('/');
 		}
 	}
 	
@@ -30,6 +30,11 @@ module.exports = (app, passport, cors) => {
 			
 	app.route('/businesses/:search')
 		.post(clickHandler.getNightlife);
+  
+  app.route('/rsvp/demo')
+     .get( (req, res) => {
+      res.sendFile(path + '/public/index.html');
+  });
 	
 	app.route('/rsvp/clicks')
 		.get( clickHandler.getClicks)
