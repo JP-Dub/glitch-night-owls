@@ -112,7 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     };
     
-    const createMainDiv = (obj) => {  
+    const createMainDiv = (obj) => { 
+      
+      const create = (ele) => document.createElement(ele);
       
       let length = obj.length,
           dist   = obj[length-1].distance,
@@ -157,8 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // no image will revert to 'no image available' icon
         if(!yelp.image_url) yelp.image_url = '../public/img/NoProductImage_300.jpg';  
         
-        let div           = document.createElement("DIV"),
-            img_div       = document.createElement('DIV'),
+        let div           = create("DIV"),
+            img_div       = create('DIV'),
             business_div  = document.createElement('DIV'),
             h2_ele        = document.createElement('H2'),
             smallScreenH2 = document.createElement('H2'),

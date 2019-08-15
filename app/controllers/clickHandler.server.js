@@ -59,13 +59,15 @@ function ClickHandler () {
 		}); 
   }; // getClicks
 
+  // for authenticated users to add or remove rsvp  
 	this.addClick = (req, res) => {
+    
 		Users
 			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
 			.exec((err, result) => {
 					if (err) throw err;      
-          
+      
           if(result) {
             let nightlife = result.twitter.nightlife,
                 barCount = {},
@@ -75,7 +77,7 @@ function ClickHandler () {
                if(nightlife[i].id === req.body.id ) {
                  nightlife[i].count = nightlife[i].count === 1 ? 0 : 1;
                  barCount.id        = nightlife[i].id;                
-                 barCount.count     = nightlife[i].count;
+                 barCount.count     = nightlife[i].count === 0 ? -1 : 1;
                  barExists          = true;
                }
             };                      
@@ -85,22 +87,21 @@ function ClickHandler () {
                 id    : req.body.id,
                 name  : req.body.name,
                 count : 1
-                };
+              };
               
               // return obj to db and send barCount to UI
               result.twitter.nightlife.push(obj); 
-              barCount = { id    : req.body.id, 
-                           count : 1
-                         };
+              barCount = { 
+                id    : req.body.id, 
+                count : 1
+              };
             }
             
             result.save( err => {
               if(err) throw err;
+              res.json(barCount);
             });            
-            
-            res.json(barCount);
          };
-
 			});
 	};
 	
