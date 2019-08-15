@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
    // load RSVP data to buttons and attach event listener
   function loadBttnEvents(zip) { 
       let twitterBttn = document.getElementsByClassName('bttn'),
+          badge       = document.getElementsByClassName('badge'),
           bttnLength  = twitterBttn.length,
           url         = '../api/clicks';
       
