@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // sort data for UI   
   function postResults(locale) { 
-
+    console.log('locale', locale)
     //delete previous bar info if it exists
     if(main.childNodes !== null && main.childNodes.length > 1) {
       while(main.firstChild) {
@@ -277,13 +277,18 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // checks if user is logged in /  returns previous session
   if( loggedIn || demo) {  
-    if(demo) document.getElementsByTagName('h1')[0].innerHTML = 'Night Owls Demo';
+    if(demo) {
+      document.getElementsByTagName('h1')[0].innerHTML = 'Night Owls Demo';
+      if (local) postResults(local);
+      return;
+    }
+    
     ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
        
        let user     = req.twitter,
            location = user.previousSession || sessionStorage.getItem('current');     
            userId   = user.id;
-     
+       
        return postResults(location || user.location);
     }));
   };
